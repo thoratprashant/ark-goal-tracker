@@ -12,6 +12,15 @@ a {
 } 
 
 body{
+  ::placeholder { /* Chrome, Firefox, Opera, Safari */
+   color: #999;
+  } 
+  :-ms-input-placeholder { /* Internet Explorer */
+    color: #999;
+  } 
+  ::-ms-input-placeholder { /* Microsoft Edge (old) */
+    color: #999;
+  }
 
   .text-primary { color: v.$primary !important; }
   .text-secondary{ color: v.$secondary !important;}
