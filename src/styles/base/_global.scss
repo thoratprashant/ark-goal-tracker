@@ -100,8 +100,11 @@ body{
   }
   .icon--password {
       position: absolute;
-      right: 3px;
-      top: -3px;
+      right: 4px;
+      top: 4px;
+      padding: 0 !important;
+      height: 32px !important;
+      width: 32px !important;
       .mat-icon{
           color: #505050;
           font-size: 21px;

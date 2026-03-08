@@ -1,30 +1,99 @@
 <div class="login--wrapper d-flex flex-column">
   <div class="d-flex align-items-center logo">
     <img src="images/logo.svg" alt="img" class="me-2">
-    <h2 class="fw-bold m-0">System Admin Login </h2>
+    <h2 class="fw-bold m-0">Login</h2>
   </div>
-  <form [formGroup]="loginForm">
+
+  <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
     <div class="row">
+
+      <!-- EMAIL -->
       <div class="col-12 mb-4">
-        <label for="exampleFormControlInput1" class="form-label">
+        <label class="form-label">
           Enter email Id
           <span class="text-error">*</span>
         </label>
-        <input type="text" class="form-control" placeholder="Enter email id">
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter email id"
+          formControlName="email"
+        >
+
+        @if (f['email'].touched && f['email'].invalid) {
+          <div class="font-13 mt-1 text-danger">
+
+            @if (f['email'].errors?.['required']) {
+              <div>Email is required</div>
+            }
+
+            @if (f['email'].errors?.['email']) {
+              <div>Please enter a valid email</div>
+            }
+
+          </div>
+        }
       </div>
+
+
+      <!-- PASSWORD -->
       <div class="col-12 mb-4">
-        <label for="exampleFormControlInput1" class="form-label">
+        <label class="form-label">
           Enter Password
           <span class="text-error">*</span>
         </label>
-        <input type="password" class="form-control" placeholder="Enter Password">
-      </div>  
+
+        <div class="position-relative">
+          <input
+            [type]="showNewPassword ? 'text' : 'password'"
+            class="form-control text-transform-none pe-5"
+            placeholder="Enter Password"
+            formControlName="password"
+          >
+
+          <button
+            type="button"
+            mat-icon-button
+            class="icon--password"
+            (click)="toggleNewPassword()"
+          >
+            <mat-icon fontSet="material-icons-outlined">
+              {{ showNewPassword ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
+          </button>
+        </div>
+
+        @if (f['password'].touched && f['password'].invalid) {
+          <div class="font-13 mt-1 text-danger">
+
+            @if (f['password'].errors?.['required']) {
+              <div>Password is required</div>
+            }
+
+            @if (f['password'].errors?.['minlength']) {
+              <div>Password must be at least 6 characters</div>
+            }
+
+          </div>
+        }
+
+      </div>
+
+
+      <!-- LOGIN BUTTON -->
       <div class="col-12">
-        <button type="button" class="btn btn-primary w-100 mb-3">Log In</button>
+        <button type="submit" class="btn btn-primary w-100 mb-3"  [disabled]="loginForm.invalid">
+          Log In
+        </button>
       </div>
+
       <div class="col-12 d-flex justify-content-end mb-2">
-        <a class="text-black font-12" routerLink="/auth/forgot-password">Forgot Password?</a> 
+        <a class="text-black font-12" routerLink="/auth/forgot-password">
+          Forgot Password?
+        </a>
       </div>
+
     </div>
   </form>
 </div>

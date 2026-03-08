@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, inject, NgZone } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router'; 
@@ -16,27 +16,33 @@ import { Messages, validationMessages } from '../../../utils/validation-messages
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-
-  validationMessages = validationMessages; // Expose validation messages to template 
-  showNewPassword = false; 
  
+  loginForm!: FormGroup;
+  showNewPassword = false;
 
-  /* Form Builder Injection */
-  private fb = inject(FormBuilder);
+  constructor(private fb: FormBuilder) {}
 
-  /** Login form (email / mobile) */
-  loginForm = this.fb.group({
-    username: ['', emailOrMobileValidator()]
-  });
+  ngOnInit() {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
 
-
-
-  constructor( 
-  ) { }
- 
- 
-  toggleNewPassword(): void {
+  toggleNewPassword() {
     this.showNewPassword = !this.showNewPassword;
   }
- 
+
+  submitForm() {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+
+    console.log(this.loginForm.value);
+  }
+
+  get f() {
+    return this.loginForm.controls;
+  }
 }
