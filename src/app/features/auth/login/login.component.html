@@ -83,7 +83,7 @@
 
       <!-- LOGIN BUTTON -->
       <div class="col-12">
-        <button type="submit" class="btn btn-primary w-100 mb-3"  [disabled]="loginForm.invalid">
+        <button type="submit" class="btn btn-primary w-100 mb-3" (click)="login()"  [disabled]="loginForm.invalid">
           Log In
         </button>
       </div>

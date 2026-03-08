@@ -3,11 +3,8 @@ import { ChangeDetectorRef, Component, inject, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Router, RouterLink } from '@angular/router'; 
-import { emailOrMobileValidator } from '../../../shared/validators/email-or-mobile.validator';
-import { regex } from '../../../utils/regex-patterns';
-import { Messages, validationMessages } from '../../../utils/validation-messages';
-
+import { Router, RouterLink } from '@angular/router';  
+import { CommonService } from '../../../core/helper/common.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -20,7 +17,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
   showNewPassword = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,private commonService: CommonService,) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -44,5 +41,9 @@ export class LoginComponent {
 
   get f() {
     return this.loginForm.controls;
+  }
+
+  login(){
+   this.commonService.showLoader();
   }
 }
