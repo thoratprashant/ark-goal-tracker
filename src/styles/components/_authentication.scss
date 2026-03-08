@@ -38,12 +38,16 @@
 @media (max-width: 767px) {
     .auth-container .auth-right .ar--inner,
     .auth-container .auth-left{
-        padding:2rem ;
+        padding:1rem ;
         min-height: unset !important;
     }  
+    .auth-container .auth-left{
+        align-items: center;
+        text-align: center;
+    }
     .auth-container .auth-left h1 {
-        font-size: 1.6rem;
-        margin-bottom: 1rem;
+        font-size: 1rem;
+        margin: 1rem 0;
     }
     .auth-container .auth-left p {
         font-size: 1rem;
@@ -54,7 +58,14 @@
         width: 100%;
     } 
     .auth-container .auth-right .ar--inner .logo{
-        width: 70%;
+        margin-bottom: 1rem;
+        justify-content: center;
+    }
+    .auth-container .auth-right .ar--inner .logo img{
+        width: 18%;
+    }
+    .auth-container .auth-right .ar--inner .logo h2 {
+        font-size: 1rem;
     }
     .auth-container .auth-right .login--wrapper h2 {
         font-size: 1rem;
@@ -88,7 +99,7 @@
         padding: 1% 9%;
     }
     .auth-container .auth-right .ar--inner {
-        padding: 1rem 3rem;
+        padding: 1rem 6rem;
     }
     .auth-container .auth-left h1 {
         font-size: 3rem;
@@ -104,7 +115,7 @@
         padding: 1% 8%;
     }
     .auth-container .auth-right .ar--inner {
-        padding: 1rem 6rem;
+        padding: 1rem 8rem;
     }
 }
 @media screen and (orientation:landscape) and (max-width: 850px){
@@ -125,8 +136,7 @@
     .auth-container .auth-right {
         width: 45% !important;
     } 
-    .auth-container .auth-right .ar--inner .logo {
-        margin-bottom: 2rem;
+    .auth-container .auth-right .ar--inner .logo { 
         width: 56%;
     }
     .auth-container .auth-right .ar--inner{
@@ -170,7 +180,7 @@
         padding: 1rem 3rem;
     }
     .auth-container .auth-right {
-        width: 40%;
+        width: 46%;
     }
     .auth-container .auth-right .lang--sec{
         width: 40%;
