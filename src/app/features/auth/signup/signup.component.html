@@ -1,0 +1,56 @@
+<div class="login--wrapper d-flex flex-column">
+  <h2 class="fw-medium">Create Admin Account </h2>
+  <form  >
+    <div class="row">
+      <div class="col-12 mb-4">
+        <label for="exampleFormControlInput1" class="form-label">Email ID  </label>
+        <input type="email" class="form-control" id="first" placeholder="admin@cumberland.com" disabled> 
+      </div>
+      <div class="col-12 mb-4">
+        <label class="form-label">First name </label>
+        <input type="text" class="form-control" placeholder="Enter first name"> 
+      </div>
+      <div class="col-12 mb-4">
+        <label class="form-label">Last name </label>
+        <input type="text" class="form-control" placeholder="Enter last name"> 
+      </div>
+            <div class="col-12 mb-4">
+        <label  class="form-label">Password <span  class="text-error">*</span></label>
+        <div class="position-relative">
+            <input [type]="showNewPassword ? 'text' : 'password'" class="form-control pe-5" placeholder="Enter Password"> 
+           <button
+            type="button"
+            mat-icon-button
+            class="icon--password"
+            (click)="toggleNewPassword()" >
+            <mat-icon fontSet="material-icons-outlined">
+              {{ showNewPassword ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="col-12 mb-4">
+        <label  class="form-label">Confirm Password <span  class="text-error">*</span></label>
+        <div class="position-relative">
+            <input [type]="showConfirmPassword ? 'text' : 'password'" class="form-control pe-5" placeholder="Enter Confirm Password"> 
+            <button
+            type="button"
+            mat-icon-button
+            class="icon--password"
+            (click)="toggleConfirmPassword()" >
+            <mat-icon fontSet="material-icons-outlined">
+              {{ showConfirmPassword ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="col-12 mb-4">
+        <mat-checkbox>I consent to agree with <a routerLink="/auth/login">HIPAA Terms</a> & <a routerLink="/auth/login">Conditions</a> </mat-checkbox>
+      </div>
+      <div class="col-12"> 
+        <button type="button" class="btn btn-primary w-100 mb-3" routerLink="/auth/verification-code">Send Verification Code</button>
+      </div> 
+    </div> 
+  </form>
+
+</div>

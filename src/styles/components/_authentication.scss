@@ -1,0 +1,195 @@
+.auth-container{
+    .auth-left {
+        background-color:#E9F4FF;
+        padding: 1% 12%;
+        h1{
+            font-size: 3rem;
+            margin-top: 2.5rem;
+        } 
+    }
+    .auth-right {
+        width: 50%; 
+        .ar--inner{
+            padding: 1rem 10rem;
+            padding-bottom: 2rem !important;
+            max-height: calc(100vh - 70px);
+            overflow: auto;
+            .logo{
+                margin-bottom: 4rem;
+                h2{
+                    font-size: 2rem;
+                }
+            }
+            .icon--password{
+                position: absolute;
+                right: 3px;
+                top: -6px;
+                .mat-icon{
+                    color: #505050;
+                    font-size: 21px;
+                    height: 21px;
+                    width: 21px;
+
+                }
+            }
+        } 
+        .login--wrapper{
+            h2{ 
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
+
+/*
+    Media Queries (Start here)
+*/
+
+ 
+@media (max-width: 767px) {
+    .auth-container .auth-right .ar--inner,
+    .auth-container .auth-left{
+        padding:2rem ;
+        min-height: unset !important;
+    }  
+    .auth-container .auth-left h1 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    .auth-container .auth-left p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    .auth-container .auth-right .lang--sec,
+    .auth-container .auth-right{
+        width: 100%;
+    } 
+    .auth-container .auth-right .ar--inner .logo{
+        width: 70%;
+    }
+    .auth-container .auth-right .login--wrapper h2 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    .auth-container .auth-right .ar--inner{
+        max-height: unset;
+    }
+    .auth-container .auth-right .ar--inner .icon--password .mat-icon{
+        font-size: 17px;
+    }
+} 
+@media only screen and (min-width: 980px) and (max-width: 1279px){
+    .auth-container .auth-left{
+        padding: 1% 9%;
+    }
+    .auth-container .auth-right .ar--inner {
+        padding: 1rem 3rem;
+    }
+    .auth-container .auth-left h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+    .auth-container .auth-left p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+@media only screen and (min-width: 1280px) and (max-width: 1440px){
+    .auth-container .auth-left{
+        padding: 1% 9%;
+    }
+    .auth-container .auth-right .ar--inner {
+        padding: 1rem 3rem;
+    }
+    .auth-container .auth-left h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+    .auth-container .auth-left p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+@media only screen and (min-width: 1500px) and (max-width: 1776px){
+    .auth-container .auth-left{
+        padding: 1% 8%;
+    }
+    .auth-container .auth-right .ar--inner {
+        padding: 1rem 6rem;
+    }
+}
+@media screen and (orientation:landscape) and (max-width: 850px){
+    .auth-container .auth-left { 
+        padding: 1% 5% !important;
+    }
+    .auth-container .auth-left h1 {
+        font-size: 1.6rem !important;
+        margin-bottom: 2rem !important;
+    }
+    .auth-container .auth-left p{
+        font-size: 1rem !important;
+    }
+    .auth-container .auth-right .ar--inner {
+        padding: 1rem 1rem 3rem 1rem !important;
+    }
+    .auth-container .auth-right .lang--sec,
+    .auth-container .auth-right {
+        width: 45% !important;
+    } 
+    .auth-container .auth-right .ar--inner .logo {
+        margin-bottom: 2rem;
+        width: 56%;
+    }
+    .auth-container .auth-right .ar--inner{
+        max-height: unset;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .auth-container .auth-left { 
+        padding: 1% 5%;
+    }
+    .auth-container .auth-left h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    .auth-container .auth-left p{
+        font-size: 1rem;
+    }
+    .auth-container .auth-right .ar--inner {
+        padding: 1rem 1rem;
+    }
+    .auth-container .auth-right {
+        width: 46%;
+    }
+    .auth-container .auth-right .lang--sec{
+        width: 47%;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+     .auth-container .auth-left { 
+        padding: 1% 11%;
+    }
+    .auth-container .auth-left h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    .auth-container .auth-left p{
+        font-size: 1rem;
+    }
+    .auth-container .auth-right .ar--inner {
+        padding: 1rem 3rem;
+    }
+    .auth-container .auth-right {
+        width: 40%;
+    }
+    .auth-container .auth-right .lang--sec{
+        width: 40%;
+    }
+    .auth-container .auth-right .ar--inner{
+        max-height: unset;
+    }
+}
+
+ 

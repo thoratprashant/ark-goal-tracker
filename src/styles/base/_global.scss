@@ -1,0 +1,162 @@
+@use '../abstracts/variables' as v;  
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+a { 
+  text-decoration: none !important;
+  cursor: pointer;
+  color: v.$primary !important;
+} 
+
+body{
+
+  .text-primary { color: v.$primary !important; }
+  .text-secondary{ color: v.$secondary !important;}
+  .text-danger, .text-error { color: v.$error !important;}
+  .wb-ba{word-break: break-all !important}
+  label{font-size: 14px;color: #000; font-weight: 600;}
+
+  // Angular Material 
+  .mat-internal-form-field>label{
+    font-family: v.$font-family-base !important; 
+    margin-top: 0.625rem;
+    font-size: 1rem; 
+    color: v.$secondary;
+  }
+  .mdc-checkbox__background{
+    border: 1px solid #909090 !important;
+  }
+  .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, 
+  .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background{
+      border-color:v.$primary !important;
+      background-color: v.$primary!important;
+  }
+
+  // Form Controls
+  .form-control {
+    border-radius: 0.375rem;
+    padding: .54rem .875rem;
+    border-color: v.$bg-light !important ;
+    font-size: 0.875rem;
+    &:focus{
+      box-shadow: none;
+      border-color: #0D2A7C !important;
+    }
+  }
+
+  .dropdown-menu{ 
+      li{
+          border-bottom: 1px solid #E7E9EB;
+          &:first-child{
+            .dropdown-item{
+              border-top-left-radius: .375rem;
+              border-top-right-radius: .375rem;
+            }
+          }
+          &:last-child{
+              border: none;
+              .dropdown-item{
+                border-bottom-left-radius: .375rem;
+                border-bottom-right-radius: .375rem;
+              } 
+          }
+          .dropdown-item{
+              font-size:  0.9375rem;
+              padding: 11px 20px;
+              font-weight: 500; 
+              .mat-icon{
+                  font-size: 1.3rem;
+                  height: 1.3rem;
+                  width: 1.3rem;
+                  margin-right: 0.81rem;
+                  color: #0032A0;
+              }
+          }
+      } 
+  }
+
+  // Loader
+  .loader-dialog{
+    .mat-mdc-dialog-surface{
+      box-shadow: none;
+      background-color: transparent;
+    }
+  }
+
+  .mat-mdc-checkbox{
+    .mat-internal-form-field{
+      align-items: flex-start;
+    }
+  }
+
+  .card{
+    border-radius: 0.75rem;
+    border: 1px solid v.$bg-light;
+    padding: 1.5625rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .icon--password {
+      position: absolute;
+      right: 3px;
+      top: -3px;
+      .mat-icon{
+          color: #505050;
+          font-size: 21px;
+          height: 21px;
+          width: 21px;
+      }
+  }
+
+  // Modal
+  .modal--wrapper{
+    .mat-mdc-dialog-surface{
+      border-radius: 20px; 
+      .mat-mdc-dialog-title{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 20px;
+        color: #222;
+        font-family: v.$font-family-base !important; 
+        padding: 18px 55px 18px 24px;
+        &::before{
+          content: unset;
+        }
+        .close--btn{
+          position: absolute;
+          right: 7px;
+          top: 7px;
+        }
+      }
+      .mat-mdc-dialog-content{
+        font-family: v.$font-family-base !important; 
+        color: v.$secondary !important;
+      }
+      .mat-mdc-dialog-actions{
+        padding:10px 24px ;
+      }
+    }
+  }
+  
+}  
+
+ @media (max-width: 767px) {
+  body .mat-internal-form-field > label,
+  ::placeholder,
+  .form-control,
+  .form-label{
+    font-size: 0.875rem !important;
+  } 
+  body .card{
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  body .modal--wrapper .mat-mdc-dialog-surface .mat-mdc-dialog-title{
+      font-size: 17px; 
+      padding: 14px 45px 14px 15px;
+  }
+  
+ }

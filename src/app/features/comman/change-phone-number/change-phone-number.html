@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>
+  Change Phone Number
+  <button matIconButton class="close--btn" mat-dialog-close>
+    <mat-icon>close_small</mat-icon>
+  </button>
+</h2>
+
+<mat-dialog-content>
+  <form>
+    <div class="row">
+      <div class="col-12 mb-1">
+        <label class="form-label">Phone Number</label>
+        <input type="email" class="form-control" value="+1 999 999 9999" placeholder="Enter phone number"> 
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button type="button" class="btn btn-primary m-1" (click)="verificationCode()" mat-dialog-close> Update</button>
+</mat-dialog-actions>

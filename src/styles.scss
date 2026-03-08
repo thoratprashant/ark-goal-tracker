@@ -1,0 +1,21 @@
+/* Abstracts */
+@use 'styles/abstracts/variables'; 
+@use 'styles/abstracts/breakpoints';
+
+/* Base */
+@use 'styles/base/typography';
+@use 'styles/base/global';
+
+/* Auth */
+@use 'styles/components/authentication';
+
+/* Button */
+@use 'styles/components/buttons';
+
+/* Bootstrap */
+@use 'bootstrap/scss/bootstrap';
+
+/* Angulr Material */
+@use '@angular/material/prebuilt-themes/indigo-pink.css';
+ 
+ 

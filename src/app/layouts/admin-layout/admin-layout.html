@@ -1,0 +1,91 @@
+<!-- TOP NAVBAR -->
+<header class="topbar">
+  <div class="logo">
+    <img src="images/admin-logo.svg" alt="img" class="logo">
+  </div>
+
+  <div class="nav-desktop menus-desktop">
+    <ul class="m-0 p-0 d-flex ">
+        <li routerLinkActive="active"><a routerLink="/admin/user-managment">User Management</a></li>
+        <li routerLinkActive="active"><a routerLink="/admin/user-managment2">Analytics</a></li>
+        <li><a>Patients</a></li>
+    </ul>
+  </div>
+
+  <!-- Desktop Nav -->  
+  <nav class="nav-desktop">
+    <div class="btn-group status--dd">
+        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+           <span class="status available"></span> Available
+        </button>
+        <ul class="dropdown-menu w-100 p-0">
+            <li><button class="dropdown-item" type="button"> <span class="status available"></span> Available</button></li> 
+            <li><button class="dropdown-item" type="button"> <span class="status unavailable"></span> Unavailable</button></li>  
+            <li><button class="dropdown-item" type="button"> <span class="status away"></span> Away</button></li>  
+            <li><button class="dropdown-item" type="button"> <span class="status grey"></span> Offline</button></li>
+        </ul>
+    </div> 
+
+    <div class="notifications position-relative">
+        <button matIconButton aria-label="notification">
+            <mat-icon fontSet="material-icons-outlined">notifications</mat-icon>  
+            <div class="badge-indicator"></div>
+        </button>
+
+    </div>
+
+    <div class="btn-group"> 
+        <div class="user--profile--round dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <img src="images/users/avatar-1.jpg" alt="user img" class="img-fluid">
+        </div>
+        <ul class="dropdown-menu dropdown-menu-lg-end p-0"> 
+            <li>
+                <button class="dropdown-item d-flex align-items-center" type="button" routerLink="/admin/profile">
+                    <mat-icon>account_circle</mat-icon>
+                    Profile
+                </button>
+            </li> 
+             <li>
+                <button class="dropdown-item d-flex align-items-center" type="button">
+                    <mat-icon>settings</mat-icon>
+                    Settings
+                </button>
+            </li>
+            <li>
+                 <button class="dropdown-item d-flex align-items-center" type="button">
+                    <mat-icon>logout</mat-icon>
+                    Logout
+                </button>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Button -->
+  <button class="menu-btn" (click)="toggleMenu()">
+    ☰
+  </button>
+</header>
+
+<!-- MOBILE SIDEBAR -->
+<aside class="sidebar" [class.open]="mobileMenuOpen()">
+    <div class="logo--sm">
+    <img src="images/admin-logo.svg" alt="img" class="">
+  </div>
+  <nav>
+    <a routerLink="/admin/dashboard" (click)="closeMenu()">User Management</a>
+    <a routerLink="/admin/users" (click)="closeMenu()">Analytics</a> 
+    <a routerLink="/admin/users" (click)="closeMenu()">Patients</a>
+    <a routerLink="/admin/users" (click)="closeMenu()">Profile</a>
+    <a routerLink="/admin/users" (click)="closeMenu()">Settings</a>
+    <a routerLink="/admin/users" (click)="closeMenu()">Logout</a>
+  </nav>
+</aside>
+
+<!-- BACKDROP -->
+<div class="backdrop" *ngIf="mobileMenuOpen()" (click)="closeMenu()"></div>
+
+<!-- PAGE CONTENT -->
+<main class="content">
+  <router-outlet></router-outlet>
+</main>

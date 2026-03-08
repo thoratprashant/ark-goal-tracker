@@ -1,0 +1,22 @@
+<div class="login--wrapper d-flex flex-column">
+  <h2 class="fw-medium">Login</h2>
+  <form>
+    <div class="row">
+      <div class="col-12 mb-1">
+        <label  class="form-label">Verification Code <span  class="text-error">*</span></label>
+        <input type="text" class="form-control"   placeholder="Enter 6 digit Verification Code"> 
+      </div>
+      <div class="col-12 d-flex justify-content-end">
+        <p class="text-danger mb-3">Expires in 120 seconds</p>
+      </div>
+       <div class="col-12 d-flex mb-4">
+        <a class="text-primary" routerLink="/auth/login">Resend Verification Code</a>
+      </div>
+      <div class="col-12">
+        <button type="button" class="btn btn-primary w-100 mb-4" routerLink="/auth/reset-password">Submit</button> 
+      </div>
+     
+    </div> 
+  </form>
+
+</div>

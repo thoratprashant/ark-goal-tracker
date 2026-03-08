@@ -1,0 +1,29 @@
+ <h2 mat-dialog-title>
+   Edit Personal Information
+   <button matIconButton class="close--btn" mat-dialog-close>
+     <mat-icon>close_small</mat-icon>
+   </button>
+ </h2>
+
+ <mat-dialog-content>
+   <form>
+     <div class="row">
+       <div class="col-12 mb-4">
+         <label class="form-label">First Name<span class="text-error">*</span></label>
+         <input type="text" class="form-control" value="Dan" placeholder="Ente first name">
+       </div>
+       <div class="col-12 mb-4">
+         <label class="form-label">Middle Name</label>
+         <input type="text" class="form-control" value="Dan" placeholder="Ente middle name">
+       </div>
+       <div class="col-12">
+         <label class="form-label">Last Name<span class="text-error">*</span></label>
+         <input type="text" class="form-control" value="Dan" placeholder="Ente last name">
+       </div>
+     </div>
+   </form>
+ </mat-dialog-content>
+
+ <mat-dialog-actions align="end">
+   <button type="button" class="btn btn-primary" mat-dialog-close>Save</button>
+ </mat-dialog-actions>

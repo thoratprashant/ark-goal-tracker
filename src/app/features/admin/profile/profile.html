@@ -1,0 +1,94 @@
+<div class="container-fluild profile--wrapper">
+  <div class="row">
+    <div class="col-12 col-xl-4">
+      <div class="card ">
+        <div class="pp--sec position-relative d-flex flex-column align-items-center text-center">
+          <div class="pp--round rounded-circle ">
+            <img src="images/users/avatar-1.jpg" alt="user img" class="img-fluid">
+          </div>
+          <h2 class="fw-medium text-secondary">Dr. William Smith </h2>
+          <p class="text-secondary">(MD , Cardiology)</p>
+          <button type="button" class="btn btn-primary" (click)="changePassword()">Change Password</button>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-12 col-xl-8">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="row">
+              <div class="col-12 d-flex align-items-center justify-content-between">
+                <h3 class="font-16 fw-semibold text-primary m-0">Personal Information</h3>
+                <button matIconButton (click)="editPersonalInfo()">
+                  <img src="images/edit.svg" alt="user img" class="img-fluid">
+                </button>
+              </div>
+              <div class="col-12 col-md-6 col-xl-4 mb-3">
+                <label class="font-14 text-primary fw-medium">First Name (Mandatory)</label>
+                <p class="font-16 text-secondary fw-medium mb-0">William</p>
+              </div>
+              <div class="col-12 col-md-6 col-xl-4 mb-3">
+                <label class="font-14 text-primary fw-medium">Middle Name (Optional)</label>
+                <p class="font-16 text-secondary fw-medium mb-0">John</p>
+              </div>
+              <div class="col-12 col-md-6 col-xl-4 mb-3">
+                <label class="font-14 text-primary fw-medium">Last Name (Mandatory)</label>
+                <p class="font-16 text-secondary fw-medium mb-0">Smith</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card">
+            <div class="row">
+              <div class="col-12 d-flex align-items-center justify-content-between">
+                <h3 class="font-16 fw-semibold text-primary mb-3">Contact Information</h3> 
+              </div>
+              <div class="col-12 mb-3 d-flex align-items-start justify-content-between"> 
+                <div class="d-flex w-100">
+                    <mat-icon class="text-primary me-2">mail</mat-icon>
+                    <div class="d-flex flex-column">
+                        <label class="font-14 text-primary fw-medium">Email Address</label>
+                        <p class="font-16 text-secondary fw-medium mb-0 wb-ba">william.smith@loremipsum.com</p>
+                    </div>
+                </div>
+                <button matIconButton class="flex-shrink-0" (click)="changeEmail()">
+                  <img src="images/edit.svg" alt="user img" class="img-fluid">
+                </button>
+              </div>
+              <div class="col-12 mb-3 d-flex align-items-start justify-content-between"> 
+                <div class="d-flex w-100">
+                    <mat-icon class="text-primary me-2">call</mat-icon>
+                    <div class="d-flex flex-column">
+                        <label class="font-14 text-primary fw-medium">Phone Number</label>
+                        <p class="font-16 text-secondary fw-medium mb-0 wb-ba">+1 999 999 9999 </p>
+                    </div>
+                </div>
+                <button matIconButton class="flex-shrink-0" (click)="changePhoneNumber()">
+                  <img src="images/edit.svg" alt="user img" class="img-fluid">
+                </button>
+              </div> 
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card">
+            <div class="row">
+              <div class="col-12 d-flex align-items-center justify-content-between">
+                <h3 class="font-16 fw-semibold text-primary mb-3">Notification Preferences </h3> 
+              </div>
+              <div class="col-12 "> 
+                 <mat-checkbox class="mb-1 w-100">All </mat-checkbox>
+                 <mat-checkbox class="mb-1 w-100">Email </mat-checkbox>
+                 <mat-checkbox class="mb-1 w-100">In-App </mat-checkbox>
+                 <mat-checkbox class="mb-1 w-100">SMS </mat-checkbox>
+                 <mat-checkbox class="mb-1 w-100">None </mat-checkbox>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

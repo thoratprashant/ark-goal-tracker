@@ -1,0 +1,30 @@
+<div class="login--wrapper d-flex flex-column">
+  <div class="d-flex align-items-center logo">
+    <img src="images/logo.svg" alt="img" class="me-2">
+    <h2 class="fw-bold m-0">System Admin Login </h2>
+  </div>
+  <form [formGroup]="loginForm">
+    <div class="row">
+      <div class="col-12 mb-4">
+        <label for="exampleFormControlInput1" class="form-label">
+          Enter email Id
+          <span class="text-error">*</span>
+        </label>
+        <input type="text" class="form-control" placeholder="Enter email id">
+      </div>
+      <div class="col-12 mb-4">
+        <label for="exampleFormControlInput1" class="form-label">
+          Enter Password
+          <span class="text-error">*</span>
+        </label>
+        <input type="password" class="form-control" placeholder="Enter Password">
+      </div>  
+      <div class="col-12">
+        <button type="button" class="btn btn-primary w-100 mb-3">Log In</button>
+      </div>
+      <div class="col-12 d-flex justify-content-end mb-2">
+        <a class="text-black font-12" routerLink="/auth/forgot-password">Forgot Password?</a> 
+      </div>
+    </div>
+  </form>
+</div>
