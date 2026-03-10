@@ -2,8 +2,7 @@
 
 body{
     .btn {
-        border-radius: 0.375rem;
-        background-color: v.$primary;
+        border-radius: 0.375rem; 
         font-weight: 600;
         padding: 0.495rem 1.125rem;
         font-size: 0.925rem;
@@ -24,10 +23,24 @@ body{
             background-color: #F8F9FA;
         }
         &.btn-primary{
+            background-color: v.$primary;
+            &:hover{
+                background-color: v.$black;
+            }
             &:disabled{
                 background-color: v.$primary;
                 opacity: 0.5;
                 border-color: v.$primary;
+            }
+        }
+        &.btn-outline-primary{
+            border-color: v.$black;
+            color: v.$black;
+            .mat-icon{
+                color: v.$black !important;
+            }
+            &:hover{
+                background-color: #f0ebeb;
             }
         }
 
