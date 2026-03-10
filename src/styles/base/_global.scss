@@ -131,14 +131,7 @@ body{
     border: 1px solid #E2E8F0;
     padding: 1.99rem;
     margin-bottom: 1.5rem;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    .card-header{
-      margin-bottom: 2rem;
-       background-color: transparent;
-      border-bottom: 0.889px solid #E2E8F0; 
-      padding: 0 0 1.5rem 0;
-      
-    }
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
     .card-header{
       background-color: transparent;
       border-bottom: 0.889px solid #E2E8F0; 
@@ -163,6 +156,11 @@ body{
         p{ font-size: 0.94375rem;color: #64748B;}
       }
       
+    }
+    .card-body{
+      .card-title{
+        font-size: 1.08125rem;;
+      }
     }
   }
   .icon--password { 
@@ -227,6 +225,16 @@ body{
   body .modal--wrapper .mat-mdc-dialog-surface .mat-mdc-dialog-title{
       font-size: 17px; 
       padding: 14px 45px 14px 15px;
+  }
+  body .card .card-header .pp--sec h2 {
+      font-size: 1.1rem;
+  }
+  body .card .card-header .pp--sec p {
+      font-size: .8rem;
+      color: #64748b;
+  }
+  body .card .card-body .card-title {
+      font-size: 15px;
   }
   
  }

@@ -11,5 +11,14 @@
 }
 
 @media (max-width: 768px) {
-  
+  .profile--wrapper .head--sec h4 {
+        font-size: 1.2rem;
+    }
+    .profile--wrapper .head--sec p {
+        font-size: .8rem; 
+    }
+    body .card .card-header .pp--sec .pp--round{
+        width: 3rem;
+        height: 3rem;
+    }
 }
