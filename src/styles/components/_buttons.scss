@@ -7,6 +7,19 @@ body{
         font-weight: 600;
         padding: 0.495rem 1.125rem;
         font-size: 0.925rem;
+        &.btn-md{
+            font-size: 0.825rem;
+            padding: 0.445rem 0.9rem;
+            display: flex;
+            align-items: center;
+            .mat-icon{
+                font-size: 16px;
+                width: 16px;
+                height: 16px;
+                margin-right: 5px;
+            }
+        }
+
         &.btn-light{
             background-color: #F8F9FA;
         }
@@ -17,6 +30,7 @@ body{
                 border-color: v.$primary;
             }
         }
+
         
     }
 }

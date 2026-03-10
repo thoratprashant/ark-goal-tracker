@@ -1,26 +1,56 @@
 <div class="container-fluild profile--wrapper">
   <div class="row">
-     <div class="col-12 head--sec">
-        <h4 class="m-0 text-secondary fw-bold">Profile</h4>
-        <p class="m-0">Manage your personal information</p>
-     </div>
+    <div class="col-12 head--sec">
+      <h4 class="m-0 text-secondary fw-bold">Profile</h4>
+      <p class="m-0">Manage your personal information</p>
+    </div>
     <div class="col-12 mt-4">
       <div class="card ">
         <div class="card-header d-flex align-items-center justify-content-between">
-           <div class="pp--sec position-relative d-flex align-items-center">
-              <div class="pp--round rounded-circle me-3">
-                <!-- <img src="images/users/avatar-1.jpg" alt="user img" class="img-fluid"> -->
-                 <mat-icon class="text-primary" fontSet="material-icons-outlined">person</mat-icon>
-              </div>
-              <div class="d-flex flex-column">
-                <h2 class="fw-bold text-secondary mb-0">Ishita Sharma </h2>
-                <p class="text-secondary m-0">ishuiux149@gmail.com</p> 
-              </div>
+          <div class="pp--sec position-relative d-flex align-items-center">
+            <div class="pp--round rounded-circle me-3">
+              <!-- <img src="images/users/avatar-1.jpg" alt="user img" class="img-fluid"> -->
+              <mat-icon class="text-primary" fontSet="material-icons-outlined">person</mat-icon>
+            </div>
+            <div class="d-flex flex-column">
+              <h2 class="fw-bold text-secondary mb-0">Ishita Sharma </h2>
+              <p class="m-0">ishuiux149@gmail.com</p>
+            </div>
           </div>
-          <button type="button" class="btn btn-primary" >Edit Profile</button> 
+          <button type="button" class="btn btn-md btn-primary">
+            <mat-icon class="text-white" fontSet="material-icons-outlined">edit</mat-icon>
+            Edit Profile
+          </button>
         </div>
-        
+
+        <div class="card-body px-0 pt-0">
+          <h5 class="card-title text-secondary mb-3 fw-semibold">Profile Information</h5>
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
+              <label class="form-label">First Name </label>
+              <input type="text" class="form-control" value="Ishita" placeholder="Ente first name" disabled>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
+              <label class="form-label">Middle Name</label>
+              <input type="text" class="form-control" value="Sharma" placeholder="Ente middle name" disabled>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
+              <label class="form-label">Email Address<span class="text-error">*</span></label>
+              <input type="text" class="form-control" value="ishuiux149@gmail.com" placeholder="Ente email address"
+                disabled>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
+              <label class="form-label">Assigned Role<span class="text-error">*</span></label>
+              <div class="icon--input--box position-relative w-100">
+                <input type="text" class="form-control" value="admin" placeholder="Ente assigned role" disabled>
+                <mat-icon>business_center</mat-icon>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
-    </div> 
+    </div>
   </div>
 </div>

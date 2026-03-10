@@ -26,7 +26,7 @@ body{
   .text-secondary{ color: v.$secondary !important;}
   .text-danger, .text-error { color: v.$error !important;}
   .wb-ba{word-break: break-all !important}
-  label{font-size: 14px;color: #000; font-weight: 600;}
+  label{font-size: 13.2px;color: #334155; font-weight: 600;}
 
   // Angular Material 
   .mat-internal-form-field>label{
@@ -45,18 +45,24 @@ body{
   }
 
   //Search Textbox
-  .search--box{
+  .icon--input--box{
     .form-control{
       border-radius: 6px;
       border: 1px solid #E2E8F0;
       background: #F8FAFC;
-      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
+    }
+    input{
+      padding-left: 40px;
     }
     .mat-icon{
       position: absolute;
-      left: 7px;
-      top: 8px;
-      color: #94A3B8;
+      left: 10px;
+      top: 11px;
+      color: #94a3b8;
+      font-size: 20px;
+      height: 20px;
+      width: 20px;
     }
   }
 
@@ -69,6 +75,10 @@ body{
     &:focus{
       box-shadow: none;
       border-color: #0D2A7C !important;
+    }
+    &:disabled{
+      background: #F8FAFC;
+      color: #64748B;
     }
   }
 
@@ -124,9 +134,16 @@ body{
     margin-bottom: 1.5rem;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     .card-header{
+      margin-bottom: 2rem;
+       background-color: transparent;
+      border-bottom: 0.889px solid #E2E8F0; 
+      padding: 0 0 1.5rem 0;
+      
+    }
+    .card-header{
       background-color: transparent;
       border-bottom: 0.889px solid #E2E8F0; 
-      padding: 0 0 1.4rem 0;
+      padding: 0 0 1.5rem 0;
       margin-bottom: 2rem;
       .pp--sec {
         .pp--round{

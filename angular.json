@@ -21,7 +21,7 @@
         "build": {
           "builder": "@angular/build:application",
            "options": {
-                "outputPath": "dist/are-goal-tracker",
+                "outputPath": "dist/ark-goal-tracker",
                 "index": "src/index.html",
                 "browser": "src/main.ts",
                 "tsConfig": "tsconfig.app.json",
@@ -38,7 +38,7 @@
                 "scripts": [
                   "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
                 ],
-                "baseHref": "/are-goal-tracker/"
+                "baseHref": "/ark-goal-tracker/"
               },
 
           "configurations": {

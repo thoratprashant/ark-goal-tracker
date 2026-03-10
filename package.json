@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:angular-21": "node dist/angular-21/server/server.mjs",
-    "deploy": "ng build --configuration production && npx angular-cli-ghpages --dir=dist/are-goal-tracker/browser"
+    "deploy": "ng build --configuration production && npx angular-cli-ghpages --dir=dist/ark-goal-tracker/browser"
   },
   "prettier": {
     "printWidth": 100,
