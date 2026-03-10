@@ -17,7 +17,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
   showNewPassword = false;
 
-  constructor(private fb: FormBuilder,private commonService: CommonService,) {}
+  constructor(private fb: FormBuilder,private commonService: CommonService,private router: Router,) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -34,9 +34,7 @@ export class LoginComponent {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
-    }
-
-    console.log(this.loginForm.value);
+    } 
   }
 
   get f() {
@@ -45,5 +43,9 @@ export class LoginComponent {
 
   login(){
    this.commonService.showLoader();
+     setTimeout(() => {
+    this.commonService.hideLoader();
+    this.router.navigate(['/admin/profile']);
+  }, 2000);
   }
 }

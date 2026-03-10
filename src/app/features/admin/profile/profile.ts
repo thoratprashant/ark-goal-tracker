@@ -44,6 +44,10 @@ export class Profile {
 
   cancelEdit() {
     this.isEditMode = false;
+    this.commonService.showLoader();
+    setTimeout(() => {
+      this.commonService.hideLoader();
+    }, 1000);
   }
   
 }

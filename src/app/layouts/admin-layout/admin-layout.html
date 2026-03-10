@@ -45,7 +45,7 @@
                 </button>
             </li>  
             <li>
-                 <button class="dropdown-item d-flex align-items-center" type="button">
+                 <button class="dropdown-item d-flex align-items-center" type="button" routerLink="/auth/login">
                     <mat-icon>logout</mat-icon>
                     Logout
                 </button>
@@ -66,12 +66,9 @@
     <img src="images/admin-logo.svg" alt="img" class="">
   </div>
   <nav>
-    <a routerLink="/admin/dashboard" (click)="closeMenu()">User Management</a>
-    <a routerLink="/admin/users" (click)="closeMenu()">Analytics</a> 
-    <a routerLink="/admin/users" (click)="closeMenu()">Patients</a>
-    <a routerLink="/admin/users" (click)="closeMenu()">Profile</a>
-    <a routerLink="/admin/users" (click)="closeMenu()">Settings</a>
-    <a routerLink="/admin/users" (click)="closeMenu()">Logout</a>
+    <a routerLink="/admin/dashboard" (click)="closeMenu()">Dashboard</a>
+    <a routerLink="/admin/users" (click)="closeMenu()">Goal Configuration</a> 
+    <a routerLink="/admin/users" (click)="closeMenu()">Goal Evaluation</a> 
   </nav>
 </aside>
 
@@ -79,6 +76,6 @@
 <div class="backdrop" *ngIf="mobileMenuOpen()" (click)="closeMenu()"></div>
 
 <!-- PAGE CONTENT -->
-<main class="content">
+<main class="content route--wrapper">
   <router-outlet></router-outlet>
 </main>
