@@ -10,14 +10,23 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end"> 
-    @if (data.button3) {
-       <button type="button" class="btn btn-light m-1" (click)="close()"> {{ data.button3 }}</button> 
+    @if (data.button3) { 
+       <button type="button" class="btn btn-md btn-outline-primary m-1"  mat-dialog-close>
+         <mat-icon class="text-white" fontSet="material-icons-outlined">close</mat-icon>
+         {{ data.button3 }}
+      </button>
     }
-    @if (data.button2) {
-        <button type="button" class="btn btn-primary m-2" (click)="close()"> {{ data.button2 }}</button>
+    @if (data.button2) { 
+         <button type="button" class="btn btn-md btn-primary m-1"  mat-dialog-close>
+         <mat-icon class="text-white" fontSet="material-icons-outlined">check</mat-icon>
+        {{ data.button2 }}
+      </button>
     } 
-    @if (data.button1) {
-       <button type="button" class="btn btn-primary m-1" (click)="close()"> {{ data.button1 }}</button> 
+    @if (data.button1) { 
+       <button type="button" class="btn btn-md btn-primary m-1"  mat-dialog-close>
+         <mat-icon class="text-white" fontSet="material-icons-outlined">check</mat-icon>
+        {{ data.button1 }}
+      </button>
     } 
     
 </mat-dialog-actions>

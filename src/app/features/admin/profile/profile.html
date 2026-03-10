@@ -17,18 +17,21 @@
               <p class="m-0">ishuiux149@gmail.com</p>
             </div>
           </div>
-          <button type="button" class="btn btn-md btn-primary">
+          <!-- Edit Button -->
+          <button *ngIf="!isEditMode" type="button" class="btn btn-md btn-primary" (click)="enableEdit()">
             <mat-icon class="text-white" fontSet="material-icons-outlined">edit</mat-icon>
             Edit Profile
           </button>
-          <div class="d-flex align-items-center gap-2">
-            <button type="button" class="btn btn-md btn-outline-primary">
-               <mat-icon class="text-white" fontSet="material-icons-outlined">close</mat-icon>
-              Cancel</button>
 
-            <button type="button" class="btn btn-md btn-primary">
-                <mat-icon class="text-white" fontSet="material-icons-outlined">save</mat-icon>
-                Save Changes
+          <!-- Save Cancel Buttons -->
+          <div *ngIf="isEditMode" class="d-flex align-items-center gap-2">
+            <button type="button" class="btn btn-md btn-outline-primary" (click)="cancelEdit()">
+              <mat-icon class="text-white" fontSet="material-icons-outlined">close</mat-icon>
+              Cancel
+            </button> 
+            <button type="button" class="btn btn-md btn-primary" (click)="alert()">
+              <mat-icon class="text-white" fontSet="material-icons-outlined">save</mat-icon>
+              Save Changes
             </button>
           </div>
         </div>
@@ -38,24 +41,23 @@
           <div class="row">
             <div class="col-12 col-sm-6 col-md-3 mb-4">
               <label class="form-label">First Name </label>
-              <input type="text" class="form-control" value="Ishita" placeholder="Ente first name" disabled>
+              <input type="text" class="form-control" value="Ishita" placeholder="Ente first name" [disabled]="!isEditMode">
             </div>
             <div class="col-12 col-sm-6 col-md-3 mb-4">
               <label class="form-label">Middle Name</label>
-              <input type="text" class="form-control" value="Sharma" placeholder="Ente middle name" disabled>
+              <input type="text" class="form-control" value="Sharma" placeholder="Ente middle name" [disabled]="!isEditMode">
             </div>
             <div class="col-12 col-sm-6 col-md-3 mb-4">
               <label class="form-label">Email Address<span class="text-error">*</span></label>
               <input type="text" class="form-control" value="ishuiux149@gmail.com" placeholder="Ente email address"
-                disabled>
+                [disabled]="!isEditMode">
             </div>
             <div class="col-12 col-sm-6 col-md-3 mb-4">
               <label class="form-label">Assigned Role<span class="text-error">*</span></label>
               <div class="icon--input--box position-relative w-100">
-                <input type="text" class="form-control" value="admin" placeholder="Ente assigned role" disabled>
+                <input type="text" class="form-control" value="admin" placeholder="Ente assigned role" [disabled]="!isEditMode">
                 <mat-icon>business_center</mat-icon>
-              </div>
-
+              </div> 
             </div>
           </div>
         </div>

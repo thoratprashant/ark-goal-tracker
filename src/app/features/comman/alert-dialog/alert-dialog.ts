@@ -21,10 +21,5 @@ export class AlertDialog {
   constructor(
     public dialogRef: MatDialogRef<AlertDialog>,
     @Inject(MAT_DIALOG_DATA) public data: AlertDialogData
-  ) {}
-
-  close(): void {
-    this.dialogRef.close(true);
-  }
-  
+  ) {}  
 }
