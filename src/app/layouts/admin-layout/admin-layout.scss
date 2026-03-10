@@ -2,8 +2,7 @@
 /* TOP BAR */
 .topbar {
     display: flex;
-    align-items: center;
-    justify-content: space-between; 
+    align-items: center; 
     padding: 0.9rem 2rem; 
     color: #fff;
     background-color: #fff;
@@ -12,53 +11,44 @@
     z-index: 9999;
     width: 100%;
     border-bottom: 1px solid #E5E7EB;   
+    .logo{
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: #0D2A7C;
+        box-shadow: 0 10px 15px -3px #BFDBFE, 0 4px 6px -4px #BFDBFE;
+    }
+    .logo--name{
+        font-size: 17px;
+        color: #1E293B;
+    }
 
     /* DESKTOP NAV */
     .nav-desktop {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
-        .status--dd{
-            .btn-light{
-                border-color: transparent !important; 
-            }
-            .status{
-                width: 8px;
-                height: 8px; 
-                border-radius: 20px;
-                display: inline-flex;
-                margin-right: 8px;
-                &.available{
-                    background-color: #22C55E;
-                }
-                &.unavailable{
-                    background-color: #FF181C;
-                }
-                &.away{
-                    background-color: yellow;
-                }
-                &.grey{
-                    background-color: grey;
-                }
-            }
-        }
+        gap: 1.5rem; 
+        
         .notifications{
             .mat-icon{
                 color: #6C757D; 
+                font-size: 16px;
+                width: 16px;
+                height: 16px;
             }
             .badge-indicator{
                 width: 8px;
                 height: 8px;
-                background-color: #FF181C;
+                background-color: #0D2A7C;
                 border-radius: 20px;
                 position: absolute;
-                right: 11px;
-                top: 10px;
+                right: 13px;
+                top: 12px;
             }
         } 
         .user--profile--round{
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 2rem;
+            height: 2rem;
             border-radius: 624.9375rem;
             border: 2px solid #DEE2E6; 
             cursor: pointer;
@@ -67,27 +57,41 @@
                 max-height: 100%;
             }
         }
+        .user--name{
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
         &.menus-desktop{
+            margin-left: auto;
+            margin-right: 15px;
+            .search--box{
+                margin-left: 10%;
+            }
+
            ul{
-            list-style-type: none;
-            li{
-                a{
-                    font-size: 14px;
-                    font-weight: 500;  
-                    text-transform: capitalize;
-                    border-radius: 8px;
-                    border: 1px solid transparent;
-                    color: #505050 !important;      
-                    background-color: transparent;  
-                    padding: 9px 18px;      
-                }
-                &.active{
-                    a{ 
-                        background-color: #EDF4FF;
-                        color: #0032a0 !important;
+                list-style-type: none;
+                gap: 20px;
+                li{
+                    a{
+                        font-size: 13px;
+                        font-weight: normal;  
+                        text-transform: capitalize;
+                        border-radius: 6px; 
+                        color: #0A0A0A !important;       
+                        padding: 11px 18px; 
+                        border-radius: 6px;
+                        border: 1px solid #E2E8F0;
+                        background: #F8FAFC; 
+                    }
+                    &.active{
+                        a{ 
+                            background-color: #0D2A7C;
+                            color: #fff !important;
+                        }
                     }
                 }
-            }
            }
         }
     }
@@ -104,8 +108,9 @@
 
 /* CONTENT */
 .content {
-    padding: 6rem 2rem 2rem 2rem;
-    height: calc(100vh - 3px); 
+    padding: 6rem 2rem 2rem 2rem; 
+    background: #F8FAFC;
+    min-height: calc(100vh);
 }
 
 
