@@ -208,7 +208,20 @@ body{
       }
     }
   }
-  
+
+  // After login header section
+  .head--sec{
+      h4{
+          font-size: 1.83125rem;
+          margin: 15px 0 5px 0;
+      }
+      p{
+          font-size: 0.94375rem;
+          color: #64748B;
+          margin-bottom: 2rem;
+      }
+  }
+
 }  
 
  @media (max-width: 767px) {
@@ -235,6 +248,17 @@ body{
   }
   body .card .card-body .card-title {
       font-size: 15px;
+  }
+  body .head--sec h4 {
+        font-size: 1.2rem;
+    }
+  body .head--sec p {
+      font-size: .8rem; 
+      margin-bottom: 1rem;
+  }
+  body .card .card-header .pp--sec .pp--round{
+      width: 3rem;
+      height: 3rem;
   }
   
  }

@@ -6,6 +6,11 @@ export const ADMINLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./profile/profile').then(c => c.Profile),
     data: { title: 'profile' }
   }, 
+  {
+    path: 'dashboard',
+    loadComponent: () => import('./dashboard/dashboard').then(c => c.Dashboard),
+    data: { title: 'dashboard' }
+  }, 
   
 ];
  

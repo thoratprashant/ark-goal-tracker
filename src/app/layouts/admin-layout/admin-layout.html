@@ -8,20 +8,20 @@
     </div>
 
 
-  <div class="nav-desktop menus-desktop w-100">
+  <!-- <div class="nav-desktop menus-desktop w-100">
     <div class="icon--input--box position-relative w-100">
         <input type="text" class="form-control" placeholder="Search...">
         <mat-icon>search</mat-icon>
     </div>
     <ul class="m-0 p-0 d-flex flex-shrink-0">
-        <li routerLinkActive="active"><a routerLink="/admin/user-managment">Dashboard</a></li>
+        <li routerLinkActive="active"><a routerLink="/admin/dashboard">Dashboard</a></li>
         <li routerLinkActive="active"><a routerLink="/admin/user-managment2">Goal Configuration</a></li>
         <li routerLinkActive="active"><a routerLink="/admin/user-managment3">Goal Evaluation</a></li>
     </ul>
-  </div>
+  </div> -->
 
   <!-- Desktop Nav -->  
-  <nav class="nav-desktop"> 
+  <nav class="nav-desktop ms-auto"> 
 
     <div class="notifications position-relative">
         <button matIconButton aria-label="notification" class="p-0">
@@ -65,10 +65,8 @@
     <div class="logo--sm">
     <img src="images/admin-logo.svg" alt="img" class="">
   </div>
-  <nav>
-    <a routerLink="/admin/dashboard" (click)="closeMenu()">Dashboard</a>
-    <a routerLink="/admin/users" (click)="closeMenu()">Goal Configuration</a> 
-    <a routerLink="/admin/users" (click)="closeMenu()">Goal Evaluation</a> 
+  <nav> 
+    <a routerLink="/admin/users" (click)="closeMenu()">Notification</a> 
     <a routerLink="/admin/profile" (click)="closeMenu()">Profile</a> 
     <a routerLink="/auth/login" (click)="closeMenu()">Logout</a> 
   </nav>

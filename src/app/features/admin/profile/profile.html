@@ -1,10 +1,10 @@
 <div class="container-fluild profile--wrapper">
   <div class="row">
     <div class="col-12 head--sec">
-      <h4 class="m-0 text-secondary fw-bold">Profile</h4>
-      <p class="m-0">Manage your personal information</p>
+      <h4 class="text-secondary fw-bold">Profile</h4>
+      <p>Manage your personal information</p>
     </div>
-    <div class="col-12 mt-4">
+    <div class="col-12">
       <div class="card ">
         <div class="card-header 
         d-flex align-items-center justify-content-between
@@ -30,7 +30,7 @@
             <button type="button" class="btn btn-md btn-outline-primary" (click)="cancelEdit()">
               <mat-icon class="text-white" fontSet="material-icons-outlined">close</mat-icon>
               Cancel
-            </button> 
+            </button>
             <button type="button" class="btn btn-md btn-primary" (click)="alert()">
               <mat-icon class="text-white" fontSet="material-icons-outlined">save</mat-icon>
               Save Changes
@@ -43,11 +43,13 @@
           <div class="row">
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
               <label class="form-label">First Name </label>
-              <input type="text" class="form-control" value="Ishita" placeholder="Ente first name" [disabled]="!isEditMode">
+              <input type="text" class="form-control" value="Ishita" placeholder="Ente first name"
+                [disabled]="!isEditMode">
             </div>
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
               <label class="form-label">Middle Name</label>
-              <input type="text" class="form-control" value="Sharma" placeholder="Ente middle name" [disabled]="!isEditMode">
+              <input type="text" class="form-control" value="Sharma" placeholder="Ente middle name"
+                [disabled]="!isEditMode">
             </div>
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
               <label class="form-label">Email Address<span class="text-error">*</span></label>
@@ -57,9 +59,10 @@
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
               <label class="form-label">Assigned Role<span class="text-error">*</span></label>
               <div class="icon--input--box position-relative w-100">
-                <input type="text" class="form-control" value="admin" placeholder="Ente assigned role" [disabled]="!isEditMode">
+                <input type="text" class="form-control" value="admin" placeholder="Ente assigned role"
+                  [disabled]="!isEditMode">
                 <mat-icon>business_center</mat-icon>
-              </div> 
+              </div>
             </div>
           </div>
         </div>
