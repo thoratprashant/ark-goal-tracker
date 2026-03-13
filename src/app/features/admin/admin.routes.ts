@@ -11,6 +11,11 @@ export const ADMINLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./dashboard/dashboard').then(c => c.Dashboard),
     data: { title: 'dashboard' }
   }, 
+  {
+    path: 'recent-activity',
+    loadComponent: () => import('./recent-activity/recent-activity').then(c => c.RecentActivity),
+    data: { title: 'dashboard' }
+  }, 
   
 ];
  

@@ -1,0 +1,70 @@
+<div class="container-fluild ra--wrapper">
+  <div class="row">
+    <div class="col-12 head--sec">
+      <h4 class="text-secondary fw-bold">Recent Activity</h4>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/admin/dashboard">Dashboard</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Recent Activity</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <div class="card mb-3 flex-shrink-0 ra--section">
+    <div class="row">
+      <div class="col-12 d-flex flex-row align-items-start justify-content-between">
+        <div class="d-flex flex-column">
+          <h5 class="font-15 fw-semibold text-secondary mb-1">Recent Activity</h5>
+          <p class="clr--7373 font-13 mb-4">System events and changes</p>
+        </div>
+        <mat-form-field appearance="outline">  
+            <mat-select placeholder="Sort By">
+                <mat-option value="1">Option 1</mat-option>
+                <mat-option value="2">Option 2 </mat-option>
+            </mat-select> 
+        </mat-form-field>
+
+      </div>
+    </div>
+    <div class="row ra--activity">
+
+      @for (activity of activities; track activity) {
+      <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-start ">
+        <div class="card ra--outer">
+          <div [ngClass]="{'warning': activity.type === 'warning'}"
+            class="ra--indicator d-flex align-items-center justify-content-center flex-shrink-0">
+
+            @if (activity.type === 'warning') {
+            <img src="images/warning-red.svg" alt="img">
+            } @else {
+            <mat-icon fontSet="material-icons-outlined">
+              {{activity.icon}}
+            </mat-icon>
+            }
+          </div>
+          <div class="d-flex flex-column">
+            <h5 class="text-primary mb-0 font-14 fw-semibold">
+              {{activity.title}}
+            </h5>
+            <p class="my-1 font-11 clr--7373">
+              {{activity.user}}
+            </p>
+            <p class="mb-0 font-12 d-flex align-items-center schedule">
+              <mat-icon fontSet="material-icons-outlined" class="me-1">
+                schedule
+              </mat-icon>
+              {{activity.time}}
+            </p>
+          </div>
+        </div>
+      </div>
+      }
+
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <a class="text-primary font-13 clr--7373 mt-2 text-decoration-underline">Load more...</a>
+      </div>
+    </div>
+  </div>
+</div>

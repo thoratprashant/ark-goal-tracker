@@ -29,6 +29,81 @@ body{
   label{font-size: 13.2px;color: #334155; font-weight: 600;}
   .clr--7373 {color: #737373 !important;}
 
+  .breadcrumb {
+    --bs-breadcrumb-divider: '>';
+    .breadcrumb-item{
+      display: flex;
+      align-items: center;
+      a{
+        font-size: 12px;
+        color: #000 !important;
+      }
+      &.active{
+        font-weight: 700;
+        font-size: 12px;
+        color: #000;
+      }
+      &::before{
+        font-size: 13px;
+      }
+    }
+  }
+
+  .mat-mdc-form-field{ 
+      .mat-mdc-form-field-subscript-wrapper,
+      .mat-mdc-select-arrow svg{
+          display: none;
+      }
+      .mat-mdc-select-arrow::before {
+          content: '';
+          display: block;
+          width: 10px;
+          height: 6px;
+          background: url('/images/drodown-arrow-black.svg') no-repeat center;
+      }
+      .mat-mdc-text-field-wrapper{
+            background: #F8FAFC;
+      }
+      .mat-mdc-notch-piece{
+            border-color: #E2E8F0 !important;
+      }
+      .mat-mdc-form-field-infix{
+        padding-top: 8px;
+        padding-bottom: 8px;
+        min-height: unset;
+        
+      }
+      .mat-mdc-select-placeholder,
+      .mat-mdc-select-value{
+        font-size: 13px;
+        color: #000;
+        font-family: v.$font-family-base !important; 
+      }
+      .mat-mdc-select-panel{
+        padding: 0;
+      }
+      .mat-mdc-option{
+        min-height: unset;
+        padding: 9px 16px;
+        font-size: 13px;
+        font-family: v.$font-family-base !important;  
+        border-bottom: 1px solid #ddd;
+        &:hover,
+        &.active{
+          background-color: #EFF6FF !important;
+        }
+      }
+      .mat-mdc-option.mat-mdc-option-active.mdc-list-item{
+        background-color: #EFF6FF !important;
+      }
+      .mat-mdc-option:focus.mdc-list-item {
+        background-color: transparent  !important;
+       }
+       .mat-pseudo-checkbox-minimal{
+          margin-left: 5px;
+       }
+  }
+  
   // Angular Material 
   .mat-internal-form-field>label{
     font-family: v.$font-family-base !important; 
