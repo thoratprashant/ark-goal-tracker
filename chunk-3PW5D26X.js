@@ -1,1 +1,0 @@
-import"./chunk-7CGTOI24.js";var t=[{path:"profile",loadComponent:()=>import("./chunk-I7GLLSMR.js").then(o=>o.Profile),data:{title:"profile"}},{path:"dashboard",loadComponent:()=>import("./chunk-FTFHYCUO.js").then(o=>o.Dashboard),data:{title:"dashboard"}}];export{t as ADMINLAYOUT_ROUTES};
