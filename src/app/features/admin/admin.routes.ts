@@ -16,11 +16,16 @@ export const ADMINLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./recent-activity/recent-activity').then(c => c.RecentActivity),
     data: { title: 'recent-activity' }
   }, 
-    {
+  {
     path: 'user-managment',
     loadComponent: () => import('./user-managment/user-managment').then(c => c.UserManagment),
     data: { title: 'user-managment' }
   }, 
+  {
+    path: 'user-profile',
+    loadComponent: () => import('./user-profile/user-profile').then(c => c.UserProfile),
+    data: { title: 'user-profile' }
+  },
   
 ];
  

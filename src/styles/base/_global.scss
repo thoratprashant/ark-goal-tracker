@@ -329,6 +329,9 @@ body{
       font-size: 17px; 
       padding: 14px 45px 14px 15px;
   }
+  body .card .card-header{
+    padding: 0 0 0.5rem;
+  }
   body .card .card-header .pp--sec h2 {
       font-size: 1.1rem;
   }
@@ -349,6 +352,6 @@ body{
   body .card .card-header .pp--sec .pp--round{
       width: 3rem;
       height: 3rem;
-  }
+  } 
   
  }
