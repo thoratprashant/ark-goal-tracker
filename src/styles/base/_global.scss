@@ -58,8 +58,8 @@ body{
           content: '';
           display: block;
           width: 10px;
-          height: 6px;
-          background: url('/images/drodown-arrow-black.svg') no-repeat center;
+          height: 6px; 
+          background: url('../../../public/images/drodown-arrow-black.svg') no-repeat center;
       }
       .mat-mdc-text-field-wrapper{
             background: #F8FAFC;
@@ -102,6 +102,20 @@ body{
        .mat-pseudo-checkbox-minimal{
           margin-left: 5px;
        }
+  }
+  .icon{
+      display: block;
+      margin-right: 5px;
+  }
+  .icon--download{
+    width: 16px;
+    height: 16px;
+    background: url('../../../public/images/download-button-icon.svg') no-repeat center; 
+  }
+  .icon--upload{
+    width: 16px;
+    height: 16px;
+    background: url('../../../public/images/upload-button-icon.svg') no-repeat center; 
   }
   
   // Angular Material 

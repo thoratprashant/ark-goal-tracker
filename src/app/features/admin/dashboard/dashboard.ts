@@ -36,7 +36,7 @@ qacards = [
     title: 'User Management',
     description: 'Add, edit, or remove users',
     icon: 'images/poeple-blue.svg',
-    link: '/admin/us'
+    link: '/admin/user-managment'
   }, 
   {
     title: 'Permissions',
