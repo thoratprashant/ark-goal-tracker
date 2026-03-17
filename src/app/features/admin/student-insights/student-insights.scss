@@ -3,6 +3,13 @@
         small{color: #475569;} 
         h6{font-size: 28px;} 
     }
+    .grades,
+    .gpa{
+        width: 130px;
+    }
+    .status{
+        width: 140px;
+    }
     .student--strip{
         border-radius: 6px;
         border: 1px solid #E5E5E5;
@@ -42,4 +49,57 @@
             color: #0D2A7C;
         }
     }
+    .progress {
+        height: 8px;
+        border-radius: 10px;
+        overflow: hidden;
+    }  
+    .km--sec{
+        li{
+            color: #475569;
+            font-size: 13px;
+            border-bottom: 1px solid #F1F5F9;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            padding-bottom: 5px;
+            span{
+                color: #0D2A7C;
+                font-size: 15px;
+                font-weight: 600;
+                margin-left: 5px;
+            }
+            &:last-child{
+                border-bottom: none; 
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    body .head--sec h4{
+        font-size: 1.2rem;
+    }
+    .si--wrapper .card--box h6 {
+        font-size: 20px;
+    }
+    .w-sm-100,
+    .si--wrapper .grades, 
+    .si--wrapper .gpa,
+    .si--wrapper .status {
+        width: 100%;
+    }
+    .si--wrapper .card--indicator img{
+        width: 65%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+ body .head--sec h4{
+    font-size: 1.2rem;
+ }
+ .si--wrapper .card--box h6 {
+    font-size: 20px;
+}
 }

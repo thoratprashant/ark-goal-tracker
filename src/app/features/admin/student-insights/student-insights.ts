@@ -16,6 +16,25 @@ import { A11yModule } from "@angular/cdk/a11y";
   styleUrl: './student-insights.scss',
 })
 export class StudentInsights {
+  metrics = [
+  { name: 'Chronic Absenteeism', value: '8.2%' },
+  { name: 'Special Education', value: '12.5%' },
+  { name: 'English Learners', value: '18.3%' },
+  { name: 'Promotion Risk', value: '2.1%' },
+  { name: 'Intervention Needed', value: '6.7%' },
+  { name: 'Behavioral Risk', value: '5.4%' }
+]
+
+  progressList = [
+    { label: 'White', value: 42, color: '#3B82F6' },
+    { label: 'Hispanic', value: 28, color: '#60A5FA' },
+    { label: 'Black', value: 18, color: '#0D2A7C' },
+    { label: 'Asian', value: 15, color: '#93C5FD' },
+    { label: 'Other', value: 40, color: '#1D4ED8' },
+    { label: 'Middle Eastern', value: 55, color: '#3B82F6' },
+    { label: 'Native American', value: 22, color: '#60A5FA' },
+    { label: 'Pacific Islander', value: 80, color: '#0D2A7C' }
+  ];
 
   stats = [
   {

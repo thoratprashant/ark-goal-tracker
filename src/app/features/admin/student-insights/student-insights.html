@@ -3,7 +3,7 @@
     <div class="col-12 head--sec">
       <h4 class="text-secondary fw-bold">Student Insights</h4>
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb mb-3 mb-sm-4">
           <li class="breadcrumb-item"><a routerLink="/admin/dashboard">Dashboard</a></li>
           <li class="breadcrumb-item active" aria-current="page"> Student Insights</li>
         </ol>
@@ -11,7 +11,7 @@
     </div>
     @for (stat of stats; track stat) {
     <div class="col-12 col-sm-6 col-lg-3">
-      <div class="card p-4 card--box d-flex flex-row align-items-center justify-content-between mb-3">
+      <div class="card p-3 p-sm-4 card--box d-flex flex-row align-items-center justify-content-between mb-3">
         <div class="d-flex flex-column">
           <small class="font-12 mb-1">{{ stat.title }}</small>
           <h6 class="mb-1 text-secondary fw-bold">{{ stat.value }}</h6>
@@ -24,7 +24,7 @@
     }
 
     <div class="col-12 col-lg-9">
-      <div class="card p-4 pb-2">
+      <div class="card p-3 p-sm-4 pb-2 mt-0 mt-lg-3">
         <div class="row">
           <div class="col-12 d-flex align-items-center justify-content-between">
             <div class="d-flex flex-column">
@@ -36,45 +36,39 @@
               Export Report
             </button>
           </div>
-          <div class="col-12 d-flex align-items-center my-3 my-sm-4 gap-3">
+          <div class="col-12 d-flex flex-column flex-sm-row align-items-center my-3 my-sm-4 gap-2 gap-sm-3">
             <div class="icon--input--box position-relative w-100">
               <input type="text" class="form-control" placeholder="Search students...">
               <mat-icon>search</mat-icon>
             </div>
-            <mat-form-field appearance="outline">
-              <mat-select placeholder="All GPA">
-                <mat-option value="1">3.5 to 4.0</mat-option>
-                <mat-option value="2">4.1 to 4.5 </mat-option>
-                <mat-option value="3">4.6 to 5.0 </mat-option>
-                <mat-option value="4">5.1 to 5.5 </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-select placeholder="All Grades">
-                <mat-option value="1">Grade 10</mat-option>
-                <mat-option value="2">Grade 11 </mat-option>
-                <mat-option value="2">Grade 12 </mat-option>
-                <mat-option value="2">Grade 13 </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-select placeholder="All Status">
-                <mat-option value="1">Good</mat-option>
-                <mat-option value="1">Satisfactory</mat-option>
-                <mat-option value="1">Excellent</mat-option>
-                <mat-option value="2">At Risk</mat-option>
-                <mat-option value="2">Monitoring</mat-option>
-              </mat-select>
-            </mat-form-field>
+            <div class="d-flex flex-column flex-sm-row gap-2 gap-sm-3 w-sm-100">
+              <mat-form-field appearance="outline" class="gpa">
+                <mat-select placeholder="All GPA">
+                  <mat-option value="1">3.5 to 4.0</mat-option>
+                  <mat-option value="2">4.1 to 4.5 </mat-option>
+                  <mat-option value="3">4.6 to 5.0 </mat-option>
+                  <mat-option value="4">5.1 to 5.5 </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="grades">
+                <mat-select placeholder="All Grades">
+                  <mat-option value="1">Grade 10</mat-option>
+                  <mat-option value="2">Grade 11 </mat-option>
+                  <mat-option value="2">Grade 12 </mat-option>
+                  <mat-option value="2">Grade 13 </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="status">
+                <mat-select placeholder="All Status">
+                  <mat-option value="1">Good</mat-option>
+                  <mat-option value="1">Satisfactory</mat-option>
+                  <mat-option value="1">Excellent</mat-option>
+                  <mat-option value="2">At Risk</mat-option>
+                  <mat-option value="2">Monitoring</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
-
-          <!-- Record Not Found -->
-           <div class="col-12 mb-4">
-                <div class="not--record--found">
-                     No results found
-                </div> 
-           </div>
-
           <!-- Record Found -->
           <div class="col-12">
             <div class="row">
@@ -359,9 +353,58 @@
               </div>
             </div>
           </div>
+          <!-- Record Not Found -->
+          <div class="col-12">
+            <div class="not--record--found mb-4">
+              No results found
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="col-12 col-lg-3">
+      <div class="card p-3 p-sm-4 pb-2 mt-0 mt-lg-3">
+        <div class="row">
+          <div class="col-12 d-flex align-items-center mb-4">
+            <img src="images/demographic.svg" alt="img" class="me-2 ">
+            <h5 class="m-0 font-15 fw-semibold">Demographic Breakdown</h5>
+          </div>
+          <div class="col-12">
+            @for (item of progressList; track item) {
+            <div class="progress--wrapper mb-3">
+              <div class="progress--labels d-flex align-items-center justify-content-between">
+                <h5 class="m-0 font-13 fw-semibold">{{ item.label }}</h5>
+                <h6 class="m-0 font-13 fw-semibold">{{ item.value }}%</h6>
+              </div>
+              <div class="progress mt-1">
+                <div class="progress-bar" [style.background]="item.color" [style.width.%]="item.value">
+                </div>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+      <div class="card p-3 p-sm-4 pb-2 mt-0 mt-lg-3">
+        <div class="row">
+          <div class="col-12 mb-4">
+            <h5 class="m-0 font-15 fw-semibold">Key Metrics</h5>
+          </div>
+          <div class="col-12">
+            <ul class="m-0 p-0 km--sec">
+              @for (item of metrics; track item) {
+              <li>
+                {{ item.name }}
+                <span>{{ item.value }}</span>
+              </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </div>
 </div>
