@@ -54,7 +54,7 @@ qacards = [
     title: 'Student Insights',
     description: 'View comprehensive student data',
     icon: 'images/poeple-blue.svg',
-    link: '/admin/us'
+    link: '/admin/student-insights'
   }, 
 ]
 

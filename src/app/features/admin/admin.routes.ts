@@ -26,6 +26,11 @@ export const ADMINLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./user-profile/user-profile').then(c => c.UserProfile),
     data: { title: 'user-profile' }
   },
+    {
+    path: 'student-insights',
+    loadComponent: () => import('./student-insights/student-insights').then(c => c.StudentInsights),
+    data: { title: 'student-insights' }
+  },
   
 ];
  

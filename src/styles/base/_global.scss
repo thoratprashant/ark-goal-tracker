@@ -28,6 +28,7 @@ body{
   .wb-ba{word-break: break-all !important}
   label{font-size: 13.2px;color: #334155; font-weight: 600;}
   .clr--7373 {color: #737373 !important;}
+  .clr--4755 {color: #475569 !important;}
 
   .breadcrumb {
     --bs-breadcrumb-divider: '>';
@@ -102,6 +103,9 @@ body{
        .mat-pseudo-checkbox-minimal{
           margin-left: 5px;
        }
+       .mat-mdc-select-value-text{
+        font-weight: bold;
+       }
   }
   .icon{
       display: block;
@@ -116,6 +120,17 @@ body{
     width: 16px;
     height: 16px;
     background: url('../../../public/images/upload-button-icon.svg') no-repeat center; 
+  }
+
+  .not--record--found{
+    border-radius: 6px;
+    background: rgba(185, 28, 28, 0.10);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    color: #D64550; 
+    font-size: 12.5px;
+    font-weight: 700;
+    text-align: center;
+    padding: 9px;
   }
   
   // Angular Material 
