@@ -42,7 +42,7 @@ qacards = [
     title: 'Permissions',
     description: 'Configure role-based access',
     icon: 'images/permission-blue.svg',
-    link: '/admin/us'
+    link: '/admin/permission-management'
   }, 
     {
     title: 'Data Import',
