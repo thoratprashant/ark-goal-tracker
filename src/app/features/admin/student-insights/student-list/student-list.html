@@ -23,7 +23,7 @@
               Export Report
             </button>
           </div>
-          <div class="col-12 d-flex flex-column flex-sm-row align-items-center my-3 my-sm-4 gap-2 gap-sm-3">
+          <div class="col-12 d-flex flex-column flex-sm-row align-items-center my-3 my-sm-4 gap-2 gap-sm-3 flex-c-sm">
             <div class="icon--input--box position-relative w-100">
               <input type="text" class="form-control" placeholder="Search students...">
               <mat-icon>search</mat-icon>
@@ -59,245 +59,42 @@
           <!-- Record Found -->
           <div class="col-12">
             <div class="row">
-              <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
-                <div class="card p-3 mb-3">
-                  <div class="w-100 d-flex align-items-start justify-content-between">
+              <div class="col-12 student--cards d-flex flex-wrap gap-3"> 
+                @for (student of students; track student) { 
+                <div class="card p-3 mb-0"> 
+                  <div class="w-100 d-flex align-items-start justify-content-between"> 
                     <div class="d-flex flex-column">
-                      <h4 class="font-14 fw-semibold mb-0">John Smith</h4>
-                      <p class="font-12 clr--4755 mb-0">Lincoln High School</p>
-                      <p class="font-12 clr--4755 mb-0">Grade 10</p>
-                    </div>
-                    <div class="badge excellent">Excellent </div>
-                  </div>
+                      <h4 class="font-14 fw-semibold mb-0">{{ student.name }}</h4>
+                      <p class="font-12 clr--4755 mb-0">{{ student.school }}</p>
+                      <p class="font-12 clr--4755 mb-0">{{ student.grade }}</p>
+                    </div> 
+                    <div class="badge" [ngClass]="student.statusClass">
+                      {{ student.status }}
+                    </div> 
+                  </div> 
                   <div class="row">
                     <div class="col-4 mt-2">
                       <label class="font-13 clr--4755 mb-0 fw-normal">GPA</label>
-                      <p class="font-13 fw-semibold mb-0">3.8</p>
-                    </div>
+                      <p class="font-13 fw-semibold mb-0">{{ student.gpa }}</p>
+                    </div> 
                     <div class="col-4 mt-2">
                       <label class="font-13 clr--4755 mb-0 fw-normal">Attendance</label>
-                      <p class="font-13 fw-semibold mb-0">96%</p>
-                    </div>
+                      <p class="font-13 fw-semibold mb-0">{{ student.attendance }}</p>
+                    </div> 
                     <div class="col-4 mt-2">
                       <label class="font-13 clr--4755 mb-0 fw-normal">Incidents</label>
-                      <p class="font-13 fw-semibold mb-0">0</p>
+                      <p class="font-13 fw-semibold mb-0">{{ student.incidents }}</p>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
-                <div class="card p-3 mb-3">
-                  <div class="w-100 d-flex align-items-start justify-content-between">
-                    <div class="d-flex flex-column">
-                      <h4 class="font-14 fw-semibold mb-0">Emma Johnson</h4>
-                      <p class="font-12 clr--4755 mb-0">Lincoln High School</p>
-                      <p class="font-12 clr--4755 mb-0">Grade 11</p>
-                    </div>
-                    <div class="badge monitoring">Monitoring </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">GPA</label>
-                      <p class="font-13 fw-semibold mb-0">3.2</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Attendance</label>
-                      <p class="font-13 fw-semibold mb-0">86%</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Incidents</label>
-                      <p class="font-13 fw-semibold mb-0">2</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
-                <div class="card p-3 mb-3">
-                  <div class="w-100 d-flex align-items-start justify-content-between">
-                    <div class="d-flex flex-column">
-                      <h4 class="font-14 fw-semibold mb-0">Michael Brown</h4>
-                      <p class="font-12 clr--4755 mb-0">Lincoln High School</p>
-                      <p class="font-12 clr--4755 mb-0">Grade 9</p>
-                    </div>
-                    <div class="badge atrisk">At Risk </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">GPA</label>
-                      <p class="font-13 fw-semibold mb-0">2.1</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Attendance</label>
-                      <p class="font-13 fw-semibold mb-0">78%</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Incidents</label>
-                      <p class="font-13 fw-semibold mb-0">5</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
-                <div class="card p-3 mb-3">
-                  <div class="w-100 d-flex align-items-start justify-content-between">
-                    <div class="d-flex flex-column">
-                      <h4 class="font-14 fw-semibold mb-0">John Smith</h4>
-                      <p class="font-12 clr--4755 mb-0">Lincoln High School</p>
-                      <p class="font-12 clr--4755 mb-0">Grade 10</p>
-                    </div>
-                    <div class="badge good">Good </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">GPA</label>
-                      <p class="font-13 fw-semibold mb-0">3.8</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Attendance</label>
-                      <p class="font-13 fw-semibold mb-0">96%</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Incidents</label>
-                      <p class="font-13 fw-semibold mb-0">0</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
-                <div class="card p-3 mb-3">
-                  <div class="w-100 d-flex align-items-start justify-content-between">
-                    <div class="d-flex flex-column">
-                      <h4 class="font-14 fw-semibold mb-0">Emma Johnson</h4>
-                      <p class="font-12 clr--4755 mb-0">Lincoln High School</p>
-                      <p class="font-12 clr--4755 mb-0">Grade 11</p>
-                    </div>
-                    <div class="badge satisfactory">Satisfactory </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">GPA</label>
-                      <p class="font-13 fw-semibold mb-0">3.2</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Attendance</label>
-                      <p class="font-13 fw-semibold mb-0">86%</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Incidents</label>
-                      <p class="font-13 fw-semibold mb-0">2</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
-                <div class="card p-3 mb-3">
-                  <div class="w-100 d-flex align-items-start justify-content-between">
-                    <div class="d-flex flex-column">
-                      <h4 class="font-14 fw-semibold mb-0">Michael Brown</h4>
-                      <p class="font-12 clr--4755 mb-0">Lincoln High School</p>
-                      <p class="font-12 clr--4755 mb-0">Grade 9</p>
-                    </div>
-                    <div class="badge atrisk">At Risk </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">GPA</label>
-                      <p class="font-13 fw-semibold mb-0">2.1</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Attendance</label>
-                      <p class="font-13 fw-semibold mb-0">78%</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Incidents</label>
-                      <p class="font-13 fw-semibold mb-0">5</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
-                <div class="card p-3 mb-3">
-                  <div class="w-100 d-flex align-items-start justify-content-between">
-                    <div class="d-flex flex-column">
-                      <h4 class="font-14 fw-semibold mb-0">John Smith</h4>
-                      <p class="font-12 clr--4755 mb-0">Lincoln High School</p>
-                      <p class="font-12 clr--4755 mb-0">Grade 10</p>
-                    </div>
-                    <div class="badge excellent">Excellent </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">GPA</label>
-                      <p class="font-13 fw-semibold mb-0">3.8</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Attendance</label>
-                      <p class="font-13 fw-semibold mb-0">96%</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Incidents</label>
-                      <p class="font-13 fw-semibold mb-0">0</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
-                <div class="card p-3 mb-3">
-                  <div class="w-100 d-flex align-items-start justify-content-between">
-                    <div class="d-flex flex-column">
-                      <h4 class="font-14 fw-semibold mb-0">Emma Johnson</h4>
-                      <p class="font-12 clr--4755 mb-0">Lincoln High School</p>
-                      <p class="font-12 clr--4755 mb-0">Grade 11</p>
-                    </div>
-                    <div class="badge monitoring">Monitoring </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">GPA</label>
-                      <p class="font-13 fw-semibold mb-0">3.2</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Attendance</label>
-                      <p class="font-13 fw-semibold mb-0">86%</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Incidents</label>
-                      <p class="font-13 fw-semibold mb-0">2</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
-                <div class="card p-3 mb-3">
-                  <div class="w-100 d-flex align-items-start justify-content-between">
-                    <div class="d-flex flex-column">
-                      <h4 class="font-14 fw-semibold mb-0">Michael Brown</h4>
-                      <p class="font-12 clr--4755 mb-0">Lincoln High School</p>
-                      <p class="font-12 clr--4755 mb-0">Grade 9</p>
-                    </div>
-                    <div class="badge atrisk">At Risk </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">GPA</label>
-                      <p class="font-13 fw-semibold mb-0">2.1</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Attendance</label>
-                      <p class="font-13 fw-semibold mb-0">78%</p>
-                    </div>
-                    <div class="col-4 mt-2">
-                      <label class="font-13 clr--4755 mb-0 fw-normal">Incidents</label>
-                      <p class="font-13 fw-semibold mb-0">5</p>
-                    </div>
-                  </div>
-                </div>
+                  </div> 
+                </div> 
+                }
+
               </div>
             </div>
           </div>
           <!-- Record Not Found -->
           <div class="col-12">
-            <div class="not--record--found mb-4">
+            <div class="not--record--found mb-4 mt-3">
               No results found
             </div>
           </div>

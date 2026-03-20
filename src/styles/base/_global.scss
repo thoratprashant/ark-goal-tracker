@@ -122,6 +122,16 @@ body{
     height: 16px;
     background: url('../../../public/images/upload-button-icon.svg') no-repeat center; 
   }
+  .icon--user-white{
+    width: 14px;
+    height: 14px;
+    background: url('../../../public/images/user-white.svg') no-repeat center; 
+  }
+  .icon--view{
+    width: 24px;
+    height: 24px;
+    background: url('../../../public/images/eye-black.svg') no-repeat center; 
+  }
 
   .not--record--found{
     border-radius: 6px;
@@ -168,6 +178,11 @@ body{
       font-size: 20px;
       height: 20px;
       width: 20px;
+    }
+    .icon{
+      position: absolute;
+      left: 10px;
+      top: 12px;
     }
   }
 

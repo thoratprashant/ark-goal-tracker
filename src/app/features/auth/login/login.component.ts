@@ -45,7 +45,7 @@ export class LoginComponent {
    this.commonService.showLoader();
      setTimeout(() => {
     this.commonService.hideLoader();
-    this.router.navigate(['/admin/profile']);
+    this.router.navigate(['/admin/dashboard']);
   }, 2000);
   }
 }

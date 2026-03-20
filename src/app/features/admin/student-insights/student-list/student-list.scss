@@ -6,6 +6,11 @@
     .status{
         width: 140px;
     }
+    .student--cards{
+        .card {
+            flex: 0 0 100%;
+        }
+    }
     .student--strip{
         border-radius: 6px;
         border: 1px solid #E5E5E5;
@@ -64,4 +69,34 @@
     body .head--sec h4{
         font-size: 1.2rem;
     } 
+}
+
+
+/* SM → 2 per row */
+@media (min-width: 576px) {
+  .slist--wrapper .student--cards .card{
+    flex: 0 0 calc(50% - 8px);
+  }
+}
+
+/* LG → 3 per row */
+@media (min-width: 992px) {
+  .slist--wrapper .student--cards .card {
+    flex: 0 0 calc(33.33% - 11px);
+  }
+}
+
+/* XL → 4 per row */
+@media (min-width: 1200px) {
+  .slist--wrapper .student--cards .card {
+    flex: 0 0 calc(25% - 12px);
+  }
+}
+
+@media only screen 
+  and (width: 667px) 
+  and (height: 375px) {
+    .flex-c-sm{
+        flex-direction: column !important;
+    }
 }
