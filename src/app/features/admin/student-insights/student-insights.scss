@@ -126,5 +126,11 @@
   .si--wrapper .stud--cards .card {
     flex: 0 0 calc(33.33% - 11px);
   } 
+} 
+@media only screen 
+  and (width: 667px) 
+  and (height: 375px) {
+    .flex-c-sm{
+        flex-direction: column !important;
+    }
 }
- 

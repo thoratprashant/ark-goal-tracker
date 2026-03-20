@@ -92,3 +92,11 @@
     flex: 0 0 calc(25% - 12px);
   }
 }
+
+@media only screen 
+  and (width: 667px) 
+  and (height: 375px) {
+    .flex-c-sm{
+        flex-direction: column !important;
+    }
+}
