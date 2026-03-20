@@ -47,11 +47,11 @@
         <div class="col-12 col-lg-9">
             <div class="card p-3 p-sm-4 pb-2 mt-0 mt-lg-3">
                 <div class="row">
-                    <!-- Mobile button to toggle roles sideover -->
+                    <!-- Hamburger button to toggle roles sideover -->
                     <div class="col-12 d-block d-md-none mb-2">
                         <mat-icon class="cursor-pointer" (click)="showRolesSideover = !showRolesSideover">menu</mat-icon>
                     </div>
-                    <!-- Mobile screen only roles sideover -->
+                    <!-- Roles section: hidden on desktop, visible on Mobile -->
                     <div class="roles-sideover"
                         *ngIf="showRolesSideover">
                         <div class="sideover-header d-flex justify-content-between align-items-center p-4 border-bottom">
@@ -79,8 +79,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-12 d-flex flex-sm-row flex-column align-items-sm-center gap-2 justify-content-sm-between">
+                <div class="row">
+                    <div class="col-12 d-flex flex-sm-row flex-column align-items-sm-center gap-2 justify-content-sm-between mb-2">
                         <div class="d-flex flex-column">
                             <h5 class="font-15 fw-semibold text-secondary mb-1">District Admin Permissions</h5>
                             <p class="clr--7373 font-13 mb-0">Configure access permissions for this role</p>
@@ -92,7 +94,42 @@
                         </button>
                         </div>
                     </div>
-
+                    <div class="col-12 mt-3">
+                        <div class="row permission-section-wrapper">
+                            @for (group of permissions; track group.title) {
+                            <div class="col-12 d-flex flex-column">
+                                <h2 class="font-15 clr--1e29 fw-semibold mb-0">{{group.title}}</h2>
+                                <hr>
+                                <div class="row">
+                                @for (item of group.permissions; track item.permissionName) {
+                                    <div class="col-12 col-md-6 mb-2 mb-md-0">
+                                        <div class="card d-flex flex-row align-items-center justify-content-between mb-0">
+                                            <div class="d-flex align-items-center"> 
+                                                <div class="d-flex align-items-center justify-content-center permission--box flex-shrink-0">
+                                                    <mat-icon fontSet="material-icons-outlined">check_circle</mat-icon>
+                                                </div> 
+                                                <div class="d-flex flex-column">
+                                                    <p class="wb-ba clr--3341 font-13 fw-semibold mb-0">{{item.permissionName}}</p>
+                                                </div> 
+                                            </div>
+                                            <div>
+                                                <div class="form-check form-switch">
+                                                    <input 
+                                                    class="form-check-input custom-toggle" 
+                                                    type="checkbox" 
+                                                    [id]="'toggle-' + group.title + '-' + item.permissionName"
+                                                    [checked]="item.enabled"
+                                                    (change)="onToggleChange(group.title, item.permissionName, $event.target.checked)">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
