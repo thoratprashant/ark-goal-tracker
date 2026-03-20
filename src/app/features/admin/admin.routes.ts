@@ -36,6 +36,11 @@ export const ADMINLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./student-insights/student-list/student-list').then(c => c.StudentList),
     data: { title: 'student-list' }
   },
+    {
+    path: 'data-import-management',
+    loadComponent: () => import('./data-import-management/data-import-management').then(c => c.DataImportManagement),
+    data: { title: 'data-import-management' }
+  },
   
 ];
  

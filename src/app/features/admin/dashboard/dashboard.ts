@@ -48,7 +48,7 @@ qacards = [
     title: 'Data Import',
     description: 'Upload student and assessment data',
     icon: 'images/export-blue.svg',
-    link: '/admin/us'
+    link: '/admin/data-import-management'
   }, 
     {
     title: 'Student Insights',
