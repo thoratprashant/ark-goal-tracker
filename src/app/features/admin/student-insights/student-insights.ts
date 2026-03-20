@@ -16,6 +16,83 @@ import { A11yModule } from "@angular/cdk/a11y";
   styleUrl: './student-insights.scss',
 })
 export class StudentInsights {
+
+schools = [
+  {
+    schoolName: 'Lincoln Elementary School',
+    totalStudents: 150,
+    students: [
+      {
+        name: 'John Smith',
+        school: 'Lincoln High School',
+        grade: 'Grade 10',
+        status: 'Excellent',
+        statusClass: 'excellent',
+        gpa: 3.8,
+        attendance: '96%',
+        incidents: 0
+      },
+      {
+        name: 'Emma Johnson',
+        school: 'Lincoln High School',
+        grade: 'Grade 11',
+        status: 'Monitoring',
+        statusClass: 'monitoring',
+        gpa: 3.2,
+        attendance: '86%',
+        incidents: 2
+      },
+      {
+        name: 'John Smith',
+        school: 'Lincoln High School',
+        grade: 'Grade 10',
+        status: 'Excellent',
+        statusClass: 'excellent',
+        gpa: 3.8,
+        attendance: '96%',
+        incidents: 0
+      }
+    ]
+  },
+  {
+    schoolName: 'Green Valley School',
+    totalStudents: 120,
+    students: [
+      {
+        name: 'Michael Brown',
+        school: 'Green Valley School',
+        grade: 'Grade 9',
+        status: 'At Risk',
+        statusClass: 'atrisk',
+        gpa: 2.1,
+        attendance: '78%',
+        incidents: 5
+      },
+      {
+        name: 'John Smith',
+        school: 'Lincoln High School',
+        grade: 'Grade 10',
+        status: 'Excellent',
+        statusClass: 'excellent',
+        gpa: 3.8,
+        attendance: '96%',
+        incidents: 0
+      },
+      {
+        name: 'Emma Johnson',
+        school: 'Lincoln High School',
+        grade: 'Grade 11',
+        status: 'Monitoring',
+        statusClass: 'monitoring',
+        gpa: 3.2,
+        attendance: '86%',
+        incidents: 2
+      },
+    ]
+  }
+];
+
+
   metrics = [
   { name: 'Chronic Absenteeism', value: '8.2%' },
   { name: 'Special Education', value: '12.5%' },
