@@ -57,15 +57,13 @@
                 [disabled]="!isEditMode">
             </div>
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
-              <label class="form-label">Email Address<span class="text-error">*</span></label>
-              <input type="text" class="form-control" value="ishuiux149@gmail.com" placeholder="Ente email address"
-                [disabled]="!isEditMode">
+              <label class="form-label d-flex align-items-center flex-wrap">Email Address <div class="fw-semibold font-11 ready--only">Read-only</div> </label>
+              <input type="text" class="form-control" value="ishuiux149@gmail.com" placeholder="Ente email address" disabled>
             </div>
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
-              <label class="form-label">Assigned Role<span class="text-error">*</span></label>
+              <label class="form-label  d-flex align-items-center flex-wrap">Assigned Role <div class="fw-semibold font-11 ready--only">Read-only</div></label>
               <div class="icon--input--box position-relative w-100">
-                <input type="text" class="form-control" value="Admin" placeholder="Ente assigned role"
-                  [disabled]="!isEditMode">
+                <input type="text" class="form-control" value="Admin" placeholder="Ente assigned role" disabled>
                 <mat-icon>business_center</mat-icon>
               </div>
             </div>
