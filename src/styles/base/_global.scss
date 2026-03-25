@@ -132,7 +132,16 @@ body{
     height: 24px;
     background: url('../../../public/images/eye-black.svg') no-repeat center; 
   }
-
+  .icon--sso{
+    width: 24px;
+    height: 24px;
+    background: url('../../../public/images/sso.svg') no-repeat center; 
+  }
+  .icon--clever{
+    width: 50px;
+    height: 13px;
+    background: url('../../../public/images/clever.svg') no-repeat center; 
+  }
   .not--record--found{
     border-radius: 6px;
     background: rgba(185, 28, 28, 0.10);
