@@ -15,5 +15,10 @@ export const routes: Routes = [
     path: 'admin',
     loadComponent: () => import('./layouts/admin-layout/admin-layout').then(c => c.AdminLayout),
     loadChildren: () =>  import('./features/admin/admin.routes').then(r => r.ADMINLAYOUT_ROUTES),
+  },
+  {
+    path: 'principal',
+    loadComponent: () => import('./layouts/principal-layout/principal-layout').then(c => c.PrincipalLayout),
+    loadChildren: () =>  import('./features/principal/principal.routes').then(r => r.PRINCIPALLAYOUT_ROUTES),
   }, 
 ];
