@@ -1,3 +1,117 @@
 .goalc--wrapper{
-    
+    .goal--tile{
+        .goal--icon{
+            border-radius: 12px;
+            background: #EFF6FF;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            margin-bottom: 12px;
+            &.avarage{
+                background: #1D4ED8;
+                border-radius: 99px;
+            }
+        }
+        .goal--details{
+           h2{
+            font-size: 28px;
+            color: #0A0A0A;
+            span{
+                font-size: 17px;
+            }
+           } 
+        }
+        .progress{
+            height: 8px;
+        }
+        .green--strip{
+            padding: 2px 8px;
+            align-items: center;
+            border-radius: 4px;
+            background: #ECFDF5;
+            color: #059669;
+            width: fit-content;
+        }
+    }
+    .card-header{
+        ::ng-deep{
+              .mat-mdc-form-field{
+                    .mat-mdc-text-field-wrapper{
+                            background: transparent;
+                    }
+                    .mat-mdc-notch-piece{
+                            border-color: #E5E5E5 !important;
+                    }
+                    .mat-mdc-form-field-infix{
+                        padding-top: 3px;
+                        padding-bottom: 4px; 
+                        
+                    }
+                    .mat-mdc-select-placeholder,
+                    .mat-mdc-select-value{
+                        font-size: 11px;
+                        color: #000; 
+                    }
+              } 
+        }
+    }
+    .card-body{
+        .table-container {
+  overflow-x: auto;
+}
+
+.goal-table thead th {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.level-1 { background: #f8f9fa; font-weight: 600; }
+.level-2 { background: #f1f3f5; }
+.level-3 { background: #fff; }
+
+.goal-bar {
+  height: 6px;
+  border-radius: 10px;
+}
+
+.safe { background: #28a745; }
+.double { background: #f0ad4e; }
+.stretch { background: #dc3545; }
+
+.badge-met {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge-not {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.avatar.b { background: purple; }
+.avatar.s { background: green; }
+
+.material-icons {
+  font-size: 18px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+    }
 }

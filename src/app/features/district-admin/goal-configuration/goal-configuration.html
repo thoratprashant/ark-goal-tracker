@@ -7,30 +7,181 @@
   </div>
   <div class="row">
     <div class="col-12 d-flex flex-column flex-sm-row gap-2 gap-sm-4">
-      <div class="card p-3 p-sm-4 mb-4 sut--section w-100">
-        <div class="row"> 
-            <div class="col-12 d-flex align-items-start">
-                
-            </div> 
+      <div class="card p-3 p-sm-4 mb-4 goal--tile w-100">
+        <div class="row">
+          <div class="col-12 d-flex align-items-start justify-content-between">
+            <div class="goal--icon">
+              <img src="images/blue-round-circles.svg" alt="icon" class="img-fluid">
+            </div>
+            <a class="cursor-pointer"
+              matTooltip="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled">
+              <img src="images/grey-que.svg" alt="icon" class="img-fluid">
+            </a>
+          </div>
+          <div class="col-12 d-flex flex-column goal--details">
+            <h4 class="font-12 clr--7373 fw-semibold mb-2">Total Goals Se</h4>
+            <h2 class="fw-bold mb-2">35 <span class="clr--7373 fw-normal">/ 35</span></h2>
+            <p class="clr--7373 font-11 mb-3">Across 5 schools, 7 subject</p>
+          </div>
+          <div class="col-12">
+            @for (item of progressList; track item) {
+            <div class="progress--wrapper">
+              <div class="progress--labels d-flex align-items-center justify-content-between">
+                <h5 class="m-0 font-11 clr--7373">{{ item.label }}</h5>
+                <h6 class="m-0 font-11 fw-semibold">{{ item.value }}%</h6>
+              </div>
+              <div class="progress mt-1">
+                <div class="progress-bar" [style.background]="item.color" [style.width.%]="item.value">
+                </div>
+              </div>
+            </div>
+            }
+          </div>
         </div>
-      </div> 
-      <div class="card p-3 p-sm-4 mb-4 sut--section w-100">
-        <div class="row"> 
-            <div class="col-12 d-flex align-items-start">
-                
-            </div> 
+      </div>
+      <div class="card p-3 p-sm-4 mb-4 goal--tile w-100">
+        <div class="row">
+          <div class="col-12 d-flex align-items-start justify-content-between">
+            <div class="goal--icon avarage">
+              <img src="images/white-round-circles.svg" alt="icon" class="img-fluid">
+            </div>
+            <a class="cursor-pointer"
+              matTooltip="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled">
+              <img src="images/grey-que.svg" alt="icon" class="img-fluid">
+            </a>
+          </div>
+          <div class="col-12 d-flex flex-column goal--details">
+            <h4 class="font-12 clr--7373 fw-semibold mb-2">Average District Goal</h4>
+            <h2 class="fw-bold mb-2">35%</h2>
+            <p class="clr--7373 font-11 mb-3">Across all components</p>
+          </div>
+          <div class="col-12">
+            <div class="green--strip fw-semibold font-11">
+              +2.8% vs Beginning of Year (BOY)
+            </div>
+          </div>
         </div>
-      </div> 
-      <div class="card p-3 p-sm-4 mb-4 sut--section w-100">
-        <div class="row"> 
-            <div class="col-12 d-flex align-items-start">
-                
-            </div> 
+      </div>
+      <div class="card p-3 p-sm-4 mb-4 goal--tile w-100">
+        <div class="row">
+          <div class="col-12 d-flex align-items-start justify-content-between">
+            <div class="goal--icon avarage">
+              <img src="images/white-star-elec.svg" alt="icon" class="img-fluid">
+            </div>
+            <a class="cursor-pointer"
+              matTooltip="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled">
+              <img src="images/grey-que.svg" alt="icon" class="img-fluid">
+            </a>
+          </div>
+          <div class="col-12 d-flex flex-column goal--details">
+            <h4 class="font-12 clr--7373 fw-semibold mb-2">Exceeding Total Points Prediction</h4>
+            <h2 class="fw-bold mb-2">08 <span class="clr--7373 fw-normal">/ 35</span></h2>
+            <p class="clr--7373 font-11 mb-3">Meeting or exceeding predictions</p>
+          </div>
         </div>
-      </div> 
-    </div> 
+      </div>
+
+    </div>
   </div>
- 
 
+  <div class="row">
+    <div class="col-12">
+      <div class="card p-0 mt-2 ">
+        <div class="card-header p-3 mb-0 d-flex align-items-center justify-content-between flex-column flex-sm-row">
+          <h5 class="fs-13 fw-semibold mb-0 text-secondary">Configuration Controls</h5>
+          <div class="d-flex flex-wrap gap-2">
+            <button type="button" class="btn btn-sm btn-outline-primary">
+              <i class="icon icon--upload"></i>
+              Bulk Upload CSV
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-primary">
+              <i class="icon icon--download"></i>
+              Export Template
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-primary">
+              <mat-icon>schedule</mat-icon>
+              View History
+            </button>
+            <button type="button" class="btn btn-sm btn-primary flex-shrink-0">
+              Save All Changes
+            </button>
+          </div>
+        </div>
+        <div class="card-header p-3 d-flex align-items-center">
+           <div class="row w-100">
+                <div class="col-12 col-lg-5">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label font-9 clr--7373 mb-1">FILTER BY SCHOO</label>
+                            <mat-form-field appearance="outline" class="w-100 dd--sm" >
+                                <mat-select placeholder="All Schools (8)" multiple>
+                                    <mat-option value="1">Greenwood High School</mat-option>
+                                    <mat-option value="2">Sunrise Public School </mat-option>
+                                    <mat-option value="3">Harmony International School</mat-option>
+                                    <mat-option value="4">Golden Valley School </mat-option>
+                                    <mat-option value="5">Bright Future School</mat-option>
+                                    <mat-option value="6">Hilltop Public School </mat-option>
+                                    <mat-option value="7">Blue Ridge High School</mat-option>
+                                    <mat-option value="8">Riverdale Academy</mat-option>
+                                </mat-select>
+                            </mat-form-field> 
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label font-9 clr--7373 mb-1">FILTER BY SUBJECT</label>
+                            <mat-form-field appearance="outline" class="w-100 dd--sm" >
+                                <mat-select placeholder="All Subjects" multiple>
+                                    <mat-option value="1">Mathematics</mat-option>
+                                    <mat-option value="2">Science </mat-option>
+                                    <mat-option value="3">English</mat-option>
+                                    <mat-option value="4">Social Studies</mat-option>
+                                    <mat-option value="5">Computer Science</mat-option>
+                                    <mat-option value="6">Physics</mat-option>
+                                    <mat-option value="7">Chemistry</mat-option>
+                                    <mat-option value="8">Biology</mat-option>
+                                </mat-select>
+                            </mat-form-field> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-7">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <label class="form-label font-9 clr--7373 mb-1">COMPONENT</label>
+                            <mat-form-field appearance="outline" class="w-100 dd--sm" >
+                                <mat-select placeholder="All Components" multiple>
+                                    <mat-option value="1">Components 01</mat-option>
+                                    <mat-option value="2">Components 02</mat-option>
+                                    <mat-option value="3">Components 03</mat-option> 
+                                </mat-select>
+                            </mat-form-field> 
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label class="form-label font-9 clr--7373 mb-1">PERFORMANCE TIER</label>
+                            <mat-form-field appearance="outline" class="w-100 dd--sm" >
+                                <mat-select placeholder="All Tiers" multiple>
+                                    <mat-option value="1">Tiers 01</mat-option>
+                                    <mat-option value="2">Tiers 02</mat-option>
+                                    <mat-option value="3">Tiers 03</mat-option> 
+                                </mat-select>
+                            </mat-form-field> 
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label class="form-label font-9 clr--7373 mb-1">VIEW MODE</label>
+                            <mat-form-field appearance="outline" class="w-100 dd--sm" >
+                                <mat-select placeholder="Table Mode">
+                                    <mat-option value="1">Table Mode</mat-option>
+                                    <mat-option value="2">Table Mode 02</mat-option> 
+                                </mat-select>
+                            </mat-form-field> 
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+        <div class="card-body">
+            
+        </div>
+      </div>
+    </div>
 
-</div>
+  </div>

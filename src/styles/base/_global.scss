@@ -54,6 +54,24 @@ body{
   }
 
   .mat-mdc-form-field{ 
+      &.dd--sm{
+          .mat-mdc-text-field-wrapper{
+                  background: transparent;
+          }
+          .mat-mdc-notch-piece{
+                  border-color: #E5E5E5 !important;
+          }
+          .mat-mdc-form-field-infix{
+              padding-top: 3px;
+              padding-bottom: 4px; 
+              
+          }
+          .mat-mdc-select-placeholder,
+          .mat-mdc-select-value{
+              font-size: 11px;
+              color: #000; 
+          }
+      }
       .mat-mdc-form-field-subscript-wrapper,
       .mat-mdc-select-arrow svg{
           display: none;
@@ -110,6 +128,7 @@ body{
         font-weight: bold;
        }
   }
+
   .icon{
       display: block;
       margin-right: 5px;
@@ -366,6 +385,13 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .mat-mdc-tooltip-surface{
+    background: #F1F5F9;
+    color: #000;
+    font-size: 12px; 
+    font-family: v.$font-family-base !important; 
+    padding: 10px 15px;
   }
 
   .table-responsive {
