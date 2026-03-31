@@ -1,0 +1,277 @@
+<div class="container-fluild db--wrapper">
+    <div class="row">
+        <div class="col-12 head--sec d-flex flex-sm-row flex-column align-items-sm-center">
+            <div class="d-flex flex-column">
+                <h4 class="text-secondary fw-bold">Lincoln Elementary School</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-1">
+                    <li class="breadcrumb-item"><a routerLink="/principal/dashboard">School</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Student Movement</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="col-12 mt-3">
+            <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between">
+                <div class="d-flex flex-column flex-sm-row gap-2 w-sm-100">
+                    <mat-form-field appearance="outline" class="gpa">
+                        <mat-select placeholder="All Year">
+                        <mat-option value="1">2024-25</mat-option>
+                        <mat-option value="2">2025-26</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="grades">
+                        <mat-select placeholder="All Grades">
+                        <mat-option value="1">Grade 10</mat-option>
+                        <mat-option value="2">Grade 11 </mat-option>
+                        <mat-option value="2">Grade 12 </mat-option>
+                        <mat-option value="2">Grade 13 </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="grades">
+                        <mat-select placeholder="ELA">
+                        <mat-option value="1">Option 1</mat-option>
+                        <mat-option value="2">Option 2</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="d-flex flex-shrink-0">
+                    <button type="button" class="btn btn-lg btn-outline-primary text-black font-13 mt-3 mt-sm-0">
+                    <i class="icon icon--download text-black"></i>
+                    Export Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row selection-export-section">
+        <div class="col-12">
+            <div class="card p-3 px-sm-4 py-sm-3 d-flex flex-column">
+                <p class="text-primary font-14 fw-semibold mb-0">Select sections to include in export:</p>
+                <ul class="d-flex flex-wrap align-items-center gap-2 options-list" role="listbox">
+                    <li 
+                    *ngFor="let option of options; trackBy: trackById"
+                    class="option-item"
+                    [class.selected]="option.selected"
+                    role="option"
+                    [attr.aria-selected]="option.selected"
+                    (click)="onOptionToggle(option)"
+                    tabindex="0"
+                    (keydown.enter)="onOptionToggle(option)"
+                    (keydown.space)="onOptionToggle(option)">
+                    <span class="option-content">
+                        <span class="checkmark" *ngIf="option.selected">✓</span>
+                        <span class="option-label">{{ option.label }}</span>
+                    </span>
+                    </li>
+                </ul>
+                <div class="d-flex flex-shrink-0">
+                    <button type="button" class="btn btn-lg btn-primary" [disabled]="getSelectedCount() === 0">
+                    <mat-icon fontSet="material-icons-outlined" class="me-1">save_alt</mat-icon>
+                    Export Selected ({{ getSelectedCount() }} section{{ getSelectedCount() === 1 ? '' : 's' }})
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card p-3 p-sm-4 d-flex flex-column">
+                <h5 class="font-17 text-secondary fw-semibold mb-0">Grade Breakdown</h5>
+                <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between mt-3 gap-2">
+
+                    <mat-button-toggle-group
+                        [value]="viewMode()"
+                        (change)="viewMode.set($event.value)"
+                        class="toggle-container"
+                    >
+                        <mat-button-toggle value="grade">By Grade</mat-button-toggle>
+                        <mat-button-toggle value="teacher">By Teacher</mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                    <mat-button-toggle-group
+                        [value]="chartMode()"
+                        (change)="chartMode.set($event.value)"
+                        class="toggle-container small"
+                    >
+                        <mat-button-toggle value="table">Table</mat-button-toggle>
+                        <mat-button-toggle value="bar">Bar Chart</mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                </div>
+                <div class="table-responsive grade-breakdown-table">
+                    <!-- By Grade Table -->
+                    <table class="table table-custom table-centered m-0" [hidden]="viewMode() !== 'grade'" *ngIf="chartMode() === 'table'">
+                        <thead class="thead-sm">
+                            <tr class="text-uppercase">
+                                <th>Grade</th>
+                                <th class="text-center">Ach %</th>
+                                <th class="text-center">LG %</th>
+                                <th class="text-center">BQ %</th>
+                                <th class="text-center">Risk %</th>
+                                <th class="text-center">Students</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of dataGrade">
+                                <td class="clr--111827 fw-semibold">{{ row.grade }}</td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStatusClass(row.ach)">
+                                        {{ row.ach }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStatusClass(row.lg)">
+                                        {{ row.lg }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStatusClass(row.bq)">
+                                        {{ row.bq }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStatusCssClass(row.risk)">
+                                        {{ row.risk }}
+                                    </div>
+                                </td>
+                                <td class="clr--111827 fw-semibold text-center">{{ row.students }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- By Teacher Table -->
+                    <table class="table table-custom table-centered m-0" [hidden]="viewMode() !== 'teacher'" *ngIf="chartMode() === 'table'">
+                        <thead class="thead-sm">
+                            <tr class="text-uppercase">
+                                <th>Teacher</th>
+                                <th class="text-center">Ach %</th>
+                                <th class="text-center">LG %</th>
+                                <th class="text-center">BQ %</th>
+                                <th class="text-center">Risk %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of dataTeacher">
+                                <td class="clr--111827 fw-semibold">{{ row.teacher }}</td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStatusClass(row.ach)">
+                                        {{ row.ach }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStatusClass(row.lg)">
+                                        {{ row.lg }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStatusClass(row.bq)">
+                                        {{ row.bq }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStatusCssClass(row.risk)">
+                                        {{ row.risk }}
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="chart-container" *ngIf="viewMode() === 'grade' && chartMode() === 'bar'">
+                    <apx-chart
+                        [series]="chartOptions.series"
+                        [chart]="chartOptions.chart"
+                        [xaxis]="chartOptions.xaxis"
+                        [yaxis]="chartOptions.yaxis"
+                        [grid]="chartOptions.grid"
+                        [markers]="chartOptions.markers"
+                        [plotOptions]="chartOptions.plotOptions"
+                        [dataLabels]="chartOptions.dataLabels"
+                        [legend]="chartOptions.legend"
+                        [tooltip]="chartOptions.tooltip"
+                        [colors]="chartOptions.colors">
+                    </apx-chart>
+                </div>
+                <div class="chart-container" *ngIf="viewMode() === 'teacher' && chartMode() === 'bar'">
+                    <apx-chart
+                        [series]="chartOptions.series"
+                        [chart]="chartOptions.chart"
+                        [xaxis]="chartOptions.xaxis"
+                        [yaxis]="chartOptions.yaxis"
+                        [grid]="chartOptions.grid"
+                        [markers]="chartOptions.markers"
+                        [plotOptions]="chartOptions.plotOptions"
+                        [dataLabels]="chartOptions.dataLabels"
+                        [legend]="chartOptions.legend"
+                        [tooltip]="chartOptions.tooltip"
+                        [colors]="chartOptions.colors">
+                    </apx-chart>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mt-2">
+            <div class="card p-3 p-sm-4 d-flex flex-column">
+                <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between gap-2">
+                    <h5 class="font-17 text-secondary fw-semibold mb-0">Performance by Grade</h5>
+                    <mat-button-toggle-group
+                        [value]="chartModePerformance()"
+                        (change)="chartModePerformance.set($event.value)"
+                        class="toggle-container small"
+                    >
+                        <mat-button-toggle value="performanceTable">Table</mat-button-toggle>
+                        <mat-button-toggle value="performanceBar">Bar Chart</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+                <div class="table-responsive grade-breakdown-table">
+                    <!-- Performance by Grade Table -->
+                    <table class="table table-custom table-centered m-0" *ngIf="chartModePerformance() === 'performanceTable'">
+                        <thead class="thead-sm">
+                            <tr class="text-uppercase">
+                                <th>Skill Strand</th>
+                                <th class="text-center">Elementary %</th>
+                                <th class="text-center">Middle School %</th>
+                                <th class="text-center">High School %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of dataPerformanceGrade">
+                                <td class="clr--111827 fw-semibold">{{ row.skill }}</td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStatusClass(row.elementary)">
+                                        {{ row.elementary }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStatusClass(row.middleSchool)">
+                                        {{ row.middleSchool }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStatusClass(row.highSchool)">
+                                        {{ row.highSchool }}%
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="chart-container" *ngIf="chartModePerformance() === 'performanceBar'">
+                    <apx-chart
+                        [series]="chartOptions1.series"
+                        [chart]="chartOptions1.chart"
+                        [xaxis]="chartOptions1.xaxis"
+                        [yaxis]="chartOptions1.yaxis"
+                        [grid]="chartOptions1.grid"
+                        [markers]="chartOptions1.markers"
+                        [plotOptions]="chartOptions1.plotOptions"
+                        [dataLabels]="chartOptions1.dataLabels"
+                        [legend]="chartOptions1.legend"
+                        [tooltip]="chartOptions1.tooltip"
+                        [colors]="chartOptions1.colors">
+                    </apx-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
