@@ -202,6 +202,28 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-12 mt-2">
+            <div class="card p-3 p-sm-4 d-flex flex-column">
+                <h5 class="font-17 text-secondary fw-semibold mb-0">Achievement: Actual Goal vs Target Goal</h5>
+                <div class="chart-container">
+                    <apx-chart
+                        [series]="chartOptions.series"
+                        [chart]="chartOptions.chart"
+                        [xaxis]="chartOptions.xaxis"
+                        [yaxis]="chartOptions.yaxis"
+                        [stroke]="chartOptions.stroke"
+                        [grid]="chartOptions.grid"
+                        [markers]="chartOptions.markers"
+                        [legend]="chartOptions.legend"
+                        [tooltip]="chartOptions.tooltip"
+                        [annotations]="chartOptions.annotations"
+                        [colors]="chartOptions.colors">
+                    </apx-chart>
+                </div>
+            </div>
+        </div>
+
         <div class="col-12 mt-2">
             <div class="card p-3 p-sm-4 d-flex flex-column">
                 <h5 class="font-17 text-secondary fw-semibold mb-0">Alerts & Attention Areas</h5>
