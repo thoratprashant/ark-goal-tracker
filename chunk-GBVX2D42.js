@@ -1,1 +1,0 @@
-import"./chunk-7CGTOI24.js";var t=[{path:"goal-evaluation",loadComponent:()=>import("./chunk-PUDR6PSI.js").then(o=>o.GoalEvaluation),data:{title:"goal evaluation"}}];export{t as PRINCIPALLAYOUT_ROUTES};
