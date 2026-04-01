@@ -206,12 +206,19 @@
             min-width: 750px;
             thead{
                 tr{
-                    th{}
+                    th{
+                        &:nth-child(1) {
+                            width: 25%;
+                        }
+                    }
                 }
             }
             tbody{
                 tr{
                     td{
+                        &:nth-child(1) {
+                            word-break: break-all;
+                        }
                         .bg-highlight{
                             border-radius: 9999px;
                             padding: 0.25rem 1rem;

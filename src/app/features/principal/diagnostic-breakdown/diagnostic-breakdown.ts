@@ -42,6 +42,23 @@ export type ChartOptions = {
   fill: ApexFill;
 };
 
+export type ChartOptionsTeacher = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  yaxis: ApexYAxis;
+  stroke: ApexStroke;
+  grid: ApexGrid;
+  markers: ApexMarkers;
+  legend: ApexLegend;
+  tooltip: ApexTooltip;
+  annotations: ApexAnnotations;
+  colors: string[];
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  fill: ApexFill;
+};
+
 export type ChartOptions1 = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -190,6 +207,77 @@ export class DiagnosticBreakdown {
     colors: ['#90C955', '#DCE52A', '#EA914E'],
     xaxis: {
       categories: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6'],
+      labels: { style: { colors: '#6B7280', fontSize: '12px' }, trim: true, maxHeight: 60 }
+    },
+    yaxis: {
+      min: 0,
+      max: 100,
+      labels: {
+        formatter: (value: number) => `${value}%`,
+        style: { colors: '#6B7280', fontSize: '12px' }
+      },
+      tickAmount: 5
+    },
+    grid: {
+      borderColor: '#f0f0f0',
+      strokeDashArray: 2
+    },
+    markers: {
+      size: [5, 0],
+      hover: { sizeOffset: 6 }
+    },
+    legend: {
+      position: "bottom",
+      horizontalAlign: "center",
+      fontSize: '15px',
+      fontWeight: 400,
+      onItemHover: {
+        highlightDataSeries: true
+      }
+    },
+    tooltip: {
+      y: {
+        formatter: (val: number) => `${val}%`
+      }
+    }
+  };
+
+  public ChartOptionsTeacher: any = {
+    series: [
+      {
+        name: "ACH",
+        data: [58, 58, 58, 58, 58, 58]
+      },
+      {
+        name: "LG",
+        data: [52, 52, 52, 52, 52, 52]
+      },
+      {
+        name: "BQ",
+        data: [45, 45, 45, 45, 45, 45]
+      }
+    ],
+    chart: {
+      type: 'bar',
+      height: '400',
+      stacked: false,
+      width: "100%",
+      redrawOnWindowResize: true,
+      redrawOnParentResize: true
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: "55%",
+        borderRadius: 4
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    colors: ['#90C955', '#DCE52A', '#EA914E'],
+    xaxis: {
+      categories: ['Ms. Johnson', 'Ms. Smith', 'Ms. Davis', 'Ms. Wilson', 'Ms. Brown', 'Ms. Martinez'],
       labels: { style: { colors: '#6B7280', fontSize: '12px' }, trim: true, maxHeight: 60 }
     },
     yaxis: {

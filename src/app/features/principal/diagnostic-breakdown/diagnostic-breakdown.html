@@ -235,17 +235,17 @@
                 </div>
                 <div class="chart-container" *ngIf="viewMode() === 'teacher' && chartMode() === 'bar'">
                     <apx-chart
-                        [series]="chartOptions.series"
-                        [chart]="chartOptions.chart"
-                        [xaxis]="chartOptions.xaxis"
-                        [yaxis]="chartOptions.yaxis"
-                        [grid]="chartOptions.grid"
-                        [markers]="chartOptions.markers"
-                        [plotOptions]="chartOptions.plotOptions"
-                        [dataLabels]="chartOptions.dataLabels"
-                        [legend]="chartOptions.legend"
-                        [tooltip]="chartOptions.tooltip"
-                        [colors]="chartOptions.colors">
+                        [series]="ChartOptionsTeacher.series"
+                        [chart]="ChartOptionsTeacher.chart"
+                        [xaxis]="ChartOptionsTeacher.xaxis"
+                        [yaxis]="ChartOptionsTeacher.yaxis"
+                        [grid]="ChartOptionsTeacher.grid"
+                        [markers]="ChartOptionsTeacher.markers"
+                        [plotOptions]="ChartOptionsTeacher.plotOptions"
+                        [dataLabels]="ChartOptionsTeacher.dataLabels"
+                        [legend]="ChartOptionsTeacher.legend"
+                        [tooltip]="ChartOptionsTeacher.tooltip"
+                        [colors]="ChartOptionsTeacher.colors">
                     </apx-chart>
                 </div>
             </div>
