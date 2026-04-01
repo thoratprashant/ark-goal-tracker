@@ -1,1 +1,0 @@
-import"./chunk-7CGTOI24.js";var t=[{path:"goal-evaluation",loadComponent:()=>import("./chunk-V6O6C4XJ.js").then(o=>o.GoalEvaluation),data:{title:"goal evaluation"}},{path:"diagnostic-breakdown",loadComponent:()=>import("./chunk-LFIILTFF.js").then(o=>o.DiagnosticBreakdown),data:{title:"diagnostic breakdown"}}];export{t as PRINCIPALLAYOUT_ROUTES};
