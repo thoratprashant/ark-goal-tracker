@@ -1,4 +1,81 @@
 .db--wrapper{
+    .performance--summary-section{
+        .main-title{
+            font-size: 32px;
+            color: #fff;
+            line-height: 32px;
+            margin-bottom: 8px;
+        }
+        .second-title{
+            color: #fff;
+            line-height: 20px;
+            margin-bottom: 8px;
+        }
+        .clr--BFD{color: #BFDBFE;}
+        .clr--90C9{color: #90C955;}
+        .clr--EA914{color: #EA914E;}
+        .clr--D64550{color: #D64550;}
+
+        .card{
+            border-radius: 16px;
+            border: 1px solid #E5E5E5;
+            background: #0D2A7C;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
+            .header-section{
+                gap: 16px;
+                .total-students-section{
+                    gap: 16px;
+
+                }
+            }
+            .backdrop-card{
+                .card{
+                    border-radius: 12px;
+                    background: rgba(255, 255, 255, 0.10);
+                    backdrop-filter: blur(2px);
+                    border: none;
+                    box-shadow: none;
+                    padding: 16px;
+                    // img{
+                    //     width: 20px;
+                    //     height: 20px;
+                    // }
+                }
+            }
+            .indicators-wrapper{
+                gap: 10px;
+                .ring-indicators-section{
+                    color: #fff;
+                    .circle {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: relative;
+                        transition: background 1s ease-in-out;
+                    }
+                    .circle::before {
+                        content: '';
+                        width: 45px;
+                        height: 45px;
+                        background: #0D2A7C;
+                        border-radius: 50%;
+                        position: absolute;
+                    }
+                    .inner {
+                        position: relative;
+                        text-align: center;
+                        z-index: 1;
+                        .label {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+            }
+        }
+    }
     .head--sec{
         h4{
             font-size: 1.438rem;
@@ -254,6 +331,21 @@
         }
         .chart-container{
             overflow-x: auto;
+        }
+        .performance--summary-section{
+            .indicators-wrapper{
+                .ring-indicators-section{
+                    width: 45%;
+                    .circle{
+                        width: 100px !important;
+                        height: 100px !important;
+                        &::before{
+                            width: 85px !important;
+                            height: 85px !important;
+                        }
+                    }
+                }
+            }
         }
     }
 }

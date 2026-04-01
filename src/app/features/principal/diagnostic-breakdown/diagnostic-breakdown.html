@@ -1,5 +1,45 @@
 <div class="container-fluild db--wrapper">
     <div class="row">
+        <div class="col-12 performance--summary-section">
+            <div class="card p-3 p-sm-4 d-flex flex-column">
+                <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between gap-3">
+                    <div class="d-flex flex-column header-section">
+                        <div class="d-flex flex-column">
+                            <h2 class="main-title fw-bold">Franklin High School Performance Summary</h2>
+                            <p class="second-title font-16 fw-normal"><i>Real-time analytics across school serving 2000 students</i></p>
+                        </div>
+                        <div class="d-flex flex-sm-row flex-column align-items-sm-center total-students-section gap-3">
+                            <div class="backdrop-card d-flex">
+                                <div class="card py-2 d-flex flex-row align-items-center gap-2 mb-0">
+                                    <img src="images/total-users-orange.svg" alt="icon" class="img-fluid">
+                                    <p class="second-title font-13 fw-normal mb-0">2000 Students</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-wrap indicators-wrapper">
+                                <div class="ring-indicators-section d-flex flex-column align-items-center gap-2" *ngFor="let item of stats">
+                                    <div class="circle"
+                                        [style.background]="
+                                        'conic-gradient(' + item.color + ' ' + getProgress(item.value) + '%, #d3d3d3 ' + getProgress(item.value) + '%)'
+                                        ">
+                                        <div class="inner">
+                                            <div class="font-12 fw-bold">{{ item.value }}</div>
+                                            <div class="label font-7 fw-normal">{{ item.label }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="font-8 fw-normal">{{ item.title }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="backdrop-card d-flex">
+                        <div class="card d-flex flex-column gap-2 mb-0">
+                            <p class="clr--BFD fw-normal font-11 mb-0">PREDICTED TOTAL PERFORMANCE</p>
+                            <h2 class="main-title fw-bold mb-0">67%</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-12 head--sec d-flex flex-sm-row flex-column align-items-sm-center">
             <div class="d-flex flex-column">
                 <h4 class="text-secondary fw-bold">Lincoln Elementary School</h4>

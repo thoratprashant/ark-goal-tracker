@@ -98,6 +98,39 @@ interface ExportOption {
 })
 export class DiagnosticBreakdown {
 
+  stats = [
+    {
+      value: 800,
+      label: 'Points',
+      title: '2023-24',
+      color: '#D64550'
+    },
+    {
+      value: 849,
+      label: 'Points',
+      title: '2024-25',
+      color: '#DCE52A'
+    },
+    {
+      value: 900,
+      label: 'Points',
+      title: '2025-26 Goal',
+      color: '#90C955' 
+    },
+    {
+      value: 826,
+      label: 'Points',
+      title: '2025-26 Predicted',
+      color: '#6D94FF'
+    }
+  ];
+
+  maxValue = 1000; // for percentage calculation
+
+  getProgress(value: number): number {
+    return (value / this.maxValue) * 100;
+  }
+
   options: ExportOption[] = [
     { id: 'gradeBreakdown', label: 'Grade Breakdown', selected: false },
     { id: 'performaceGrade', label: 'Performance By Grade', selected: true }
