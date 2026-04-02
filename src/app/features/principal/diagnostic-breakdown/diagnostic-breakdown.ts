@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, ElementRef, signal, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -114,6 +114,8 @@ interface ExportOption {
   styleUrl: './diagnostic-breakdown.scss',
 })
 export class DiagnosticBreakdown {
+
+  @ViewChild('scrollContainer') scrollContainer!: ElementRef;
 
   stats = [
     {
@@ -422,6 +424,48 @@ export class DiagnosticBreakdown {
 
   getStatusCssClass(value: number): string {
      return value >= 70 ? 'green-bg' : 'red-bg';
+  }
+
+  activeIndex = 0;
+  showPrev = false;
+  showNext = true;
+
+  setActive(i: number) {
+    this.activeIndex = i;
+  }
+
+  scrollLeft() {
+    this.scrollContainer.nativeElement.scrollBy({
+      left: -300,
+      behavior: 'smooth'
+    });
+
+    setTimeout(() => this.checkScroll(), 350);
+  }
+
+  scrollRight() {
+    this.scrollContainer.nativeElement.scrollBy({
+      left: 300,
+      behavior: 'smooth'
+    });
+
+    setTimeout(() => this.checkScroll(), 350);
+  }
+
+  checkScroll() {
+    const el = this.scrollContainer.nativeElement;
+
+    const scrollLeft = el.scrollLeft;
+    const scrollWidth = el.scrollWidth;
+    const clientWidth = el.clientWidth;
+
+    this.showPrev = scrollLeft > 5;
+
+    this.showNext = Math.ceil(scrollLeft + clientWidth) < scrollWidth;
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => this.checkScroll(), 100);
   }
 
 }
