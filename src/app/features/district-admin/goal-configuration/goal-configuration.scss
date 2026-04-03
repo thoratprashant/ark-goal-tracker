@@ -1,4 +1,10 @@
 .goalc--wrapper{
+
+    .clr--1E3A8A{color: #1E3A8A !important;}
+    .clr--059669{color: #059669 !important;} 
+    .clr--2563EB{color: #2563EB !important;} 
+    .clr--EF4444{color: #EF4444 !important;}  
+
     .goal--tile{
         .goal--icon{
             border-radius: 12px;
@@ -59,59 +65,170 @@
         }
     }
     .card-body{
-        .table-container {
-  overflow-x: auto;
-}
+        table {
+            width: 100%;
+            thead{
+                tr{
+                    th{
+                        color: #737373;
+                        font-size: 10px;
+                        font-weight: 600;
+                        padding: 10px 16px;
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    td{
+                        font-size: 12px;
+                        color: #737373;
+                        padding: 12px 16px;
+                        border-bottom: 0.667px solid rgba(229, 229, 229, 0.50);
+                        background: rgba(245, 245, 245, 0.20);
+                        box-shadow: none;
+                         .btn-link{
+                            .mat-icon{
+                                color: #737373;
+                            } 
+                         }
+                         .badge {
+                            &.bg-primary{
+                                border-radius: 4px;
+                                border: 1px solid #BFDBFE !important;
+                                background-color: #dbeafe !important;
+                                color: #1D4ED8;
+                                padding: 4px 3px;
+                            }
+                            &.doable{
+                                border-radius: 9999px;
+                                border: 1px solid #F59E0B;
+                                background: rgba(245, 158, 11, 0.09);
+                                color: #F59E0B; 
+                            }
+                            &.safe,
+                            &.met{
+                                border-radius: 4px;
+                                border: 1px solid #A7F3D0;
+                                background: #ECFDF5;
+                                color: #047857;
+                            }
+                            &.safe,
+                            &.stretch{
+                                border-radius: 9999px !important;
+                            }
+                            &.stretch, 
+                            &.met.not{
+                                border-radius: 4px;
+                                border: 1px solid #FECACA;
+                                background: #FEF2F2;
+                                color: #DC2626;
+                            } 
+                         }
+                         .goal--status{
+                            .custom-progress{
+                                width: 135px;
+                                .progress{
+                                    height:12px; 
+                                } 
+                                .progress-thumb{
+                                    position: absolute;
+                                    top: 50%;
+                                    transform: translate(-50%, -50%);
+                                    width: 20px;
+                                    height: 20px; 
+                                    border-radius: 50%;
+                                    border: 3px solid #fff;
+                                }
+                            } 
+                            &.doable{
+                                .progress{ 
+                                    background-color: #fac7c7;
+                                    .progress-thumb,
+                                    .progress-bar{
+                                        background-color: #f4a000;
+                                    } 
+                                } 
+                                .g--per{
+                                    color: #F59E0B;
+                                }
+                            }
+                            &.stretch{
+                                .progress{ 
+                                background-color: #fac7c7;
+                                .progress-thumb,
+                                .progress-bar{
+                                    background-color: #ef4444;
+                                } 
+                                } 
+                                .g--per{
+                                    color: #ef4444;
+                                }
+                            }
+                            &.safe{
+                                .progress{ 
+                                        background-color: #fac7c7;
+                                        .progress-thumb,
+                                        .progress-bar{
+                                            background-color: #22C55E;
+                                    } 
+                                } 
+                                .g--per{
+                                    color: #22C55E;
+                                }
+                            }
+                         }
+                         .status--point{
+                            height: 8px;
+                            width: 8px;
+                            border-radius: 20px;
+                            background-color: #22C55E;
+                            &.orange{
+                                background-color: #F59E0B;
+                            }
+                             &.red{
+                                background-color: #EF4444;
+                            }
+                         }
+                         .child--logo{
+                            width: 24px;
+                            height: 24px;   
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;    
+                            border-radius: 4px;
+                            background: #DBEAFE;
+                         }
+                    }
+                    &.row-active{
+                        td{ 
+                            border-bottom: 0.667px solid #E5E5E5;
+                            background: rgba(239, 246, 255, 0.60);
+                            .btn-link{
+                                    .mat-icon{
+                                        color: #1D4ED8;
+                                    } 
+                                } 
+                            }
+                    }
+                }
+                
+            }
+            tr {
+                transition: all 0.25s ease;
+            }
+        }
 
-.goal-table thead th {
-  position: sticky;
-  top: 0;
-  background: #fff;
-  z-index: 2;
-  cursor: pointer;
-}
+        
 
-.level-1 { background: #f8f9fa; font-weight: 600; }
-.level-2 { background: #f1f3f5; }
-.level-3 { background: #fff; }
+        .d-none {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+        }
 
-.goal-bar {
-  height: 6px;
-  border-radius: 10px;
-}
-
-.safe { background: #28a745; }
-.double { background: #f0ad4e; }
-.stretch { background: #dc3545; }
-
-.badge-met {
-  background: #d4edda;
-  color: #155724;
-}
-
-.badge-not {
-  background: #f8d7da;
-  color: #721c24;
-}
-
-.avatar {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  color: white;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-}
-
-.avatar.b { background: purple; }
-.avatar.s { background: green; }
-
-.material-icons {
-  font-size: 18px;
-  vertical-align: middle;
-  cursor: pointer;
-}
+        button {
+            display: flex;
+            align-items: center;
+        }
     }
 }
