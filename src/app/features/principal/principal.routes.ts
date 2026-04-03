@@ -6,5 +6,10 @@ export const PRINCIPALLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./goal-evaluation/goal-evaluation').then(c => c.GoalEvaluation),
     data: { title: 'goal evaluation' }
   },
+  {
+    path: 'diagnostic-breakdown',
+    loadComponent: () => import('./diagnostic-breakdown/diagnostic-breakdown').then(c => c.DiagnosticBreakdown),
+    data: { title: 'diagnostic breakdown' }
+  },
   
 ];

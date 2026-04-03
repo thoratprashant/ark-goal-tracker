@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -63,6 +63,41 @@ interface TableRow1 {
   styleUrl: './goal-evaluation.scss',
 })
 export class GoalEvaluation {
+
+  @ViewChild('scrollContainer') scrollContainer!: ElementRef;
+
+  stats = [
+    {
+      value: 800,
+      label: 'Points',
+      title: '2023-24',
+      color: '#D64550'
+    },
+    {
+      value: 849,
+      label: 'Points',
+      title: '2024-25',
+      color: '#DCE52A'
+    },
+    {
+      value: 900,
+      label: 'Points',
+      title: '2025-26 Goal',
+      color: '#90C955' 
+    },
+    {
+      value: 826,
+      label: 'Points',
+      title: '2025-26 Predicted',
+      color: '#6D94FF'
+    }
+  ];
+
+  maxValue = 1000; // for percentage calculation
+
+  getProgress(value: number): number {
+    return (value / this.maxValue) * 100;
+  }
 
   public chartOptions: any = {
     series: [
@@ -165,6 +200,48 @@ export class GoalEvaluation {
 
   getStatusCssClass(status: string): string {
     return status === 'On Track' ? 'on-track' : 'at-risk';
+  }
+
+  activeIndex = 0;
+  showPrev = false;
+  showNext = true;
+
+  setActive(i: number) {
+    this.activeIndex = i;
+  }
+
+  scrollLeft() {
+    this.scrollContainer.nativeElement.scrollBy({
+      left: -300,
+      behavior: 'smooth'
+    });
+
+    setTimeout(() => this.checkScroll(), 350);
+  }
+
+  scrollRight() {
+    this.scrollContainer.nativeElement.scrollBy({
+      left: 300,
+      behavior: 'smooth'
+    });
+
+    setTimeout(() => this.checkScroll(), 350);
+  }
+
+  checkScroll() {
+    const el = this.scrollContainer.nativeElement;
+
+    const scrollLeft = el.scrollLeft;
+    const scrollWidth = el.scrollWidth;
+    const clientWidth = el.clientWidth;
+
+    this.showPrev = scrollLeft > 5;
+
+    this.showNext = Math.ceil(scrollLeft + clientWidth) < scrollWidth;
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => this.checkScroll(), 100);
   }
 
 }

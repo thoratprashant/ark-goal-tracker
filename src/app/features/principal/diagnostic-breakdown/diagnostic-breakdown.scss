@@ -1,4 +1,4 @@
-.ge--wrapper{
+.db--wrapper{
     .performance--summary-section{
         .main-title{
             font-size: 32px;
@@ -138,70 +138,137 @@
     .grades{
         width: 140px;
     }
-    .performance-summary-section{
+    .selection-export-section{
         .card{
-            margin-top: 1.25rem;
+            margin-top: 1rem;
             border-radius: 0.5rem;
-            background: #fff;
+            background: #EFF6FF;
+            border: 1px solid #DBEAFE;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.10);
             gap: 12px;
-            h3{
-                font-size: 1.813rem;
-            }
-            .side--box{
-                width: 2.25rem;
-                height: 2.25rem;
-                border-radius: 0.5rem;
-                background: #EFF6FF;
-                img{
-                    width: 1.25rem;
-                    height: 1.25rem;
+            .options-list {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                .option-item {
+                    cursor: pointer;
+                    font-weight: 400;
+                    text-transform: capitalize;
+                    font-size: .8rem;
+                    padding: .59rem .5rem;
+                    border-radius: 6px;
+                    border: 1px solid #E2E8F0;
+                    background: #f8fafc;
+                    box-shadow: 0 1px 2px #0000000d;
+                    &:hover {
+                        background: #0d2a7c;
+                        color: #fff;
+                    }
+                    &.selected {
+                        background: #0d2a7c;
+                        color: #fff;
+                        box-shadow: 0 1px 2px #0000000d;
+                        .checkmark {
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                    }
                 }
-            }
-            &.green-section{
-                border-left: 3.556px solid #90C955;
-            }
-            &.orange-section{
-                border-left: 3.556px solid #F59E0B;
-            }
-            &.red-section{
-                border-left: 3.556px solid #D64550;
-            }
-            .rounded-label-section{
-                border-radius: 9999px;
-                padding: 0.25rem 0.5rem;
-                width:fit-content;
-                img{
-                    width: 1rem;
-                    height: 1rem;
-                }
-                &.green{
-                    background: #F0FDF4;
-                    color: #90C955;
-                }
-                &.orange{
-                    background: #ea914e1a;
-                    color: #EA914E;
-                }
-                &.red{
-                    background: #d645501a;
-                    color: #D64550;
+                .option-content {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    .checkmark {
+                        color: #fff;
+                        font-size: 13px;
+                        font-weight: bold;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        opacity: 0;
+                        transform: scale(0.5);
+                        transition: all 0.2s ease;
+                    }
+                    .option-label {
+                        font-size: 13px;
+                        flex: 1;
+                    }
                 }
             }
         }
     }
-    .subject-level-table{
+    
+    .toggle-container {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 8px;
+        border: 1px solid #E2E8F0;
+        background: #FFF;
+        padding: 10px;
+        gap: 12px;
+        .mat-button-toggle {
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: transparent;
+            color: #737373;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .mat-button-toggle-checked {
+            border-radius: 6px;
+            background: #0D2A7C;
+            color: #fff;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10);
+        }
+
+        // Remove Material default divider line
+        .mat-button-toggle + .mat-button-toggle {
+            border-left: none !important;
+        }
+
+        // Remove ripple overlay background
+        .mat-button-toggle-focus-overlay {
+            display: none;
+        }
+
+        ::ng-deep{ 
+            .mat-pseudo-checkbox {
+                display: none !important;
+            }
+            .mat-button-toggle-checked .mat-button-toggle-button:has(.mat-button-toggle-checkbox-wrapper){
+                padding-left: 0px !important;
+            }
+            .mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
+                line-height: 20px !important;
+                padding: 0px !important;
+            }
+        }
+    }
+
+    .grade-breakdown-table{
         margin-top: 1rem;
         .table{
             min-width: 750px;
             thead{
                 tr{
-                    th{}
+                    th{
+                        &:nth-child(1) {
+                            width: 20%;
+                        }
+                    }
                 }
             }
             tbody{
                 tr{
                     td{
+                        &:nth-child(1) {
+                            word-break: break-all;
+                        }
                         .bg-highlight{
                             border-radius: 9999px;
                             padding: 0.25rem 1rem;
@@ -214,6 +281,10 @@
                             &.yellow-bg{
                                 background-color: #FEF3C7;
                                 color: #B45309;
+                            }
+                            &.red-bg{
+                                background-color: #FEE2E2;
+                                color: #D64550;
                             }
                         }
                         .final-status{
@@ -237,6 +308,7 @@
     }
     .chart-container {
         width: 100%;
+        max-width: 100%;
         margin: 0 auto;
         padding: 20px 0 0px 0;
         @media (max-width: 768px) {
@@ -307,12 +379,15 @@
 }
 
 @media (max-width: 575px) {
-    .ge--wrapper{
+    .db--wrapper{
         .gpa{
             width: 100%;
         }
         .grades{
             width: 100%;
+        }
+        .chart-container{
+            overflow-x: auto;
         }
         .performance--summary-section{
             .indicators-wrapper{
