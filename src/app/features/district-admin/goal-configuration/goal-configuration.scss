@@ -233,3 +233,13 @@
         }
     }
 }
+
+@media (max-width: 767px) {
+    .goalc--wrapper .goal--tile .goal--details h2 {
+        font-size: 19px; 
+    }
+    .goalc--wrapper .goal--tile .goal--icon{
+        width: 28px;
+        height: 28px;
+    }
+}
