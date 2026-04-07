@@ -7,16 +7,19 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AlertDialog } from '../../comman/alert-dialog/alert-dialog'; 
 import { CommonService } from '../../../core/helper/common.service';
 import { RouterLink } from '@angular/router';
+import { ChangePassword } from '../../../shared/components/change-password/change-password';
 
 @Component({
   selector: 'app-profile',
-  imports: [MatIconModule,CommonModule,MatButtonModule,MatDialogModule,MatCheckboxModule,RouterLink ],
+  imports: [MatIconModule,CommonModule,MatButtonModule,MatDialogModule,MatCheckboxModule,RouterLink],
   templateUrl: './profile.html',
   styleUrl: './profile.scss',
 })
 export class Profile {
+  
 
   readonly dialog = inject(MatDialog); 
+
   constructor( private commonService: CommonService,) {}
 
   alert() { 
@@ -33,6 +36,7 @@ export class Profile {
       }
     });
   } 
+
   isEditMode = false;
 
   enableEdit() {
@@ -50,5 +54,38 @@ export class Profile {
       this.commonService.hideLoader();
     }, 1000);
   }
+
+  
+  
+      changePassword(){
+       this.dialog.open(ChangePassword, {
+            width: '437px',
+            panelClass: 'modal--wrapper',
+            autoFocus: false, 
+        });
+      }
+  
+      logs = [
+        {
+          role: 'District Admin',
+          method: 'Password Method',
+          date: '03/02/2026, 02:05 AM'
+        },
+        {
+          role: 'State Admin',
+          method: 'OTP Method',
+          date: '03/02/2026, 03:15 AM'
+        },
+        {
+          role: 'User',
+          method: 'Password Method',
+          date: '03/02/2026, 04:10 AM'
+        },
+        {
+          role: 'Super Admin',
+          method: 'SSO Login',
+          date: '03/02/2026, 05:45 AM'
+        }
+      ];
   
 }
