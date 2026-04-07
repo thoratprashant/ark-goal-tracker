@@ -129,5 +129,36 @@
 
       </div>
     </div>
+
+    <div class="col-12">
+      <div class="card mt-3 auth--secu--sec">
+        <div class="card-header d-flex">
+          <div class="pp--sec position-relative d-flex align-items-center mb-3 mb-sm-0">
+            <img src="images/key.svg" alt="img" class="me-2">
+            <h2 class="fw-bold text-secondary mb-0 ms-2">Login Logs</h2>
+          </div>
+        </div>
+
+        <div class="card-body logs-wrapper p-0 d-flex flex-wrap gap-3 gap-sm-4">
+          @for (log of logs; track $index) {
+          <div class="login--logs">
+            <div class="point"></div>
+
+            <p class="font-13 text-secondary mb-0">
+              <span class="fw-semibold">{{ log.role }}</span>
+              Logged In by
+              <span class="fw-semibold">{{ log.method }}</span>
+              - {{ log.date }}
+            </p>
+          </div>
+          }
+        </div>
+
+      </div>
+    </div>
+
+
+
+
   </div>
 </div>
