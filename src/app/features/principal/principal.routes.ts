@@ -11,5 +11,10 @@ export const PRINCIPALLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./diagnostic-breakdown/diagnostic-breakdown').then(c => c.DiagnosticBreakdown),
     data: { title: 'diagnostic breakdown' }
   },
+  {
+    path: 'subject-drill-down',
+    loadComponent: () => import('./subject-drill-down/subject-drill-down').then(c => c.SubjectDrillDown),
+    data: { title: 'subject drill down' }
+  },
   
 ];
