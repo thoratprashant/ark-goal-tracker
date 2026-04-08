@@ -85,6 +85,28 @@
                         text-transform: uppercase;
                     }
                 }
+                .bottom-notation{
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 100px;
+                    &.green-notation{
+                        background-color: #90C955;
+                    }
+                    &.yellow-notation{
+                        background-color: #DCE52A;
+                    }
+                    &.blue-notation{
+                        background-color: #0085FF;
+                    }
+                    &.grey-notation{
+                        background-color: #6B7280;
+                    }
+                }
+                .predicted-performance-label{
+                    padding: 0 6px;
+                    border-radius: 3px;
+                    background: #d6455080;
+                }
             }
         }
         .total-performance-section{
