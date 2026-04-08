@@ -41,8 +41,8 @@
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
               <label class="form-label">Employee ID </label>
               <div class="icon--input--box position-relative w-100">
-                <input type="text" class="form-control" value="-" placeholder="Enter employee id" disabled> 
-                 <img src="images/id-grey.svg" alt="img" class="icon">
+                <input type="text" class="form-control" value="-" placeholder="Enter employee id" disabled>
+                <img src="images/id-grey.svg" alt="img" class="icon">
               </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
@@ -78,41 +78,84 @@
     <div class="col-12">
       <div class="card mt-3 auth--secu--sec">
         <div class="card-header d-flex">
-          <div class="pp--sec position-relative d-flex align-items-center mb-3 mb-sm-0"> 
-             <mat-icon fontSet="material-icons-outlined"> shield</mat-icon>
-              <h2 class="fw-bold text-secondary mb-0 ms-2">Authentication & Security</h2> 
+          <div class="pp--sec position-relative d-flex align-items-center mb-3 mb-sm-0">
+            <mat-icon fontSet="material-icons-outlined"> shield</mat-icon>
+            <h2 class="fw-bold text-secondary mb-0 ms-2">Authentication & Security</h2>
           </div>
         </div>
 
         <div class="card-body p-0">
-          <h5 class="font-14 text-secondary mb-1 fw-semibold d-flex align-items-center">
-            <img src="images/key.svg" alt="img" class="me-2">
-            Password
-          </h5>
-          <p class="clr--7373 font-13 manage--line">Manage your account password</p>
-          <h5 class="font-15 text-secondary mb-3 fw-semibold ">
+          <div class="manage--line gap-2 gap-4 d-flex flex-wrap align-items-center">
+            <div class="d-flex flex-column">
+              <h5 class="font-14 text-secondary mb-1 fw-semibold d-flex align-items-center">
+                <img src="images/key.svg" alt="img" class="me-2">
+                Password
+              </h5>
+              <p class="clr--7373 font-13 mb-0">Manage your account password</p>
+            </div>
+            <button type="button" class="btn btn-md btn-outline-primary change--password" (click)="changePassword()">
+              <img src="images/key-blue.svg" alt="img" class="me-2">
+              Change Password
+            </button>
+          </div>
+          <h5 class="font-15 text-secondary mb-2 mb-sm-3 fw-semibold ">
             Session & Security Information
           </h5>
 
-          <div class="row"> 
+
+          <div class="row">
             <div class="col-12 col-sm-6 mb-4">
-              <label class="form-label">Last Login</label>
+              <label class="form-label d-flex align-items-center flex-wrap">Last Login
+                <div class="fw-semibold font-11 ready--only">Read-only</div>
+              </label>
               <div class="icon--input--box position-relative w-100">
-                <input type="text" class="form-control" value="No previous login" placeholder="Enter last login" disabled>
+                <input type="text" class="form-control" value="No previous login" placeholder="Enter last login"
+                  disabled>
                 <mat-icon fontSet="material-icons-outlined">schedule</mat-icon>
               </div>
-            </div> 
+            </div>
             <div class="col-12 col-sm-6 mb-4">
-              <label class="form-label">Authentication Method</label>
+              <label class="form-label d-flex align-items-center flex-wrap">Authentication Method
+                <div class="fw-semibold font-11 ready--only">Read-only</div>
+              </label>
               <div class="icon--input--box position-relative w-100">
-                <input type="text" class="form-control" value="Password" placeholder="Enter authentication method" disabled>
+                <input type="text" class="form-control" value="Password" placeholder="Enter authentication method"
+                  disabled>
                 <mat-icon fontSet="material-icons-outlined">shield</mat-icon>
               </div>
-            </div> 
+            </div>
           </div>
         </div>
 
       </div>
     </div>
+
+    <div class="col-12">
+      <div class="card mt-3 auth--secu--sec">
+        <div class="card-header d-flex">
+          <div class="pp--sec position-relative d-flex align-items-center mb-3 mb-sm-0">
+            <img src="images/key.svg" alt="img" class="me-2">
+            <h2 class="fw-bold text-secondary mb-0 ms-2">Login Logs</h2>
+          </div>
+        </div>
+
+        <div class="card-body logs-wrapper p-0 d-flex flex-wrap gap-3 gap-sm-4">
+          @for (log of logs; track $index) {
+          <div class="login--logs">
+            <div class="point"></div>
+
+            <p class="font-13 text-secondary mb-0">
+              <span class="fw-semibold">{{ log.role }}</span>
+              Logged In by
+              <span class="fw-semibold">{{ log.method }}</span>
+              - {{ log.date }}
+            </p>
+          </div>
+          }
+        </div>
+
+      </div>
+    </div> 
+    
   </div>
 </div>

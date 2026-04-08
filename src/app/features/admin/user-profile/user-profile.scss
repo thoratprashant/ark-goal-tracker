@@ -12,5 +12,34 @@
             padding-bottom: 24px;
             margin-bottom: 24px;
         }
+        .change--password{
+            border-color: #0D2A7C;
+            color: #0D2A7C;
+        }
+        .login--logs{
+            border-radius: 8px;
+            border: 1px solid #CBD5E1;
+            background: #FFF;
+            padding: 12px; 
+            display: flex;
+            align-items: center;  
+            width: calc(48%); /* 2 per row */ 
+
+            .point{
+                border-radius: 100px;
+                background: #0D2A7C;
+                width: 10px;
+                height: 10px;
+                flex-shrink: 0;
+                margin-right: 10px;
+
+            }
+        }
     } 
+}
+
+@media (max-width: 576px) {
+  .auth--secu--sec .card-body .login--logs {
+    width: 100%;  
+  }
 }
