@@ -1,131 +1,4 @@
 .db--wrapper{
-    .performance--summary-section{
-        .main-title{
-            font-size: 32px;
-            color: #fff;
-            line-height: 32px;
-            margin-bottom: 8px;
-        }
-        .second-title{
-            color: #fff;
-            line-height: 20px;
-            margin-bottom: 8px;
-        }
-        .clr--BFD{color: #BFDBFE;}
-        .clr--90C9{color: #90C955;}
-        .clr--EA914{color: #EA914E;}
-        .clr--D64550{color: #D64550;}
-
-        .card{
-            border-radius: 16px;
-            border: 1px solid #E5E5E5;
-            background: #0D2A7C;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
-            .header-section{
-                gap: 16px;
-                .total-students-section{
-                    gap: 16px;
-
-                }
-            }
-            .arr--btn {
-                border: none;
-                background: linear-gradient(180deg, #EDF4FF 0%, rgba(255, 255, 255, 0.00) 101.96%);
-                width: 35px;
-                height: 37px;
-                border-radius: 10%;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                &:hover {
-                    background: #EDF4FF;
-                }
-
-                .mat-icon {
-                    font-size: 18px;
-                    width: 18px;
-                    height: 18px;
-                    color: #0032A0;
-                }
-            }
-            .section-slider{
-                overflow-x: auto;
-                scroll-behavior: smooth;
-                gap: 10px;
-                flex: 1;
-                &::-webkit-scrollbar {
-                    display: none;
-                }
-            }
-            .backdrop-card{
-                .card{
-                    height: 100%;
-                    border-radius: 12px;
-                    background: #ffffff1a;
-                    backdrop-filter: blur(2px);
-                    border: none;
-                    box-shadow: none;
-                    padding: 16px;
-                    img{
-                        width: 20px;
-                        height: 20px;
-                    }
-                    .inner-divider-line{
-                        border: 1px solid #ffffff33;
-                    }
-                    .inner-section-box{
-                        min-height: 70px;
-                        border-radius: 4px;
-                        background: #ffffff33;
-                        padding: 8px;
-                        p{
-                            line-height: 16px;
-                            letter-spacing: 0.3px;
-                            text-transform: uppercase;
-                        }
-                    }
-                }
-            }
-            .indicators-wrapper{
-                gap: 10px;
-                .ring-indicators-section{
-                    color: #fff;
-                    .circle {
-                        width: 60px;
-                        height: 60px;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        position: relative;
-                        transition: background 1s ease-in-out;
-                    }
-                    .circle::before {
-                        content: '';
-                        width: 45px;
-                        height: 45px;
-                        background: #0D2A7C;
-                        border-radius: 50%;
-                        position: absolute;
-                    }
-                    .inner {
-                        position: relative;
-                        text-align: center;
-                        z-index: 1;
-                        .label {
-                            opacity: 0.8;
-                        }
-                    }
-                }
-            }
-            .divider-line{
-                border: 1px solid #ffffff33;
-                margin: 20px 0px;
-            }
-        }
-    }
     .head--sec{
         h4{
             font-size: 1.438rem;
@@ -366,6 +239,12 @@
     }
 }
 
+@media (min-width: 1025px) and (max-width: 1280px){
+    body .head--sec h4 {
+        font-size: 1.2rem;
+    }
+}
+
 @media (max-width: 767px) {
     body .head--sec h4 {
         font-size: 1.2rem;
@@ -388,21 +267,6 @@
         }
         .chart-container{
             overflow-x: auto;
-        }
-        .performance--summary-section{
-            .indicators-wrapper{
-                .ring-indicators-section{
-                    width: 45%;
-                    .circle{
-                        width: 100px !important;
-                        height: 100px !important;
-                        &::before{
-                            width: 85px !important;
-                            height: 85px !important;
-                        }
-                    }
-                }
-            }
         }
     }
 }

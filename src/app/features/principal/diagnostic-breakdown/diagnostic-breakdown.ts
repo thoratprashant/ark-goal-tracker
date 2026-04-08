@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, signal, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, signal, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -24,6 +24,7 @@ import {
   ApexGrid,
   ApexMarkers,
 } from "ng-apexcharts";
+import { PerformanceSummary } from '../../comman/performance-summary/performance-summary';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -109,13 +110,21 @@ interface ExportOption {
 @Component({
   selector: 'app-diagnostic-breakdown',
   standalone: true,
-  imports: [MatIconModule, CommonModule, MatButtonModule, MatSelectModule, MatFormFieldModule, ChartComponent, MatButtonToggleModule],
+  imports: [MatIconModule, CommonModule, MatButtonModule, MatSelectModule, MatFormFieldModule, ChartComponent, MatButtonToggleModule, PerformanceSummary],
   templateUrl: './diagnostic-breakdown.html',
   styleUrl: './diagnostic-breakdown.scss',
 })
 export class DiagnosticBreakdown {
 
-  @ViewChild('scrollContainer') scrollContainer!: ElementRef;
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  @ViewChild('scrollContainer', { static: false })
+  scrollContainer!: ElementRef<HTMLDivElement>;
+
+  activeIndex = 0;
+  showPrev = false;
+  showNext = false;
+  isScrollable = false;
 
   stats = [
     {
@@ -426,46 +435,61 @@ export class DiagnosticBreakdown {
      return value >= 70 ? 'green-bg' : 'red-bg';
   }
 
-  activeIndex = 0;
-  showPrev = false;
-  showNext = true;
-
-  setActive(i: number) {
-    this.activeIndex = i;
+  ngAfterViewInit() {
+    this.updateScrollButtons();
+    setTimeout(() => this.checkScroll(), 100);
   }
 
   scrollLeft() {
+    if (!this.scrollContainer || !this.isScrollable) return;
+
     this.scrollContainer.nativeElement.scrollBy({
-      left: -300,
+      left: -100,
       behavior: 'smooth'
     });
 
-    setTimeout(() => this.checkScroll(), 350);
+    setTimeout(() => this.checkScroll(), 300);
   }
 
   scrollRight() {
+    if (!this.scrollContainer || !this.isScrollable) return;
+
     this.scrollContainer.nativeElement.scrollBy({
-      left: 300,
+      left: 100,
       behavior: 'smooth'
     });
 
-    setTimeout(() => this.checkScroll(), 350);
+    setTimeout(() => this.checkScroll(), 300);
   }
 
   checkScroll() {
+    if (!this.scrollContainer) return;
+
     const el = this.scrollContainer.nativeElement;
+    const maxScrollLeft = el.scrollWidth - el.clientWidth;
 
-    const scrollLeft = el.scrollLeft;
-    const scrollWidth = el.scrollWidth;
-    const clientWidth = el.clientWidth;
+    this.isScrollable = el.scrollWidth > el.clientWidth + 5;
 
-    this.showPrev = scrollLeft > 5;
+    if (!this.isScrollable) {
+      this.showPrev = false;
+      this.showNext = false;
+    } else {
+      this.showPrev = el.scrollLeft > 5;
+      this.showNext = el.scrollLeft < maxScrollLeft - 5;
+    }
 
-    this.showNext = Math.ceil(scrollLeft + clientWidth) < scrollWidth;
+    this.cdr.detectChanges();
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => this.checkScroll(), 100);
+  updateScrollButtons(): void {
+    setTimeout(() => {
+      this.checkScroll();
+    }, 50);
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
+    this.updateScrollButtons();
   }
 
 }

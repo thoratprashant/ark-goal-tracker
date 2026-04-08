@@ -25,7 +25,6 @@
                 gap: 16px;
                 .total-students-section{
                     gap: 16px;
-
                 }
             }
             .arr--btn {
@@ -53,8 +52,12 @@
             .section-slider{
                 overflow-x: auto;
                 scroll-behavior: smooth;
-                gap: 10px;
+                white-space: nowrap;
+                width: 100%;
+                scrollbar-width: none;
                 flex: 1;
+                gap: 10px;
+                
                 &::-webkit-scrollbar {
                     display: none;
                 }
