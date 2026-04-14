@@ -1,0 +1,298 @@
+.sm--wrapper{
+    .head--sec{
+        h4{
+            font-size: 1.438rem;
+            margin-top: 0.31rem;
+        }
+    }
+    .gpa{
+        width: 135px;
+    }
+    .grades{
+        width: 147px;
+    }
+    .student-details-header{
+        margin-top: 16px;
+        padding: 24px;
+        border-radius: 10px 10px 0px 0px;
+        border: 1px solid #E2E8F0;
+        border-bottom: none;
+        background: #FFF;
+        .student-name-initials-section{
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: #0D2A7C;
+        }
+    }
+    .bottom-outer-section{
+        padding: 24px;
+        border-radius: 0px 0px 10px 10px;
+        background: #F8FAFC;
+        border: 1px solid #E2E8F0;
+        .progress {
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .chart-container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px 0 0px 0;
+            @media (max-width: 768px) {
+                padding: 20px 10px 0px 10px;
+            }
+        }
+        .score-contribution-breakdown-table{
+            .table{
+                min-width: 610px;
+                thead{
+                    tr{
+                        th{
+                            &:nth-child(1) {
+                                width: 20%;
+                            }
+                        }
+                    }
+                }
+                tbody{
+                    tr{
+                        td{
+                            &:nth-child(1) {
+                                word-break: break-all;
+                            }
+                            .bg-highlight{
+                                border-radius: 9999px;
+                                padding: 0.25rem 1rem;
+                                display: inline-flex;
+                                font-weight: 600;
+                                &.green-bg{
+                                    background-color: #DCFCE7;
+                                    color: #15803D;
+                                }
+                                &.yellow-bg{
+                                    background-color: #FEF3C7;
+                                    color: #B45309;
+                                }
+                                &.red-bg{
+                                    background-color: #FEE2E2;
+                                    color: #D64550;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .total-predicted-score{
+            padding: 10px;
+            border-radius: 6px;
+            background: #0D2A7C;
+            box-shadow: 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;
+        }
+        .left-sections{
+            gap: 16px 0px;
+            align-items: stretch;
+            .card{
+                width: 100%;
+                gap: 8px;
+                margin-bottom: 0;
+                padding: 16px;
+                border-radius: 12px;
+                border: 1px solid #E2E8F0;
+                background: #FFF;
+                .divider-line{
+                    border: 1px solid #E2E8F0;
+                }
+                .blue-bg-card{
+                    padding: 6px;
+                    border-radius: 4px;
+                    background: #EFF6FF;
+                }
+                @media (min-width: 576px) and (max-width: 990px) {
+                    width: 49%;
+                }
+            }
+            .card-graph{
+                width: 100%;
+                gap: 12px;
+                margin-bottom: 0;
+                padding: 16px;
+                border-radius: 12px;
+                border: 1px solid #E2E8F0;
+                background: #FFF;
+                .divider-line{
+                    border: 1px solid #E2E8F0;
+                }
+                .chart-scroll-wrapper {
+                    width: 100%;
+                    .chart-container {
+                        width: 100%;
+                        margin: 0 auto;
+                        padding: 0px 0 0px 0;
+                        @media (max-width: 575px) {
+                            padding: 0px 10px 0px 10px;
+                            min-width: 340px;
+                        }
+                    }
+                    @media (max-width: 575px) {
+                        overflow-x: auto;
+                        overflow-y: hidden;
+                        -webkit-overflow-scrolling: touch;
+                    }
+                }
+            }
+            .rounded-label-section{
+                border-radius: 9999px;
+                padding: 0.25rem 0.5rem;
+                width:fit-content;
+                img{
+                    width: 1rem;
+                    height: 1rem;
+                }
+                &.green{
+                    background: #F0FDF4;
+                    color: #90C955;
+                }
+            }
+            @media (min-width: 576px) and (max-width: 990px) {
+                 gap: 16px 9px;
+            }
+        }
+    }
+
+    .toggle-container {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 8px;
+        border: 1px solid #E2E8F0;
+        background: #FFF;
+        padding: 10px;
+        gap: 12px;
+        .mat-button-toggle {
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: transparent;
+            color: #737373;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .mat-button-toggle-checked {
+            border-radius: 6px;
+            background: #0D2A7C;
+            color: #fff;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10);
+        }
+
+        // Remove Material default divider line
+        .mat-button-toggle + .mat-button-toggle {
+            border-left: none !important;
+        }
+
+        // Remove ripple overlay background
+        .mat-button-toggle-focus-overlay {
+            display: none;
+        }
+
+        ::ng-deep{ 
+            .mat-pseudo-checkbox {
+                display: none !important;
+            }
+            .mat-button-toggle-checked .mat-button-toggle-button:has(.mat-button-toggle-checkbox-wrapper){
+                padding-left: 0px !important;
+            }
+            .mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
+                line-height: 20px !important;
+                padding: 0px !important;
+            }
+        }
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px){
+    body {
+        .head--sec h4 {
+            font-size: 1.2rem;
+        }
+        .font-24{
+            font-size: 22px;
+        }
+        .font-18{
+            font-size: 17px;
+        }
+        .font-17{
+            font-size: 16px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        .head--sec h4 {
+            font-size: 1rem;
+        }
+        .font-24{
+            font-size: 20px;
+        }
+        .font-18{
+            font-size: 16px;
+        }
+        .font-17{
+            font-size: 15px;
+        }
+        .font-16{
+            font-size: 14px;
+        }
+        .font-15{
+            font-size: 13px;
+        }
+        .font-13{
+            font-size: 11px;
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    body {
+        .head--sec h4 {
+            font-size: 1rem;
+        }
+        .font-24{
+            font-size: 21px;
+        }
+        .font-18{
+            font-size: 16px;
+        }
+        .font-17{
+            font-size: 15px;
+        }
+        .font-16{
+            font-size: 14px;
+        }
+        .font-15{
+            font-size: 14px;
+        }
+        .font-13{
+            font-size: 12px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .sm--wrapper{
+        .gpa{
+            width: 100%;
+        }
+        .grades{
+            width: 100%;
+        }
+        .toggle-container{
+            flex-wrap: wrap;
+        }
+    }
+}
