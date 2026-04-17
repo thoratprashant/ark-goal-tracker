@@ -135,7 +135,7 @@
         }
         .achievement-band-distribution-table{
             .table{
-                min-width: 1024px;
+                min-width: 1250px;
                 thead{
                     tr{
                         th{
@@ -150,6 +150,9 @@
                                 word-break: break-all;
                             }
                             &:nth-child(3) {
+                                word-break: break-all;
+                            }
+                            &:nth-child(4) {
                                 word-break: break-all;
                             }
                             &:nth-child(10) {

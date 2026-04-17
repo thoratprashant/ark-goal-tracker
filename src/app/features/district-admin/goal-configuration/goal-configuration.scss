@@ -67,6 +67,7 @@
     .card-body{
         table {
             width: 100%;
+            min-width: 1370px;
             thead{
                 tr{
                     th{
@@ -75,6 +76,7 @@
                         font-weight: 600;
                         padding: 10px 16px;
                         border-bottom: 0.667px solid rgba(229, 229, 229, 0.50);
+                        text-transform: uppercase;
                     }
                 }
             }

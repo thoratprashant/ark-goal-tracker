@@ -221,7 +221,7 @@ export class StudentMovement {
       curve: 'straight',
       width: 3
     },
-    colors: ['#173A8A'],
+    colors: ['#0D2A7C'],
     xaxis: {
       categories: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'March'],
       axisBorder: {
@@ -233,7 +233,7 @@ export class StudentMovement {
       labels: {
         style: {
           colors: '#6B7280',
-          fontSize: '14px',
+          fontSize: '10px',
           fontWeight: 400
         }
       }
@@ -246,12 +246,12 @@ export class StudentMovement {
         formatter: (value: number) => `${value}%`,
         style: {
           colors: '#6B7280',
-          fontSize: '14px'
+          fontSize: '10px'
         }
       }
     },
     grid: {
-      borderColor: '#D1D5DB',
+      borderColor: '#D9D9D9',
       strokeDashArray: 4,
       xaxis: {
         lines: {
@@ -271,7 +271,7 @@ export class StudentMovement {
     markers: {
       size: 5,
       strokeWidth: 0,
-      colors: ['#173A8A'],
+      colors: ['#0D2A7C'],
       hover: {
         size: 6
       }
@@ -331,7 +331,7 @@ export class StudentMovement {
     dataLabels: {
       enabled: false
     },
-    colors: ['#8BC34A', '#8BC34A', '#D84B5B', '#E38D47', '#8BC34A'],
+    colors: ['#90C955', '#90C955', '#D64550', '#EA914E', '#90C955'],
     xaxis: {
       categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
       axisBorder: {
@@ -343,7 +343,7 @@ export class StudentMovement {
       labels: {
         style: {
           colors: ['#6B7280', '#6B7280', '#6B7280', '#6B7280', '#6B7280'],
-          fontSize: '14px',
+          fontSize: '10px',
           fontWeight: 400
         }
       }
@@ -356,7 +356,7 @@ export class StudentMovement {
         formatter: (value: number) => `${value}%`,
         style: {
           colors: '#6B7280',
-          fontSize: '14px'
+          fontSize: '10px'
         }
       }
     },
