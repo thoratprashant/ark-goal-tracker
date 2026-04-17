@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
+import { PerformanceSummary } from '../../comman/performance-summary/performance-summary';
 
 interface TableNode {
   name: string;
@@ -24,7 +25,7 @@ interface TableNode {
 
 @Component({
   selector: 'app-goal-configuration',
-  imports: [MatTooltipModule,MatIconModule,MatTableModule, CommonModule, MatButtonModule, MatSelectModule, MatFormFieldModule],
+  imports: [MatTooltipModule,MatIconModule,MatTableModule, CommonModule, MatButtonModule, MatSelectModule, MatFormFieldModule, PerformanceSummary],
   templateUrl: './goal-configuration.html',
   styleUrl: './goal-configuration.scss', 
 })
