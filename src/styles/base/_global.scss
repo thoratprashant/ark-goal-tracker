@@ -346,6 +346,16 @@ body{
           width: 21px;
       }
   }
+  .icon--date {
+    position: absolute;
+    right: 0px;
+    top: -3px;
+    padding: 0 !important;
+    .mat-icon{
+        color: #BBB;
+        font-size: 18px;
+    }
+  }
 
   // Modal
   .modal--wrapper{

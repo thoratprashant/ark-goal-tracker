@@ -79,6 +79,16 @@ interface TableRow1 {
   status: string;
 }
 
+interface CourseRow {
+  course: string;
+  teacher: string;
+  p1: string;
+  p2: string;
+  p3: string;
+  p4: string;
+  grade: string;
+}
+
 @Component({
   selector: 'app-student-movement',
   imports: [MatIconModule, CommonModule, MatButtonModule, MatSelectModule, MatFormFieldModule, MatButtonToggleModule, ChartComponent],
@@ -452,4 +462,13 @@ export class StudentMovement {
       return (str.includes('Absent')) ? 'red-bg' : 'green-bg';
     }
   }
+
+  grades: CourseRow[] = [
+    { course: 'ELA', teacher: 'Ms. Meredith', p1: 'B', p2: 'A', p3: 'A', p4: 'A', grade: 'A' },
+    { course: 'Math', teacher: 'Ms. Tracey', p1: 'B', p2: 'A', p3: 'A', p4: 'A', grade: 'A' },
+    { course: 'Science', teacher: 'Ms. Aisha', p1: 'B', p2: 'A', p3: 'A', p4: 'A', grade: 'A' },
+    { course: 'SS', teacher: 'Mr. Tegre', p1: 'B', p2: 'A', p3: 'A', p4: 'A', grade: 'A' },
+    { course: 'ELA3', teacher: 'Ms. Meredith', p1: 'B', p2: 'A', p3: 'A', p4: 'A', grade: 'A' }
+  ]
+  
 }

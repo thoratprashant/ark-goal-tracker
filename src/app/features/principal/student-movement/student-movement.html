@@ -192,7 +192,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card d-flex flex-column">
+                    <div class="card w-100 d-flex flex-column">
                         <h5 class="font-12 clr--64748B fw-semibold mb-0">COURSE PERFORMANCE</h5>
                         <div class="d-flex justify-content-between gap-2">
                             <div class="d-flex flex-column gap-1">
@@ -205,6 +205,32 @@
                                     <p class="clr--90C9 font-18 fw-bold mb-0">84%</p>
                                 </div>
                             </div>
+                        </div>
+                        <div class="table-responsive course-performance-table">
+                            <table class="table table-custom table-centered m-0">
+                                <thead class="thead-sm">
+                                    <tr class="text-uppercase">
+                                        <th class="clr--64748B font-8 fw-semibold">Course</th>
+                                        <th class="clr--64748B font-8 fw-semibold">Teacher</th>
+                                        <th class="clr--64748B font-8 fw-semibold text-center">P1</th>
+                                        <th class="clr--64748B font-8 fw-semibold text-center">P2</th>
+                                        <th class="clr--64748B font-8 fw-semibold text-center">P3</th>
+                                        <th class="clr--64748B font-8 fw-semibold text-center">P4</th>
+                                        <th class="clr--64748B font-8 fw-semibold text-center">Grade</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of grades">
+                                        <td class="clr--64748B font-8 fw-normal">{{ item.course }}</td>
+                                        <td class="clr--64748B font-8 fw-normal">{{ item.teacher }}</td>
+                                        <td class="clr--64748B font-8 fw-normal text-center">{{ item.p1 }}</td>
+                                        <td class="clr--64748B font-8 fw-normal text-center">{{ item.p2 }}</td>
+                                        <td class="clr--64748B font-8 fw-normal text-center">{{ item.p3 }}</td>
+                                        <td class="clr--64748B font-8 fw-normal text-center">{{ item.p4 }}</td>
+                                        <td class="clr--64748B font-8 fw-normal text-center">{{ item.grade }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

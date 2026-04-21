@@ -8,10 +8,14 @@ import { AlertDialog } from '../../comman/alert-dialog/alert-dialog';
 import { CommonService } from '../../../core/helper/common.service';
 import { RouterLink } from '@angular/router';
 import { ChangePassword } from '../../../shared/components/change-password/change-password';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-profile',
-  imports: [MatIconModule,CommonModule,MatButtonModule,MatDialogModule,MatCheckboxModule,RouterLink],
+  imports: [MatIconModule,CommonModule,MatButtonModule,MatDialogModule,MatCheckboxModule, MatFormFieldModule,MatInputModule,MatDatepickerModule,MatNativeDateModule],
   templateUrl: './profile.html',
   styleUrl: './profile.scss',
 })

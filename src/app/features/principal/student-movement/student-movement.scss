@@ -158,6 +158,38 @@
             @media (min-width: 576px) and (max-width: 990px) {
                  gap: 16px 9px;
             }
+            .course-performance-table{
+                .table{
+                    thead{
+                        tr{
+                            th{
+                                padding: 5px 4px;
+                                font-size: 8px;
+                                @media (max-width: 575px) {
+                                    font-size: 9px;
+                                }
+                                @media (min-width: 576px) and (max-width: 990px) {
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                    tbody{
+                        tr{
+                            td{
+                                padding: 5px 4px;
+                                font-size: 8px;
+                                @media (max-width: 575px) {
+                                    font-size: 9px;
+                                }
+                                @media (min-width: 576px) and (max-width: 990px) {
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
