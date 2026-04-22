@@ -1,1 +1,0 @@
-import"./chunk-7CGTOI24.js";var t=[{path:"goal-configuration",loadComponent:()=>import("./chunk-XF3FCVO6.js").then(o=>o.GoalConfiguration),data:{title:"Goal Configuration"}}];export{t as DISTRICTADMINLAYOUT_ROUTES};
