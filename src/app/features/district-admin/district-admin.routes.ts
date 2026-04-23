@@ -6,5 +6,9 @@ export const DISTRICTADMINLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./goal-configuration/goal-configuration').then(c => c.GoalConfiguration),
     data: { title: 'Goal Configuration' }
   },
- 
+  {
+    path: 'dashboard',
+    loadComponent: () => import('./district-dashboard/district-dashboard').then(c => c.DistrictDashboard),
+    data: { title: 'Dashboard' }
+  },
 ];
