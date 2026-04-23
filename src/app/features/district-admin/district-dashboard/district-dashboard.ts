@@ -28,6 +28,7 @@ interface SelectedFilters {
 })
 export class DistrictDashboard {
   viewMode = signal<'all' | 'elementary' | 'middle' | 'high'>('all');
+  viewMode1 = signal<'school' | 'attendance' | 'region' | 'tier'>('school');
 
   showFilters = false;
 
