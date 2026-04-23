@@ -11,4 +11,10 @@ export const DISTRICTADMINLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./district-dashboard/district-dashboard').then(c => c.DistrictDashboard),
     data: { title: 'Dashboard' }
   },
+  {
+    path: 'school-details',
+    loadComponent: () => import('./school-details/school-details').then(c => c.SchoolDetails),
+    data: { title: 'School Details' }
+  },
+ 
 ];
