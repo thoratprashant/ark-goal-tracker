@@ -7,6 +7,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 
+interface ActiveFilter {
+  key: keyof SelectedFilters;
+  label: string;
+  value: string;
+}
+
+interface SelectedFilters {
+  grade: string | null;
+  status: string | null;
+  score: string | null;
+  tier: string | null;
+}
+
 @Component({
   selector: 'app-district-dashboard',
   imports: [MatIconModule, CommonModule, MatButtonModule, MatButtonToggleModule, FormsModule, MatFormFieldModule, MatSelectModule],
@@ -15,6 +28,12 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class DistrictDashboard {
   viewMode = signal<'all' | 'elementary' | 'middle' | 'high'>('all');
+
+  showFilters = false;
+
+  toggleFilters(): void {
+    this.showFilters = !this.showFilters;
+  }
   
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -114,5 +133,51 @@ export class DistrictDashboard {
   @HostListener('window:resize')
   onResize(): void {
     this.updateScrollButtons();
+  }
+
+  gradeOptions: string[] = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'];
+  statusOptions: string[] = ['Status 1', 'Status 2', 'Status 3', 'Status 4'];
+  scoreOptions: string[] = ['Below 40%', '40% - 60%', '60% - 80%', 'Above 80%'];
+  tierOptions: string[] = ['Tier 1', 'Tier 2', 'Tier 3', 'Tier 4'];
+
+  selectedFilters: SelectedFilters = {
+    grade: null,
+    status: null,
+    score: null,
+    tier: null
+  };
+
+  activeFilters: ActiveFilter[] = [];
+
+  updateActiveFilters(): void {
+    this.activeFilters = [
+      this.selectedFilters.grade
+        ? { key: 'grade', label: 'Grade', value: this.selectedFilters.grade }
+        : null,
+      this.selectedFilters.status
+        ? { key: 'status', label: 'Status', value: this.selectedFilters.status }
+        : null,
+      this.selectedFilters.score
+        ? { key: 'score', label: 'Score', value: this.selectedFilters.score }
+        : null,
+      this.selectedFilters.tier
+        ? { key: 'tier', label: 'Tier', value: this.selectedFilters.tier }
+        : null
+    ].filter((item): item is ActiveFilter => item !== null);
+  }
+
+  removeFilter(key: keyof SelectedFilters): void {
+    this.selectedFilters[key] = null;
+    this.updateActiveFilters();
+  }
+
+  resetFilters(): void {
+    this.selectedFilters = {
+      grade: null,
+      status: null,
+      score: null,
+      tier: null
+    };
+    this.updateActiveFilters();
   }
 }

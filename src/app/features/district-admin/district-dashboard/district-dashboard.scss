@@ -5,7 +5,9 @@
             margin-top: 0.31rem;
         }
     }
-
+    .grades{
+        width: 140px;
+    }
     .performance--summary-section{
         .main-title{
             font-size: 32px;
@@ -164,7 +166,6 @@
             }
         }
     }
-
     .bottom-outer-section{
         padding: 24px;
         border-radius: 16px;
@@ -177,6 +178,38 @@
                 border: 1px solid #E2E8F0;
                 gap: 16px;
                 margin-bottom: 0px;
+                .divider-line{
+                    border: 1px solid #F1F5F9;
+                }
+                .active-filter-chip {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 6px 12px;
+                    border-radius: 6px;
+                    border: 1px solid #BFDBFE;
+                    background: #EFF6FF;
+                    color: #0D2A7C;
+            
+                    .chip-label {
+                        color: #0D2A7C;
+                    }
+
+                    .chip-value {
+                        color: #0D2A7C;
+                    }
+
+                    .chip-close {
+                        width: 16px;
+                        height: 16px;
+                        color: #0D2A7C;
+                        font-size: 16px;
+                        cursor: pointer;
+                        &:hover {
+                        color: #0f172a;
+                        }
+                    }
+                }
             }
         }
     }
@@ -312,6 +345,9 @@
 
 @media (max-width: 575px) {
     .dashboard--wrapper{
+        .grades{
+            width: 100%;
+        }
         .performance--summary-section{
             .main-title{
                 font-size: 25px;

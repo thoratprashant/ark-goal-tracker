@@ -355,52 +355,75 @@
                     </mat-button-toggle>
                 </mat-button-toggle-group>
                 <div class="d-flex flex-shrink-0">
-                    <button type="button" class="btn btn-md btn-outline-primary">
+                    <button type="button" class="btn btn-md btn-outline-primary" (click)="toggleFilters()">
                         <img src="images/filters-icon.svg" alt="icon" class="img-fluid">
                     </button>
                 </div>
             </div>
         </div>
-        <div class="col-12 filters-section">
+        <div class="col-12 filters-section" *ngIf="showFilters">
             <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
-                <div class="d-flex flex-wrap gap-2 align-items-center">
+                <div class="d-flex flex-wrap gap-3 align-items-center">
                     <div class="d-flex align-items-center gap-2">
                         <img src="images/filters-icon.svg" alt="icon" class="img-fluid">
                         <p class="clr--64748B font-13 fw-semibold mb-0">Filters:</p>
                     </div>
                     <mat-form-field appearance="outline" class="grades">
-                    <mat-select placeholder="Grade Level">
-                        <mat-option value="1">Grade 1</mat-option>
-                        <mat-option value="2">Grade 2</mat-option>
-                        <mat-option value="2">Grade 3</mat-option>
-                        <mat-option value="2">Grade 4</mat-option>
-                        <mat-option value="2">Grade 5</mat-option>
+                    <mat-select
+                        placeholder="Grade Level"
+                        [(value)]="selectedFilters.grade"
+                        (selectionChange)="updateActiveFilters()">
+                        <mat-option *ngFor="let grade of gradeOptions" [value]="grade">
+                        {{ grade }}
+                        </mat-option>
                     </mat-select>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="grades">
-                        <mat-select placeholder="All Status">
-                        <mat-option value="1">Status 1</mat-option>
-                        <mat-option value="2">Status 2</mat-option>
-                        <mat-option value="3">Status 3</mat-option>
-                        <mat-option value="4">Status 4</mat-option>
+                        <mat-select
+                            placeholder="All Status"
+                            [(value)]="selectedFilters.status"
+                            (selectionChange)="updateActiveFilters()">
+                            <mat-option *ngFor="let status of statusOptions" [value]="status">
+                            {{ status }}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="grades">
-                        <mat-select placeholder="Overall Score">
-                        <mat-option value="1">Status 1</mat-option>
-                        <mat-option value="2">Status 2</mat-option>
-                        <mat-option value="3">Status 3</mat-option>
-                        <mat-option value="4">Status 4</mat-option>
+                        <mat-select
+                            placeholder="Overall Score"
+                            [(value)]="selectedFilters.score"
+                            (selectionChange)="updateActiveFilters()">
+                            <mat-option *ngFor="let score of scoreOptions" [value]="score">
+                            {{ score }}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="grades">
-                        <mat-select placeholder="All Tiers">
-                        <mat-option value="1">Tier 1</mat-option>
-                        <mat-option value="2">Tier 2</mat-option>
-                        <mat-option value="3">Tier 3</mat-option>
-                        <mat-option value="4">Tier 4</mat-option>
+                        <mat-select
+                            placeholder="All Tiers"
+                            [(value)]="selectedFilters.tier"
+                            (selectionChange)="updateActiveFilters()">
+                            <mat-option *ngFor="let tier of tierOptions" [value]="tier">
+                            {{ tier }}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
+                    <button type="button" class="btn btn-lg btn-primary flex-shrink-0" (click)="resetFilters()">
+                        Reset Filters
+                    </button>
+                </div>
+                <div class="divider-line"></div>
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                    <p class="clr--64748B font-13 fw-semibold mb-0">Active Filters:</p>
+                    <ng-container *ngIf="activeFilters.length">
+                        <div
+                        class="active-filter-chip"
+                        *ngFor="let filter of activeFilters">
+                            <span class="chip-label font-11 fw-semibold">{{ filter.label }}:</span>
+                            <span class="chip-value font-14 fw-semibold">{{ filter.value }}</span>
+                            <mat-icon class="chip-close" fontSet="material-icons-outlined" (click)="removeFilter(filter.key)">close</mat-icon>
+                        </div>
+                    </ng-container>
                 </div>
             </div>
         </div>
