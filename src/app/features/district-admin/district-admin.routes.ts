@@ -6,5 +6,11 @@ export const DISTRICTADMINLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./goal-configuration/goal-configuration').then(c => c.GoalConfiguration),
     data: { title: 'Goal Configuration' }
   },
+  {
+    path: 'school-details',
+    loadComponent: () => import('./school-details/school-details').then(c => c.SchoolDetails),
+    data: { title: 'School Details' }
+  },
+ 
  
 ];
