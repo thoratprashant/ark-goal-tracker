@@ -61,4 +61,122 @@
         }
     }
 
+        .toggle-container {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 8px;
+        border: 1px solid #E2E8F0;
+        background: #FFF;
+        padding: 2px 10px;
+        gap: 12px;
+        .mat-button-toggle {
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: transparent;
+            color: #737373;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .mat-button-toggle-checked {
+            border-radius: 6px;
+            background: #0D2A7C;
+            color: #fff;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10);
+        }
+
+        // Remove Material default divider line
+        .mat-button-toggle + .mat-button-toggle {
+            border-left: none !important;
+        }
+
+        // Remove ripple overlay background
+        .mat-button-toggle-focus-overlay {
+            display: none;
+        }
+
+        ::ng-deep{ 
+            .mat-pseudo-checkbox {
+                display: none !important;
+            }
+            .mat-button-toggle-checked .mat-button-toggle-button:has(.mat-button-toggle-checkbox-wrapper){
+                padding-left: 0px !important;
+            }
+            .mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
+                line-height: 20px !important;
+                padding: 0px !important;
+            }
+        }
+    }
+
+    .grade-breakdown-table{
+        margin-top: 1rem;
+        .table{
+            min-width: 750px;
+            thead{
+                tr{
+                    th{
+                        &:nth-child(1) {
+                            width: 20%;
+                        }
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    td{
+                        &:nth-child(1) {
+                            word-break: break-all;
+                        }
+                        .bg-highlight{
+                            border-radius: 9999px;
+                            padding: 0.25rem 1rem;
+                            display: inline-flex;
+                            font-weight: 600;
+                            &.green-bg{
+                                background-color: #DCFCE7;
+                                color: #15803D;
+                            }
+                            &.yellow-bg{
+                                background-color: #FEF3C7;
+                                color: #B45309;
+                            }
+                            &.red-bg{
+                                background-color: #FEE2E2;
+                                color: #D64550;
+                            }
+                        }
+                        .final-status{
+                            border-radius: 9999px;
+                            padding: 0.125rem 0.625rem;
+                            display: inline-flex;
+                            font-weight: 600;
+                            &.on-track{
+                                background-color: #DBEAFE;
+                                color: #1D4ED8;
+                            }
+                            &.at-risk{
+                                background-color: #FEF3C7;
+                                color: #B45309;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .chart-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 20px 0 0px 0;
+        @media (max-width: 768px) {
+            padding: 20px 10px 0px 10px;
+        }
+    }
+
 }

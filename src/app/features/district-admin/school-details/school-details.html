@@ -92,4 +92,121 @@
       </div>
     </div>
   </div>
+  <div class="row">
+        <div class="col-12">
+      <div class="card p-3 p-sm-4 d-flex flex-column">
+        <h5 class="font-17 text-secondary fw-semibold mb-0">Grade & Teacher Breakdown</h5>
+        <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between mt-3 gap-2">
+
+          <mat-button-toggle-group [value]="viewMode()" (change)="viewMode.set($event.value)" class="toggle-container">
+            <mat-button-toggle value="grade">By Grade</mat-button-toggle>
+            <mat-button-toggle value="teacher">By Teacher</mat-button-toggle>
+          </mat-button-toggle-group>
+
+          <mat-button-toggle-group [value]="chartMode()" (change)="chartMode.set($event.value)"
+            class="toggle-container small">
+            <mat-button-toggle value="table">Table</mat-button-toggle>
+            <mat-button-toggle value="bar">Bar Chart</mat-button-toggle>
+          </mat-button-toggle-group>
+
+        </div>
+        <div class="table-responsive grade-breakdown-table">
+          <!-- By Grade Table -->
+          <table class="table table-custom table-centered m-0" [hidden]="viewMode() !== 'grade'"
+            *ngIf="chartMode() === 'table'">
+            <thead class="thead-sm">
+              <tr class="text-uppercase">
+                <th>Grade</th>
+                <th class="text-center">Ach %</th>
+                <th class="text-center">LG %</th>
+                <th class="text-center">BQ %</th>
+                <th class="text-center">Risk %</th>
+                <th class="text-center">Students</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of dataGrade">
+                <td class="clr--111827 fw-semibold">{{ row.grade }}</td>
+                <td class="text-center">
+                  <div class="bg-highlight" [ngClass]="getStatusClass(row.ach)">
+                    {{ row.ach }}%
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="bg-highlight" [ngClass]="getStatusClass(row.lg)">
+                    {{ row.lg }}%
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="bg-highlight" [ngClass]="getStatusClass(row.bq)">
+                    {{ row.bq }}%
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="bg-highlight" [ngClass]="getStatusCssClass(row.risk)">
+                    {{ row.risk }}
+                  </div>
+                </td>
+                <td class="clr--111827 fw-semibold text-center">{{ row.students }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- By Teacher Table -->
+          <table class="table table-custom table-centered m-0" [hidden]="viewMode() !== 'teacher'"
+            *ngIf="chartMode() === 'table'">
+            <thead class="thead-sm">
+              <tr class="text-uppercase">
+                <th>Teacher</th>
+                <th class="text-center">Ach %</th>
+                <th class="text-center">LG %</th>
+                <th class="text-center">BQ %</th>
+                <th class="text-center">Risk %</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of dataTeacher">
+                <td class="clr--111827 fw-semibold">{{ row.teacher }}</td>
+                <td class="text-center">
+                  <div class="bg-highlight" [ngClass]="getStatusClass(row.ach)">
+                    {{ row.ach }}%
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="bg-highlight" [ngClass]="getStatusClass(row.lg)">
+                    {{ row.lg }}%
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="bg-highlight" [ngClass]="getStatusClass(row.bq)">
+                    {{ row.bq }}%
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="bg-highlight" [ngClass]="getStatusCssClass(row.risk)">
+                    {{ row.risk }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="chart-container" *ngIf="viewMode() === 'grade' && chartMode() === 'bar'">
+          <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+            [yaxis]="chartOptions.yaxis" [grid]="chartOptions.grid" [markers]="chartOptions.markers"
+            [plotOptions]="chartOptions.plotOptions" [dataLabels]="chartOptions.dataLabels"
+            [legend]="chartOptions.legend" [tooltip]="chartOptions.tooltip" [colors]="chartOptions.colors">
+          </apx-chart>
+        </div>
+        <div class="chart-container" *ngIf="viewMode() === 'teacher' && chartMode() === 'bar'">
+          <apx-chart [series]="ChartOptionsTeacher.series" [chart]="ChartOptionsTeacher.chart"
+            [xaxis]="ChartOptionsTeacher.xaxis" [yaxis]="ChartOptionsTeacher.yaxis" [grid]="ChartOptionsTeacher.grid"
+            [markers]="ChartOptionsTeacher.markers" [plotOptions]="ChartOptionsTeacher.plotOptions"
+            [dataLabels]="ChartOptionsTeacher.dataLabels" [legend]="ChartOptionsTeacher.legend"
+            [tooltip]="ChartOptionsTeacher.tooltip" [colors]="ChartOptionsTeacher.colors">
+          </apx-chart>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
