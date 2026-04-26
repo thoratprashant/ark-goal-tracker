@@ -1,1 +1,0 @@
-import"./chunk-7CGTOI24.js";var t=[{path:"goal-configuration",loadComponent:()=>import("./chunk-HIYUJOAI.js").then(o=>o.GoalConfiguration),data:{title:"Goal Configuration"}},{path:"school-details",loadComponent:()=>import("./chunk-66LNHIC7.js").then(o=>o.SchoolDetails),data:{title:"School Details"}}];export{t as DISTRICTADMINLAYOUT_ROUTES};
