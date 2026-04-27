@@ -500,6 +500,50 @@
                     </mat-form-field>
                 </div>
             </div>
+            <div class="table-responsive performance-table">
+                <table class="table table-custom table-centered m-0">
+                    <thead class="thead-sm">
+                        <tr class="text-uppercase">
+                            <th class="font-14 fw-bold">Component</th>
+                            <th class="text-center">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="blue-title font-11 fw-semibold text-white">Elementary</div>
+                                </div>
+                            </th>
+                            <th class="text-center">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="blue-title font-11 fw-semibold text-white">Middle</div>
+                                </div>
+                            </th>
+                            <th class="text-center">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="blue-title font-11 fw-semibold text-white">High</div>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of performanceMatrixtable">
+                            <td class="clr--111827 fw-semibold">{{ row.component }}</td>
+                            <td class="text-center">
+                                <div class="bg-highlight" [ngClass]="getStatusClass(row.elementary)">
+                                    {{ row.elementary }}
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="bg-highlight" [ngClass]="getStatusClass(row.middleSchool)">
+                                    {{ row.middleSchool }}
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="bg-highlight" [ngClass]="getStatusClass(row.highSchool)">
+                                    {{ row.highSchool }}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

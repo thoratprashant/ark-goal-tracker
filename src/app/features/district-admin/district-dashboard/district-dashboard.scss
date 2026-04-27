@@ -240,6 +240,53 @@
                 background: #fff;
                 padding: 16px;
             }
+            .performance-table{
+                .table{
+                    min-width: 750px;
+                    thead{
+                        tr{
+                            th{
+                                .blue-title{
+                                    width: fit-content;
+                                    padding: 4px 12px;
+                                    border-radius: 9999px;
+                                    background: #1E40AF;
+                                }
+                                &:nth-child(1) {
+                                    width: 20%;
+                                }
+                            }
+                        }
+                    }
+                    tbody{
+                        tr{
+                            td{
+                                &:nth-child(1) {
+                                    word-break: break-all;
+                                }
+                                .bg-highlight{
+                                    border-radius: 9999px;
+                                    padding: 0.25rem 1rem;
+                                    display: inline-flex;
+                                    font-weight: 600;
+                                    &.green-bg{
+                                        background-color: #DCFCE7;
+                                        color: #15803D;
+                                    }
+                                    &.yellow-bg{
+                                        background-color: #FEF3C7;
+                                        color: #B45309;
+                                    }
+                                    &.red-bg{
+                                        background-color: #FEE2E2;
+                                        color: #D64550;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     .toggle-container {
