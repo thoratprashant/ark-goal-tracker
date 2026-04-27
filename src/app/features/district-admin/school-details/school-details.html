@@ -206,6 +206,41 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card p-3 p-sm-4 d-flex flex-column mt-3">
+              <h4 class="fw-bold font-20 mb-3">
+                Overall {{ data.totalStudents | number }} Students
+              </h4>
+              <div class="progress custom-progress rounded-3 mb-4">
+
+                <div class="progress-bar bg-green text-dark fw-semibold position-relative" [style.width.%]="data.achWidth"> 
+                  <p class="p--text mb-0 font-12">ACH</p>
+                </div>
+
+                <div class="progress-bar bg-green text-dark fw-semibold position-relative" [style.width.%]="data.achievementWidth">
+                  {{ data.achievement }}%
+                  <p class="p--text mb-0 font-12">LG</p>
+                </div>
+
+                <div class="progress-bar bg-yellow text-dark fw-semibold position-relative" [style.width.%]="data.learningGainWidth">
+                  {{ data.learningGain }}% 
+                  <p class="p--text mb-0 font-12">BQ</p>
+                </div>
+
+                <div class="progress-bar bg-orange text-white fw-semibold position-relative" [style.width.%]="data.bottomQuartileWidth">
+                  {{ data.bottomQuartile }}%
+                  <p class="p--text mb-0 font-12">BQ</p>
+                </div>
+
+                <div class="progress-bar bg-org-fent text-danger fw-semibold position-relative" [style.width.%]="data.totalWidth">
+                  {{ data.total }}%
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-12 mt-2">
@@ -232,7 +267,7 @@
     <div class="col-12">
       <div class="card p-3 p-sm-4 d-flex flex-column">
         <h5 class="font-17 text-secondary fw-semibold mb-0">Grade & Teacher Breakdown</h5>
-        <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between gap-2">
+        <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between gap-2 mt-3">
 
           <mat-button-toggle-group [value]="viewMode()" (change)="viewMode.set($event.value)" class="toggle-container">
             <mat-button-toggle value="grade">By Grade</mat-button-toggle>

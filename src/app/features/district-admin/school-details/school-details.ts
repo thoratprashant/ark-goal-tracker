@@ -73,7 +73,22 @@ export type ChartOptions = {
   templateUrl: './school-details.html',
   styleUrl: './school-details.scss',
 })
-export class SchoolDetails {
+export class SchoolDetails { 
+    data = {
+      totalStudents: 17211,
+
+      ach: 71,
+      achievement: 71,
+      learningGain: 69,
+      bottomQuartile: 61,
+      total: 100,
+
+      achWidth: 40,
+      achievementWidth: 15,
+      learningGainWidth: 15,
+      bottomQuartileWidth: 15,
+      totalWidth: 15
+    };
   viewMode = signal<'grade' | 'teacher'>('grade');
 
   chartMode = signal<'table' | 'bar'>('table');
@@ -153,11 +168,12 @@ export class SchoolDetails {
     legend: {
       position: 'bottom',
       horizontalAlign: 'center',
-      fontSize: '15px',
+      fontSize: '14px',
       fontWeight: 400,
       onItemHover: {
         highlightDataSeries: true
-      }
+      },
+      
     },
 
     annotations: {

@@ -181,5 +181,44 @@
             padding: 20px 10px 0px 10px;
         }
     }
+    .custom-progress{
+        height: 32px;
+        overflow: visible;
+        .progress-bar{
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 2px solid #fff;
+            height: 32px; 
+            overflow: visible;
+            color: #fff;
+        }
+         .p--text{
+                position: absolute;
+                right: 0;
+                bottom: -30px;
+                color: #000;
+            } 
+        .bg-green{
+            background-color: #90C955;
+        } 
+        .bg-orange{
+            background-color: #EA914E;
+        } 
+        .bg-yellow{
+            background-color: #DCE52A;
+        } 
+        .bg-org-fent{
+            background-color: #FEF3C7;
+        }
+        .progress-bar:last-child{
+            border-right: 0;
+        }
+    }
+
+
+
+
 
 }
