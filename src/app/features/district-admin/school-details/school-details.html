@@ -93,7 +93,27 @@
     </div>
   </div>
   <div class="row">
-        <div class="col-12">
+            <div class="col-12 mt-2">
+            <div class="card p-3 p-sm-4 d-flex flex-column">
+                <h5 class="font-17 text-secondary fw-semibold mb-0">School Performance Trend</h5>
+                <div class="chart-container">
+                    <apx-chart
+                        [series]="schoolChartOptions.series"
+                        [chart]="schoolChartOptions.chart"
+                        [xaxis]="schoolChartOptions.xaxis"
+                        [yaxis]="schoolChartOptions.yaxis"
+                        [stroke]="schoolChartOptions.stroke"
+                        [grid]="schoolChartOptions.grid"
+                        [markers]="schoolChartOptions.markers"
+                        [legend]="schoolChartOptions.legend"
+                        [tooltip]="schoolChartOptions.tooltip"
+                        [annotations]="schoolChartOptions.annotations"
+                        [colors]="schoolChartOptions.colors">
+                    </apx-chart>
+                </div>
+            </div>
+        </div>
+    <div class="col-12">
       <div class="card p-3 p-sm-4 d-flex flex-column">
         <h5 class="font-17 text-secondary fw-semibold mb-0">Grade & Teacher Breakdown</h5>
         <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between mt-3 gap-2">

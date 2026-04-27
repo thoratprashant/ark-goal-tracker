@@ -65,6 +65,19 @@ export type ChartOptions = {
   fill: ApexFill;
 };
 
+export type schoolChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  yaxis: ApexYAxis;
+  stroke: ApexStroke;
+  grid: ApexGrid;
+  markers: ApexMarkers;
+  legend: ApexLegend;
+  tooltip: ApexTooltip;
+  annotations: ApexAnnotations;
+  colors: string[];
+};
 
 @Component({
   selector: 'app-school-details',
@@ -78,6 +91,84 @@ export class SchoolDetails {
   chartMode = signal<'table' | 'bar'>('table');
 
   chartModePerformance = signal<'performanceTable' | 'performanceBar'>('performanceTable');
+
+  public schoolChartOptions: any = {
+    series: [
+      {
+        name: 'Actual',
+        data: [68, 72, 75, 78]
+      },
+      {
+        name: 'Target',
+        data: [80, 80, 80, 80]
+      }
+    ],
+    chart: {
+      type: 'line',
+      height: '400',
+      zoom: { enabled: false },
+      toolbar: { show: false }
+    },
+    stroke: {
+      curve: 'straight',
+      width: [3, 2],
+      dashArray: [0, 5] 
+    },
+    colors: ['#3B82F6', '#22C55E'],  // Blue Actual, Green Target
+    xaxis: {
+      categories: ['Team1', 'Team2', 'Team3', 'Team4'],
+      labels: { style: { colors: '#6B7280', fontSize: '12px' } }
+    },
+    yaxis: {
+      min: 0,
+      max: 100,
+      labels: {
+        formatter: (value: number) => `${value}%`,
+        style: { colors: '#6B7280', fontSize: '12px' }
+      },
+      tickAmount: 4  // 0%, 50%, 100%
+    },
+    grid: {
+      borderColor: '#f0f0f0',
+      strokeDashArray: 2
+    },
+    markers: {
+      size: [5, 0],
+      hover: { sizeOffset: 6 }
+    },
+    legend: {
+      position: "bottom",
+      horizontalAlign: "center",
+      fontSize: '15px',
+      fontWeight: 400,
+      onItemHover: {
+        highlightDataSeries: true
+      }
+    },
+    annotations: {
+      yaxis: [
+        {
+          y: 80,
+          borderColor: '#22C55E',
+          label: {
+            text: 'Target',
+            style: {
+              color: '#fff',
+              background: '#22C55E',
+              fontSize: '12px',
+              fontWeight: 600
+            },
+            offsetX: 10
+          }
+        }
+      ]
+    },
+    tooltip: {
+      y: {
+        formatter: (val: number) => `${val}%`
+      }
+    }
+  };
 
   public chartOptions: any = {
     series: [
