@@ -20,6 +20,13 @@ interface SelectedFilters {
   tier: string | null;
 }
 
+interface TableRow {
+  component: string;
+  elementary: string;
+  middleSchool: string;
+  highSchool: string;
+}
+
 @Component({
   selector: 'app-district-dashboard',
   imports: [MatIconModule, CommonModule, MatButtonModule, MatButtonToggleModule, FormsModule, MatFormFieldModule, MatSelectModule],
@@ -180,5 +187,40 @@ export class DistrictDashboard {
       tier: null
     };
     this.updateActiveFilters();
+  }
+
+  performanceMatrixtable: TableRow[] = [
+    { component: 'ELA Achievement', elementary: '75% (+5% from Goal)', middleSchool: '65% (+5% from Goal)', highSchool: '70% (+5% from Goal)'},
+    { component: 'ELA Learning Gains', elementary: '68% (+5% from Goal)', middleSchool: '65% (+5% from Goal)', highSchool: '65% (+5% from Goal)'},
+    { component: 'ELA Bottom Quartile', elementary: '71% (+5% from Goal)', middleSchool: '68% (+5% from Goal)', highSchool: '68% (+5% from Goal)'},
+    { component: 'ELA GD 3', elementary: '78% (+5% from Goal)', middleSchool: '-', highSchool: '-'},
+    { component: 'Math Achievement', elementary: '54% (+5% from Goal)', middleSchool: '68% (+5% from Goal)', highSchool: '78% (+5% from Goal)'},
+    { component: 'Math Learning Gains', elementary: '68% (+5% from Goal)', middleSchool: '46% (+5% from Goal)', highSchool: '68% (+5% from Goal)'},
+    { component: 'Math Bottom Quartile', elementary: '57% (+5% from Goal)', middleSchool: '44% (+5% from Goal)', highSchool: '58% (+5% from Goal)'},
+    { component: 'MS Acceleration', elementary: '-', middleSchool: '54% (+5% from Goal)', highSchool: '-'},
+    { component: 'Sciene Achievement', elementary: '78% (+5% from Goal)', middleSchool: '78% (+5% from Goal)', highSchool: '78% (+5% from Goal)'},
+    { component: 'Social Studies Achievement', elementary: '-', middleSchool: '78% (+5% from Goal)', highSchool: '78% (+5% from Goal)'},
+    { component: 'HS CCA', elementary: '-', middleSchool: '-', highSchool: '78% (+5% from Goal)'},
+    { component: 'Graduation Rate', elementary: '-', middleSchool: '-', highSchool: '-'},
+  ];
+
+  getStatusClass(value: string | null | undefined): string {
+    if (!value || value.trim() === '-') {
+      return '';
+    }
+
+    const num = parseFloat(value);
+
+    if (isNaN(num)) {
+      return '';
+    }
+
+    if (num >= 70) {
+      return 'green-bg';
+    } else if (num >= 60) {
+      return 'yellow-bg';
+    } else {
+      return 'red-bg';
+    }
   }
 }
