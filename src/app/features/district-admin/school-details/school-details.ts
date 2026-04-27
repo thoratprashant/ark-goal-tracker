@@ -361,4 +361,5 @@ export class SchoolDetails {
   getStatusCssClass(value: number): string {
      return value >= 70 ? 'green-bg' : 'red-bg';
   }
+  
 }

@@ -93,39 +93,146 @@
     </div>
   </div>
   <div class="row">
-            <div class="col-12 mt-2">
-            <div class="card p-3 p-sm-4 d-flex flex-column">
-
-              <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between mt-3 gap-2">
-                  <h5 class="font-17 text-secondary fw-semibold mb-0">School Performance Trend</h5>
-                    <mat-button-toggle-group class="toggle-container" value="all">
-                      <mat-button-toggle value="all">All</mat-button-toggle>
-                      <mat-button-toggle value="asc">Ach</mat-button-toggle>
-                      <mat-button-toggle value="lg">LG</mat-button-toggle>
-                      <mat-button-toggle value="bq">BQ</mat-button-toggle>
-                  </mat-button-toggle-group>
-              </div> 
-                <div class="chart-container">
-                    <apx-chart
-                        [series]="schoolChartOptions.series"
-                        [chart]="schoolChartOptions.chart"
-                        [xaxis]="schoolChartOptions.xaxis"
-                        [yaxis]="schoolChartOptions.yaxis"
-                        [stroke]="schoolChartOptions.stroke"
-                        [grid]="schoolChartOptions.grid"
-                        [markers]="schoolChartOptions.markers"
-                        [legend]="schoolChartOptions.legend"
-                        [tooltip]="schoolChartOptions.tooltip"
-                        [annotations]="schoolChartOptions.annotations"
-                        [colors]="schoolChartOptions.colors">
-                    </apx-chart>
-                </div>
-            </div>
+    <div class="col-12 mt-2">
+      <div class="card p-3 p-sm-4 d-flex flex-column">
+        <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between  gap-2">
+          <h5 class="font-17 text-secondary fw-semibold mb-0">Subject Performance</h5>
+          <mat-button-toggle-group class="toggle-container" value="all">
+            <mat-button-toggle value="all">Table</mat-button-toggle>
+            <mat-button-toggle value="asc">Bar Chart</mat-button-toggle>
+          </mat-button-toggle-group>
         </div>
+        <div class="d-flex align-items-center flex-wrap mt-2 mt-sm-3">
+          <h6 class="mb-2 mb-sm-0 font-16 me-2 ">Data Aggregation</h6>
+          <mat-button-toggle-group class="toggle-container" value="all">
+            <mat-button-toggle value="all">By Course</mat-button-toggle>
+            <mat-button-toggle value="asc">By State Test</mat-button-toggle>
+            <mat-button-toggle value="asc">By Teacher</mat-button-toggle>
+            <mat-button-toggle value="asc">By Student</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive grade-breakdown-table">
+              <table class="table table-custom table-centered m-0">
+                <thead class="thead-sm">
+                  <tr class="text-uppercase">
+                    <th class="font-13 fw-bold">Subject</th>
+                    <th class="text-center fw-bold"> Ach % </th>
+                    <th class="text-center fw-bold"> LG % </th>
+                    <th class="text-center fw-bold"> BQ %</th>
+                    <th> &nbsp; </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="clr--111827 fw-semibold ">
+                      ELA <br> <small class="font-11">Total Students - 300</small>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight green-bg"> 75% </div>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight green-bg">70%</div>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight yellow-bg"> 65%</div>
+                    </td>
+                    <td>
+                      <a>
+                        <mat-icon class="link--icon">chevron_right</mat-icon>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="clr--111827 fw-semibold ">
+                      Math <br> <small class="font-11">Total Students - 400</small>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight yellow-bg"> 68% </div>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight green-bg">54%</div>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight green-bg"> 98%</div>
+                    </td>
+                    <td>
+                      <a>
+                        <mat-icon class="link--icon">chevron_right</mat-icon>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="clr--111827 fw-semibold ">
+                      Science <br> <small class="font-11">Total Students - 475</small>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight green-bg"> 89% </div>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight yellow-bg">70%</div>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight green-bg"> 65%</div>
+                    </td>
+                    <td>
+                      <a>
+                        <mat-icon class="link--icon">chevron_right</mat-icon>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="clr--111827 fw-semibold ">
+                      Social Studies <br> <small class="font-11">Total Students - 300</small>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight yellow-bg"> 75% </div>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight green-bg">70%</div>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight green-bg"> 65%</div>
+                    </td>
+                    <td>
+                      <a>
+                        <mat-icon class="link--icon">chevron_right</mat-icon>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-2">
+      <div class="card p-3 p-sm-4 d-flex flex-column">
+        <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between mt-3 gap-2">
+          <h5 class="font-17 text-secondary fw-semibold mb-0">School Performance Trend</h5>
+          <mat-button-toggle-group class="toggle-container" value="all">
+            <mat-button-toggle value="all">All</mat-button-toggle>
+            <mat-button-toggle value="asc">Ach</mat-button-toggle>
+            <mat-button-toggle value="lg">LG</mat-button-toggle>
+            <mat-button-toggle value="bq">BQ</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div class="chart-container">
+          <apx-chart [series]="schoolChartOptions.series" [chart]="schoolChartOptions.chart"
+            [xaxis]="schoolChartOptions.xaxis" [yaxis]="schoolChartOptions.yaxis" [stroke]="schoolChartOptions.stroke"
+            [grid]="schoolChartOptions.grid" [markers]="schoolChartOptions.markers" [legend]="schoolChartOptions.legend"
+            [tooltip]="schoolChartOptions.tooltip" [annotations]="schoolChartOptions.annotations"
+            [colors]="schoolChartOptions.colors">
+          </apx-chart>
+        </div>
+      </div>
+    </div>
     <div class="col-12">
       <div class="card p-3 p-sm-4 d-flex flex-column">
         <h5 class="font-17 text-secondary fw-semibold mb-0">Grade & Teacher Breakdown</h5>
-        <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between mt-3 gap-2">
+        <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between gap-2">
 
           <mat-button-toggle-group [value]="viewMode()" (change)="viewMode.set($event.value)" class="toggle-container">
             <mat-button-toggle value="grade">By Grade</mat-button-toggle>
