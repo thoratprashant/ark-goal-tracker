@@ -65,19 +65,7 @@ export type ChartOptions = {
   fill: ApexFill;
 };
 
-export type schoolChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  yaxis: ApexYAxis;
-  stroke: ApexStroke;
-  grid: ApexGrid;
-  markers: ApexMarkers;
-  legend: ApexLegend;
-  tooltip: ApexTooltip;
-  annotations: ApexAnnotations;
-  colors: string[];
-};
+ 
 
 @Component({
   selector: 'app-school-details',
@@ -95,56 +83,83 @@ export class SchoolDetails {
   public schoolChartOptions: any = {
     series: [
       {
-        name: 'Actual',
+        name: 'Achievement',
         data: [68, 72, 75, 78]
       },
       {
-        name: 'Target',
+        name: 'Learning Gains',
         data: [80, 80, 80, 80]
+      },
+      {
+        name: 'Bottom Quartile',
+        data: [45, 50, 52, 55]
       }
     ],
+
     chart: {
       type: 'line',
-      height: '400',
+      height: 400,
       zoom: { enabled: false },
       toolbar: { show: false }
     },
+
     stroke: {
       curve: 'straight',
-      width: [3, 2],
-      dashArray: [0, 5] 
+      width: [3, 3, 3],
+      dashArray: [0, 0, 0]   // all solid lines
     },
-    colors: ['#3B82F6', '#22C55E'],  // Blue Actual, Green Target
+
+    colors: [
+      '#3B82F6', // Achievement - Blue
+      '#22C55E', // Learning Gains - Green
+      '#F97316'  // Bottom Quartile - Orange
+    ],
+
     xaxis: {
       categories: ['Team1', 'Team2', 'Team3', 'Team4'],
-      labels: { style: { colors: '#6B7280', fontSize: '12px' } }
+      labels: {
+        style: {
+          colors: '#6B7280',
+          fontSize: '12px'
+        }
+      }
     },
+
     yaxis: {
       min: 0,
       max: 100,
+      tickAmount: 4,
       labels: {
         formatter: (value: number) => `${value}%`,
-        style: { colors: '#6B7280', fontSize: '12px' }
-      },
-      tickAmount: 4  // 0%, 50%, 100%
+        style: {
+          colors: '#6B7280',
+          fontSize: '12px'
+        }
+      }
     },
+
     grid: {
       borderColor: '#f0f0f0',
       strokeDashArray: 2
     },
+
     markers: {
-      size: [5, 0],
-      hover: { sizeOffset: 6 }
+      size: [5, 5, 5],
+      hover: {
+        sizeOffset: 6
+      }
     },
+
     legend: {
-      position: "bottom",
-      horizontalAlign: "center",
+      position: 'bottom',
+      horizontalAlign: 'center',
       fontSize: '15px',
       fontWeight: 400,
       onItemHover: {
         highlightDataSeries: true
       }
     },
+
     annotations: {
       yaxis: [
         {
@@ -152,17 +167,18 @@ export class SchoolDetails {
           borderColor: '#22C55E',
           label: {
             text: 'Target',
+            offsetX: 10,
             style: {
               color: '#fff',
               background: '#22C55E',
               fontSize: '12px',
               fontWeight: 600
-            },
-            offsetX: 10
+            }
           }
         }
       ]
     },
+
     tooltip: {
       y: {
         formatter: (val: number) => `${val}%`
