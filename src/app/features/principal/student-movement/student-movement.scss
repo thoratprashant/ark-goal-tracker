@@ -24,12 +24,42 @@
             border-radius: 16px;
             background: #0D2A7C;
         }
+        .rounded-label-status-section{
+            border-radius: 9999px;
+            padding: 4px 10px;
+            width: fit-content;
+            &.green{
+                border: 1px solid #BBF7D0;
+                background: #DCFCE7;
+                color: #90C955;
+            }
+            &.yellow{
+                border: 1px solid #DCE52A;
+                background: #FEFFEE;
+                color: #DCE52A;
+            }
+
+            .bullet-point{
+                width: 6px;
+                height: 6px;
+                border-radius: 9999px;
+                &.green{
+                    background: #90C955;
+                }
+            }
+        }
     }
     .bottom-outer-section{
         padding: 24px;
         border-radius: 0px 0px 10px 10px;
         background: #F8FAFC;
         border: 1px solid #E2E8F0;
+        .ai-summary-section{
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #5594f966;
+            background: #5594f914;
+        }
         .progress {
             height: 8px;
             border-radius: 10px;
@@ -61,6 +91,47 @@
                             &:nth-child(1) {
                                 word-break: break-all;
                             }
+                            .bg-highlight{
+                                border-radius: 9999px;
+                                padding: 0.25rem 1rem;
+                                display: inline-flex;
+                                font-weight: 600;
+                                &.green-bg{
+                                    background-color: #DCFCE7;
+                                    color: #15803D;
+                                }
+                                &.yellow-bg{
+                                    background-color: #FEF3C7;
+                                    color: #B45309;
+                                }
+                                &.red-bg{
+                                    background-color: #FEE2E2;
+                                    color: #D64550;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .state-assessment-score-table{
+            .table{
+                min-width: 610px;
+                thead{
+                    tr{
+                        th{
+                            // &:nth-child(1) {
+                            //     width: 20%;
+                            // }
+                        }
+                    }
+                }
+                tbody{
+                    tr{
+                        td{
+                            // &:nth-child(1) {
+                            //     word-break: break-all;
+                            // }
                             .bg-highlight{
                                 border-radius: 9999px;
                                 padding: 0.25rem 1rem;
@@ -260,6 +331,9 @@
         .font-17{
             font-size: 16px;
         }
+        .font-15{
+            font-size: 14px;
+        }
     }
 }
 
@@ -307,7 +381,7 @@
             font-size: 14px;
         }
         .font-15{
-            font-size: 14px;
+            font-size: 13px;
         }
         .font-13{
             font-size: 12px;
@@ -317,6 +391,12 @@
 
 @media (max-width: 575px) {
     .sm--wrapper{
+        .student-details-header{
+            padding: 16px;
+        }
+        .bottom-outer-section{
+            padding: 16px;
+        }
         .gpa{
             width: 100%;
         }

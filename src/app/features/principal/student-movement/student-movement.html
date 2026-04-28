@@ -24,11 +24,18 @@
             <div class="d-flex flex-row gap-3">
                 <div class="d-flex align-items-center justify-content-center font-18 fw-bold text-white student-name-initials-section">ER</div>
                 <div class="d-flex flex-column gap-2">
-                    <div class="d-flex flex-wrap gap-2">
-                        <h4 class="text-secondary fw-bold mb-0">Lincoln Elementary School</h4>
+                    <div class="d-flex flex-sm-row flex-column align-items-sm-center gap-2">
+                        <h4 class="text-secondary fw-bold mb-0">Emma Rodriguez</h4>
+                        <div class="rounded-label-status-section green d-flex align-items-center gap-2">
+                            <span class="bullet-point green"></span>
+                            <p class="font-11 fw-semibold mb-0">On Track</p>
+                        </div>
                     </div>
-                    <div class="d-flex flex-wrap gap-2">
+                    <div class="d-flex flex-sm-row flex-column align-items-sm-center gap-2">
                         <p class="clr--4755 fw-normal font-15 mb-0">8th Grade</p>
+                        <div class="rounded-label-status-section yellow d-flex align-items-center gap-2">
+                            <p class="font-11 fw-semibold mb-0">Learning Gains</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,6 +47,16 @@
     </div>
     <div class="col-12 d-flex flex-column bottom-outer-section">
         <div class="row">
+            <div class="col-12 mb-4">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 ai-summary-section">
+                    <p class="font-20 fw-bold clr--0D2A7C mb-0">AI Summary</p>
+                    <button type="button" class="btn btn-lg btn-primary">
+                        <mat-icon fontSet="material-icons-outlined" class="me-1">flare</mat-icon>
+                        Generate AI Summary
+                    </button>
+                </div>
+            </div>
+
             <div class="col-12 d-flex mb-4">
                 <mat-button-toggle-group [value]="viewMode()" (change)="viewMode.set($event.value)" class="toggle-container">
                     <mat-button-toggle value="ela">ELA</mat-button-toggle>
@@ -50,7 +67,7 @@
             </div>
             <div class="col-12 col-lg-3" *ngIf="viewMode() === 'ela'">
                 <div class="d-flex flex-wrap flex-lg-column left-sections">
-                    <h5 class="w-100 font-12 text-secondary fw-semibold mb-0">ELA Performance</h5>
+                    <h5 class="w-100 font-15 text-secondary fw-semibold mb-0">ELA Performance</h5>
                     <div class="card d-flex flex-column">
                         <h5 class="font-12 clr--64748B fw-semibold mb-0">CURRENT ACHIEVEMENT</h5>
                         <div class="rounded-label-section green d-flex align-items-center gap-1">
@@ -238,7 +255,7 @@
             <div class="col-12 col-lg-9 mt-lg-0 mt-3" *ngIf="viewMode() === 'ela'">
                 <div class="d-flex flex-column gap-2">
                     <div class="card p-3 p-sm-4 d-flex flex-column">
-                        <h5 class="font-17 text-secondary fw-semibold mb-0">Progress Toward Goal</h5>
+                        <h5 class="font-15 text-secondary fw-semibold mb-0">Predicted Performance Over Time</h5>
                         <div class="chart-container">
                             <apx-chart
                                 [series]="chartOptions.series"
@@ -257,7 +274,7 @@
                     </div>
 
                     <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
-                        <h5 class="font-17 text-secondary fw-semibold mb-0">Score Contribution Breakdown</h5>
+                        <h5 class="font-15 text-secondary fw-semibold mb-0">Score Contribution Breakdown</h5>
                         <div class="table-responsive score-contribution-breakdown-table mt-1">
                         <!-- Score Contribution Breakdown Table -->
                             <table class="table table-custom table-centered m-0">
@@ -291,7 +308,7 @@
                     </div>
 
                     <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
-                        <h5 class="font-17 text-secondary fw-semibold mb-0">Progress Toward Goal</h5>
+                        <h5 class="font-15 text-secondary fw-semibold mb-0">Progress Toward Goal</h5>
                         @for (item of progressList; track item) {
                         <div class="progress--wrapper d-flex flex-column gap-2">
                             <div class="progress--labels d-flex align-items-center justify-content-between">
@@ -321,8 +338,112 @@
                     </div>
 
                     <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
-                        <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between gap-md-0 gap-3">
-                            <h5 class="font-17 text-secondary fw-semibold mb-0">Detailed Attendance</h5>
+                        <div class="d-flex flex-lg-row flex-column align-items-lg-center justify-content-lg-between gap-lg-0 gap-3">
+                            <h5 class="font-15 text-secondary fw-semibold mb-0">Historical State Assessment Scores</h5>
+                            <div class="d-flex flex-column flex-sm-row gap-2 w-sm-100">
+                                <mat-form-field appearance="outline" class="grades">
+                                    <mat-select placeholder="All Subjects">
+                                        <mat-option value="1">ELA</mat-option>
+                                        <mat-option value="2">MATH </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <div class="icon--input--box position-relative">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <mat-icon>search</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive state-assessment-score-table">
+                            <table class="table table-custom table-centered m-0">
+                                <thead class="thead-sm">
+                                    <tr class="text-uppercase">
+                                        <th>Year</th>
+                                        <th class="text-center">Subject</th>
+                                        <th class="text-center">Window</th>
+                                        <th class="text-center">Scale Score</th>
+                                        <th class="text-center">Achievement Level</th>
+                                        <th class="text-center">Percentile</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of dataStateAssessmentScore">
+                                        <td class="clr--111827 fw-semibold">{{ row.year }}</td>
+                                        <td class="clr--4755 text-center">{{ row.subject }}</td>
+                                        <td class="clr--4755 text-center">{{ row.window }}</td>
+                                        <td class="clr--4755 text-center">{{ row.scaleScore }}</td>
+                                        <td class="clr--4755 text-center">{{ row.achievementLevel }}</td>
+                                        <td class="clr--111827 fw-medium text-center">{{ row.percentile }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
+                        <div class="d-flex flex-lg-row flex-column align-items-lg-center justify-content-lg-between gap-lg-0 gap-3">
+                            <h5 class="font-15 text-secondary fw-semibold mb-0">Assessment Inputs Used for Prediction</h5>
+                            <div class="d-flex flex-column flex-sm-row gap-2 w-sm-100">
+                                <mat-form-field appearance="outline" class="grades">
+                                    <mat-select placeholder="Date Range">
+                                    <mat-option value="1">2024-25</mat-option>
+                                    <mat-option value="2">2025-26</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="grades">
+                                    <mat-select placeholder="All Subjects">
+                                        <mat-option value="1">ELA</mat-option>
+                                        <mat-option value="2">MATH </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="grades">
+                                    <mat-select placeholder="All Assessments">
+                                        <mat-option value="1">Assessment 1</mat-option>
+                                        <mat-option value="2">Assessment 2</mat-option>
+                                        <mat-option value="3">Assessment 3</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <div class="icon--input--box position-relative">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <mat-icon>search</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive state-assessment-score-table">
+                            <table class="table table-custom table-centered m-0">
+                                <thead class="thead-sm">
+                                    <tr class="text-uppercase">
+                                        <th>Subject</th>
+                                        <th class="text-center">Assessment</th>
+                                        <th class="text-center">Date</th>
+                                        <th class="text-center">Student Score</th>
+                                        <th class="text-center">Class</th>
+                                        <th class="text-center">School</th>
+                                        <th class="text-center">District</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of dataAssessmentInputs">
+                                        <td class="clr--111827 fw-semibold">{{ row.subject }}</td>
+                                        <td class="clr--4755 text-center">{{ row.assessment }}</td>
+                                        <td class="clr--4755 text-center">{{ row.date }}</td>
+                                        <td class="text-center">
+                                            <span class="clr--4755 me-2">{{ row.studentScore }}</span>
+                                            <div class="bg-highlight" [ngClass]="getStudentPercentageClass(row.scorePercent)">
+                                                {{ row.scorePercent }}%
+                                            </div>
+                                        </td>
+                                        <td class="clr--111827 fw-medium text-center">{{ row.class }}%</td>
+                                        <td class="clr--111827 fw-medium text-center">{{ row.school }}%</td>
+                                        <td class="clr--111827 fw-medium text-center">{{ row.district }}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
+                        <div class="d-flex flex-lg-row flex-column align-items-lg-center justify-content-lg-between gap-lg-0 gap-3">
+                            <h5 class="font-15 text-secondary fw-semibold mb-0">Detailed Attendance</h5>
                             <div class="d-flex flex-column flex-sm-row gap-2 w-sm-100">
                                 <mat-form-field appearance="outline" class="grades">
                                     <mat-select placeholder="Date Range">

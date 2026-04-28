@@ -89,6 +89,26 @@ interface CourseRow {
   grade: string;
 }
 
+interface TableRow2 {
+  year: number;
+  subject: string;
+  window: string;
+  scaleScore: number;
+  achievementLevel: string;
+  percentile: string;
+}
+
+interface TableRow3 {
+  subject: string;
+  assessment: string;
+  date: string;
+  studentScore: string;
+  scorePercent: number;
+  class: number;
+  school: number;
+  district: number;
+}
+
 @Component({
   selector: 'app-student-movement',
   imports: [MatIconModule, CommonModule, MatButtonModule, MatSelectModule, MatFormFieldModule, MatButtonToggleModule, ChartComponent],
@@ -128,7 +148,10 @@ export class StudentMovement {
       axisTicks: {
         show: false
       },
-      labels: { style: { colors: '#6B7280', fontSize: '12px' } }
+      labels: { style: { colors: '#6B7280', fontSize: '12px' } },
+      tooltip: {
+        enabled: false
+      }
     },
     yaxis: {
       min: 600,
@@ -183,17 +206,44 @@ export class StudentMovement {
         {
           y: 755,
           borderColor: '#B7C98B',
-          strokeDashArray: 3
+          strokeDashArray: 3,
+          label: {
+            text: 'Level 3 Cut Score',
+            style: {
+              color: '#90C955',
+              fontSize: '11px',
+              fontWeight: 400
+            },
+            offsetX: 10
+          }
         },
         {
           y: 705,
-          borderColor: '#E4B690',
-          strokeDashArray: 3
+          borderColor: '#EA914E',
+          strokeDashArray: 3,
+          label: {
+            text: 'Learning Gain Goal',
+            style: {
+              color: '#EA914E',
+              fontSize: '11px',
+              fontWeight: 400
+            },
+            offsetX: 10
+          }
         },
         {
           y: 605,
-          borderColor: '#E5B4B4',
-          strokeDashArray: 3
+          borderColor: '#D64550',
+          strokeDashArray: 3,
+          label: {
+            text: 'Risk Zone',
+            style: {
+              color: '#D64550',
+              fontSize: '11px',
+              fontWeight: 400
+            },
+            offsetX: 10
+          }
         }
       ]
     },
@@ -201,8 +251,8 @@ export class StudentMovement {
       shared: false,
       intersect: true,
       x: {
-        formatter: (_val: any, opts: any) => {
-          return this.chartOptions.xaxis.categories[opts.dataPointIndex];
+        formatter: () => {
+          return "Student’s Achievement Level";
         }
       },
       y: {
@@ -470,5 +520,29 @@ export class StudentMovement {
     { course: 'SS', teacher: 'Mr. Tegre', p1: 'B', p2: 'A', p3: 'A', p4: 'A', grade: 'A' },
     { course: 'ELA3', teacher: 'Ms. Meredith', p1: 'B', p2: 'A', p3: 'A', p4: 'A', grade: 'A' }
   ]
+
+  dataStateAssessmentScore: TableRow2[] = [
+    {year: 2025, subject: 'ELA', window: 'Spring', scaleScore: 742, achievementLevel: 'Level 3', percentile: '68th'},
+    {year: 2024, subject: 'ELA', window: 'Spring', scaleScore: 728, achievementLevel: 'Level 2', percentile: '61st'},
+    {year: 2023, subject: 'ELA', window: 'Spring', scaleScore: 715, achievementLevel: 'Level 2', percentile: '55th'},
+    {year: 2025, subject: 'MATH', window: 'Spring', scaleScore: 755, achievementLevel: 'Level 3', percentile: '72nd'},
+  ];
+
+  dataAssessmentInputs: TableRow3[] = [
+    {subject: 'Science', assessment: 'Assessment 1', date: '12/04/2025', studentScore: '39/56', scorePercent: 70, class: 63, school: 54, district: 56},
+    {subject: 'Geometry', assessment: 'Assessment 1', date: '10/08/2025', studentScore: '13/13', scorePercent: 100, class: 83, school: 83, district: 53},
+    {subject: 'Geometry', assessment: 'Assessment 2', date: '12/12/2025', studentScore: '15/16', scorePercent: 94, class: 86, school: 85, district: 48},
+    {subject: 'Science', assessment: 'Assessment 2', date: '10/02/2025', studentScore: '14/16', scorePercent: 72, class: 83, school: 84, district: 50},
+    {subject: 'Science', assessment: 'Assessment 3', date: '01/01/2025', studentScore: '11/18', scorePercent: 94, class: 85, school: 70, district: 72},
+  ];
   
+  getStudentPercentageClass(value: number): string {
+    if (value >= 70) {
+      return 'green-bg';
+    } else if (value >= 60) {
+      return 'yellow-bg';
+    } else {
+      return 'red-bg';
+    }
+  }
 }
