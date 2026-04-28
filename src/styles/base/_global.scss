@@ -461,6 +461,156 @@ body{
      }
  }
 
+//  Performance blue section
+  .performance--summary-section{
+      .main-title{
+          font-size: 32px;
+          color: #fff;
+          line-height: 32px;
+          margin-bottom: 8px;
+      }
+      .second-title{
+          color: #fff;
+          line-height: 20px;
+          margin-bottom: 8px;
+      }  
+      .card{
+          border-radius: 16px;
+          border: 1px solid #E5E5E5;
+          background: #0D2A7C;
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
+          .header-section{
+              gap: 16px;
+              .total-students-section{
+                  gap: 16px; 
+              }
+          }
+          .arr--btn {
+              min-height: 120px;
+              border-radius: 12px;
+              background: #ffffff1a;
+              backdrop-filter: blur(2px);
+              border: none;
+              padding: 10px 12px;
+              box-shadow: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .mat-icon {
+                  font-size: 16px;
+                  width: 16px;
+                  height: 16px;
+                  color: #fff;
+              }
+          }
+          .section-slider{
+              overflow-x: auto;
+              scroll-behavior: smooth;
+              white-space: nowrap;
+              width: 100%;
+              scrollbar-width: none;
+              flex: 1;
+              gap: 10px; 
+              &::-webkit-scrollbar {
+                  display: none;
+              }
+          }
+          .backdrop-card{
+              .card{
+                  height: 100%;
+                  border-radius: 12px;
+                  background: #ffffff1a;
+                  backdrop-filter: blur(2px);
+                  border: none;
+                  box-shadow: none;
+                  padding: 16px;
+                  img{
+                      width: 20px;
+                      height: 20px;
+                  }
+                  .inner-divider-line{
+                      border: 1px solid #ffffff33;
+                  }
+                  .inner-section-box{
+                      min-height: 70px;
+                      border-radius: 4px;
+                      background: #ffffff33;
+                      padding: 8px;
+                      p{
+                          line-height: 16px;
+                          letter-spacing: 0.3px;
+                          text-transform: uppercase;
+                      }
+                  }
+                  .bottom-notation{
+                      width: 10px;
+                      height: 10px;
+                      border-radius: 100px;
+                      &.green-notation{
+                          background-color: #90C955;
+                      }
+                      &.yellow-notation{
+                          background-color: #DCE52A;
+                      }
+                      &.blue-notation{
+                          background-color: #0085FF;
+                      }
+                      &.grey-notation{
+                          background-color: #6B7280;
+                      }
+                  }
+                  .predicted-performance-label{
+                      padding: 0 6px;
+                      border-radius: 3px;
+                      background: #d6455080;
+                  }
+              }
+          }
+          .total-performance-section{
+              gap: 24px;
+              .indicators-wrapper{
+                  gap: 10px;
+                  .font-8{
+                      white-space: nowrap;
+                  }
+                  .ring-indicators-section{
+                      color: #fff;
+                      .circle {
+                          width: 60px;
+                          height: 60px;
+                          border-radius: 50%;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          position: relative;
+                          transition: background 1s ease-in-out;
+                      }
+                      .circle::before {
+                          content: '';
+                          width: 45px;
+                          height: 45px;
+                          background: #0D2A7C;
+                          border-radius: 50%;
+                          position: absolute;
+                      }
+                      .inner {
+                          position: relative;
+                          text-align: center;
+                          z-index: 1;
+                          .label {
+                              opacity: 0.8;
+                          }
+                      }
+                  }
+              }
+          }
+          .divider-line{
+              border: 1px solid #ffffff33;
+              margin: 20px 0px;
+          }
+      }
+  }
+
 }  
 
  @media (max-width: 767px) {
@@ -502,5 +652,53 @@ body{
       width: 3rem;
       height: 3rem;
   } 
+  body .performance--summary-section .main-title{
+    font-size: 20px;
+  }
+  body .performance--summary-section{  
+    .indicators-wrapper{ 
+        .ring-indicators-section{
+            width: 45%;
+            .circle{
+                width: 55px !important;
+                height: 55px !important;
+                &::before{
+                    width: 50px !important;
+                    height: 50px !important;
+                }
+            }
+        }
+    }
+  }
+  body .performance--summary-section .card .backdrop-card .card{
+    width: 100%;
+  }
   
  }
+
+@media only screen and (min-width: 600px) and (max-width: 979px){
+  body .performance--summary-section .main-title{
+    font-size: 24px;
+  }
+}
+@media only screen and (min-width: 980px) and (max-width: 1279px){
+  body .performance--summary-section .main-title{
+    font-size: 25px;
+  }
+}
+@media only screen and (min-width: 1280px) and (max-width: 1440px){
+  body .performance--summary-section .main-title{
+    font-size: 26px;
+  }
+}
+@media only screen and (min-width: 1441px) and (max-width: 1550px){
+  body .performance--summary-section .main-title{
+    font-size: 27px;
+  }
+}
+@media screen and (orientation:landscape) and (max-width: 850px){}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+   
+}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+}

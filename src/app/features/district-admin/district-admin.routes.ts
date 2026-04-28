@@ -6,15 +6,24 @@ export const DISTRICTADMINLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./goal-configuration/goal-configuration').then(c => c.GoalConfiguration),
     data: { title: 'Goal Configuration' }
   },
-  {
-    path: 'dashboard',
-    loadComponent: () => import('./district-dashboard/district-dashboard').then(c => c.DistrictDashboard),
-    data: { title: 'Dashboard' }
-  },
-  {
+   {
     path: 'school-details',
     loadComponent: () => import('./school-details/school-details').then(c => c.SchoolDetails),
     data: { title: 'School Details' }
+  },
+
+  // district-dashboard by Satyajeet
+  {
+    path: 'district-dashboard',
+    loadComponent: () => import('./district-dashboard/district-dashboard').then(c => c.DistrictDashboard),
+    data: { title: 'Dashboard' }
+  },
+ 
+  // Dashboard by Prashant
+  {
+    path: 'dashboard',
+    loadComponent: () => import('./dashboard/dashboard').then(c => c.Dashboard),
+    data: { title: 'Dashboard' }
   },
  
 ];
