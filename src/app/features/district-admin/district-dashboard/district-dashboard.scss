@@ -55,6 +55,8 @@
             }
         }
     }
+
+    
     .performance-matrix-section{
         .card{
             padding: 24px;
@@ -286,8 +288,7 @@
 
  
 
-@media (max-width: 767px) {
-    
+@media (max-width: 767px) { 
     .toggle-container{
         flex-wrap: wrap;
     }

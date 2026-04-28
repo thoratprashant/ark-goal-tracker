@@ -1,3 +1,261 @@
-.d--dashboard--wrapper{
-   
+/* =====================================================
+   Dashboard Wrapper
+===================================================== */
+.d--dashboard--wrapper {
+
+  /* ==========================================
+     Toggle Container
+  ========================================== */
+  .toggle-container {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    background: #F8FAFC;
+
+    .mat-button-toggle {
+      border: 0;
+      padding: 2px 12px;
+      border-radius: 8px;
+      background: transparent;
+      cursor: pointer;
+      color: #475569;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 20px;
+      transition: background-color .25s ease, color .25s ease;
+
+      @media (min-width: 768px) and (max-width: 1440px) {
+        font-size: 12px;
+      }
+    }
+
+    .toggle-content {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      .toggle-svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        color: #475569;
+        transition: color .25s ease;
+      }
+
+      .toggle-label {
+        color: #475569;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: color .25s ease;
+      }
+
+      .toggle-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2px 6px;
+        border-radius: 9999px;
+        background: #E2E8F0;
+        color: #475569;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 16px;
+        transition: background-color .25s ease, color .25s ease;
+      }
+    }
+
+    .mat-button-toggle-checked {
+      background: #0D2A7C;
+      color: #fff;
+
+      .toggle-content {
+
+        .toggle-svg,
+        .toggle-label {
+          color: #fff;
+        }
+
+        .toggle-badge {
+          background: #fff;
+          color: #0D2A7C;
+        }
+      }
+    }
+  }
+
+  /* ==========================================
+     Filters Section
+  ========================================== */
+  .filters-section {
+
+    .card {
+      margin-bottom: 0;
+      gap: 16px;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+
+      .divider-line {
+        border: 1px solid #F1F5F9;
+      }
+
+      .active-filter-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        border: 1px solid #BFDBFE;
+        border-radius: 6px;
+        background: #EFF6FF;
+        color: #0D2A7C;
+
+        .chip-label,
+        .chip-value {
+          color: #0D2A7C;
+        }
+
+        .chip-close {
+          width: 16px;
+          height: 16px;
+          font-size: 16px;
+          cursor: pointer;
+          color: #0D2A7C;
+          transition: color .25s ease;
+
+          &:hover {
+            color: #0f172a;
+          }
+        }
+      }
+    }
+  }
+
+  /* ==========================================
+     Performance Matrix Section
+  ========================================== */
+  .performance-matrix-section {
+
+    .card {
+      gap: 13px;
+      padding: 24px;
+      border: 1px solid #DBEAFE;
+      border-radius: 16px;
+      background: #fff;
+
+      .marker {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 4px;
+
+        &.green { background: #90C955; }
+        &.yellow { background: #DCE52A; }
+        &.red { background: #D64550; }
+      }
+
+      .table-filters-section {
+        padding: 16px;
+        border: 1px solid #DBEAFE;
+        border-radius: 16px;
+        background: #fff;
+      }
+
+      .performance-table {
+
+        .table {
+          min-width: 750px;
+
+          thead {
+            th {
+
+              &:first-child {
+                width: 20%;
+              }
+
+              .blue-title {
+                width: fit-content;
+                padding: 4px 12px;
+                border-radius: 9999px;
+                background: #1E40AF;
+              }
+            }
+          }
+
+          tbody {
+            td {
+
+              &:first-child {
+                word-break: break-word;
+                overflow-wrap: break-word;
+              }
+
+              .bg-highlight {
+                display: inline-flex;
+                padding: .25rem 1rem;
+                border-radius: 9999px;
+                font-weight: 600;
+
+                &.green-bg {
+                  background: #DCFCE7;
+                  color: #15803D;
+                }
+
+                &.yellow-bg {
+                  background: #FEF3C7;
+                  color: #B45309;
+                }
+
+                &.red-bg {
+                  background: #FEE2E2;
+                  color: #D64550;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* =====================================================
+   Angular Material Overrides
+===================================================== */
+ 
+.mat-button-toggle + .mat-button-toggle {
+  border-left: none !important;
+}
+
+/* remove focus overlay */
+.mat-button-toggle-focus-overlay {
+  display: none;
+}
+
+/* Angular Material deep overrides */
+::ng-deep {
+
+  .mat-pseudo-checkbox {
+    display: none !important;
+  }
+
+  .mat-button-toggle-checked .mat-button-toggle-button:has(.mat-button-toggle-checkbox-wrapper) {
+    padding-left: 0 !important;
+  }
+
+  .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+    padding: 0 !important;
+    line-height: 20px !important;
+  }
+
+  .mat-mdc-form-field {
+
+    .mat-mdc-select-placeholder,
+    .mat-mdc-select-value {
+      color: #0A0A0A !important;
+      font-size: 12px !important;
+    }
+  }
 }

@@ -1,5 +1,229 @@
 <div class="container-fluild d--dashboard--wrapper">
-    <div class="row">
-        <app-district-performance-summary></app-district-performance-summary>
+  <div class="row">
+    <app-district-performance-summary></app-district-performance-summary>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card p-3">
+        <div class="row"> 
+            <div class="col-12 filters-section ">
+              <div class="card p-3 d-flex flex-row flex-wrap align-items-center justify-content-between gap-2">
+                <mat-button-toggle-group [value]="viewMode()" (change)="viewMode.set($event.value)"
+                  class="toggle-container">
+                  <mat-button-toggle value="all">
+                    <div class="toggle-content">
+                      <span class="toggle-label">All Schools</span>
+                      <span class="toggle-badge">25</span>
+                    </div>
+                  </mat-button-toggle>
+                  <mat-button-toggle value="elementary">
+                    <div class="toggle-content">
+                      <span class="toggle-label">Elementary</span>
+                      <span class="toggle-badge">12</span>
+                    </div>
+                  </mat-button-toggle>
+                  <mat-button-toggle value="middle">
+                    <div class="toggle-content">
+                      <span class="toggle-label">Middle</span>
+                      <span class="toggle-badge">7</span>
+                    </div>
+                  </mat-button-toggle>
+                  <mat-button-toggle value="high">
+                    <div class="toggle-content">
+                      <span class="toggle-label">High School</span>
+                      <span class="toggle-badge">6</span>
+                    </div>
+                  </mat-button-toggle>
+                </mat-button-toggle-group>
+                <div class="d-flex flex-shrink-0">
+                  <button type="button" class="btn btn-md btn-outline-primary" (click)="toggleFilters()">
+                    <img src="images/filters-icon.svg" alt="icon" class="img-fluid">
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 filters-section my-3" *ngIf="showFilters">
+              <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="images/filters-icon.svg" alt="icon" class="img-fluid">
+                    <p class="clr--64748B font-13 fw-semibold mb-0">Filters:</p>
+                  </div>
+                  <mat-form-field appearance="outline" class="grades">
+                    <mat-select placeholder="Grade Level" [(value)]="selectedFilters.grade"
+                      (selectionChange)="updateActiveFilters()">
+                      <mat-option *ngFor="let grade of gradeOptions" [value]="grade">
+                        {{ grade }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="grades">
+                    <mat-select placeholder="All Status" [(value)]="selectedFilters.status"
+                      (selectionChange)="updateActiveFilters()">
+                      <mat-option *ngFor="let status of statusOptions" [value]="status">
+                        {{ status }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="grades">
+                    <mat-select placeholder="Overall Score" [(value)]="selectedFilters.score"
+                      (selectionChange)="updateActiveFilters()">
+                      <mat-option *ngFor="let score of scoreOptions" [value]="score">
+                        {{ score }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="grades">
+                    <mat-select placeholder="All Tiers" [(value)]="selectedFilters.tier"
+                      (selectionChange)="updateActiveFilters()">
+                      <mat-option *ngFor="let tier of tierOptions" [value]="tier">
+                        {{ tier }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <button type="button" class="btn btn-lg btn-primary flex-shrink-0" (click)="resetFilters()">
+                    Reset Filters
+                  </button>
+                </div>
+                <div class="divider-line"></div>
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                  <p class="clr--64748B font-13 fw-semibold mb-0">Active Filters:</p>
+                  <ng-container >
+                    <div class="active-filter-chip" >
+                      <span class="chip-label font-12 fw-semibold">Grade</span>
+                      <span class="chip-value font-13 fw-semibold">5</span>
+                      <mat-icon class="chip-close" fontSet="material-icons-outlined">
+                        close
+                      </mat-icon>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </div> 
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-12 performance-matrix-section mt-3">
+      <div class="card p-3 p-sm-4 d-flex flex-column mb-0">
+        <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between gap-2">
+          <div class="d-flex flex-column gap-1">
+            <h5 class="font-15 text-secondary fw-semibold mb-0">Performance Matrix</h5>
+            <p class="clr--64748B font-13 fw-normal mb-0">Compare metrics across elementary, middle, and high schools
+            </p>
+          </div>
+          <div class="d-flex flex-sm-row flex-wrap flex-column align-items-sm-center gap-2">
+            <div class="d-flex flex-row align-items-center gap-2">
+              <span class="marker green"></span>
+              <p class="font-11 clr--4755 fw-normal mb-0">Above Goal</p>
+            </div>
+            <div class="d-flex flex-row align-items-center gap-2">
+              <span class="marker yellow"></span>
+              <p class="font-11 clr--4755 fw-normal mb-0">Within 3 pts</p>
+            </div>
+            <div class="d-flex flex-row align-items-center gap-2">
+              <span class="marker red"></span>
+              <p class="font-11 clr--4755 fw-normal mb-0">More than 3 Points Below Goal.</p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-row flex-wrap gap-2 justify-content-between table-filters-section">
+          <mat-button-toggle-group [value]="viewMode1()" (change)="viewMode1.set($event.value)"
+            class="toggle-container">
+            <mat-button-toggle value="school">By School</mat-button-toggle>
+            <mat-button-toggle value="attendance">By Attendance</mat-button-toggle>
+            <mat-button-toggle value="region">By Region</mat-button-toggle>
+            <mat-button-toggle value="tier">By Tier</mat-button-toggle>
+          </mat-button-toggle-group>
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <mat-form-field appearance="outline" class="grades">
+              <mat-select placeholder="All Demographics">
+                <mat-option value="1">Demographic 10</mat-option>
+                <mat-option value="2">Demographic 11 </mat-option>
+                <mat-option value="2">Demographic 12 </mat-option>
+                <mat-option value="2">Demographic 13 </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="grades">
+              <mat-select placeholder="All Grades">
+                <mat-option value="1">Grade 10</mat-option>
+                <mat-option value="2">Grade 11 </mat-option>
+                <mat-option value="2">Grade 12 </mat-option>
+                <mat-option value="2">Grade 13 </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="grades">
+              <mat-select placeholder="All Students">
+                <mat-option value="1">Student 1</mat-option>
+                <mat-option value="2">Student 2</mat-option>
+                <mat-option value="3">Student 3</mat-option>
+                <mat-option value="4">Student 4</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="grades">
+              <mat-select placeholder="All Schools">
+                <mat-option value="1">School 1</mat-option>
+                <mat-option value="2">School 2</mat-option>
+                <mat-option value="3">School 3</mat-option>
+                <mat-option value="4">School 4</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="grades">
+              <mat-select placeholder="All Subjects">
+                <mat-option value="1">Subject 1</mat-option>
+                <mat-option value="2">Subject 2</mat-option>
+                <mat-option value="3">Subject 3</mat-option>
+                <mat-option value="4">Subject 4</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="table-responsive performance-table">
+          <table class="table table-custom table-centered m-0">
+            <thead class="thead-sm">
+              <tr class="text-uppercase">
+                <th class="font-14 fw-bold">Component</th>
+                <th class="text-center">
+                  <div class="d-flex align-items-center justify-content-center">
+                    <div class="blue-title font-11 fw-semibold text-white">Elementary</div>
+                  </div>
+                </th>
+                <th class="text-center">
+                  <div class="d-flex align-items-center justify-content-center">
+                    <div class="blue-title font-11 fw-semibold text-white">Middle</div>
+                  </div>
+                </th>
+                <th class="text-center">
+                  <div class="d-flex align-items-center justify-content-center">
+                    <div class="blue-title font-11 fw-semibold text-white">High</div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of performanceMatrixtable">
+                <td class="clr--111827 fw-semibold">{{ row.component }}</td>
+                <td class="text-center">
+                  <div class="bg-highlight" [ngClass]="getStatusClass(row.elementary)">
+                    {{ row.elementary }}
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="bg-highlight" [ngClass]="getStatusClass(row.middleSchool)">
+                    {{ row.middleSchool }}
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="bg-highlight" [ngClass]="getStatusClass(row.highSchool)">
+                    {{ row.highSchool }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
