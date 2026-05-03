@@ -219,6 +219,40 @@
       }
     }
   }
+
+  /* ==========================================
+     Goal Achievement Summary
+  ========================================== */
+  .gas--wrapper{
+    .side--box{
+      border-radius: 12px;
+      background: #EDE9FE;
+      width: 36px;
+      height: 36px; 
+    }
+    .goals--track{
+      border-bottom: 0.5px solid #F1F5F9;
+      .side--box{
+        &.track{ 
+          background: #EFF6FF;
+        }
+        &.risk{
+          background: #FFFBEB;
+        }
+        &.complete{
+          background: #ECFDF5;
+        }
+      }
+      .progress{
+        height: 8px;
+        .bg-orange{
+          background-color: #EA914E;
+        }
+      }
+    }
+
+
+  }
 }
 
 /* =====================================================

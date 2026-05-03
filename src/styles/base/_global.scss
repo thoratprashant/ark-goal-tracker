@@ -611,6 +611,40 @@ body{
       }
   }
 
+  // Badge's
+  
+  .badge{
+      font-size: 11px;
+      border-radius: 6px;
+      font-weight: 600;
+      padding: 5px 11px;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10);
+      
+      // add rounded-pill class for border radius
+
+      &.badge-lg{
+        font-size: 13px; 
+        padding: 7px 12px;
+      }
+
+      &.badge-blue{  
+        color: #1D4ED8;
+        background: #DBEAFE; 
+      }
+      &.badge-green{ 
+        color: #15803d;
+        background: #D1FAE5;   
+      }
+      &.badge-orange{  
+        color: #b45309;
+        background: #FEF3C7; 
+      }
+      &.badge-red{
+        color: #D64550;
+        background: #FEF2F2; 
+      }
+  }
+
 }  
 
  @media (max-width: 767px) {
@@ -672,7 +706,8 @@ body{
   }
   body .performance--summary-section .card .backdrop-card .card{
     width: 100%;
-  }
+  } 
+
   
  }
 
