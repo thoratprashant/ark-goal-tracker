@@ -21,5 +21,10 @@ export const PRINCIPALLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./student-movement/student-movement').then(c => c.StudentMovement),
     data: { title: 'student movement' }
   },
+  {
+    path: 'standards',
+    loadComponent: () => import('./standards/standards').then(c => c.Standards),
+    data: { title: 'standards' }
+  },
   
 ];
