@@ -611,8 +611,7 @@ body{
       }
   }
 
-  // Badge's
-  
+  // Badge's  
   .badge{
       font-size: 11px;
       border-radius: 6px;
@@ -641,8 +640,93 @@ body{
       }
       &.badge-red{
         color: #D64550;
-        background: #FEF2F2; 
+        background: #FEE2E2; 
       }
+  }
+
+  /* ==========================================
+     Toggle Container
+  ========================================== */
+  .toggle-container {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    background: #F8FAFC;
+
+    .mat-button-toggle {
+      border: 0;
+      padding: 2px 12px;
+      border-radius: 8px;
+      background: transparent;
+      cursor: pointer;
+      color: #475569;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 20px;
+      transition: background-color .25s ease, color .25s ease;
+
+      @media (min-width: 768px) and (max-width: 1440px) {
+        font-size: 12px;
+      }
+    }
+
+    .toggle-content {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      .toggle-svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        color: #475569;
+        transition: color .25s ease;
+      }
+
+      .toggle-label {
+        color: #475569;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+        transition: color .25s ease;
+      }
+
+      .toggle-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2px 6px;
+        border-radius: 9999px;
+        background: #E2E8F0;
+        color: #475569;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 16px;
+        transition: background-color .25s ease, color .25s ease;
+      }
+    }
+
+    .mat-button-toggle-checked {
+      background: #0D2A7C;
+      color: #fff;
+
+      .toggle-content {
+
+        .toggle-svg,
+        .toggle-label {
+          color: #fff;
+        }
+
+        .toggle-badge {
+          background: #fff;
+          color: #0D2A7C;
+        }
+      }
+    }
   }
 
 }  
@@ -707,6 +791,9 @@ body{
   body .performance--summary-section .card .backdrop-card .card{
     width: 100%;
   } 
+  body .toggle-container{
+      flex-wrap: wrap;
+  }
 
   
  }

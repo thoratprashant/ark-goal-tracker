@@ -3,90 +3,7 @@
 ===================================================== */
 .d--dashboard--wrapper {
 
-  /* ==========================================
-     Toggle Container
-  ========================================== */
-  .toggle-container {
-    display: inline-flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 6px;
-    border: 1px solid #E2E8F0;
-    border-radius: 12px;
-    background: #F8FAFC;
 
-    .mat-button-toggle {
-      border: 0;
-      padding: 2px 12px;
-      border-radius: 8px;
-      background: transparent;
-      cursor: pointer;
-      color: #475569;
-      font-size: 13px;
-      font-weight: 500;
-      line-height: 20px;
-      transition: background-color .25s ease, color .25s ease;
-
-      @media (min-width: 768px) and (max-width: 1440px) {
-        font-size: 12px;
-      }
-    }
-
-    .toggle-content {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      .toggle-svg {
-        width: 16px;
-        height: 16px;
-        flex-shrink: 0;
-        color: #475569;
-        transition: color .25s ease;
-      }
-
-      .toggle-label {
-        color: #475569;
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 20px;
-        transition: color .25s ease;
-      }
-
-      .toggle-badge {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2px 6px;
-        border-radius: 9999px;
-        background: #E2E8F0;
-        color: #475569;
-        font-size: 11px;
-        font-weight: 500;
-        line-height: 16px;
-        transition: background-color .25s ease, color .25s ease;
-      }
-    }
-
-    .mat-button-toggle-checked {
-      background: #0D2A7C;
-      color: #fff;
-
-      .toggle-content {
-
-        .toggle-svg,
-        .toggle-label {
-          color: #fff;
-        }
-
-        .toggle-badge {
-          background: #fff;
-          color: #0D2A7C;
-        }
-      }
-    }
-  }
 
   /* ==========================================
      Filters Section
@@ -223,13 +140,7 @@
   /* ==========================================
      Goal Achievement Summary
   ========================================== */
-  .gas--wrapper{
-    .side--box{
-      border-radius: 12px;
-      background: #EDE9FE;
-      width: 36px;
-      height: 36px; 
-    }
+  .gas--wrapper{ 
     .goals--track{
       border-bottom: 0.5px solid #F1F5F9;
       .side--box{
@@ -249,10 +160,69 @@
           background-color: #EA914E;
         }
       }
+    }  
+  }
+
+  .side--box{
+    border-radius: 12px;
+    background: #EDE9FE;
+    width: 36px;
+    height: 36px; 
+  }
+  .default--round{
+    width: 40px;
+    height: 40px;
+    background: #E2E8F0;
+  }
+
+  .ars--wrapper{
+    .red--head{
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      border-top: 4px solid #EF4444;
+      padding-top: 24px;
+      padding-bottom: 16px; 
+      background-color: #fff;
+      .side--box{
+        background-color: #FEE2E2;
+      }
+    }
+    .risk--card{
+      border-radius: 12px;
+      border: 1px solid #FECACA;
+      background: #FEF2F2;
+      box-shadow: 0 3.875px 5.813px -0.969px rgba(0, 0, 0, 0.10), 0 1.938px 3.875px -1.938px rgba(0, 0, 0, 0.10);
+      padding: 16px;
+      .score--box{
+        padding: 10px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.60);
+        height: stretch;
+        .count{
+          color: #D64550;
+          font-size: 18px;
+          font-weight: 700;          
+        }
+      }
+      .action--foo{
+        border-top: 0.667px solid rgba(226, 232, 240, 0.50);
+        padding-top: 16px;
+            margin-top: 20px;
+      }
+
+      &.medium--risk--card{ 
+          border: 1px solid #FDE68A;
+          background: #FFFBEB;
+          .score--box{
+            .count{
+              color: #000;
+            }
+          }
+      }
     }
 
-
   }
+
 }
 
 /* =====================================================

@@ -72,6 +72,31 @@ body{
                 color: #475569;
             }
 
+            &.btn--red{
+                border-color: #FECACA;
+                color: #D64550;
+                background-color: #fff;
+                .mat-icon{
+                    color: #D64550 !important;
+                } 
+            }
+            &.btn--green{
+                border-color: #A7F3D0;
+                color: #90C955;
+                background-color: #fff;
+                .mat-icon{
+                    color: #90C955 !important;
+                } 
+            }
+            &.btn--lightblue{
+                border-color: #BFDBFE;
+                color: #0D2A7C;
+                background-color: #fff;
+                .mat-icon{
+                    color: #0D2A7C !important;
+                } 
+            }
+
         }
 
         

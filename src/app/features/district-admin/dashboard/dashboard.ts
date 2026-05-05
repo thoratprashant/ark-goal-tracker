@@ -37,10 +37,84 @@ interface TableRow {
   styleUrl: './dashboard.scss',
 })
 export class Dashboard {
+
+  // At-Risk Schools (Start here)
+  riskSummary = {
+    title: 'At-Risk Schools',
+    subtitle: 'Schools requiring immediate intervention',
+    highRiskCount: 2,
+    mediumRiskCount: 2
+  }; 
+  schools = [
+    {
+      name: 'Lincoln Elementary',
+      risk: 'High',
+      riskClass: 'badge-red',
+      students: 402,
+      grade: '5th Grade',
+      avgScore: 1.8,
+      scoreNote: 'iReady score -12 pts below expected',
+      attendance: '82%',
+      attendanceNote: 'Grade 3 attendance 78% (low)',
+      supportingData: [
+        { label: 'iReady 688 vs 700', value: '-12' },
+        { label: 'Attendance 78% vs 90%', value: '-12' }
+      ]
+    },
+    {
+      name: 'Roosevelt Middle',
+      risk: 'Medium',
+      riskClass: 'badge-orange',
+      students: 365,
+      grade: '7th Grade',
+      avgScore: 2.3,
+      scoreNote: 'iReady score -12 pts below expected',
+      attendance: '91%',
+      attendanceNote: 'Grade 3 attendance 78% (low)',
+      supportingData: [
+        { label: 'iReady 688 vs 700', value: '-10' },
+        { label: 'Attendance 78% vs 90%', value: '-10' }
+      ]
+    },
+    {
+      name: 'Jefferson Elementary',
+      risk: 'High',
+      riskClass: 'badge-red',
+      students: 234,
+      grade: '4th Grade',
+      avgScore: 1.1,
+      scoreNote: 'iReady score -12 pts below expected',
+      attendance: '71%',
+      attendanceNote: 'Grade 3 attendance 78% (low)',
+      supportingData: [
+        { label: 'iReady 688 vs 700', value: '-09' },
+        { label: 'Attendance 78% vs 90%', value: '-09' }
+      ]
+    },
+    {
+      name: 'Adams Middle',
+      risk: 'Medium',
+      riskClass: 'badge-orange',
+      students: 578,
+      grade: '8th Grade',
+      avgScore: 2.2,
+      scoreNote: 'iReady score -12 pts below expected',
+      attendance: '80%',
+      attendanceNote: 'Grade 3 attendance 78% (low)',
+      supportingData: [
+        { label: 'iReady 688 vs 700', value: '-11' },
+        { label: 'Attendance 78% vs 90%', value: '-11' }
+      ]
+    }
+  ];
+  // At-Risk Schools (End here)
+ 
+
+
   viewMode = signal<'all' | 'elementary' | 'middle' | 'high'>('all');
   viewMode1 = signal<'school' | 'attendance' | 'region' | 'tier'>('school');
 
-  showFilters = false;
+  showFilters = true;
 
     constructor(private cdr: ChangeDetectorRef) {}
 
