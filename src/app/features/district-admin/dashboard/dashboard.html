@@ -9,7 +9,7 @@
           <div class="col-12 filters-section ">
             <div class="card p-3 d-flex flex-row flex-wrap align-items-center justify-content-between gap-2">
               <mat-button-toggle-group [value]="viewMode()" (change)="viewMode.set($event.value)"
-                class="toggle-container">
+                class="toggle-container filter--toggle">
                 <mat-button-toggle value="all">
                   <div class="toggle-content">
                     <span class="toggle-label">All Schools</span>
@@ -49,7 +49,7 @@
                   <img src="images/filters-icon.svg" alt="icon" class="img-fluid">
                   <p class="clr--64748B font-13 fw-semibold mb-0">Filters:</p>
                 </div>
-                <mat-form-field appearance="outline" class="grades">
+                <mat-form-field appearance="outline" class="dd--sm">
                   <mat-select placeholder="Grade Level" [(value)]="selectedFilters.grade"
                     (selectionChange)="updateActiveFilters()">
                     <mat-option *ngFor="let grade of gradeOptions" [value]="grade">
@@ -57,7 +57,7 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <mat-form-field appearance="outline" class="grades">
+                <mat-form-field appearance="outline" class="dd--sm">
                   <mat-select placeholder="All Status" [(value)]="selectedFilters.status"
                     (selectionChange)="updateActiveFilters()">
                     <mat-option *ngFor="let status of statusOptions" [value]="status">
@@ -65,7 +65,7 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <mat-form-field appearance="outline" class="grades">
+                <mat-form-field appearance="outline" class="dd--sm">
                   <mat-select placeholder="Overall Score" [(value)]="selectedFilters.score"
                     (selectionChange)="updateActiveFilters()">
                     <mat-option *ngFor="let score of scoreOptions" [value]="score">
@@ -73,7 +73,7 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <mat-form-field appearance="outline" class="grades">
+                <mat-form-field appearance="outline" class="dd--sm">
                   <mat-select placeholder="All Tiers" [(value)]="selectedFilters.tier"
                     (selectionChange)="updateActiveFilters()">
                     <mat-option *ngFor="let tier of tierOptions" [value]="tier">
@@ -81,7 +81,7 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <button type="button" class="btn btn-lg btn-primary flex-shrink-0" (click)="resetFilters()">
+                <button type="button" class="btn btn-sm btn-primary flex-shrink-0" (click)="resetFilters()">
                   Reset Filters
                 </button>
               </div>
@@ -137,7 +137,7 @@
             <mat-button-toggle value="tier">By Tier</mat-button-toggle>
           </mat-button-toggle-group>
           <div class="d-flex flex-wrap align-items-center gap-2">
-            <mat-form-field appearance="outline" class="grades">
+            <mat-form-field appearance="outline" class="dd--sm">
               <mat-select placeholder="All Demographics">
                 <mat-option value="1">Demographic 10</mat-option>
                 <mat-option value="2">Demographic 11 </mat-option>
@@ -145,7 +145,7 @@
                 <mat-option value="2">Demographic 13 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="grades">
+            <mat-form-field appearance="outline" class="dd--sm">
               <mat-select placeholder="All Grades">
                 <mat-option value="1">Grade 10</mat-option>
                 <mat-option value="2">Grade 11 </mat-option>
@@ -153,7 +153,7 @@
                 <mat-option value="2">Grade 13 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="grades">
+            <mat-form-field appearance="outline" class="dd--sm">
               <mat-select placeholder="All Students">
                 <mat-option value="1">Student 1</mat-option>
                 <mat-option value="2">Student 2</mat-option>
@@ -161,7 +161,7 @@
                 <mat-option value="4">Student 4</mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="grades">
+            <mat-form-field appearance="outline" class="dd--sm">
               <mat-select placeholder="All Schools">
                 <mat-option value="1">School 1</mat-option>
                 <mat-option value="2">School 2</mat-option>
@@ -169,7 +169,7 @@
                 <mat-option value="4">School 4</mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="grades">
+            <mat-form-field appearance="outline" class="dd--sm">
               <mat-select placeholder="All Subjects">
                 <mat-option value="1">Subject 1</mat-option>
                 <mat-option value="2">Subject 2</mat-option>
@@ -204,19 +204,34 @@
             <tbody>
               <tr *ngFor="let row of performanceMatrixtable">
                 <td class="clr--111827 fw-semibold">{{ row.component }}</td>
-                <td class="text-center">
+                <td class="text-center"> 
                   <div class="bg-highlight" [ngClass]="getStatusClass(row.elementary)">
                     {{ row.elementary }}
+                  </div>
+                  <div class="progress mt-2">
+                    <div class="progress-bar bg-success" [style.width.%]="row.progress.success"> {{ row.progress.success }}%</div>
+                    <div class="progress-bar bg-warning text-dark" [style.width.%]="row.progress.warning">{{ row.progress.warning }}%</div>
+                    <div class="progress-bar bg-danger" [style.width.%]="row.progress.danger">{{ row.progress.danger }}%</div>
                   </div>
                 </td>
                 <td class="text-center">
                   <div class="bg-highlight" [ngClass]="getStatusClass(row.middleSchool)">
                     {{ row.middleSchool }}
                   </div>
+                  <div class="progress mt-2">
+                    <div class="progress-bar bg-success" [style.width.%]="row.progress.success"> {{ row.progress.success }}%</div>
+                    <div class="progress-bar bg-warning text-dark" [style.width.%]="row.progress.warning">{{ row.progress.warning }}%</div>
+                    <div class="progress-bar bg-danger" [style.width.%]="row.progress.danger">{{ row.progress.danger }}%</div>
+                  </div>
                 </td>
                 <td class="text-center">
                   <div class="bg-highlight" [ngClass]="getStatusClass(row.highSchool)">
                     {{ row.highSchool }}
+                  </div>
+                  <div class="progress mt-2">
+                    <div class="progress-bar bg-success" [style.width.%]="row.progress.success"> {{ row.progress.success }}%</div>
+                    <div class="progress-bar bg-warning text-dark" [style.width.%]="row.progress.warning">{{ row.progress.warning }}%</div>
+                    <div class="progress-bar bg-danger" [style.width.%]="row.progress.danger">{{ row.progress.danger }}%</div>
                   </div>
                 </td>
               </tr>

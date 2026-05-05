@@ -26,6 +26,11 @@ interface TableRow {
   elementary: string;
   middleSchool: string;
   highSchool: string;
+    progress: {
+    success: number;
+    warning: number;
+    danger: number;
+  };
 }
 
 @Component({
@@ -176,32 +181,101 @@ export class Dashboard {
     this.updateActiveFilters();
   }
 
-  performanceMatrixtable: TableRow[] = [
-    { component: 'ELA Achievement', elementary: '75% (+5% from Goal)', middleSchool: '65% (+5% from Goal)', highSchool: '70% (+5% from Goal)'},
-    { component: 'ELA Learning Gains', elementary: '68% (+5% from Goal)', middleSchool: '65% (+5% from Goal)', highSchool: '65% (+5% from Goal)'},
-    { component: 'ELA Bottom Quartile', elementary: '71% (+5% from Goal)', middleSchool: '68% (+5% from Goal)', highSchool: '68% (+5% from Goal)'},
-    { component: 'ELA GD 3', elementary: '78% (+5% from Goal)', middleSchool: '-', highSchool: '-'},
-    { component: 'Math Achievement', elementary: '54% (+5% from Goal)', middleSchool: '68% (+5% from Goal)', highSchool: '78% (+5% from Goal)'},
-    { component: 'Math Learning Gains', elementary: '68% (+5% from Goal)', middleSchool: '46% (+5% from Goal)', highSchool: '68% (+5% from Goal)'},
-    { component: 'Math Bottom Quartile', elementary: '57% (+5% from Goal)', middleSchool: '44% (+5% from Goal)', highSchool: '58% (+5% from Goal)'},
-    { component: 'MS Acceleration', elementary: '-', middleSchool: '54% (+5% from Goal)', highSchool: '-'},
-    { component: 'Sciene Achievement', elementary: '78% (+5% from Goal)', middleSchool: '78% (+5% from Goal)', highSchool: '78% (+5% from Goal)'},
-    { component: 'Social Studies Achievement', elementary: '-', middleSchool: '78% (+5% from Goal)', highSchool: '78% (+5% from Goal)'},
-    { component: 'HS CCA', elementary: '-', middleSchool: '-', highSchool: '78% (+5% from Goal)'},
-    { component: 'Graduation Rate', elementary: '-', middleSchool: '-', highSchool: '-'},
-  ];
+performanceMatrixtable: TableRow[] = [
+  {
+    component: 'ELA Achievement',
+    elementary: '75% (+5% from Goal)',
+    middleSchool: '65% (+5% from Goal)',
+    highSchool: '70% (+5% from Goal)',
+    progress: { success: 60, warning: 10, danger: 30 }
+  },
+  {
+    component: 'ELA Learning Gains',
+    elementary: '68% (+5% from Goal)',
+    middleSchool: '65% (+5% from Goal)',
+    highSchool: '65% (+5% from Goal)',
+    progress: { success: 52, warning: 18, danger: 30 }
+  },
+  {
+    component: 'ELA Bottom Quartile',
+    elementary: '71% (+5% from Goal)',
+    middleSchool: '68% (+5% from Goal)',
+    highSchool: '68% (+5% from Goal)',
+    progress: { success: 58, warning: 12, danger: 30 }
+  },
+  {
+    component: 'ELA GD 3',
+    elementary: '78% (+5% from Goal)',
+    middleSchool: '-',
+    highSchool: '-',
+    progress: { success: 64, warning: 11, danger: 25 }
+  },
+  {
+    component: 'Math Achievement',
+    elementary: '54% (+5% from Goal)',
+    middleSchool: '68% (+5% from Goal)',
+    highSchool: '78% (+5% from Goal)',
+    progress: { success: 46, warning: 24, danger: 30 }
+  },
+  {
+    component: 'Math Learning Gains',
+    elementary: '68% (+5% from Goal)',
+    middleSchool: '46% (+5% from Goal)',
+    highSchool: '68% (+5% from Goal)',
+    progress: { success: 50, warning: 20, danger: 30 }
+  },
+  {
+    component: 'Math Bottom Quartile',
+    elementary: '57% (+5% from Goal)',
+    middleSchool: '44% (+5% from Goal)',
+    highSchool: '58% (+5% from Goal)',
+    progress: { success: 42, warning: 23, danger: 35 }
+  },
+  {
+    component: 'MS Acceleration',
+    elementary: '-',
+    middleSchool: '54% (+5% from Goal)',
+    highSchool: '-',
+    progress: { success: 48, warning: 17, danger: 35 }
+  },
+  {
+    component: 'Sciene Achievement',
+    elementary: '78% (+5% from Goal)',
+    middleSchool: '78% (+5% from Goal)',
+    highSchool: '78% (+5% from Goal)',
+    progress: { success: 70, warning: 10, danger: 20 }
+  },
+  {
+    component: 'Social Studies Achievement',
+    elementary: '-',
+    middleSchool: '78% (+5% from Goal)',
+    highSchool: '78% (+5% from Goal)',
+    progress: { success: 66, warning: 14, danger: 20 }
+  },
+  {
+    component: 'HS CCA',
+    elementary: '-',
+    middleSchool: '-',
+    highSchool: '78% (+5% from Goal)',
+    progress: { success: 62, warning: 13, danger: 25 }
+  },
+  {
+    component: 'Graduation Rate',
+    elementary: '-',
+    middleSchool: '-',
+    highSchool: '-',
+    progress: { success: 40, warning: 20, danger: 40 }
+  }
+];
 
   getStatusClass(value: string | null | undefined): string {
     if (!value || value.trim() === '-') {
       return '';
-    }
-
-    const num = parseFloat(value);
-
+    } 
+    const num = parseFloat(value); 
     if (isNaN(num)) {
       return '';
-    }
-
+    } 
     if (num >= 70) {
       return 'green-bg';
     } else if (num >= 60) {
