@@ -187,7 +187,7 @@ performanceMatrixtable: TableRow[] = [
     elementary: '75% (+5% from Goal)',
     middleSchool: '65% (+5% from Goal)',
     highSchool: '70% (+5% from Goal)',
-    progress: { success: 60, warning: 10, danger: 30 }
+    progress: { success: 60, warning: 20, danger: 20 }
   },
   {
     component: 'ELA Learning Gains',
@@ -264,7 +264,7 @@ performanceMatrixtable: TableRow[] = [
     elementary: '-',
     middleSchool: '-',
     highSchool: '-',
-    progress: { success: 40, warning: 20, danger: 40 }
+    progress: { success: 100, warning: 0, danger: 0 }
   }
 ];
 
