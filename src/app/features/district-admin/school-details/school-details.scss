@@ -81,24 +81,6 @@
                         &:nth-child(1) {
                             word-break: break-all;
                         }
-                        .bg-highlight{
-                            border-radius: 9999px;
-                            padding: 0.25rem 1rem;
-                            display: inline-flex;
-                            font-weight: 600;
-                            &.green-bg{
-                                background-color: #DCFCE7;
-                                color: #15803D;
-                            }
-                            &.yellow-bg{
-                                background-color: #FEF3C7;
-                                color: #B45309;
-                            }
-                            &.red-bg{
-                                background-color: #FEE2E2;
-                                color: #D64550;
-                            }
-                        }
                         .final-status{
                             border-radius: 9999px;
                             padding: 0.125rem 0.625rem;
