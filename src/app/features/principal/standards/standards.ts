@@ -48,7 +48,7 @@ export type ChartOptions1 = {
   dataLabels: ApexDataLabels;
   plotOptions: ApexPlotOptions;
   annotations: ApexAnnotations;
-  fill: ApexFill;
+  fill: ApexFill | any;
 };
 
 
@@ -69,9 +69,9 @@ const getColor = (val: number) => {
 };
 
 const getLabelColor = (val: number) => {
-  if (val >= 70) return '#15803D';   // dark green text
-  if (val < 50) return '#F87171';    // dark red text
-  return '#B45309';                  // dark yellow/orange text
+  if (val >= 70) return '#15803D';
+  if (val <= 50) return '#F87171';
+  return '#B45309';
 };
 
 export const barColors = actualValues.map(getColor);
@@ -321,6 +321,7 @@ export class Standards {
     yaxis: {
       labels: {
         align: 'left',
+        maxWidth: 210,
         style: {
           fontSize: '12px',
           fontWeight: 600,
@@ -417,7 +418,7 @@ export class Standards {
       const index = opts.dataPointIndex;
       return `${actualValues[index].toFixed(1)}%`; // show completed %
     },
-    offsetX: 10,
+    offsetX: 20,
     textAnchor: 'start',
     style: {
       fontSize: '11px',
@@ -458,7 +459,7 @@ export class Standards {
   yaxis: {
     labels: {
       align: 'left',
-      minWidth: 180,
+      maxWidth: 180,
       style: {
         fontSize: '12px',
         colors: '#374151'
@@ -469,7 +470,8 @@ export class Standards {
   grid: {
     show: false,
     padding: {
-      right: 60
+      right: 40,
+      left: 0
     }
   },
 
@@ -492,12 +494,14 @@ export class Standards {
       {
         x: 50,
         borderColor: '#D64550',
-        strokeDashArray: 4
+        strokeDashArray: 12,
+        opacity: 0.5,
       },
       {
         x: 70,
         borderColor: '#90C955',
-        strokeDashArray: 0
+        strokeDashArray: 12,
+        opacity: 0.5,
       }
     ]
   }
@@ -546,7 +550,7 @@ export class Standards {
       const index = opts.dataPointIndex;
       return `${actualValues1[index].toFixed(1)}%`; // show completed %
     },
-    offsetX: 10,
+    offsetX: 20,
     textAnchor: 'start',
     style: {
       fontSize: '11px',
@@ -587,7 +591,7 @@ export class Standards {
   yaxis: {
     labels: {
       align: 'left',
-      minWidth: 180,
+      maxWidth: 180,
       style: {
         fontSize: '12px',
         colors: '#374151'
@@ -598,7 +602,8 @@ export class Standards {
   grid: {
     show: false,
     padding: {
-      right: 60
+      right: 40,
+      left: 0
     }
   },
 
@@ -621,12 +626,14 @@ export class Standards {
       {
         x: 50,
         borderColor: '#D64550',
-        strokeDashArray: 4
+        strokeDashArray: 12,
+        opacity: 0.5,
       },
       {
         x: 70,
         borderColor: '#90C955',
-        strokeDashArray: 0
+        strokeDashArray: 12,
+        opacity: 0.5,
       }
     ]
   }

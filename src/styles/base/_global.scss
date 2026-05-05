@@ -455,6 +455,25 @@ body{
                   &:nth-child(1) {
                     padding: 0.75rem 0.5rem 0.75rem 1.125rem;
                   }
+                  .bg-highlight{
+                    border-radius: 9999px;
+                    padding: 0.25rem 1rem;
+                    display: inline-flex;
+                    font-weight: 600;
+                    white-space: nowrap;
+                    &.green-bg{
+                        background-color: #DCFCE7;
+                        color: #15803D;
+                    }
+                    &.yellow-bg{
+                        background-color: #FEF3C7;
+                        color: #B45309;
+                    }
+                    &.red-bg{
+                        background-color: #FEE2E2;
+                        color: #D64550;
+                    }
+                  }
                 }
              }
          }
@@ -726,6 +745,25 @@ body{
           color: #0D2A7C;
         }
       }
+    }
+
+    // Remove Material default divider line
+    .mat-button-toggle + .mat-button-toggle {
+        border-left: none !important;
+    }
+    // Remove ripple overlay background
+    .mat-button-toggle-focus-overlay {
+        display: none;
+    }
+    .mat-pseudo-checkbox {
+        display: none !important;
+    }
+    .mat-button-toggle-checked .mat-button-toggle-button:has(.mat-button-toggle-checkbox-wrapper){
+        padding-left: 0px !important;
+    }
+    .mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
+        line-height: 20px !important;
+        padding: 0px !important;
     }
   }
 

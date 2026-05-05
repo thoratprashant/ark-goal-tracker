@@ -201,20 +201,6 @@
             tbody{
                 tr{
                     td{
-                        .bg-highlight{
-                            border-radius: 9999px;
-                            padding: 0.25rem 1rem;
-                            display: inline-flex;
-                            font-weight: 600;
-                            &.green-bg{
-                                background-color: #DCFCE7;
-                                color: #15803D;
-                            }
-                            &.yellow-bg{
-                                background-color: #FEF3C7;
-                                color: #B45309;
-                            }
-                        }
                         .final-status{
                             border-radius: 9999px;
                             padding: 0.125rem 0.625rem;
