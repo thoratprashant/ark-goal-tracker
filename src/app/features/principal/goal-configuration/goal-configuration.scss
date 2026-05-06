@@ -1,0 +1,184 @@
+.goalc--wrapper{
+    .clr--1E3A8A{color: #1E3A8A !important;}
+    .clr--059669{color: #059669 !important;} 
+    .clr--2563EB{color: #2563EB !important;} 
+    .clr--EF4444{color: #EF4444 !important;}
+    .clr--FCD34D{color: #FCD34D !important;}
+    .clr--93C5FD{color: #93C5FD !important;}
+    .clr--86EFAC{color: #86EFAC !important;}
+    .clr--0F1729{color: #0F1729 !important;}
+    .clr--16A34A{color: #16A34A !important;}
+    .clr--DC2626{color: #DC2626 !important;}
+    .clr--3B82F6{color: #3B82F6 !important;}
+    .clr--94A3B8{color: #94A3B8 !important;}
+    .clr--F59E0B{color: #F59E0B !important;}
+
+    .performance--summary-section{
+        .section-slider{
+            &.slider-1{
+                gap: 20px;
+            }
+        }
+        .backdrop-card{
+            .card{
+                &.blue-outline{
+                    min-width: 120px;
+                    border: 1px solid #3c83f666;
+                    background: #3b82f633;
+                }
+                &.green-outline{
+                    min-width: 120px;
+                    border: 1px solid #22c55e66;
+                    background: #22c55e33;
+                }
+            }
+        }
+        .top-notation{
+            width: 10px;
+            height: 10px;
+            border-radius: 100px;
+            &.green-notation{
+                background-color: #22C55E;
+            }
+            &.blue-notation{
+                background-color: #3B82F6;
+            }
+            &.orange-notation{
+                background-color: #F59E0B;
+            }
+        }
+        .bottom-notation{
+            &.green-notation{
+                background-color: #34D399;
+            }
+            &.yellow-notation{
+                background-color: #FBBF24;
+            }
+            &.blue-notation{
+                background-color: #60A5FA;
+            }
+            &.orange-notation{
+                background-color: #F59E0B;
+            }
+        }
+    }
+    .subject-performance-section{
+        gap: 16px;
+        .label-card{
+            padding: 8px 12px;;
+            border-radius: 8px;
+            background: #f5f5f566;
+            gap: 16px;
+        }
+        .notation{
+            width: 7px;
+            height: 7px;
+            border-radius: 100px;
+            &.green{
+                background-color: #22C55E;
+            }
+            &.blue{
+                background-color: #3B82F6;
+            }
+            &.orange{
+                background-color: #F59E0B;
+            }
+            &.gray{
+                background-color: #94A3B8;
+            }
+        }
+        .card{
+            border-radius: 12px;
+            background: #FFF;
+            box-shadow: 0 1px 2px 0 #0000000d;
+            &.green-border{
+                border: 1px solid #86EFAC;
+            }
+            &.yellow-border{
+                border: 1px solid #DCE52A;
+            }
+            &.red-border{
+                border: 1px solid #D64550;
+            }
+            .card-header{
+                padding: 12px 16px;
+                border-radius: 12px 12px 0px 0px;
+                border-bottom: none;
+                &.green-header{
+                    background: #F0FDF4;
+                }
+                &.yellow-header{
+                    background: #FEFFED;
+                }
+                &.red-header{
+                    background: #FEF2F2;
+                }
+                .mat-icon{
+                    width: 14px;
+                    height: 14px;
+                    font-size: 14px;
+                }
+            }
+            .card-body{
+                padding: 12px 16px;
+                .listing-section{
+                    padding: 6px 0px;
+                }
+                .goal--status{
+                    padding: 12px 0px;
+                    .custom-progress{
+                        width: 100%;
+                        .progress{
+                            height:12px; 
+                        } 
+                        .progress-thumb{
+                            position: absolute;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 20px;
+                            height: 20px; 
+                            border-radius: 50%;
+                            border: 3px solid #fff;
+                        }
+                    } 
+                    &.doable{
+                        .progress{ 
+                            background-color: #fac7c7;
+                            .progress-thumb,
+                            .progress-bar{
+                                background-color: #f4a000;
+                            } 
+                        } 
+                        .g--per{
+                            color: #F59E0B;
+                        }
+                    }
+                    &.stretch{
+                        .progress{ 
+                        background-color: #fac7c7;
+                        .progress-thumb,
+                        .progress-bar{
+                            background-color: #ef4444;
+                        } 
+                        } 
+                        .g--per{
+                            color: #ef4444;
+                        }
+                    }
+                    &.safe{
+                        .progress{ 
+                                background-color: #fac7c7;
+                                .progress-thumb,
+                                .progress-bar{
+                                    background-color: #22C55E;
+                            } 
+                        } 
+                        .g--per{
+                            color: #22C55E;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

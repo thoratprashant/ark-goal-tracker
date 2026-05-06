@@ -26,5 +26,10 @@ export const PRINCIPALLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./standards/standards').then(c => c.Standards),
     data: { title: 'standards' }
   },
+  {
+    path: 'goal-configuration',
+    loadComponent: () => import('./goal-configuration/goal-configuration').then(c => c.GoalConfiguration),
+    data: { title: 'goal configuration' }
+  },
   
 ];

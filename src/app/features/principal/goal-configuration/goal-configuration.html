@@ -1,0 +1,1350 @@
+<div class="container-fluild goalc--wrapper">
+    <div class="row">
+        <div class="col-12 head--sec mt-sm-0">
+            <h4 class="text-secondary fw-bold">Goal Configuration & Impact Console</h4>
+            <p class="mb-4">Configure school and subject goals, analyze impact in real-time, and make data-driven decisions</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 performance--summary-section">
+            <div class="card p-3 p-sm-4 d-flex flex-column">
+                <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between gap-3">
+                    <div class="d-flex flex-column header-section">
+                        <div class="d-flex flex-column">
+                        <h2 class="main-title fw-bold">School Performance Summary</h2>
+                        </div>
+                        <div class="d-flex flex-wrap align-items-sm-center total-students-section gap-3">
+                        <div class="backdrop-card d-flex">
+                            <div class="card py-2 d-flex flex-row align-items-center gap-2 mb-0">
+                            <img src="images/school-green.svg" alt="icon" class="img-fluid">
+                            <p class="second-title font-13 fw-normal mb-0">25 Schools</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex">
+                            <div class="card py-2 d-flex flex-row align-items-center gap-2 mb-0">
+                            <img src="images/total-users-orange.svg" alt="icon" class="img-fluid">
+                            <p class="second-title font-13 fw-normal mb-0">12,500 Students</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-sm-row flex-column align-items-stretch total-performance-section">
+                        <div class="backdrop-card d-flex">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0 text-uppercase">District Se Goal</p>
+                                <h2 class="main-title fw-bold mb-0">67% A</h2>
+                                <div class="d-flex gap-2">
+                                <p class="clr--BFD fw-normal font-11 mb-0">500 PTS</p>
+                                <div
+                                    class="d-flex align-items-center justify-content-center predicted-performance-label clr--BFD fw-normal font-11">
+                                    -50</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0 text-uppercase">School Set Goal</p>
+                                <h2 class="main-title fw-bold mb-0">67% A</h2>
+                                <div class="d-flex gap-2">
+                                <p class="clr--BFD fw-normal font-11 mb-0">500 PTS</p>
+                                <div
+                                    class="d-flex align-items-center justify-content-center predicted-performance-label clr--BFD fw-normal font-11">
+                                    -50</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex">
+                            <div class="card d-flex flex-column justify-content-between mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0 text-uppercase">Predicted Score</p>
+                                <h2 class="main-title fw-bold mb-0">68% A</h2>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex">
+                            <div class="card d-flex flex-column justify-content-between mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0 text-uppercase">Prior year score</p>
+                                <h2 class="main-title fw-bold mb-0">64% A</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider-line"></div>
+                <div class="d-flex align-items-center gap-2 flex-shrink-0 mb-2">
+                    <div class="top-notation blue-notation"></div>
+                    <p class="font-14 fw-bold clr--93C5FD mb-0 text-uppercase">District Set Goal</p>
+                </div>
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <button class="arr--btn" *ngIf="isScrollable1 && showPrev1" (click)="scrollLeft1()">
+                        <mat-icon>arrow_back_ios</mat-icon>
+                    </button>
+                    <div class="d-flex flex-row align-items-stretch section-slider slider-1" #scrollContainer1 (scroll)="checkScroll1()">
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">ELA</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">36%</h2>
+                                <p class="clr--93C5FD fw-normal font-11 mb-0">171 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">ELA grad 3</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">36%</h2>
+                                <p class="clr--93C5FD fw-normal font-11 mb-0">171 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">math</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">39%</h2>
+                                <p class="clr--93C5FD fw-normal font-11 mb-0">185 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">Science</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">44%</h2>
+                                <p class="clr--93C5FD fw-normal font-11 mb-0">209 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">ss</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">44%</h2>
+                                <p class="clr--93C5FD fw-normal font-11 mb-0">209 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">MS ACC</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">44%</h2>
+                                <p class="clr--93C5FD fw-normal font-11 mb-0">209 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">HS CCA</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">44%</h2>
+                                <p class="clr--93C5FD fw-normal font-11 mb-0">209 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">Grad</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">44%</h2>
+                                <p class="clr--93C5FD fw-normal font-11 mb-0">209 pts</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="arr--btn" *ngIf="isScrollable1 && showNext1" (click)="scrollRight1()">
+                        <mat-icon>arrow_forward_ios</mat-icon>
+                    </button>
+                </div>
+                <div class="d-flex align-items-center gap-2 flex-shrink-0 mb-2">
+                    <div class="top-notation green-notation"></div>
+                    <p class="font-14 fw-bold clr--86EFAC mb-0 text-uppercase">School Set Goal</p>
+                </div>
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <button class="arr--btn" *ngIf="isScrollable2 && showPrev2" (click)="scrollLeft2()">
+                        <mat-icon>arrow_back_ios</mat-icon>
+                    </button>
+                    <div class="d-flex flex-row align-items-stretch section-slider slider-1" #scrollContainer2 (scroll)="checkScroll2()">
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">ELA</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">42%</h2>
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0">+6 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">ELA grad 3</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">42%</h2>
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0">+6 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">Math</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">44%</h2>
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0">+5 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">Science</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">48%</h2>
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0">+4 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">ss</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">43%</h2>
+                                <p class="clr--D64550 fw-semibold font-11 mb-0">-1 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">MS ACC</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">48%</h2>
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0">+4 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">HS CCA</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">43%</h2>
+                                <p class="clr--D64550 fw-semibold font-11 mb-0">-1 pts</p>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
+                                <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">Grad</p>
+                                <h2 class="text-white font-20 fw-bold mb-0">43%</h2>
+                                <p class="clr--D64550 fw-semibold font-11 mb-0">-1 pts</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="arr--btn" *ngIf="isScrollable2 && showNext2" (click)="scrollRight2()">
+                        <mat-icon>arrow_forward_ios</mat-icon>
+                    </button>
+                </div>
+                <div class="d-flex align-items-center gap-2 flex-shrink-0 mb-2">
+                    <div class="top-notation orange-notation"></div>
+                    <p class="font-14 fw-bold clr--FCD34D mb-0 text-uppercase">Predicted Score / Prior Year Score</p>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <button class="arr--btn" *ngIf="isScrollable && showPrev" (click)="scrollLeft()">
+                        <mat-icon>arrow_back_ios</mat-icon>
+                    </button>
+                    <div class="d-flex flex-row align-items-stretch section-slider" #scrollContainer (scroll)="checkScroll()">
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-24 fw-bold mb-0">40%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Predicted</p>
+                                </div>
+                                <div class="inner-divider-line"></div>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-18 fw-semibold mb-0">43.7%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Prior Year</p>
+                                </div>
+                                <div class="d-flex gap-2">
+                                <img src="images/green-upward.svg" alt="icon" class="img-fluid">
+                                <P class="clr--6EE7B7 font-14 fw-semibold mb-0">+3.7 pts</P>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0">ELA 3</p>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-24 fw-bold mb-0">44%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Predicted</p>
+                                </div>
+                                <div class="inner-divider-line"></div>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-18 fw-semibold mb-0">43.0%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Prior Year</p>
+                                </div>
+                                <div class="d-flex gap-2">
+                                <img src="images/red-downward.svg" alt="icon" class="img-fluid">
+                                <P class="clr--FCA5A5 font-14 fw-semibold mb-0">-1 pts</P>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0">MATH</p>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-24 fw-bold mb-0">44%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Predicted</p>
+                                </div>
+                                <div class="inner-divider-line"></div>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-18 fw-semibold mb-0">44.1%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Prior Year</p>
+                                </div>
+                                <div class="d-flex gap-2">
+                                <img src="images/green-upward.svg" alt="icon" class="img-fluid">
+                                <P class="clr--6EE7B7 font-14 fw-semibold mb-0">+0.1 pts</P>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0">SCI</p>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-24 fw-bold mb-0">44%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Predicted</p>
+                                </div>
+                                <div class="inner-divider-line"></div>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-18 fw-semibold mb-0">44.2%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Prior Year</p>
+                                </div>
+                                <div class="d-flex gap-2">
+                                <img src="images/green-upward.svg" alt="icon" class="img-fluid">
+                                <P class="clr--6EE7B7 font-14 fw-semibold mb-0">+0.2 pts</P>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0">SS</p>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-24 fw-bold mb-0">44%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Predicted</p>
+                                </div>
+                                <div class="inner-divider-line"></div>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-18 fw-semibold mb-0">44.0%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Prior Year</p>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <P class="clr--FDE047 font-14 fw-semibold mb-0">- 0 pts</P>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0">MS ACC</p>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-24 fw-bold mb-0">44%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Predicted</p>
+                                </div>
+                                <div class="inner-divider-line"></div>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-18 fw-semibold mb-0">44.4%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Prior Year</p>
+                                </div>
+                                <div class="d-flex gap-2">
+                                <img src="images/green-upward.svg" alt="icon" class="img-fluid">
+                                <P class="clr--6EE7B7 font-14 fw-semibold mb-0">+0.4 pts</P>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-24 fw-bold mb-0">40%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Predicted</p>
+                                </div>
+                                <div class="inner-divider-line"></div>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-18 fw-semibold mb-0">43.7%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Prior Year</p>
+                                </div>
+                                <div class="d-flex gap-2">
+                                <img src="images/green-upward.svg" alt="icon" class="img-fluid">
+                                <P class="clr--6EE7B7 font-14 fw-semibold mb-0">+3.7 pts</P>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0">ELA 3</p>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-24 fw-bold mb-0">44%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Predicted</p>
+                                </div>
+                                <div class="inner-divider-line"></div>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-18 fw-semibold mb-0">43.0%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Prior Year</p>
+                                </div>
+                                <div class="d-flex gap-2">
+                                <img src="images/red-downward.svg" alt="icon" class="img-fluid">
+                                <P class="clr--FCA5A5 font-14 fw-semibold mb-0">-1 pts</P>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0">MATH</p>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-24 fw-bold mb-0">44%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Predicted</p>
+                                </div>
+                                <div class="inner-divider-line"></div>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-18 fw-semibold mb-0">44.1%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Prior Year</p>
+                                </div>
+                                <div class="d-flex gap-2">
+                                <img src="images/green-upward.svg" alt="icon" class="img-fluid">
+                                <P class="clr--6EE7B7 font-14 fw-semibold mb-0">+0.1 pts</P>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0">SCI</p>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-24 fw-bold mb-0">44%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Predicted</p>
+                                </div>
+                                <div class="inner-divider-line"></div>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-18 fw-semibold mb-0">44.2%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Prior Year</p>
+                                </div>
+                                <div class="d-flex gap-2">
+                                <img src="images/green-upward.svg" alt="icon" class="img-fluid">
+                                <P class="clr--6EE7B7 font-14 fw-semibold mb-0">+0.2 pts</P>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0">SS</p>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-24 fw-bold mb-0">44%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Predicted</p>
+                                </div>
+                                <div class="inner-divider-line"></div>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-18 fw-semibold mb-0">44.0%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Prior Year</p>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <P class="clr--FDE047 font-14 fw-semibold mb-0">- 0 pts</P>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backdrop-card d-flex flex-shrink-0">
+                            <div class="card d-flex flex-column gap-2 mb-0">
+                                <p class="clr--BFD fw-normal font-11 mb-0">MS ACC</p>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-24 fw-bold mb-0">44%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Predicted</p>
+                                </div>
+                                <div class="inner-divider-line"></div>
+                                <div class="d-flex align-items-end gap-2">
+                                <h2 class="text-white font-18 fw-semibold mb-0">44.4%</h2>
+                                <p class="clr--BFD font-12 fw-normal mb-0">Prior Year</p>
+                                </div>
+                                <div class="d-flex gap-2">
+                                <img src="images/green-upward.svg" alt="icon" class="img-fluid">
+                                <P class="clr--6EE7B7 font-14 fw-semibold mb-0">+0.4 pts</P>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="arr--btn" *ngIf="isScrollable && showNext" (click)="scrollRight()">
+                        <mat-icon>arrow_forward_ios</mat-icon>
+                    </button>
+                </div>
+                <div class="divider-line"></div>
+                <div class="backdrop-card d-flex">
+                    <div class="card w-100 d-flex flex-sm-row flex-column flex-wrap gap-2 mb-2">
+                        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                            <div class="bottom-notation green-notation"></div>
+                            <p class="clr--BFD fw-normal font-10 mb-0">District Goal (entered)</p>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                            <div class="bottom-notation blue-notation"></div>
+                            <p class="clr--BFD fw-normal font-10 mb-0">Calculated from School Goals </p>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                            <div class="bottom-notation yellow-notation"></div>
+                            <p class="clr--BFD fw-normal font-10 mb-0">Pts Above/Below</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card p-0 mt-2 mb-0">
+                <div class="card-header p-3 mb-0 
+                d-flex 
+                align-items-start justify-content-start 
+                align-items-sm-center justify-content-sm-between 
+                flex-column flex-sm-row gap-2
+                ">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="images/configuration-logo.svg" alt="icon" class="img-fluid">
+                        <h5 class="font-13 fw-semibold mb-0 text-secondary">Configuration Controls</h5>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="button" class="btn btn-sm btn-outline-primary">
+                            <i class="icon icon--download"></i>
+                            Export Template
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-primary">
+                            <mat-icon>schedule</mat-icon>
+                            View History
+                        </button>
+                        <button type="button" class="btn btn-sm btn-primary flex-shrink-0">Save All Changes</button>
+                    </div>
+                </div>
+                <div class="card-header p-3 mb-0 d-flex align-items-center">
+                    <div class="row w-100">
+                        <div class="col-12 col-lg-5">
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                <label class="form-label font-9 clr--7373 mb-1">FILTER BY SCHOOL</label>
+                                <mat-form-field appearance="outline" class="w-100 dd--sm">
+                                    <mat-select placeholder="All Schools (8)" multiple>
+                                    <mat-option value="1">Greenwood High School</mat-option>
+                                    <mat-option value="2">Sunrise Public School </mat-option>
+                                    <mat-option value="3">Harmony International School</mat-option>
+                                    <mat-option value="4">Golden Valley School </mat-option>
+                                    <mat-option value="5">Bright Future School</mat-option>
+                                    <mat-option value="6">Hilltop Public School </mat-option>
+                                    <mat-option value="7">Blue Ridge High School</mat-option>
+                                    <mat-option value="8">Riverdale Academy</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                <label class="form-label font-9 clr--7373 mb-1">FILTER BY SUBJECT</label>
+                                <mat-form-field appearance="outline" class="w-100 dd--sm">
+                                    <mat-select placeholder="All Subjects" multiple>
+                                    <mat-option value="1">Mathematics</mat-option>
+                                    <mat-option value="2">Science </mat-option>
+                                    <mat-option value="3">English</mat-option>
+                                    <mat-option value="4">Social Studies</mat-option>
+                                    <mat-option value="5">Computer Science</mat-option>
+                                    <mat-option value="6">Physics</mat-option>
+                                    <mat-option value="7">Chemistry</mat-option>
+                                    <mat-option value="8">Biology</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-7">
+                            <div class="row">
+                                <div class="col-12 col-md-4">
+                                <label class="form-label font-9 clr--7373 mb-1">COMPONENT</label>
+                                <mat-form-field appearance="outline" class="w-100 dd--sm">
+                                    <mat-select placeholder="All Components" multiple>
+                                    <mat-option value="1">Components 01</mat-option>
+                                    <mat-option value="2">Components 02</mat-option>
+                                    <mat-option value="3">Components 03</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                <label class="form-label font-9 clr--7373 mb-1">PERFORMANCE TIER</label>
+                                <mat-form-field appearance="outline" class="w-100 dd--sm">
+                                    <mat-select placeholder="All Tiers" multiple>
+                                    <mat-option value="1">Tiers 01</mat-option>
+                                    <mat-option value="2">Tiers 02</mat-option>
+                                    <mat-option value="3">Tiers 03</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                <label class="form-label font-9 clr--7373 mb-1">VIEW MODE</label>
+                                <mat-form-field appearance="outline" class="w-100 dd--sm">
+                                    <mat-select placeholder="Table Mode">
+                                    <mat-option value="1">Table Mode</mat-option>
+                                    <mat-option value="2">Table Mode 02</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-3 d-flex flex-column subject-performance-section ">
+                    <div class="col-12">
+                            <h5 class="font-13 fw-bold clr--0F1729 mb-1">Subject Performance Tiles</h5>
+                            <p class="font-10 fw-normal clr--7373 mb-0">Click any tile to expand component breakdown. <span class="clr--16A34A fw-semibold">Green border</span> = school goal exceeds district target · <span class="clr--DC2626 fw-semibold">Red border</span> = school goal exceeds district target ·</p>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex flex-sm-row flex-column align-items-sm-center label-card">
+                                <div class="d-flex align-items-center gap-1">
+                                    <div class="notation blue"></div>
+                                    <p class="font-9 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <div class="notation green"></div>
+                                    <p class="font-9 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <div class="notation orange"></div>
+                                    <p class="font-9 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <div class="notation gray"></div>
+                                    <p class="font-9 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card p-0 green-border d-flex flex-column">
+                                <div class="card-header mb-0 green-header d-flex justify-content-between gap-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">ELA</h5>
+                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
+                                    </div>
+                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation blue"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation green"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">42%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation orange"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">40%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation gray"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">33%</h5>
+                                    </div>
+                                    <div class="d-flex flex-column goal--status safe">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <div class="custom-progress position-relative">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
+                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+6 pts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card p-0 green-border d-flex flex-column">
+                                <div class="card-header mb-0 green-header d-flex justify-content-between gap-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">Math</h5>
+                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
+                                    </div>
+                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation blue"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">39%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation green"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation orange"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation gray"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
+                                    </div>
+                                    <div class="d-flex flex-column goal--status safe">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <div class="custom-progress position-relative">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
+                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+5 pts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card p-0 green-border d-flex flex-column">
+                                <div class="card-header mb-0 green-header d-flex justify-content-between gap-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">Science</h5>
+                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
+                                    </div>
+                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation blue"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation green"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">48%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation orange"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">46%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation gray"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">41%</h5>
+                                    </div>
+                                    <div class="d-flex flex-column goal--status safe">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <div class="custom-progress position-relative">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--7373">- 0%</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+4 pts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card p-0 green-border d-flex flex-column">
+                                <div class="card-header mb-0 green-header d-flex justify-content-between gap-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">MS Acceleration</h5>
+                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
+                                    </div>
+                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation blue"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation green"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">48%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation orange"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">46%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation gray"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">41%</h5>
+                                    </div>
+                                    <div class="d-flex flex-column goal--status safe">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <div class="custom-progress position-relative">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--7373">- 0%</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+4 pts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card p-0 green-border d-flex flex-column">
+                                <div class="card-header mb-0 green-header d-flex justify-content-between gap-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">ELA Grad 3</h5>
+                                        <p class="font-12 clr--7373 fw-normal mb-0">Grade 3</p>
+                                    </div>
+                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation blue"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation green"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">42%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation orange"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">40%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation gray"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">33%</h5>
+                                    </div>
+                                    <div class="d-flex flex-column goal--status safe">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <div class="custom-progress position-relative">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
+                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+6 pts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card p-0 yellow-border d-flex flex-column">
+                                <div class="card-header mb-0 yellow-header d-flex justify-content-between gap-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">Math LG</h5>
+                                        <p class="font-12 clr--7373 fw-normal mb-0">LG</p>
+                                    </div>
+                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation blue"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">39%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation green"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation orange"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation gray"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
+                                    </div>
+                                    <div class="d-flex flex-column goal--status safe">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <div class="custom-progress position-relative">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
+                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+5 pts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card p-0 red-border d-flex flex-column">
+                                <div class="card-header mb-0 red-header d-flex justify-content-between gap-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">SS</h5>
+                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
+                                    </div>
+                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation blue"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation green"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">43%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation orange"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">41%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation gray"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">41%</h5>
+                                    </div>
+                                    <div class="d-flex flex-column goal--status safe">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <div class="custom-progress position-relative">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--7373">- 0%</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--DC2626">-1 pts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card p-0 red-border d-flex flex-column">
+                                <div class="card-header mb-0 red-header d-flex justify-content-between gap-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">HS CCA</h5>
+                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
+                                    </div>
+                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation blue"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation green"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">43%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation orange"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">46%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation gray"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">41%</h5>
+                                    </div>
+                                    <div class="d-flex flex-column goal--status safe">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <div class="custom-progress position-relative">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--7373">- 0%</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--DC2626">-1 pts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card p-0 yellow-border d-flex flex-column">
+                                <div class="card-header mb-0 yellow-header d-flex justify-content-between gap-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">ELA LG</h5>
+                                        <p class="font-12 clr--7373 fw-normal mb-0">LG</p>
+                                    </div>
+                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation blue"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation green"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">42%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation orange"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">40%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation gray"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">33%</h5>
+                                    </div>
+                                    <div class="d-flex flex-column goal--status safe">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <div class="custom-progress position-relative">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
+                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+6 pts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card p-0 red-border d-flex flex-column">
+                                <div class="card-header mb-0 red-header d-flex justify-content-between gap-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">Math BQ</h5>
+                                        <p class="font-12 clr--7373 fw-normal mb-0">BQ</p>
+                                    </div>
+                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation blue"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">39%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation green"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation orange"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation gray"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
+                                    </div>
+                                    <div class="d-flex flex-column goal--status safe">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <div class="custom-progress position-relative">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
+                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+5 pts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card p-0 red-border d-flex flex-column">
+                                <div class="card-header mb-0 red-header d-flex justify-content-between gap-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">Graduation</h5>
+                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
+                                    </div>
+                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation blue"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation green"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">43%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation orange"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation gray"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">41%</h5>
+                                    </div>
+                                    <div class="d-flex flex-column goal--status safe">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <div class="custom-progress position-relative">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--7373">- 0%</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--DC2626">-1 pts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card p-0 red-border d-flex flex-column">
+                                <div class="card-header mb-0 red-header d-flex justify-content-between gap-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">ELA BG</h5>
+                                        <p class="font-12 clr--7373 fw-normal mb-0">BQ</p>
+                                    </div>
+                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation blue"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation green"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">42%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation orange"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">40%</h5>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="notation gray"></div>
+                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
+                                        </div>
+                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">33%</h5>
+                                    </div>
+                                    <div class="d-flex flex-column goal--status safe">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <div class="custom-progress position-relative">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
+                                                </div>
+                                            </div>
+                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
+                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+6 pts</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
