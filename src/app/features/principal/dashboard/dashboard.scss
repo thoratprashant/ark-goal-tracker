@@ -1,0 +1,211 @@
+.dashboard--wrapper{
+    .grades{
+        width: 140px;
+    }
+    .alerts-section{
+        gap: 0.75rem;
+        margin-top: 1rem;
+        .card{
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 0rem;
+            &.alerts-card{
+                border: 1px solid #FDE68A;
+                background: #FFFBEB;
+                .img--box{
+                    border-radius: 0.5rem;
+                    background: #FEF3C7;
+                    width: 2.25rem;
+                    height: 2.25rem;
+                    img{
+                        width: 1.25rem;
+                        height: 1.25rem;
+                    }
+                }
+                .main-label{
+                    color: #78350F;
+                }
+                .sub-label{
+                    color: #B45309;
+                }
+            }
+            &.attention-card{
+                border: 1px solid #FECACA;
+                background: #FEF2F2;
+                .img--box{
+                    border-radius: 0.5rem;
+                    background: #FEE2E2;
+                    width: 2.25rem;
+                    height: 2.25rem;
+                    img{
+                        width: 1.25rem;
+                        height: 1.25rem;
+                    }
+                }
+                .main-label{
+                    color: #7F1D1D
+                }
+                .sub-label{
+                    color: #B91C1C;
+                }
+            }
+        }
+    }
+    .subject-performance-wrapper{
+        gap: 16px;
+        .table-filters-section{
+            padding: 16px;
+            border: 1px solid #DBEAFE;
+            border-radius: 16px;
+            background: #fff;
+        }
+        .performance-table { 
+            .table {
+                min-width: 750px;
+                thead {
+                    th { 
+                        &:first-child {
+                            width: 20%;
+                        } 
+                    }
+                }
+                tbody {
+                    tr{
+                        vertical-align: middle;
+                        td { 
+                            .progress {
+                                height: 20px;
+                                .progress-bar{
+                                    font-weight: 700;
+                                    color: #fff;
+                                    &.bg-green{
+                                        background-color: #90C955;
+                                    }
+                                    &.bg-yellow{
+                                        background-color: #DCE52A;
+                                        color: #000
+                                    }
+                                    &.bg-red{
+                                        background-color: #D64550;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .achievement-band-section{
+        .card{
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            gap: 16px;
+        }
+        .achievement-band-distribution-table{
+            .table{
+                min-width: 1250px;
+                thead{
+                    tr{
+                        th{
+                            &:nth-child(1) {
+                               padding: .563rem .5rem .563rem .5rem;
+                            }
+                        }
+                    }
+                }
+                tbody{
+                    tr{
+                        td{
+                            &:nth-child(1) {
+                                word-break: break-all;
+                                padding: .75rem .5rem .75rem .5rem;
+                            }
+                            &:nth-child(3) {
+                                word-break: break-all;
+                            }
+                            &:nth-child(4) {
+                                word-break: break-all;
+                            }
+                            &:nth-child(10) {
+                                word-break: break-all;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .student-movement-table{
+            .table{
+                min-width: 750px;
+                thead{
+                    tr{
+                        th{
+                            &:nth-child(1) {
+                                width: 13%;
+                                padding: .563rem .5rem .563rem .5rem;
+                            }
+                            &:nth-child(2) {
+                                width: 10%;
+                            }
+                            &:nth-child(6) {
+                                width: 10%;
+                            }
+                            &:nth-child(7) {
+                                width: 29%;
+                            }
+                        }
+                    }
+                }
+                tbody{
+                    tr{
+                        vertical-align: middle;
+                        td{
+                            &:nth-child(1) {
+                                word-break: break-all;
+                                padding: .75rem .5rem .75rem .5rem;
+                            }
+                            .mat-icon{
+                                width: 12px;
+                                height: 12px;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .chart-scroll-wrapper {
+            width: 100%;
+            .chart-scroll-area {
+                width: 100%;
+                @media (max-width: 575px) {
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                    -webkit-overflow-scrolling: touch;
+                    padding-bottom: 6px;
+                }
+                .chart-container {
+                    width: 100%;
+                    margin: 0 auto;
+                    padding: 0px 0 0px 0;
+                    ::ng-deep .apexcharts-canvas,::ng-deep .apexcharts-svg {
+                        width: 100% !important;
+                    }
+                    @media (max-width: 575px) {
+                        min-width: 620px; // horizontal scroll trigger
+                        padding: 0 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .dashboard--wrapper{
+        .grades{
+            width: 100%;
+        }
+    }
+}
