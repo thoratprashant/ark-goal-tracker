@@ -31,5 +31,10 @@ export const PRINCIPALLAYOUT_ROUTES: Routes = [
     loadComponent: () => import('./goal-configuration/goal-configuration').then(c => c.GoalConfiguration),
     data: { title: 'goal configuration' }
   },
+  {
+    path: 'dashboard',
+    loadComponent: () => import('./dashboard/dashboard').then(c => c.Dashboard),
+    data: { title: 'dashboard' }
+  },
   
 ];
