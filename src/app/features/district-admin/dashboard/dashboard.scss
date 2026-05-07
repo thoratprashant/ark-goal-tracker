@@ -75,6 +75,44 @@
   }
 
   /* ==========================================
+     ESSA Performance by Demographic
+  ========================================== */
+
+  .essa--perform--wrapper{
+    .essa-table{
+      border-radius: 0;
+      .table {
+        thead{
+          tr{
+            th{
+              background: rgba(248, 250, 252, 0.50);
+              font-size: 11px;
+              text-transform: uppercase;
+              .dd--sm{
+                width: 100px;
+                ::ng-deep{
+                  .mat-mdc-notch-piece {
+                      border-color: transparent !important;
+                  }
+                }
+              }
+            }
+            &.sub-header{
+              th{
+                &:last-child,
+                &:nth-last-child(2),
+                &:nth-last-child(3){
+                  width: 80px;
+                } 
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* ==========================================
      Performance Matrix Section
   ========================================== */
   .performance-matrix-section { 

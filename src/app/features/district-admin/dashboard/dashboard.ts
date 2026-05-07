@@ -284,4 +284,93 @@ performanceMatrixtable: TableRow[] = [
       return 'red-bg';
     }
   }
+ 
+
+performanceData = [
+    {
+      studentGroup: 'All Students',
+      badge: '67.4%',
+      badgeClass: 'badge-orange',
+      target: '70%',
+      previous: '64.2%',
+      change: '+3.2%',
+      students: '4,125',
+      ach: '44%',
+      lg: '34%',
+      bq: '37%'
+    },
+    {
+      studentGroup: 'African American/Black',
+      badge: '51.3%',
+      badgeClass: 'badge-red',
+      target: '70%',
+      previous: '64.2%',
+      change: '+3.2%',
+      students: '4,125',
+      ach: '44%',
+      lg: '34%',
+      bq: '37%'
+    },
+    {
+      studentGroup: 'Hispanic/Latino',
+      badge: '45.9%',
+      badgeClass: 'badge-green',
+      target: '62%',
+      previous: '64.2%',
+      change: '+2.2%',
+      students: '5,148',
+      ach: '46%',
+      lg: '58%',
+      bq: '35%'
+    },
+        {
+      studentGroup: 'White',
+      badge: '67.4%',
+      badgeClass: 'badge-orange',
+      target: '70%',
+      previous: '64.2%',
+      change: '+3.2%',
+      students: '4,125',
+      ach: '44%',
+      lg: '34%',
+      bq: '37%'
+    },
+    {
+      studentGroup: 'Economically Disadvantaged',
+      badge: '51.3%',
+      badgeClass: 'badge-red',
+      target: '48%',
+      previous: '69.2%',
+      change: '+3.2%',
+      students: '4,125',
+      ach: '45%',
+      lg: '58%',
+      bq: '96%'
+    },
+    {
+      studentGroup: 'English Learners',
+      badge: '51.3%',
+      badgeClass: 'badge-green',
+      target: '55%',
+      previous: '46.2%',
+      change: '+2.2%',
+      students: '5,148',
+      ach: '46%',
+      lg: '58%',
+      bq: '35%'
+    },
+        {
+      studentGroup: 'Special Education',
+      badge: '59.8%',
+      badgeClass: 'badge-orange',
+      target: '64%',
+      previous: '61.2%',
+      change: '+3.2%',
+      students: '4,125',
+      ach: '44%',
+      lg: '34%',
+      bq: '37%'
+    },
+ 
+  ];
 }

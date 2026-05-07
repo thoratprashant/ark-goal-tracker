@@ -204,14 +204,17 @@
             <tbody>
               <tr *ngFor="let row of performanceMatrixtable">
                 <td class="clr--111827 fw-semibold">{{ row.component }}</td>
-                <td class="text-center"> 
+                <td class="text-center">
                   <div class="bg-highlight" [ngClass]="getStatusClass(row.elementary)">
                     {{ row.elementary }}
                   </div>
                   <div class="progress mt-2">
-                    <div class="progress-bar bg-success" [style.width.%]="row.progress.success"> {{ row.progress.success }}%</div>
-                    <div class="progress-bar bg-warning text-dark" [style.width.%]="row.progress.warning">{{ row.progress.warning }}%</div>
-                    <div class="progress-bar bg-danger" [style.width.%]="row.progress.danger">{{ row.progress.danger }}%</div>
+                    <div class="progress-bar bg-success" [style.width.%]="row.progress.success">
+                      {{ row.progress.success }}%</div>
+                    <div class="progress-bar bg-warning text-dark" [style.width.%]="row.progress.warning">
+                      {{ row.progress.warning }}%</div>
+                    <div class="progress-bar bg-danger" [style.width.%]="row.progress.danger">{{ row.progress.danger }}%
+                    </div>
                   </div>
                 </td>
                 <td class="text-center">
@@ -219,9 +222,12 @@
                     {{ row.middleSchool }}
                   </div>
                   <div class="progress mt-2">
-                    <div class="progress-bar bg-success" [style.width.%]="row.progress.success"> {{ row.progress.success }}%</div>
-                    <div class="progress-bar bg-warning text-dark" [style.width.%]="row.progress.warning">{{ row.progress.warning }}%</div>
-                    <div class="progress-bar bg-danger" [style.width.%]="row.progress.danger">{{ row.progress.danger }}%</div>
+                    <div class="progress-bar bg-success" [style.width.%]="row.progress.success">
+                      {{ row.progress.success }}%</div>
+                    <div class="progress-bar bg-warning text-dark" [style.width.%]="row.progress.warning">
+                      {{ row.progress.warning }}%</div>
+                    <div class="progress-bar bg-danger" [style.width.%]="row.progress.danger">{{ row.progress.danger }}%
+                    </div>
                   </div>
                 </td>
                 <td class="text-center">
@@ -229,9 +235,12 @@
                     {{ row.highSchool }}
                   </div>
                   <div class="progress mt-2">
-                    <div class="progress-bar bg-success" [style.width.%]="row.progress.success"> {{ row.progress.success }}%</div>
-                    <div class="progress-bar bg-warning text-dark" [style.width.%]="row.progress.warning">{{ row.progress.warning }}%</div>
-                    <div class="progress-bar bg-danger" [style.width.%]="row.progress.danger">{{ row.progress.danger }}%</div>
+                    <div class="progress-bar bg-success" [style.width.%]="row.progress.success">
+                      {{ row.progress.success }}%</div>
+                    <div class="progress-bar bg-warning text-dark" [style.width.%]="row.progress.warning">
+                      {{ row.progress.warning }}%</div>
+                    <div class="progress-bar bg-danger" [style.width.%]="row.progress.danger">{{ row.progress.danger }}%
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -241,6 +250,97 @@
       </div>
     </div>
   </div>
+
+  <!-- ESSA Performance by Demographic -->
+  <div class="row essa--perform--wrapper mt-4">
+    <div class="col-12">
+      <div class="card p-0 m-0">
+        <div class="d-flex flex-row align-items-center p-3">
+          <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0 me-3">
+            <img src="images/poeple-blue.svg" alt="icon" class="img-fluid">
+          </div>
+          <div class="d-flex flex-column">
+            <h4 class="font-16 fw-semibold mb-1">ESSA Performance by Demographic</h4>
+            <p class="mb-0 font-13">Goal attainment rates across student groups</p>
+          </div>
+        </div>
+        <div class="table-responsive essa-table">
+          <table class="table table-custom table-centered m-0">
+            <thead class="thead-sm">
+              <tr class="text-uppercase">
+                <th>Student Group</th>
+                <th class="text-center">Current</th>
+                <th class="text-center">Target</th>
+                <th class="text-center">Previous</th>
+                <th class="text-center">Change</th>
+                <th class="text-center">Students</th>
+                <th colspan="3" class="text-center">
+                  <mat-form-field appearance="outline" class="dd--sm">
+                    <mat-select placeholder="ELA">
+                      <mat-option value="1">Subject 1</mat-option>
+                      <mat-option value="2">Subject 2</mat-option>
+                      <mat-option value="3">Subject 3</mat-option>
+                      <mat-option value="4">Subject 4</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </th>
+              </tr>
+              <tr class="sub-header">
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th class="text-center">ACH</th>
+                <th class="text-center">LG</th>
+                <th class="text-center">BQ</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr *ngFor="let row of performanceData"> 
+                <td class="clr--111827 fw-semibold">
+                  {{ row.studentGroup }}
+                </td> 
+                <td class="clr--4755 fw-normal text-center">
+                  <div class="badge" [ngClass]="row.badgeClass">
+                    {{ row.badge }}
+                  </div>
+                </td> 
+                <td class="clr--4755 fw-normal text-center">
+                  {{ row.target }}
+                </td> 
+                <td class="text-black fw-normal text-center">
+                  {{ row.previous }}
+                </td> 
+                <td class="text-center">
+                  <div class="d-flex align-items-center justify-content-center gap-2 clr--90C9 fw-normal">
+                    <img src="images/upwards-green.svg" alt="icon" class="img-fluid">
+                    {{ row.change }}
+                  </div>
+                </td> 
+                <td class="clr--4755 fw-semibold text-center">
+                  {{ row.students }}
+                </td> 
+                <td class="clr--4755 fw-semibold text-center">
+                  {{ row.ach }}
+                </td> 
+                <td class="clr--4755 fw-semibold text-center">
+                  {{ row.lg }}
+                </td> 
+                <td class="clr--4755 fw-semibold text-center">
+                  {{ row.bq }}
+                </td> 
+              </tr> 
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <!-- Goal Achievement Summary -->
   <div class="row gas--wrapper mt-4">
@@ -378,7 +478,7 @@
 
   <!-- At-Risk Schools (Start here) -->
   <div class="row ars--wrapper">
-    <div class="col-12"> 
+    <div class="col-12">
       <div
         class="red--head d-flex flex-column flex-sm-row align-items-center justify-content-between header--sec p-2 p-sm-4 ">
         <div class="d-flex align-items-center">
