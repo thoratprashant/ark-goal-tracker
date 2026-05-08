@@ -373,4 +373,77 @@ performanceData = [
     },
  
   ];
+
+  // component.ts
+
+schoolTableData = [
+  {
+    name: 'Lincoln Elementary',
+    students: '425 Students',
+    grade: 'Grades K-5',
+    atRisk: false,
+
+    elaAch: '76%',
+    elaLg: '74%',
+    elaBq: '22%',
+
+    mathAch: '76%',
+    mathLg: '74%',
+    mathBq: '22%',
+
+    science: '76%',
+    ss: '',
+    msAcc: '',
+    hsCca: '',
+    grad: '',
+
+    totalPoints: '500 (-30)'
+  },
+
+  {
+    name: 'Washington Middle School',
+    students: '650 Students',
+    grade: 'Grades 6-8',
+    atRisk: false,
+
+    elaAch: '82%',
+    elaLg: '79%',
+    elaBq: '25%',
+
+    mathAch: '78%',
+    mathLg: '75%',
+    mathBq: '20%',
+
+    science: '80%',
+    ss: '80%',
+    msAcc: '80%',
+    hsCca: '',
+    grad: '',
+
+    totalPoints: '500 (-30)'
+  },
+
+  {
+    name: 'Franklin High School',
+    students: 'Goal 10 pts',
+    grade: '',
+    atRisk: true,
+
+    elaAch: '85%',
+    elaLg: '82%',
+    elaBq: '30%',
+
+    mathAch: '83%',
+    mathLg: '80%',
+    mathBq: '27%',
+
+    science: '84%',
+    ss: '84%',
+    msAcc: '',
+    hsCca: '84%',
+    grad: '84%',
+
+    totalPoints: '500 (-30)'
+  }
+];
 }

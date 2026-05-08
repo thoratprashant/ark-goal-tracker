@@ -251,6 +251,158 @@
     </div>
   </div>
 
+  <!-- School Performance Overview -->
+  <div class="row mt-4">
+    <div class="col-12 col-lg-9">
+      <div class="card w-100 p-3">
+        <div class="d-flex flex-column flex-sm-row justify-content-between">
+          <div class="d-flex align-items-center">
+            <img src="images/graph-blue.svg" alt="icon" class="img-fluid me-2">
+            <h5 class="m-0 font-16 fw-semibold">School Performance Overview</h5>
+          </div>
+          <p class="m-0 clr--64748B font-13">6 schools</p>
+        </div>
+        <div class="d-flex flex-column flex-sm-row align-items-center gap-2 gap-sm-4 my-3">
+          <mat-form-field appearance="outline" class="dd--sm w-100">
+            <mat-select placeholder="All Demographics">
+              <mat-option value="1">Demographics 1</mat-option>
+              <mat-option value="2">Demographics 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="dd--sm w-100 ">
+            <mat-select placeholder="All Grades">
+              <mat-option value="1">Grades 1</mat-option>
+              <mat-option value="2">Grades 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="dd--sm w-100">
+            <mat-select placeholder="All Students">
+              <mat-option value="1">Students 1</mat-option>
+              <mat-option value="2">Students 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="dd--sm w-100">
+            <mat-select placeholder="All Schools">
+              <mat-option value="1">Schools 1</mat-option>
+              <mat-option value="2">Schools 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="dd--sm w-100">
+            <mat-select placeholder="Subjects (8)">
+              <mat-option value="1">All Subjects 1</mat-option>
+              <mat-option value="2">All Subjects 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="table-responsive custom-table-wrapper"> 
+          <table class="table align-middle school-performance-table mb-0"> 
+            <thead>
+              <tr>
+                <!-- FIXED LEFT -->
+                <th rowspan="2" class="sticky-left school-col">
+                  School Name
+                </th>
+
+                <th colspan="3" class="text-center">ELA</th>
+                <th colspan="3" class="text-center">Math</th>
+                <th class="text-center">Science</th>
+                <th class="text-center">SS</th>
+                <th class="text-center">MS ACC</th>
+                <th class="text-center">HS CCA</th>
+                <th class="text-center">GRAD</th>
+
+                <!-- FIXED RIGHT -->
+                <th rowspan="2" class="sticky-right total-col text-center">
+                  Total Points
+                </th>
+              </tr>
+
+              <tr>
+                <th class="text-center">ACH %</th>
+                <th class="text-center">LG %</th>
+                <th class="text-center">BQ %</th>
+
+                <th class="text-center">ACH %</th>
+                <th class="text-center">LG %</th>
+                <th class="text-center">BQ %</th>
+
+                <th class="text-center">ACH %</th>
+                <th class="text-center">ACH %</th>
+                <th class="text-center">ACH %</th>
+                <th class="text-center">ACH %</th>
+                <th class="text-center">ACH %</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr *ngFor="let school of schoolTableData"> 
+                <!-- FIXED LEFT -->
+                <td class="sticky-left school-col"> 
+                  <div class="fw-semibold text-dark">
+                    {{ school.name }}
+                  </div> 
+                  <div class="small text-muted d-flex align-items-center gap-2 mt-1">
+                    <span>{{ school.students }}</span>
+                    <span>•</span>
+                    <span>{{ school.grade }}</span> 
+                    <span *ngIf="school.atRisk" class="badge border border-danger text-danger bg-white">
+                      At risk
+                    </span>
+                  </div> 
+                </td> 
+                <!-- ELA -->
+                <td><span class="score green">{{ school.elaAch }}</span></td>
+                <td><span class="score green">{{ school.elaLg }}</span></td>
+                <td><span class="score red">{{ school.elaBq }}</span></td> 
+                <!-- MATH -->
+                <td><span class="score green">{{ school.mathAch }}</span></td>
+                <td><span class="score green">{{ school.mathLg }}</span></td>
+                <td><span class="score red">{{ school.mathBq }}</span></td> 
+                <!-- SCIENCE -->
+                <td><span class="score green">{{ school.science }}</span></td> 
+                <!-- SS -->
+                <td>
+                  <span class="score green" *ngIf="school.ss">
+                    {{ school.ss }}
+                  </span>
+                </td>
+
+                <!-- MS ACC -->
+                <td>
+                  <span class="score green" *ngIf="school.msAcc">
+                    {{ school.msAcc }}
+                  </span>
+                </td> 
+                <!-- HS CCA -->
+                <td>
+                  <span class="score green" *ngIf="school.hsCca">
+                    {{ school.hsCca }}
+                  </span>
+                </td> 
+                <!-- GRAD -->
+                <td>
+                  <span class="score green" *ngIf="school.grad">
+                    {{ school.grad }}
+                  </span>
+                </td> 
+                <!-- FIXED RIGHT -->
+                <td class="sticky-right total-col text-center"> 
+                  <div class="total-score">
+                    {{ school.totalPoints }}
+                  </div> 
+                </td> 
+              </tr> 
+            </tbody> 
+          </table> 
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-3"></div>
+  </div>
+
+
   <!-- ESSA Performance by Demographic -->
   <div class="row essa--perform--wrapper mt-4">
     <div class="col-12">
@@ -299,40 +451,40 @@
             </thead>
             <tbody>
 
-              <tr *ngFor="let row of performanceData"> 
+              <tr *ngFor="let row of performanceData">
                 <td class="clr--111827 fw-semibold">
                   {{ row.studentGroup }}
-                </td> 
+                </td>
                 <td class="clr--4755 fw-normal text-center">
                   <div class="badge" [ngClass]="row.badgeClass">
                     {{ row.badge }}
                   </div>
-                </td> 
+                </td>
                 <td class="clr--4755 fw-normal text-center">
                   {{ row.target }}
-                </td> 
+                </td>
                 <td class="text-black fw-normal text-center">
                   {{ row.previous }}
-                </td> 
+                </td>
                 <td class="text-center">
                   <div class="d-flex align-items-center justify-content-center gap-2 clr--90C9 fw-normal">
                     <img src="images/upwards-green.svg" alt="icon" class="img-fluid">
                     {{ row.change }}
                   </div>
-                </td> 
+                </td>
                 <td class="clr--4755 fw-semibold text-center">
                   {{ row.students }}
-                </td> 
+                </td>
                 <td class="clr--4755 fw-semibold text-center">
                   {{ row.ach }}
-                </td> 
+                </td>
                 <td class="clr--4755 fw-semibold text-center">
                   {{ row.lg }}
-                </td> 
+                </td>
                 <td class="clr--4755 fw-semibold text-center">
                   {{ row.bq }}
-                </td> 
-              </tr> 
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
