@@ -108,6 +108,18 @@
             }
           }
         }
+        tbody{
+          tr{
+             &:nth-child(even){
+                td{
+                  background: #F7FAFF;
+                }
+              }
+            td{
+                  padding: 19px 10px; 
+            }
+          }
+        }
       }
     }
   }
