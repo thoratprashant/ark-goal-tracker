@@ -2,6 +2,9 @@
     .grades{
         width: 140px;
     }
+    .datepicker-width{
+        width: 150px;
+    }
     .alerts-section{
         gap: 0.75rem;
         margin-top: 1rem;
@@ -199,12 +202,20 @@
                 }
             }
         }
+        .blue-label-section{
+            padding: 4px 8px;
+            border-radius: 9999px;
+            background: #3b82f61a;
+        }
     }
 }
 
 @media (max-width: 575px) {
     .dashboard--wrapper{
         .grades{
+            width: 100%;
+        }
+        .datepicker-width{
             width: 100%;
         }
     }

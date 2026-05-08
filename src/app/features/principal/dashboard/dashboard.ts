@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, HostListener, signal, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
@@ -18,6 +20,7 @@ import {
   ApexTooltip,
   ApexDataLabels
 } from "ng-apexcharts";
+import { CommonService } from '../../../core/helper/common.service';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -79,7 +82,7 @@ interface TableRow2 {
 
 @Component({
   selector: 'app-dashboard',
-  imports: [MatIconModule, CommonModule, MatButtonModule, MatSelectModule, MatFormFieldModule, MatButtonToggleModule, ChartComponent],
+  imports: [MatIconModule, CommonModule, MatButtonModule, MatSelectModule, MatFormFieldModule, MatButtonToggleModule, ChartComponent, MatDatepickerModule, MatNativeDateModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
@@ -93,7 +96,7 @@ export class Dashboard {
 
   schoolPerformanceTrend = signal<'ach' | 'lg' | 'bq' | 'all'>('all');
   
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private commonService: CommonService,) {}
 
   @ViewChild('scrollContainer', { static: false })
   scrollContainer!: ElementRef<HTMLDivElement>;
