@@ -302,31 +302,26 @@
                 <!-- FIXED LEFT -->
                 <th rowspan="2" class="sticky-left school-col">
                   School Name
-                </th>
-
+                </th> 
                 <th colspan="3" class="text-center">ELA</th>
                 <th colspan="3" class="text-center">Math</th>
                 <th class="text-center">Science</th>
                 <th class="text-center">SS</th>
                 <th class="text-center">MS ACC</th>
                 <th class="text-center">HS CCA</th>
-                <th class="text-center">GRAD</th>
-
+                <th class="text-center">GRAD</th> 
                 <!-- FIXED RIGHT -->
                 <th rowspan="2" class="sticky-right total-col text-center">
                   Total Points
                 </th>
-              </tr>
-
+              </tr> 
               <tr>
+                <th class="text-center border-one">ACH %</th>
+                <th class="text-center">LG %</th>
+                <th class="text-center">BQ %</th> 
                 <th class="text-center">ACH %</th>
                 <th class="text-center">LG %</th>
-                <th class="text-center">BQ %</th>
-
-                <th class="text-center">ACH %</th>
-                <th class="text-center">LG %</th>
-                <th class="text-center">BQ %</th>
-
+                <th class="text-center">BQ %</th> 
                 <th class="text-center">ACH %</th>
                 <th class="text-center">ACH %</th>
                 <th class="text-center">ACH %</th>
@@ -364,34 +359,41 @@
                 <td><span class="score green">{{ school.science }}</span></td> 
                 <!-- SS -->
                 <td>
-                  <span class="score green" *ngIf="school.ss">
+                  @if(school.ss){
+                  <span class="score green" >
                     {{ school.ss }}
                   </span>
-                </td>
-
-                <!-- MS ACC -->
+                }
+                </td> 
                 <td>
-                  <span class="score green" *ngIf="school.msAcc">
+                  @if (school.msAcc) { 
+                  <span class="score green">
                     {{ school.msAcc }}
                   </span>
-                </td> 
-                <!-- HS CCA -->
+                }
+                </td>  
                 <td>
-                  <span class="score green" *ngIf="school.hsCca">
+                  @if (school.hsCca) {
+                    <span class="score green"  >
                     {{ school.hsCca }}
-                  </span>
-                </td> 
-                <!-- GRAD -->
+                    </span>
+                  } 
+                </td>  
                 <td>
-                  <span class="score green" *ngIf="school.grad">
+                  @if(school.grad){
+                  <span class="score green" >
                     {{ school.grad }}
                   </span>
+                }
                 </td> 
                 <!-- FIXED RIGHT -->
                 <td class="sticky-right total-col text-center"> 
-                  <div class="total-score">
+                  <div class="total-score me-2">
                     {{ school.totalPoints }}
                   </div> 
+                  <a>
+                     <img src="images/right-grey-arrow.svg" alt="icon" >
+                  </a>
                 </td> 
               </tr> 
             </tbody> 

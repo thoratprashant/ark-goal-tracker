@@ -85,23 +85,33 @@
 }
 
 .school-performance-table {
-  min-width: 1400px;
+  min-width: 1280px;
   background: #fff;
-
-  thead th {
-    background: #F8FAFC;
-    color: #64748B;
-    font-size: 12px;
-    font-weight: 600;
-    border-bottom: 1px solid #E5E7EB;
-    white-space: nowrap;
-    vertical-align: middle;
-  }
-
-  tbody td {
-    vertical-align: middle;
-    border-bottom: 1px solid #EEF2F7;
-    white-space: nowrap;
+  thead {
+      th {
+      background: #F8FAFC;
+      color: #737373;
+      font-size: 13px;
+      font-weight: 600;
+      border-left: 1px solid #D1D1D1;
+      border-bottom: 1px solid #D1D1D1;
+      white-space: nowrap;
+      vertical-align: middle;
+      &.border-one{
+        border-left: 1px solid #D1D1D1 !important;
+      }
+      &:first-child{
+        border-left: none;
+      }
+    }
+  } 
+  tbody {
+    td {
+      vertical-align: middle;
+      border-bottom: 1px solid #EEF2F7;
+      white-space: nowrap;
+      text-align: center;
+    }
   }
 
   /* FIXED LEFT COLUMN */
@@ -110,6 +120,7 @@
     left: 0;
     z-index: 3;
     background: #fff;
+    text-align: left;
   }
 
   /* FIXED RIGHT COLUMN */
@@ -122,11 +133,12 @@
 
   /* COLUMN WIDTHS */
   .school-col {
-    min-width: 260px;
+    width: 235px;
+    text-align: left !important;
   }
 
   .total-col {
-    min-width: 140px;
+    width: 125px;
   }
 
   /* SCORE BADGES */
@@ -149,24 +161,23 @@
   }
 
   .score.red {
-    background: #FDECEC;
-    color: #EF5350;
+    background: #FFF1F2;
+    color: #D64550;
   }
 
   /* TOTAL SCORE */
   .total-score {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-
-    padding: 6px 12px;
-    border-radius: 8px;
-
-    background: #E8F5E9;
-    color: #4CAF50;
-
+    justify-content: center; 
+    padding: 1px 5px;  
+    border-radius: 6px;
+    border: 1px solid #A7F3D0;
+    background: #ECFDF5;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10); 
+    color: #90C955; 
     font-weight: 600;
-    font-size: 13px;
+    font-size: 12px;
   }
 
 }
@@ -441,5 +452,13 @@
       color: #0A0A0A !important;
       font-size: 12px !important;
     }
+  }
+}
+
+
+@media (max-width: 767px) {
+  .d--dashboard--wrapper .school-performance-table .sticky-right,
+  .d--dashboard--wrapper .school-performance-table .sticky-left{
+    position: relative;
   }
 }
