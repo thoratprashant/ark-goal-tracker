@@ -7,6 +7,20 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { ChartComponent } from 'ng-apexcharts';
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexXAxis,
+  ApexYAxis,
+  ApexStroke,
+  ApexGrid,
+  ApexMarkers,
+  ApexLegend,
+  ApexTooltip,
+  ApexDataLabels,
+  ApexFill
+} from "ng-apexcharts";
 
 interface ActiveFilter {
   key: keyof SelectedFilters;
@@ -33,10 +47,25 @@ interface TableRow {
   };
 }
 
+export type ChartOptions1 = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  yaxis: ApexYAxis;
+  stroke: ApexStroke;
+  grid: ApexGrid;
+  markers: ApexMarkers;
+  legend: ApexLegend;
+  tooltip: ApexTooltip;
+  colors: string[];
+  fill: ApexFill;
+  dataLabels: ApexDataLabels;
+};
+
 @Component({
   selector: 'app-dashboard',
   imports: [DistrictPerformanceSummary,
-    MatIconModule, CommonModule, MatButtonModule, MatButtonToggleModule, FormsModule, MatFormFieldModule, MatSelectModule
+    MatIconModule, CommonModule, MatButtonModule, MatButtonToggleModule, FormsModule, MatFormFieldModule, MatSelectModule, ChartComponent
   ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
@@ -525,4 +554,175 @@ schoolTableData = [
     totalPoints: '500 (-30)'
   }, 
 ];
+
+//Performance trends graph
+  public chartOptions1: any = {
+    series: [
+      {
+        name: 'ELA',
+        data: [66, 67, 69, 69, 70, 72]
+      },
+      {
+        name: 'Math',
+        data: [58, 60, 62, 64, 66, 66]
+      },
+      {
+        name: 'Science',
+        data: [74, 76, 79, 80, 78, 80]
+      }
+    ],
+
+    chart: {
+      type: 'area',
+      height: 300,
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      },
+      fontFamily: 'Inter, sans-serif',
+      background: '#ffffff'
+    },
+
+    colors: [
+      '#2563EB',
+      '#3B82F6',
+      '#60A5FA'
+    ],
+
+    stroke: {
+      curve: 'smooth',
+      width: 3
+    },
+
+    fill: {
+      type: 'solid',
+      opacity: 0.06
+    },
+
+    dataLabels: {
+      enabled: false
+    },
+
+    markers: {
+      size: 4,
+      strokeWidth: 0,
+      hover: {
+        size: 7,
+        sizeOffset: 2
+      },
+    },
+
+    xaxis: {
+      categories: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
+
+      axisBorder: {
+        show: false
+      },
+
+      axisTicks: {
+        show: false
+      },
+
+      crosshairs: {
+        show: false
+      },
+
+      labels: {
+        style: {
+          colors: '#9CA3AF',
+          fontSize: '11px',
+          fontWeight: 400
+        }
+      }
+    },
+
+    yaxis: {
+      min: 50,
+      max: 80,
+
+      tickAmount: 4,
+
+      labels: {
+        formatter: (value: number) => `${value}%`,
+        style: {
+          colors: '#9CA3AF',
+          fontSize: '11px',
+          fontWeight: 400
+        }
+      }
+    },
+
+    grid: {
+      borderColor: '#E5E7EB',
+      strokeDashArray: 4,
+
+      xaxis: {
+        lines: {
+          show: false
+        }
+      },
+
+      yaxis: {
+        lines: {
+          show: true
+        }
+      },
+
+      padding: {
+        top: 0,
+        right: 10,
+        bottom: 0,
+        left: 10
+      }
+    },
+
+    legend: {
+      show: true,
+      position: 'bottom',
+      horizontalAlign: 'center',
+
+      fontSize: '12px',
+      fontWeight: 400,
+
+      labels: {
+        colors: '#6B7280'
+      },
+      markers: {
+        width: 8,
+        height: 8,
+        radius: 12,
+        offsetX: -2
+      },
+      itemMargin: {
+        horizontal: 10
+      }
+    },
+
+    tooltip: {
+      shared: true,
+      intersect: false,
+
+      marker: {
+        show: true
+      },
+
+      x: {
+        formatter: function (
+          value: any,
+          opts: any
+        ) {
+          return opts.w.globals.categoryLabels[opts.dataPointIndex];
+        }
+      },
+
+      y: {
+        formatter: (value: number) => `${value}%`
+      },
+      style: {
+        fontSize: '12px'
+      }
+    }
+  };
 }
