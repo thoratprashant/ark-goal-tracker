@@ -647,7 +647,7 @@
                     </div>
                 </div>
                 <div class="col-12 achievement-band-section">
-                    <div class="card p-3 p-sm-4 d-flex flex-column mb-0">
+                    <div class="card p-3 p-sm-4 d-flex flex-column">
                         <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
                             <div class="d-flex flex-column gap-1">
                                 <h5 class="font-16 clr--111827 fw-semibold mb-0">Student Movement Flow</h5>
@@ -660,36 +660,39 @@
                                 <mat-button-toggle value="bq">BQ</mat-button-toggle>
                             </mat-button-toggle-group>
                         </div>
-                        <div class="table-responsive student-movement-table">
-                            <table class="table table-custom table-centered m-0">
-                                <thead class="thead-sm">
-                                    <tr class="text-uppercase">
-                                        <th>Student Name</th>
-                                        <th class="text-center">Grade</th>
-                                        <th class="text-center">Period</th>
-                                        <th class="text-center">Current Predicted SS</th>
-                                        <th class="text-center">Previous Predicted SS</th>
-                                        <th class="text-center">Change</th>
-                                        <th class="">Assessment Contribution</th>
-                                        <th class="text-center"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let row of dataStudentMovement">
-                                        <td class="clr--111827 fw-semibold">{{ row.studentName }}</td>
-                                        <td class="clr--4755 fw-normal text-center">{{ row.grade }}</td>
-                                        <td class="clr--4755 fw-normal text-center">{{ row.period }}</td>
-                                        <td class="fw-semibold text-center" [ngClass]="getPtClass1(row.change)">{{ row.currentPredictedSs }}</td>
-                                        <td class="fw-semibold text-center" [ngClass]="getPtClass1(row.change)">{{ row.previousPredictedSs }}</td>
-                                        <td class="fw-semibold text-center" [ngClass]="getPtClass1(row.change)">+{{ row.change }}</td>
-                                        <td class="clr--4755 fw-normal">{{ row.assessmentContribution }}</td>
-                                        <td class="clr--111827">
-                                            <a href="" class=""><mat-icon class="clr--111827">arrow_forward_ios</mat-icon></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="status-flow-wrapper">
+                            <div #chart class="chart-container"></div>
                         </div>
+                    </div>
+                    <div class="table-responsive student-movement-table">
+                        <table class="table table-custom table-centered m-0">
+                            <thead class="thead-sm">
+                                <tr class="text-uppercase">
+                                    <th>Student Name</th>
+                                    <th class="text-center">Grade</th>
+                                    <th class="text-center">Period</th>
+                                    <th class="text-center">Current Predicted SS</th>
+                                    <th class="text-center">Previous Predicted SS</th>
+                                    <th class="text-center">Change</th>
+                                    <th class="">Assessment Contribution</th>
+                                    <th class="text-center"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of dataStudentMovement">
+                                    <td class="clr--111827 fw-semibold">{{ row.studentName }}</td>
+                                    <td class="clr--4755 fw-normal text-center">{{ row.grade }}</td>
+                                    <td class="clr--4755 fw-normal text-center">{{ row.period }}</td>
+                                    <td class="fw-semibold text-center" [ngClass]="getPtClass1(row.change)">{{ row.currentPredictedSs }}</td>
+                                    <td class="fw-semibold text-center" [ngClass]="getPtClass1(row.change)">{{ row.previousPredictedSs }}</td>
+                                    <td class="fw-semibold text-center" [ngClass]="getPtClass1(row.change)">+{{ row.change }}</td>
+                                    <td class="clr--4755 fw-normal">{{ row.assessmentContribution }}</td>
+                                    <td class="clr--111827">
+                                        <a href="" class=""><mat-icon class="clr--111827">arrow_forward_ios</mat-icon></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

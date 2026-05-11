@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, HostListener, signal, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, signal, ViewChild, AfterViewInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -21,6 +21,7 @@ import {
   ApexDataLabels
 } from "ng-apexcharts";
 import { CommonService } from '../../../core/helper/common.service';
+import * as d3 from 'd3';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -98,6 +99,9 @@ export class Dashboard {
   
   constructor(private cdr: ChangeDetectorRef, private commonService: CommonService,) {}
 
+   @ViewChild('chart', { static: true })
+  chartRef!: ElementRef<HTMLDivElement>;
+
   @ViewChild('scrollContainer', { static: false })
   scrollContainer!: ElementRef<HTMLDivElement>;
 
@@ -142,6 +146,8 @@ export class Dashboard {
   ngAfterViewInit() {
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
+
+    this.createDiagram();
   }
 
   scrollLeft() {
@@ -194,6 +200,7 @@ export class Dashboard {
   @HostListener('window:resize')
   onResize(): void {
     this.updateScrollButtons();
+    this.createDiagram();
   }
 
   subjectPerformanceTable: TableRow[] = [
@@ -426,4 +433,267 @@ export class Dashboard {
       }
     }
   };
+
+  private createDiagram(): void {
+  const container = this.chartRef.nativeElement;
+
+  d3.select(container).selectAll('*').remove();
+
+  const width = container.offsetWidth;
+  const height = 250;
+
+  const nodeWidth = 170;
+  const nodeHeight = 48;
+  const stripWidth = 16;
+
+  const leftX = 0;
+  const rightX = width - nodeWidth - 0;
+
+  const svg = d3
+    .select(container)
+    .append('svg')
+    .attr('viewBox', `0 0 ${width} ${height}`)
+    .attr('preserveAspectRatio', 'xMidYMid meet')
+    .style('width', '100%')
+    .style('height', 'auto')
+    .style('font-family', 'Inter, Arial, sans-serif')
+    .style('background', '#fff');
+
+  const rows = [
+    {
+      id: 'ontrack',
+      label: 'On Track',
+      color: '#93DBAE',
+      light: '#EEF8EF',
+      text: '#38914A',
+      y: 20,
+    },
+    {
+      id: 'bubble',
+      label: 'Bubble',
+      color: '#F2C66B',
+      light: '#FEF3DA',
+      text: '#B67818',
+      y: 105,
+    },
+    {
+      id: 'risk',
+      label: 'At Risk',
+      color: '#EE7A74',
+      light: '#FDECEE',
+      text: '#D94652',
+      y: 190,
+    },
+  ];
+
+  const links = [
+    {
+      source: 'ontrack',
+      target: 'ontrack',
+      color: 'rgba(147,219,174,0.70)',
+      width: 20,
+    },
+    {
+      source: 'ontrack',
+      target: 'bubble',
+      color: 'rgba(235,206,124,0.45)',
+      width: 16,
+    },
+    {
+      source: 'bubble',
+      target: 'ontrack',
+      color: 'rgba(235,206,124,0.55)',
+      width: 16,
+    },
+    {
+      source: 'bubble',
+      target: 'risk',
+      color: 'rgba(232,145,118,0.55)',
+      width: 18,
+    },
+    {
+      source: 'risk',
+      target: 'bubble',
+      color: 'rgba(232,145,118,0.45)',
+      width: 18,
+    },
+    {
+      source: 'risk',
+      target: 'risk',
+      color: 'rgba(232,99,95,0.80)',
+      width: 22,
+    },
+  ];
+
+  const rowMap = new Map(rows.map((r) => [r.id, r]));
+
+  // Softer curves like image 2
+  const curveOffset = width * 0.22;
+
+  // Draw links FIRST
+  links.forEach((link) => {
+    const source = rowMap.get(link.source)!;
+    const target = rowMap.get(link.target)!;
+
+    // Start from LEFT colored strip edge
+    const startX = leftX + nodeWidth - stripWidth;
+
+    // End at RIGHT colored strip edge
+    const endX = rightX + stripWidth;
+
+    const startY = source.y + nodeHeight / 2;
+    const endY = target.y + nodeHeight / 2;
+
+    const path = `
+      M ${startX} ${startY}
+      C ${startX + curveOffset} ${startY},
+        ${endX - curveOffset} ${endY},
+        ${endX} ${endY}
+    `;
+
+    svg
+      .append('path')
+      .attr('d', path)
+      .attr('fill', 'none')
+      .attr('stroke', link.color)
+      .attr('stroke-width', link.width)
+      .attr('stroke-linecap', 'butt')
+      .attr('opacity', 1);
+  });
+
+  // LEFT NODES
+  rows.forEach((row) => {
+    this.drawNode(svg, {
+      x: leftX,
+      y: row.y,
+      width: nodeWidth,
+      height: nodeHeight,
+      label: row.label,
+      value: '3',
+      accent: row.color,
+      bg: row.light,
+      text: row.text,
+      alignRight: false,
+    });
+  });
+
+  // RIGHT NODES
+  rows.forEach((row) => {
+    this.drawNode(svg, {
+      x: rightX,
+      y: row.y,
+      width: nodeWidth,
+      height: nodeHeight,
+      label: row.label,
+      value: '3',
+      accent: row.color,
+      bg: row.light,
+      text: row.text,
+      alignRight: true,
+    });
+  });
+
+  // Center connector bars
+  rows.forEach((row) => {
+    svg
+      .append('rect')
+      .attr('x', rightX)
+      .attr('y', row.y)
+      .attr('width', stripWidth)
+      .attr('height', nodeHeight)
+      .attr('rx', 3)
+      .attr('fill', row.color);
+  });
+}
+
+  private drawNode(
+    svg: d3.Selection<SVGSVGElement, unknown, null, undefined>,
+    config: {
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+      label: string;
+      value: string;
+      accent: string;
+      bg: string;
+      text: string;
+      alignRight: boolean;
+    }
+  ): void {
+    const group = svg.append('g');
+
+    // Outer box
+    group
+      .append('rect')
+      .attr('x', config.x)
+      .attr('y', config.y)
+      .attr('width', config.width)
+      .attr('height', config.height)
+      .attr('rx', 2)
+      .attr('fill', config.bg);
+
+    // Accent strip
+   group
+      .append('rect')
+      .attr(
+        'x',
+        config.alignRight
+          ? config.x
+          : config.x + config.width - 16
+      )
+      .attr('y', config.y)
+      .attr('width', 16)
+      .attr('height', config.height)
+      .attr('rx', 1)
+      .attr('fill', config.accent);
+
+
+    // Label
+    const labelX = config.alignRight
+    ? config.x + 54
+    : config.x + 28;
+
+    const labelText = group
+    .append('text')
+    .attr('x', labelX)
+    .attr('y', config.y + 30)
+    .attr('fill', config.text)
+    .attr('font-size', '15px')
+    .attr('font-weight', '700')
+    .text(config.label);
+
+    // Get label width dynamically
+    const labelWidth =
+      (labelText.node() as SVGTextElement).getBBox().width;
+
+    // Add spacing between label and badge
+    const badgeSpacing = 12;
+
+    // Badge position
+    const badgeX = labelX + labelWidth + badgeSpacing;
+
+    // Badge
+    group
+      .append('rect')
+      .attr('x', badgeX)
+      .attr('y', config.y + 16)
+      .attr('width', 24)
+      .attr('height', 16)
+      .attr('rx', 4)
+      .attr('fill', '#EEF2F7')
+      .attr('stroke', '#D5DCE5');
+
+
+    group
+      .append('text')
+      .attr('x', badgeX + 12)
+      .attr('y', config.y + 28)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '12px')
+      .attr('font-weight', '600')
+      .attr('fill', '#0D2A7C')
+      .text(config.value);
+  }
+
 }

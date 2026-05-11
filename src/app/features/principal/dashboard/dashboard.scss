@@ -207,6 +207,22 @@
             border-radius: 9999px;
             background: #3b82f61a;
         }
+        .status-flow-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            background: #fff;
+
+           .chart-container {
+                width: 100%;
+                min-width: 520px;
+            }
+
+            svg {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
     }
 }
 
