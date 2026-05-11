@@ -225,7 +225,7 @@ export class Standards {
   public chartOptions: ChartOptions = {
     series: [
     {
-      name: 'On Track (Green)',
+      name: 'At Risk (Red)',
       data: [25, 18, 35, 20]
     },
     {
@@ -233,7 +233,7 @@ export class Standards {
       data: [30, 22, 30, 40]
     },
     {
-      name: 'At Risk (Red)',
+      name: 'On Track (Green)',
       data: [45, 60, 35, 40]
     }
   ],
@@ -252,7 +252,7 @@ export class Standards {
       redrawOnWindowResize: true,
       redrawOnParentResize: true
     },
-    colors: ['#90C955', '#DCE52A', '#D64550'],
+    colors: ['#D64550', '#DCE52A', '#90C955'],
     plotOptions: {
       bar: {
         horizontal: true,
@@ -327,6 +327,12 @@ export class Standards {
           fontWeight: 600,
           colors: '#111827'
         }
+      },
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
       }
     },
     grid: {
@@ -361,7 +367,7 @@ export class Standards {
         horizontal: 10
       },
       labels: {
-        colors: ['#90C955', '#DCE52A', '#EF4444']
+        colors: ['#EF4444', '#DCE52A', '#90C955']
       }
     },
     
