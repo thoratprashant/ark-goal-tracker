@@ -503,7 +503,106 @@
     </div>
   </div>
 
-
+  <div class="row">
+    <div class="col-12 performance-matrix-section mt-3">
+      <div class="card p-3 p-sm-4 d-flex flex-column mb-0">
+        <div class="d-flex flex-row flex-wrap gap-2 justify-content-between table-filters-section">
+          <mat-button-toggle-group [value]="viewMode1()" (change)="viewMode1.set($event.value)"
+            class="toggle-container">
+            <mat-button-toggle value="school">By School</mat-button-toggle>
+            <mat-button-toggle value="attendance">By Attendance</mat-button-toggle>
+            <mat-button-toggle value="region">By Region</mat-button-toggle>
+            <mat-button-toggle value="tier">By Tier</mat-button-toggle>
+          </mat-button-toggle-group>
+          <div class="d-flex flex-column flex-sm-row align-items-center gap-2 gap-sm-4">
+            <mat-form-field appearance="outline" class="dd--sm w-100">
+              <mat-select placeholder="All Demographics">
+                <mat-option value="1">Demographics 1</mat-option>
+                <mat-option value="2">Demographics 2</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="dd--sm w-100">
+              <mat-select placeholder="All Students">
+                <mat-option value="1">Students 1</mat-option>
+                <mat-option value="2">Students 2</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="dd--sm w-100">
+              <mat-select placeholder="All Schools">
+                <mat-option value="1">Schools 1</mat-option>
+                <mat-option value="2">Schools 2</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="dd--sm w-100">
+              <mat-select placeholder="Subjects (8)">
+                <mat-option value="1">All Subjects 1</mat-option>
+                <mat-option value="2">All Subjects 2</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!-- <div class="d-flex flex-wrap align-items-center gap-2">
+            <mat-form-field appearance="outline" class="dd--sm">
+              <mat-select placeholder="All Demographics">
+                <mat-option value="1">Demographic 10</mat-option>
+                <mat-option value="2">Demographic 11 </mat-option>
+                <mat-option value="2">Demographic 12 </mat-option>
+                <mat-option value="2">Demographic 13 </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="dd--sm">
+              <mat-select placeholder="All Students">
+                <mat-option value="1">Student 1</mat-option>
+                <mat-option value="2">Student 2</mat-option>
+                <mat-option value="3">Student 3</mat-option>
+                <mat-option value="4">Student 4</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="dd--sm">
+              <mat-select placeholder="All Schools">
+                <mat-option value="1">School 1</mat-option>
+                <mat-option value="2">School 2</mat-option>
+                <mat-option value="3">School 3</mat-option>
+                <mat-option value="4">School 4</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="dd--sm">
+              <mat-select placeholder="All Subjects">
+                <mat-option value="1">Subject 1</mat-option>
+                <mat-option value="2">Subject 2</mat-option>
+                <mat-option value="3">Subject 3</mat-option>
+                <mat-option value="4">Subject 4</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div> -->
+        </div>
+        <div class="card p-3 p-sm-4 d-flex flex-column m-0">
+        <div class="d-flex align-items-center flex-wrap justify-content-sm-between gap-2">
+            <h5 class="font-17 clr--111827 fw-semibold mb-0">Performance Trends</h5>
+        </div>
+        <div class="chart-scroll-wrapper">
+            <div class="chart-scroll-area">
+                <div class="chart-container">
+                <apx-chart
+                    [series]="chartOptions1.series"
+                    [chart]="chartOptions1.chart"
+                    [xaxis]="chartOptions1.xaxis"
+                    [yaxis]="chartOptions1.yaxis"
+                    [stroke]="chartOptions1.stroke"
+                    [grid]="chartOptions1.grid"
+                    [markers]="chartOptions1.markers"
+                    [legend]="chartOptions1.legend"
+                    [tooltip]="chartOptions1.tooltip"
+                    [colors]="chartOptions1.colors"
+                    [fill]="chartOptions1.fill"
+                    [dataLabels]="chartOptions1.dataLabels">
+                </apx-chart>
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Goal Achievement Summary -->
   <div class="row gas--wrapper mt-4">
