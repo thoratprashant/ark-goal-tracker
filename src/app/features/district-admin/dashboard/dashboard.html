@@ -295,33 +295,33 @@
           </mat-form-field>
         </div>
 
-        <div class="table-responsive custom-table-wrapper"> 
-          <table class="table align-middle school-performance-table mb-0"> 
+        <div class="table-responsive custom-table-wrapper">
+          <table class="table align-middle school-performance-table mb-0">
             <thead>
               <tr>
                 <!-- FIXED LEFT -->
                 <th rowspan="2" class="sticky-left school-col">
                   School Name
-                </th> 
+                </th>
                 <th colspan="3" class="text-center">ELA</th>
                 <th colspan="3" class="text-center">Math</th>
                 <th class="text-center">Science</th>
                 <th class="text-center">SS</th>
                 <th class="text-center">MS ACC</th>
                 <th class="text-center">HS CCA</th>
-                <th class="text-center">GRAD</th> 
+                <th class="text-center">GRAD</th>
                 <!-- FIXED RIGHT -->
                 <th rowspan="2" class="sticky-right total-col text-center">
                   Total Points
                 </th>
-              </tr> 
+              </tr>
               <tr>
                 <th class="text-center border-one">ACH %</th>
                 <th class="text-center">LG %</th>
-                <th class="text-center">BQ %</th> 
+                <th class="text-center">BQ %</th>
                 <th class="text-center">ACH %</th>
                 <th class="text-center">LG %</th>
-                <th class="text-center">BQ %</th> 
+                <th class="text-center">BQ %</th>
                 <th class="text-center">ACH %</th>
                 <th class="text-center">ACH %</th>
                 <th class="text-center">ACH %</th>
@@ -332,72 +332,72 @@
 
             <tbody>
 
-              <tr *ngFor="let school of schoolTableData"> 
+              <tr *ngFor="let school of schoolTableData">
                 <!-- FIXED LEFT -->
-                <td class="sticky-left school-col"> 
+                <td class="sticky-left school-col">
                   <div class="fw-semibold text-dark">
                     {{ school.name }}
-                  </div> 
+                  </div>
                   <div class="small text-muted d-flex align-items-center gap-2 mt-1">
                     <span>{{ school.students }}</span>
                     <span>•</span>
-                    <span>{{ school.grade }}</span> 
+                    <span>{{ school.grade }}</span>
                     <span *ngIf="school.atRisk" class="badge border border-danger text-danger bg-white">
                       At risk
                     </span>
-                  </div> 
-                </td> 
+                  </div>
+                </td>
                 <!-- ELA -->
                 <td><span class="score green">{{ school.elaAch }}</span></td>
                 <td><span class="score green">{{ school.elaLg }}</span></td>
-                <td><span class="score red">{{ school.elaBq }}</span></td> 
+                <td><span class="score red">{{ school.elaBq }}</span></td>
                 <!-- MATH -->
                 <td><span class="score green">{{ school.mathAch }}</span></td>
                 <td><span class="score green">{{ school.mathLg }}</span></td>
-                <td><span class="score red">{{ school.mathBq }}</span></td> 
+                <td><span class="score red">{{ school.mathBq }}</span></td>
                 <!-- SCIENCE -->
-                <td><span class="score green">{{ school.science }}</span></td> 
+                <td><span class="score green">{{ school.science }}</span></td>
                 <!-- SS -->
                 <td>
                   @if(school.ss){
-                  <span class="score green" >
+                  <span class="score green">
                     {{ school.ss }}
                   </span>
-                }
-                </td> 
+                  }
+                </td>
                 <td>
-                  @if (school.msAcc) { 
+                  @if (school.msAcc) {
                   <span class="score green">
                     {{ school.msAcc }}
                   </span>
-                }
-                </td>  
+                  }
+                </td>
                 <td>
                   @if (school.hsCca) {
-                    <span class="score green"  >
+                  <span class="score green">
                     {{ school.hsCca }}
-                    </span>
-                  } 
-                </td>  
+                  </span>
+                  }
+                </td>
                 <td>
                   @if(school.grad){
-                  <span class="score green" >
+                  <span class="score green">
                     {{ school.grad }}
                   </span>
-                }
-                </td> 
+                  }
+                </td>
                 <!-- FIXED RIGHT -->
-                <td class="sticky-right total-col text-center"> 
+                <td class="sticky-right total-col text-center">
                   <div class="total-score me-2">
                     {{ school.totalPoints }}
-                  </div> 
+                  </div>
                   <a>
-                     <img src="images/right-grey-arrow.svg" alt="icon" >
+                    <img src="images/right-grey-arrow.svg" alt="icon">
                   </a>
-                </td> 
-              </tr> 
-            </tbody> 
-          </table> 
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -407,9 +407,42 @@
           <img src="images/upwards-green.svg" alt="icon" class="img-fluid"></div>
         <h5 class="m-0 font-16 fw-semibold">Franklin High School</h5>
       </div>
-      <div class="card w-100 p-3 flex-row align-items-center"> 
-        <h5 class="m-0 font-16 fw-semibold">Insights & Alerts</h5>
-      </div>
+      <div class="card w-100 p-3">
+        <div class="d-flex flex-row align-items-center w-100 justify-content-between mb-3">
+          <h5 class="m-0 font-16 fw-semibold">Insights & Alerts</h5>
+          <div class="badge badge-grey">
+            4 active
+          </div>
+        </div>
+        <div class="card red--card p-3 flex-row">
+          <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0 me-3">
+            <img src="images/warning-red.svg" alt="icon" class="img-fluid">
+          </div>
+          <div class="d-flex flex-column">
+            <h2 class="font-14 fw-semibold clr--BE123C">Math Achievement Below Target</h2>
+            <p class="mb-0 font-11 clr--4755">District-wide math proficiency is 8% below goal. Consider additional
+              support.</p>
+          </div>
+        </div>
+        <div class="card yellow--card p-3 flex-row">
+          <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0 me-3">
+            <img src="images/downwards-yellow.svg" alt="icon" class="img-fluid">
+          </div>
+          <div class="d-flex flex-column">
+            <h2 class="font-14 fw-semibold ">ELA Bottom Quartile Needs Attention</h2>
+            <p class="mb-0 font-11 clr--4755">Middle School ELA bottom quartile showing -4% decline.</p>
+          </div>
+        </div>
+        <div class="card green--card p-3 flex-row">
+          <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0 me-3">
+            <img src="images/upwards-green.svg" alt="icon" class="img-fluid">
+          </div>
+          <div class="d-flex flex-column">
+            <h2 class="font-14 fw-semibold">Science Scores Improving</h2>
+            <p class="mb-0 font-11 clr--4755">Science proficiency increased by 2% district- wide this quarter.</p>
+          </div>
+        </div>
+      </div> 
     </div>
   </div>
 
@@ -576,30 +609,21 @@
           </div> -->
         </div>
         <div class="card p-3 p-sm-4 d-flex flex-column m-0">
-        <div class="d-flex align-items-center flex-wrap justify-content-sm-between gap-2">
+          <div class="d-flex align-items-center flex-wrap justify-content-sm-between gap-2">
             <h5 class="font-17 clr--111827 fw-semibold mb-0">Performance Trends</h5>
-        </div>
-        <div class="chart-scroll-wrapper">
+          </div>
+          <div class="chart-scroll-wrapper">
             <div class="chart-scroll-area">
-                <div class="chart-container">
-                <apx-chart
-                    [series]="chartOptions1.series"
-                    [chart]="chartOptions1.chart"
-                    [xaxis]="chartOptions1.xaxis"
-                    [yaxis]="chartOptions1.yaxis"
-                    [stroke]="chartOptions1.stroke"
-                    [grid]="chartOptions1.grid"
-                    [markers]="chartOptions1.markers"
-                    [legend]="chartOptions1.legend"
-                    [tooltip]="chartOptions1.tooltip"
-                    [colors]="chartOptions1.colors"
-                    [fill]="chartOptions1.fill"
-                    [dataLabels]="chartOptions1.dataLabels">
+              <div class="chart-container">
+                <apx-chart [series]="chartOptions1.series" [chart]="chartOptions1.chart" [xaxis]="chartOptions1.xaxis"
+                  [yaxis]="chartOptions1.yaxis" [stroke]="chartOptions1.stroke" [grid]="chartOptions1.grid"
+                  [markers]="chartOptions1.markers" [legend]="chartOptions1.legend" [tooltip]="chartOptions1.tooltip"
+                  [colors]="chartOptions1.colors" [fill]="chartOptions1.fill" [dataLabels]="chartOptions1.dataLabels">
                 </apx-chart>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   </div>

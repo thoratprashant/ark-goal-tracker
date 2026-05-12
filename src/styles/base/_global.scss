@@ -56,6 +56,7 @@ body{
   .clr--3B82F6{color: #3B82F6 !important;}
   .clr--94A3B8{color: #94A3B8 !important;}
   .clr--F59E0B{color: #F59E0B !important;}
+  .clr--BE123C{color: #BE123C !important;}
   .breadcrumb {
     --bs-breadcrumb-divider: '>';
     .breadcrumb-item{
@@ -673,6 +674,10 @@ body{
       &.badge-red{
         color: #D64550;
         background: #FEE2E2; 
+      }
+      &.badge-grey{
+        color: #475569;
+        background: #F1F5F9; 
       }
   }
 
