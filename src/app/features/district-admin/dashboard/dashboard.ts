@@ -62,6 +62,21 @@ export type ChartOptions1 = {
   dataLabels: ApexDataLabels;
 };
 
+export type ChartOptions12 = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  yaxis: ApexYAxis;
+  stroke: ApexStroke;
+  grid: ApexGrid;
+  markers: ApexMarkers;
+  legend: ApexLegend;
+  tooltip: ApexTooltip;
+  colors: string[];
+  fill: ApexFill;
+  dataLabels: ApexDataLabels;
+};
+
 @Component({
   selector: 'app-dashboard',
   imports: [DistrictPerformanceSummary,
@@ -723,6 +738,104 @@ schoolTableData = [
       style: {
         fontSize: '12px'
       }
+    }
+  };
+
+  public chartOptions12: any = {
+    series: [
+      {
+        name: 'ELA',
+        data: [66, 88, 58, 74, 74, 89, 97]
+      }
+    ],
+    chart: {
+      type: 'line',
+      height: 320,
+      zoom: { enabled: false },
+      toolbar: { show: false }
+    },
+    stroke: {
+      curve: 'straight',
+      width: 3
+    },
+    colors: ['#0D2A7C'],
+    xaxis: {
+      categories: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'March'],
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
+      },
+      labels: {
+        style: {
+          colors: '#6B7280',
+          fontSize: '10px',
+          fontWeight: 400
+        }
+      }
+    },
+    yaxis: {
+      min: 0,
+      max: 100,
+      tickAmount: 4,
+      labels: {
+        formatter: (value: number) => `${value}%`,
+        style: {
+          colors: '#6B7280',
+          fontSize: '10px'
+        }
+      }
+    },
+    grid: {
+      borderColor: '#D9D9D9',
+      strokeDashArray: 4,
+      xaxis: {
+        lines: {
+          show: false
+        }
+      },
+      yaxis: {
+        lines: {
+          show: true
+        }
+      },
+      padding: {
+        left: 10,
+        right: 10
+      }
+    },
+    markers: {
+      size: 5,
+      strokeWidth: 0,
+      colors: ['#0D2A7C'],
+      hover: {
+        size: 6
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    legend: {
+      show: false
+    },
+    tooltip: {
+      shared: false,
+      intersect: true,
+      x: {
+        formatter: (_val: any, opts: any) => {
+          return this.chartOptions1.xaxis.categories[opts.dataPointIndex];
+        }
+      },
+      y: {
+        formatter: (val: number) => `${val}%`
+      },
+      marker: {
+        show: true
+      }
+    },
+    annotations: {
+      yaxis: []
     }
   };
 }

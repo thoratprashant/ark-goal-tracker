@@ -128,7 +128,7 @@
             </div>
           </div>
         </div>
-        <div class="d-flex flex-row flex-wrap gap-2 justify-content-between table-filters-section">
+        <div class="d-flex flex-row flex-wrap gap-2 justify-content-between table-filters-section"> 
           <mat-button-toggle-group [value]="viewMode1()" (change)="viewMode1.set($event.value)"
             class="toggle-container">
             <mat-button-toggle value="school">By School</mat-button-toggle>
@@ -402,19 +402,33 @@
       </div>
     </div>
     <div class="col-12 col-lg-3">
-      <div class="card w-100 p-3 flex-row align-items-center">
-        <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0 me-3">
-          <img src="images/upwards-green.svg" alt="icon" class="img-fluid"></div>
-        <h5 class="m-0 font-16 fw-semibold">Franklin High School</h5>
+      <div class="card w-100 p-3">
+        <div class="d-flex align-items-center mb-3">
+          <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0 me-3">
+            <img src="images/upwards-green.svg" alt="icon" class="img-fluid">
+          </div>
+          <h5 class="m-0 font-16 fw-semibold">Franklin High School</h5>
+        </div>
+        <div class="chart-scroll-wrapper">
+          <div class="chart-container">
+            <apx-chart [series]="chartOptions1.series" [chart]="chartOptions1.chart" [xaxis]="chartOptions1.xaxis"
+              [yaxis]="chartOptions1.yaxis" [stroke]="chartOptions1.stroke" [grid]="chartOptions1.grid"
+              [markers]="chartOptions1.markers" [legend]="chartOptions1.legend" [tooltip]="chartOptions1.tooltip"
+              [annotations]="chartOptions1.annotations" [dataLabels]="chartOptions1.dataLabels"
+              [colors]="chartOptions1.colors">
+            </apx-chart>
+          </div>
+        </div>
+
       </div>
       <div class="card w-100 p-3">
         <div class="d-flex flex-row align-items-center w-100 justify-content-between mb-3">
           <h5 class="m-0 font-16 fw-semibold">Insights & Alerts</h5>
-          <div class="badge badge-grey">
+          <div class="badge badge-grey rounded-pill">
             4 active
           </div>
         </div>
-        <div class="card red--card p-3 flex-row">
+        <div class="card red--card p-3 flex-row mb-3">
           <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0 me-3">
             <img src="images/warning-red.svg" alt="icon" class="img-fluid">
           </div>
@@ -424,16 +438,17 @@
               support.</p>
           </div>
         </div>
-        <div class="card yellow--card p-3 flex-row">
+        <div class="card yellow--card p-3 flex-row mb-3">
           <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0 me-3">
             <img src="images/downwards-yellow.svg" alt="icon" class="img-fluid">
           </div>
-          <div class="d-flex flex-column">
+          <div class="d-flex flex-column align-items-start">
             <h2 class="font-14 fw-semibold ">ELA Bottom Quartile Needs Attention</h2>
             <p class="mb-0 font-11 clr--4755">Middle School ELA bottom quartile showing -4% decline.</p>
+            <div class="badge badge-grey rounded-pill mt-2">Jefferson Middle School</div>
           </div>
         </div>
-        <div class="card green--card p-3 flex-row">
+        <div class="card green--card p-3 flex-row mb-0">
           <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0 me-3">
             <img src="images/upwards-green.svg" alt="icon" class="img-fluid">
           </div>
@@ -442,7 +457,7 @@
             <p class="mb-0 font-11 clr--4755">Science proficiency increased by 2% district- wide this quarter.</p>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
   </div>
 
@@ -547,66 +562,47 @@
             <mat-button-toggle value="region">By Region</mat-button-toggle>
             <mat-button-toggle value="tier">By Tier</mat-button-toggle>
           </mat-button-toggle-group>
-          <div class="d-flex flex-column flex-sm-row align-items-center gap-2 gap-sm-4">
-            <mat-form-field appearance="outline" class="dd--sm w-100">
-              <mat-select placeholder="All Demographics">
-                <mat-option value="1">Demographics 1</mat-option>
-                <mat-option value="2">Demographics 2</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="dd--sm w-100">
-              <mat-select placeholder="All Students">
-                <mat-option value="1">Students 1</mat-option>
-                <mat-option value="2">Students 2</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="dd--sm w-100">
-              <mat-select placeholder="All Schools">
-                <mat-option value="1">Schools 1</mat-option>
-                <mat-option value="2">Schools 2</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="dd--sm w-100">
-              <mat-select placeholder="Subjects (8)">
-                <mat-option value="1">All Subjects 1</mat-option>
-                <mat-option value="2">All Subjects 2</mat-option>
-              </mat-select>
-            </mat-form-field>
+          <div class="d-flex flex-column flex-sm-row flex-wrap align-items-center">
+            <div class="row">
+              <div class="col-12 col-lg-3 col-xl-3">
+                <mat-form-field appearance="outline" class="dd--sm w-100 m-1">
+                  <mat-select placeholder="All Demographics">
+                    <mat-option value="1">Demographics 1</mat-option>
+                    <mat-option value="2">Demographics 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+              <div class="col-12 col-lg-3 col-xl-3">
+                <mat-form-field appearance="outline" class="dd--sm w-100 m-1">
+                  <mat-select placeholder="All Students">
+                    <mat-option value="1">Students 1</mat-option>
+                    <mat-option value="2">Students 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+              <div class="col-12 col-lg-3 col-xl-3">
+                <mat-form-field appearance="outline" class="dd--sm w-100 m-1">
+                  <mat-select placeholder="All Schools">
+                    <mat-option value="1">Schools 1</mat-option>
+                    <mat-option value="2">Schools 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+              <div class="col-12 col-lg-3 col-xl-3">
+                <mat-form-field appearance="outline" class="dd--sm w-100 m-1">
+                  <mat-select placeholder="Subjects (8)">
+                    <mat-option value="1">All Subjects 1</mat-option>
+                    <mat-option value="2">All Subjects 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+            </div>
+
           </div>
-          <!-- <div class="d-flex flex-wrap align-items-center gap-2">
-            <mat-form-field appearance="outline" class="dd--sm">
-              <mat-select placeholder="All Demographics">
-                <mat-option value="1">Demographic 10</mat-option>
-                <mat-option value="2">Demographic 11 </mat-option>
-                <mat-option value="2">Demographic 12 </mat-option>
-                <mat-option value="2">Demographic 13 </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="dd--sm">
-              <mat-select placeholder="All Students">
-                <mat-option value="1">Student 1</mat-option>
-                <mat-option value="2">Student 2</mat-option>
-                <mat-option value="3">Student 3</mat-option>
-                <mat-option value="4">Student 4</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="dd--sm">
-              <mat-select placeholder="All Schools">
-                <mat-option value="1">School 1</mat-option>
-                <mat-option value="2">School 2</mat-option>
-                <mat-option value="3">School 3</mat-option>
-                <mat-option value="4">School 4</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline" class="dd--sm">
-              <mat-select placeholder="All Subjects">
-                <mat-option value="1">Subject 1</mat-option>
-                <mat-option value="2">Subject 2</mat-option>
-                <mat-option value="3">Subject 3</mat-option>
-                <mat-option value="4">Subject 4</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div> -->
         </div>
         <div class="card p-3 p-sm-4 d-flex flex-column m-0">
           <div class="d-flex align-items-center flex-wrap justify-content-sm-between gap-2">
@@ -824,12 +820,10 @@
           <div class="col-12 col-lg-4">
             <div class="score--box w-100 d-flex flex-column align-items-center justify-content-center mt-2">
               <h6 class="mb-2 clr--64748B font-11">Supporting Data</h6>
-
               <p *ngFor="let item of school.supportingData" class="mb-2 clr--64748B font-11 d-flex align-items-center">
                 {{ item.label }}
                 <span class="count ms-2">{{ item.value }}</span>
               </p>
-
             </div>
           </div>
         </div>
@@ -837,7 +831,6 @@
           <div class="col-12">
             <div class="action--foo w-100 d-flex align-items-sm-center flex-column flex-sm-row gap-2">
               <p class="mb-0 font-11 clr--64748B">Actions:</p>
-
               <div class="d-flex align-items-center gap-2">
                 <button type="button" class="btn btn-sm btn-outline-primary btn--red">Reject</button>
                 <button type="button" class="btn btn-sm btn-outline-primary btn--green">Keep</button>
@@ -846,10 +839,7 @@
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
-
 </div>
