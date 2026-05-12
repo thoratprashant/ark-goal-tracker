@@ -568,6 +568,43 @@ schoolTableData = [
     grad: '',
     totalPoints: '500 (-30)'
   }, 
+   {
+    name: 'Maplewood Academy',
+    students: 'Goal 10 pts',
+    grade: '',
+    atRisk: true,
+    elaAch: '85%',
+    elaLg: '82%',
+    elaBq: '30%',
+    mathAch: '83%',
+    mathLg: '80%',
+    mathBq: '27%',
+    science: '84%',
+    ss: '84%',
+    msAcc: '',
+    hsCca: '84%',
+    grad: '84%',
+    totalPoints: '500 (-30)'
+  },
+    {
+    name: 'Cedar Hill School',
+    students: '425 Students',
+    grade: 'Grades K-5',
+    atRisk: false,
+    elaAch: '76%',
+    elaLg: '74%',
+    elaBq: '22%',
+
+    mathAch: '76%',
+    mathLg: '74%',
+    mathBq: '22%',
+    science: '76%',
+    ss: '',
+    msAcc: '',
+    hsCca: '',
+    grad: '',
+    totalPoints: '500 (-30)'
+  }, 
 ];
 
 //Performance trends graph
@@ -745,7 +782,7 @@ schoolTableData = [
     series: [
       {
         name: 'ELA',
-        data: [66, 88, 58, 74, 74, 89, 97]
+        data: [50, 55, 58, 60, 65, 75, 85]
       }
     ],
     chart: {
@@ -758,7 +795,7 @@ schoolTableData = [
       curve: 'straight',
       width: 3
     },
-    colors: ['#0D2A7C'],
+    colors: ['#EA914E'],
     xaxis: {
       categories: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'March'],
       axisBorder: {
@@ -769,7 +806,7 @@ schoolTableData = [
       },
       labels: {
         style: {
-          colors: '#6B7280',
+          colors: '#64748B',
           fontSize: '10px',
           fontWeight: 400
         }
@@ -792,7 +829,7 @@ schoolTableData = [
       strokeDashArray: 4,
       xaxis: {
         lines: {
-          show: false
+          show: true
         }
       },
       yaxis: {
@@ -808,7 +845,7 @@ schoolTableData = [
     markers: {
       size: 5,
       strokeWidth: 0,
-      colors: ['#0D2A7C'],
+      colors: ['#EA914E'],
       hover: {
         size: 6
       }
@@ -824,7 +861,7 @@ schoolTableData = [
       intersect: true,
       x: {
         formatter: (_val: any, opts: any) => {
-          return this.chartOptions1.xaxis.categories[opts.dataPointIndex];
+          return this.chartOptions12.xaxis.categories[opts.dataPointIndex];
         }
       },
       y: {
