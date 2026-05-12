@@ -5,6 +5,9 @@
     .datepicker-width{
         width: 150px;
     }
+    .search-width{
+        max-width: 710px;
+    }
     .performance--summary-section{
         .section-slider{
             gap: 34px;
@@ -97,6 +100,11 @@
                                         background-color: #D64550;
                                     }
                                 }
+                            }
+                            .mat-icon{
+                                width: 12px;
+                                height: 12px;
+                                font-size: 12px;
                             }
                         }
                     }

@@ -415,6 +415,7 @@
                                 <th class="text-center">Ach %</th>
                                 <th class="text-center">LG %</th>
                                 <th class="text-center">BQ %</th>
+                                <th class="text-center"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -452,6 +453,9 @@
                                         <div class="progress-bar bg-yellow text-dark" [style.width.%]="row.progress.bq.warning">{{ row.progress.bq.warning }}%</div>
                                         <div class="progress-bar bg-red" [style.width.%]="row.progress.bq.danger">{{ row.progress.bq.danger }}%</div>
                                     </div>
+                                </td>
+                                <td class="clr--111827">
+                                    <a href="" class=""><mat-icon class="clr--9CA3AF">arrow_forward_ios</mat-icon></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -560,8 +564,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 achievement-band-section">
-            <div class="card p-3 p-sm-4 d-flex flex-column mb-0">
+        <div class="col-12">
+            <div class="achievement-band-section mb-3 px-3">
                 <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between flex-wrap gap-2">
                     <div class="d-flex flex-sm-row flex-column flex-wrap align-items-sm-center gap-2">
                         <div class="d-flex flex-column gap-1">
@@ -610,14 +614,18 @@
                         </button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="col-12 achievement-band-section">
+            <div class="card p-3 p-sm-4 d-flex flex-column mb-0">
                 <div class="col-12 filters-section">
                     <div class="card p-3 d-flex flex-column mb-0">
                         <div class="d-flex flex-sm-row flex-column flex-wrap gap-3 align-items-sm-center">
                             <div class="d-flex align-items-center gap-2">
                                 <img src="images/filters-icon.svg" alt="icon" class="img-fluid">
-                                <p class="clr--64748B font-13 fw-semibold mb-0">Filters:</p>
+                                <p class="clr--64748B font-13 fw-semibold mb-0">Filters</p>
                             </div>
-                            <div class="icon--input--box position-relative">
+                            <div class="icon--input--box position-relative w-100 search-width">
                                 <input type="text" class="form-control" placeholder="Search students...">
                                 <mat-icon>search</mat-icon>
                             </div>

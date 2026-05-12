@@ -368,10 +368,10 @@ export class Dashboard {
     xaxis: {
       categories: ['Term 1', 'Term 2', 'Term 3', 'Term 4'],
       axisBorder: {
-        show: false
+        show: true
       },
       axisTicks: {
-        show: false
+        show: true
       },
       labels: {
         style: {
@@ -384,6 +384,12 @@ export class Dashboard {
       min: 0,
       max: 100,
       tickAmount: 4,
+      axisBorder: {
+        show: true
+      },
+      axisTicks: {
+        show: true
+      },
       labels: {
         formatter: (value: number) => `${value}%`,
         style: {
@@ -406,7 +412,7 @@ export class Dashboard {
         }
       },
       padding: {
-        left: 10,
+        left: 13,
         right: 10
       }
     },
