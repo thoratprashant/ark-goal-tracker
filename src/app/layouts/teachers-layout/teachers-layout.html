@@ -1,0 +1,84 @@
+<!-- TOP NAVBAR -->
+<header class="topbar">
+    <div class="d-flex align-items-center justify-content-center flex-shrink-0">
+        <div class="logo d-flex align-items-center justify-content-center me-2">
+            <img src="images/logo-cap.svg" alt="img">
+        </div>
+        <h6 class="m-0 fw-bold logo--name">Teacher Dashboard</h6>
+    </div>
+
+
+  <div class="nav-desktop menus-desktop">
+    <!-- <div class="icon--input--box position-relative w-100">
+        <input type="text" class="form-control" placeholder="Search...">
+        <mat-icon>search</mat-icon>
+    </div> -->
+    <ul class="m-0 p-0 d-flex flex-wrap mx-2">
+        <li class="flex-shrink-0" routerLinkActive="active"><a routerLink="/teachers/dashboard">Dashboard</a></li>
+        <li class="flex-shrink-0" routerLinkActive="active"><a routerLink="/teachers/standards">Standards</a></li>
+        <li class="flex-shrink-0" routerLinkActive="active"><a routerLink="/teachers/student-view">Student View</a></li>
+    </ul>
+  </div>
+
+  <!-- Desktop Nav -->  
+  <nav class="nav-desktop"> 
+
+    <div class="notifications position-relative">
+        <button matIconButton aria-label="notification" class="p-0">
+            <mat-icon fontSet="material-icons-outlined">notifications</mat-icon>  
+            <div class="badge-indicator"></div>
+        </button> 
+    </div>
+
+    <div class="btn-group"> 
+        <div class="dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <div class="user--profile--round me-2">
+                <img src="images/users/avatar-1.jpg" alt="user img" class="img-fluid">
+            </div>
+            <h6 class="font-13 m-0 text-black user--name">Dr. Sarah Wilson</h6>
+        </div>
+        <ul class="dropdown-menu dropdown-menu-lg-end p-0"> 
+            <li>
+                <button class="dropdown-item d-flex align-items-center" type="button" routerLink="/principal/profile">
+                    <mat-icon>account_circle</mat-icon>
+                    Profile
+                </button>
+            </li>  
+            <li>
+                 <button class="dropdown-item d-flex align-items-center" type="button" routerLink="/auth/login">
+                    <mat-icon>logout</mat-icon>
+                    Logout
+                </button>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Button -->
+  <button class="menu-btn" (click)="toggleMenu()">
+    ☰
+  </button>
+</header>
+
+<!-- MOBILE SIDEBAR -->
+<aside class="sidebar" [class.open]="mobileMenuOpen()">
+    <div class="logo--sm">
+    <img src="images/admin-logo.svg" alt="img" class="">
+  </div>
+  <nav>
+    <a routerLink="/teachers/dashboard" (click)="closeMenu()">Dashboard</a>
+    <a routerLink="/teachers/standards" (click)="closeMenu()">Standards</a>
+    <a routerLink="/teachers/student-view" (click)="closeMenu()">Student View</a>
+    <a routerLink="/principal/users" (click)="closeMenu()">Notification</a> 
+    <a routerLink="/principal/profile" (click)="closeMenu()">Profile</a> 
+    <a routerLink="/auth/login" (click)="closeMenu()">Logout</a> 
+  </nav>
+</aside>
+
+<!-- BACKDROP -->
+<div class="backdrop" *ngIf="mobileMenuOpen()" (click)="closeMenu()"></div>
+
+<!-- PAGE CONTENT -->
+<main class="content route--wrapper">
+  <router-outlet></router-outlet>
+</main>

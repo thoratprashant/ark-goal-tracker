@@ -1,0 +1,502 @@
+<div class="container-fluild sv--wrapper">
+    <div class="row">
+        <div class="col-12 head--sec d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <div class="d-flex flex-column">
+                <h4 class="text-secondary fw-bold">Lincoln Elementary School</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-1">
+                    <li class="breadcrumb-item"><a routerLink="/teachers/dashboard">School</a></li>
+                    <li class="breadcrumb-item"><a routerLink="/teachers/dashboard">Student View</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Emma Rodriguez</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="d-flex flex-shrink-0">
+                <button type="button" class="btn btn-lg btn-outline-primary text-black font-13 mt-2 mt-sm-0">
+                <i class="icon icon--download text-black"></i>
+                Export Report
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 d-flex flex-column student-details-header">
+        <div class="col-12 d-flex flex-wrap align-items-start justify-content-between gap-2">
+            <div class="d-flex flex-row gap-3">
+                <div class="d-flex align-items-center justify-content-center font-18 fw-bold text-white student-name-initials-section">ER</div>
+                <div class="d-flex flex-column gap-2">
+                    <div class="d-flex flex-sm-row flex-column align-items-sm-center gap-2">
+                        <h4 class="text-secondary fw-bold mb-0">Emma Rodriguez</h4>
+                        <div class="rounded-label-status-section green d-flex align-items-center gap-2">
+                            <span class="bullet-point green"></span>
+                            <p class="font-11 fw-semibold mb-0">On Track</p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-sm-row flex-column align-items-sm-center gap-2">
+                        <p class="clr--4755 fw-normal font-15 mb-0">8th Grade</p>
+                        <div class="rounded-label-status-section yellow d-flex align-items-center gap-2">
+                            <p class="font-11 fw-semibold mb-0">Learning Gains</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-lg btn-outline-primary clr--4755">
+                <mat-icon class="clr--4755" fontSet="material-icons-outlined">keyboard_arrow_left</mat-icon>
+                Back to List
+            </button>
+        </div>
+    </div>
+    <div class="col-12 d-flex flex-column bottom-outer-section">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 ai-summary-section">
+                    <p class="font-20 fw-bold clr--0D2A7C mb-0">AI Summary</p>
+                    <button type="button" class="btn btn-lg btn-primary">
+                        <mat-icon fontSet="material-icons-outlined" class="me-1">flare</mat-icon>
+                        Generate AI Summary
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-12 d-flex mb-4">
+                <mat-button-toggle-group [value]="viewMode()" (change)="viewMode.set($event.value)" class="toggle-container">
+                    <mat-button-toggle value="ela">ELA</mat-button-toggle>
+                    <mat-button-toggle value="math">Math</mat-button-toggle>
+                    <mat-button-toggle value="social studies">Social Studies</mat-button-toggle>
+                    <mat-button-toggle value="science">Science</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <div class="col-12 col-lg-3" *ngIf="viewMode() === 'ela'">
+                <div class="d-flex flex-wrap flex-lg-column left-sections">
+                    <h5 class="w-100 font-15 text-secondary fw-semibold mb-0">ELA Performance</h5>
+                    <div class="card d-flex flex-column">
+                        <h5 class="font-12 clr--64748B fw-semibold mb-0">CURRENT ACHIEVEMENT</h5>
+                        <div class="rounded-label-section green d-flex align-items-center gap-1">
+                            <img src="images/upwards-green.svg" alt="icon" class="img-fluid">
+                            <p class="font-8 fw-semibold mb-0">+27 SS <span class="fw-normal">from prior year</span></p>
+                        </div>
+                        <div class="d-flex align-items-end gap-2">
+                            <h5 class="font-24 clr--90C9 fw-bold mb-0">742</h5>
+                            <p class="clr--64748B font-10 fw-normal mb-0">Predicted Scale Score</p>
+                        </div>
+                        <div class="divider-line"></div>
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="d-flex flex-column gap-2">
+                                <h3 class="clr--64748B font-10 fw-semibold mb-0">Prior Year</h3>
+                                <div class="d-flex flex-column">
+                                    <p class="clr--64748B font-10 fw-normal mb-0">SS: 715</p>
+                                    <p class="clr--64748B font-10 fw-normal mb-0">AL: Level 2</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column gap-2">
+                                <h3 class="clr--64748B font-10 fw-semibold mb-0">Level 3 Cut Score</h3>
+                                <div class="d-flex flex-column">
+                                    <p class="clr--64748B font-10 fw-normal mb-0">750</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card d-flex flex-column">
+                        <h5 class="font-12 clr--64748B fw-semibold mb-0">LEARNING GAIN</h5>
+                        <div class="rounded-label-section green d-flex align-items-center gap-1">
+                            <!-- <img src="images/upwards-green.svg" alt="icon" class="img-fluid"> -->
+                            <p class="font-8 fw-semibold mb-0"><span class="fw-normal">Need </span>+8 SS <span class="fw-normal">to reach gain</span></p>
+                        </div>
+                        <div class="d-flex align-items-end gap-2">
+                            <h5 class="font-24 clr--DCE52A fw-bold mb-0">+8 SS</h5>
+                            <p class="clr--64748B font-10 fw-normal mb-0">Points Needed for Gain</p>
+                        </div>
+                        <div class="divider-line"></div>
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="d-flex flex-column gap-2">
+                                <h3 class="clr--64748B font-10 fw-semibold mb-0">Minimum Scale Score</h3>
+                                <div class="d-flex flex-column">
+                                    <p class="clr--64748B font-10 fw-normal mb-0">723</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column gap-2">
+                                <h3 class="clr--64748B font-10 fw-semibold mb-0">Prior Year SS</h3>
+                                <div class="d-flex flex-column">
+                                    <p class="clr--64748B font-10 fw-normal mb-0">715</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column gap-2">
+                                <h3 class="clr--64748B font-10 fw-semibold mb-0">Predicted SS</h3>
+                                <div class="d-flex flex-column">
+                                    <p class="clr--64748B font-10 fw-normal mb-0">742</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card d-flex flex-column">
+                        <h5 class="font-12 clr--64748B fw-semibold mb-0">ATTENDANCE</h5>
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="d-flex gap-2 blue-bg-card">
+                                <div class="d-flex flex-column gap-1">
+                                    <p class="clr--64748B font-10 fw-normal mb-0">Overall ADA</p>
+                                    <p class="clr--90C9 font-12 fw-bold mb-0">94%</p>
+                                </div>
+                                <div class="d-flex flex-column gap-1">
+                                    <p class="clr--64748B font-10 fw-normal mb-0">Present:</p>
+                                    <p class="clr--64748B font-10 fw-normal mb-0">168/180 days</p>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2 blue-bg-card">
+                                <div class="d-flex flex-column gap-1">
+                                    <p class="clr--64748B font-10 fw-normal mb-0">Absences</p>
+                                    <p class="clr--D64550 font-12 fw-bold mb-0">12 <span class="font-8 fw-semibold"></span>days</p>
+                                </div>
+                                <div class="d-flex flex-column gap-1">
+                                    <p class="clr--64748B font-10 fw-normal mb-0">Excused: 7</p>
+                                    <p class="clr--64748B font-10 fw-normal mb-0">Unexcused: 5</p>
+                                </div>
+                            </div>
+                            <div class="d-flex blue-bg-card">
+                                <div class="d-flex flex-column gap-1">
+                                    <p class="clr--64748B font-10 fw-normal mb-0">Tardies</p>
+                                    <p class="clr--DCE52A font-12 fw-bold mb-0">6</p>
+                                </div>
+                            </div>
+                            <div class="d-flex blue-bg-card">
+                                <div class="d-flex flex-column gap-1">
+                                    <p class="clr--64748B font-10 fw-normal mb-0">SUS Days</p>
+                                    <p class="clr--0D2A7C font-12 fw-bold mb-0">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-graph d-flex flex-column">
+                        <h5 class="font-12 clr--64748B fw-semibold mb-0">ATTENDANCE INSIGHTS</h5>
+                        <div class="d-flex flex-column">
+                            <h5 class="font-12 clr--64748B fw-normal mb-0">ADA by Day of Week</h5>
+                            <div class="chart-scroll-wrapper">
+                                <div class="chart-container">
+                                    <apx-chart
+                                        [series]="chartOptions2.series"
+                                        [chart]="chartOptions2.chart"
+                                        [xaxis]="chartOptions2.xaxis"
+                                        [yaxis]="chartOptions2.yaxis"
+                                        [grid]="chartOptions2.grid"
+                                        [plotOptions]="chartOptions2.plotOptions"
+                                        [dataLabels]="chartOptions2.dataLabels"
+                                        [legend]="chartOptions2.legend"
+                                        [tooltip]="chartOptions2.tooltip"
+                                        [colors]="chartOptions2.colors"
+                                        [states]="chartOptions2.states">
+                                    </apx-chart>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divider-line"></div>
+                        <div class="d-flex flex-column">
+                            <h5 class="font-12 clr--64748B fw-normal mb-0">Historical Attendance</h5>
+                            <div class="chart-scroll-wrapper">
+                                <div class="chart-container">
+                                    <apx-chart
+                                        [series]="chartOptions1.series"
+                                        [chart]="chartOptions1.chart"
+                                        [xaxis]="chartOptions1.xaxis"
+                                        [yaxis]="chartOptions1.yaxis"
+                                        [stroke]="chartOptions1.stroke"
+                                        [grid]="chartOptions1.grid"
+                                        [markers]="chartOptions1.markers"
+                                        [legend]="chartOptions1.legend"
+                                        [tooltip]="chartOptions1.tooltip"
+                                        [annotations]="chartOptions1.annotations"
+                                        [dataLabels]="chartOptions1.dataLabels"
+                                        [colors]="chartOptions1.colors">
+                                    </apx-chart>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card w-100 d-flex flex-column">
+                        <h5 class="font-12 clr--64748B fw-semibold mb-0">COURSE PERFORMANCE</h5>
+                        <div class="d-flex justify-content-between gap-2">
+                            <div class="d-flex flex-column gap-1">
+                                <h3 class="clr--64748B font-10 fw-normal mb-0">Current GPA</h3>
+                                <P class="clr--64748B font-18 fw-bold mb-0">3.2</P>
+                            </div>
+                            <div class="d-flex flex-column gap-1">
+                                <h3 class="clr--64748B font-10 fw-normal mb-0">Course Average</h3>
+                                <div class="d-flex flex-column align-items-end">
+                                    <p class="clr--90C9 font-18 fw-bold mb-0">84%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive course-performance-table">
+                            <table class="table table-custom table-centered m-0">
+                                <thead class="thead-sm">
+                                    <tr class="text-uppercase">
+                                        <th class="clr--64748B font-8 fw-semibold">Course</th>
+                                        <th class="clr--64748B font-8 fw-semibold">Teacher</th>
+                                        <th class="clr--64748B font-8 fw-semibold text-center">P1</th>
+                                        <th class="clr--64748B font-8 fw-semibold text-center">P2</th>
+                                        <th class="clr--64748B font-8 fw-semibold text-center">P3</th>
+                                        <th class="clr--64748B font-8 fw-semibold text-center">P4</th>
+                                        <th class="clr--64748B font-8 fw-semibold text-center">Grade</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of grades">
+                                        <td class="clr--64748B font-8 fw-normal">{{ item.course }}</td>
+                                        <td class="clr--64748B font-8 fw-normal">{{ item.teacher }}</td>
+                                        <td class="clr--64748B font-8 fw-normal text-center">{{ item.p1 }}</td>
+                                        <td class="clr--64748B font-8 fw-normal text-center">{{ item.p2 }}</td>
+                                        <td class="clr--64748B font-8 fw-normal text-center">{{ item.p3 }}</td>
+                                        <td class="clr--64748B font-8 fw-normal text-center">{{ item.p4 }}</td>
+                                        <td class="clr--64748B font-8 fw-normal text-center">{{ item.grade }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-9 mt-lg-0 mt-3" *ngIf="viewMode() === 'ela'">
+                <div class="d-flex flex-column gap-2">
+                    <div class="card p-3 p-sm-4 d-flex flex-column">
+                        <h5 class="font-15 text-secondary fw-semibold mb-0">Predicted Performance Over Time</h5>
+                        <div class="chart-container">
+                            <apx-chart
+                                [series]="chartOptions.series"
+                                [chart]="chartOptions.chart"
+                                [xaxis]="chartOptions.xaxis"
+                                [yaxis]="chartOptions.yaxis"
+                                [stroke]="chartOptions.stroke"
+                                [grid]="chartOptions.grid"
+                                [markers]="chartOptions.markers"
+                                [legend]="chartOptions.legend"
+                                [tooltip]="chartOptions.tooltip"
+                                [annotations]="chartOptions.annotations"
+                                [colors]="chartOptions.colors">
+                            </apx-chart>
+                        </div>
+                    </div>
+
+                    <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
+                        <h5 class="font-15 text-secondary fw-semibold mb-0">Score Contribution Breakdown</h5>
+                        <div class="table-responsive score-contribution-breakdown-table mt-1">
+                        <!-- Score Contribution Breakdown Table -->
+                            <table class="table table-custom table-centered m-0">
+                                <thead class="thead-sm">
+                                    <tr class="text-uppercase">
+                                        <th>Predictor</th>
+                                        <th class="text-center">Value</th>
+                                        <th class="text-center">Contribution</th>
+                                        <th class="text-center">Significance</th>
+                                        <th class="text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of dataScoreBreakdown">
+                                        <td class="clr--111827 fw-semibold">{{ row.predictor }}</td>
+                                        <td class="clr--4755 text-center">{{ row.value }}</td>
+                                        <td class="clr--4755 text-center">{{ row.contribution }} PTS</td>
+                                        <td class="clr--111827 fw-medium text-center">{{ row.significance }}</td>
+                                        <td class="text-center">
+                                            <div class="bg-highlight" [ngClass]="getStatusClass(row.status)">
+                                                {{ row.status }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex">
+                            <div class="total-predicted-score text-center font-13 fw-medium text-white">Total Predicted Score - 742</div>
+                        </div>
+                    </div>
+
+                    <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
+                        <h5 class="font-15 text-secondary fw-semibold mb-0">Progress Toward Goal</h5>
+                        @for (item of progressList; track item) {
+                        <div class="progress--wrapper d-flex flex-column gap-2">
+                            <div class="progress--labels d-flex align-items-center justify-content-between">
+                                <h5 class="mb-0 font-13 fw-normal clr--4755">Current: {{ item.currentValue }}%</h5>
+                                <h6 class="mb-0 font-13 fw-normal clr--4755">Goal: {{ item.goalValue }}%</h6>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" [style.background]="item.color" [style.width.%]="item.goalValue">
+                                </div>
+                            </div>
+                        </div>
+                        }
+                        <div class="d-flex flex-wrap justify-content-around gap-2">
+                            <div class="d-flex flex-column text-center gap-1">
+                                <h5 class="text-secondary font-21 fw-bold mb-0">2</h5>
+                                <p class="mb-0 clr--64748B font-12 fw-normal">Points to Goal</p>
+                            </div>
+                            <div class="d-flex flex-column text-center gap-1">
+                                <h5 class="text-secondary font-21 fw-bold mb-0">82</h5>
+                                <p class="mb-0 clr--64748B font-12 fw-normal">Predicted Score</p>
+                            </div>
+                            <div class="d-flex flex-column text-center gap-1">
+                                <h5 class="clr--90C9 font-21 fw-bold mb-0">Yes</h5>
+                                <p class="mb-0 clr--64748B font-12 fw-normal">On Track to Goal</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
+                        <div class="d-flex flex-lg-row flex-column align-items-lg-center justify-content-lg-between gap-lg-0 gap-3">
+                            <h5 class="font-15 text-secondary fw-semibold mb-0">Historical State Assessment Scores</h5>
+                            <div class="d-flex flex-column flex-sm-row gap-2 w-sm-100">
+                                <mat-form-field appearance="outline" class="grades">
+                                    <mat-select placeholder="All Subjects">
+                                        <mat-option value="1">ELA</mat-option>
+                                        <mat-option value="2">MATH </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <div class="icon--input--box position-relative">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <mat-icon>search</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive state-assessment-score-table">
+                            <table class="table table-custom table-centered m-0">
+                                <thead class="thead-sm">
+                                    <tr class="text-uppercase">
+                                        <th>Year</th>
+                                        <th class="text-center">Subject</th>
+                                        <th class="text-center">Window</th>
+                                        <th class="text-center">Scale Score</th>
+                                        <th class="text-center">Achievement Level</th>
+                                        <th class="text-center">Percentile</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of dataStateAssessmentScore">
+                                        <td class="clr--111827 fw-semibold">{{ row.year }}</td>
+                                        <td class="clr--4755 text-center">{{ row.subject }}</td>
+                                        <td class="clr--4755 text-center">{{ row.window }}</td>
+                                        <td class="clr--4755 text-center">{{ row.scaleScore }}</td>
+                                        <td class="clr--4755 text-center">{{ row.achievementLevel }}</td>
+                                        <td class="clr--111827 fw-medium text-center">{{ row.percentile }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
+                        <div class="d-flex flex-lg-row flex-column align-items-lg-center justify-content-lg-between gap-lg-0 gap-3">
+                            <h5 class="font-15 text-secondary fw-semibold mb-0">Assessment Inputs Used for Prediction</h5>
+                            <div class="d-flex flex-column flex-sm-row gap-2 w-sm-100">
+                                <mat-form-field appearance="outline" class="grades">
+                                    <mat-select placeholder="Date Range">
+                                    <mat-option value="1">2024-25</mat-option>
+                                    <mat-option value="2">2025-26</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="grades">
+                                    <mat-select placeholder="All Subjects">
+                                        <mat-option value="1">ELA</mat-option>
+                                        <mat-option value="2">MATH </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="grades">
+                                    <mat-select placeholder="All Assessments">
+                                        <mat-option value="1">Assessment 1</mat-option>
+                                        <mat-option value="2">Assessment 2</mat-option>
+                                        <mat-option value="3">Assessment 3</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <div class="icon--input--box position-relative">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <mat-icon>search</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive state-assessment-score-table">
+                            <table class="table table-custom table-centered m-0">
+                                <thead class="thead-sm">
+                                    <tr class="text-uppercase">
+                                        <th>Subject</th>
+                                        <th class="text-center">Assessment</th>
+                                        <th class="text-center">Date</th>
+                                        <th class="text-center">Student Score</th>
+                                        <th class="text-center">Class</th>
+                                        <th class="text-center">School</th>
+                                        <th class="text-center">District</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of dataAssessmentInputs">
+                                        <td class="clr--111827 fw-semibold">{{ row.subject }}</td>
+                                        <td class="clr--4755 text-center">{{ row.assessment }}</td>
+                                        <td class="clr--4755 text-center">{{ row.date }}</td>
+                                        <td class="text-center">
+                                            <span class="clr--4755 me-2">{{ row.studentScore }}</span>
+                                            <div class="bg-highlight" [ngClass]="getStudentPercentageClass(row.scorePercent)">
+                                                {{ row.scorePercent }}%
+                                            </div>
+                                        </td>
+                                        <td class="clr--111827 fw-medium text-center">{{ row.class }}%</td>
+                                        <td class="clr--111827 fw-medium text-center">{{ row.school }}%</td>
+                                        <td class="clr--111827 fw-medium text-center">{{ row.district }}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
+                        <div class="d-flex flex-lg-row flex-column align-items-lg-center justify-content-lg-between gap-lg-0 gap-3">
+                            <h5 class="font-15 text-secondary fw-semibold mb-0">Detailed Attendance</h5>
+                            <div class="d-flex flex-column flex-sm-row gap-2 w-sm-100">
+                                <mat-form-field appearance="outline" class="grades">
+                                    <mat-select placeholder="Date Range">
+                                    <mat-option value="1">2024-25</mat-option>
+                                    <mat-option value="2">2025-26</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="gpa">
+                                    <mat-select placeholder="All Status">
+                                    <mat-option value="1">Grade 10</mat-option>
+                                    <mat-option value="2">Grade 11 </mat-option>
+                                    <mat-option value="2">Grade 12 </mat-option>
+                                    <mat-option value="2">Grade 13 </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline" class="gpa">
+                                    <mat-select placeholder="All Codes">
+                                    <mat-option value="1">Option 1</mat-option>
+                                    <mat-option value="2">Option 2</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="table-responsive score-contribution-breakdown-table">
+                        <!-- Score Contribution Breakdown Table -->
+                            <table class="table table-custom table-centered m-0">
+                                <thead class="thead-sm">
+                                    <tr class="text-uppercase">
+                                        <th>Date</th>
+                                        <th class="text-center">Day</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Code</th>
+                                        <th class="text-center">Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of dataDetailedAttendance">
+                                        <td class="clr--111827 fw-semibold">{{ row.date }}</td>
+                                        <td class="clr--4755 text-center">{{ row.day }}</td>
+                                        <td class="text-center">
+                                            <div class="bg-highlight" [ngClass]="getStatusClass1(row.status)">
+                                                {{ row.status }}
+                                            </div>
+                                        </td>
+                                        <td class="clr--4755 text-center">{{ row.code }}</td>
+                                        <td class="clr--111827 fw-medium text-center">{{ row.reason }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

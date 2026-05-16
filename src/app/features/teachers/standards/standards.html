@@ -1,0 +1,454 @@
+<div class="container-fluild standards--wrapper">
+    <div class="row">
+        <div class="col-12 head--sec d-flex flex-sm-row flex-column align-items-sm-center">
+            <div class="d-flex flex-column">
+                <h4 class="text-secondary fw-bold">Lincoln Elementary School</h4>
+                <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-1">
+                    <li class="breadcrumb-item"><a routerLink="/teachers/dashboard">School</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Teachers Standards</li>
+                </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="col-12 mt-3">
+            <div class="d-flex flex-sm-row flex-column align-items-sm-center justify-content-sm-between">
+                <div class="d-flex flex-column flex-sm-row flex-wrap gap-2 w-sm-100">
+                    <mat-form-field appearance="outline" class="grades">
+                        <mat-select placeholder="All Year">
+                        <mat-option value="1">2024-25</mat-option>
+                        <mat-option value="2">2025-26</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="grades">
+                        <mat-select placeholder="All Grades">
+                        <mat-option value="1">Grade 10</mat-option>
+                        <mat-option value="2">Grade 11 </mat-option>
+                        <mat-option value="2">Grade 12 </mat-option>
+                        <mat-option value="2">Grade 13 </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="grades">
+                        <mat-select placeholder="Subjects">
+                        <mat-option value="1">ELA</mat-option>
+                        <mat-option value="2">MATH</mat-option>
+                        <mat-option value="2">SCIENCE</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="grades">
+                        <mat-select placeholder="Tests">
+                        <mat-option value="1">Option 1</mat-option>
+                        <mat-option value="2">Option 2</mat-option>
+                        <mat-option value="2">Option 3</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="grades">
+                        <mat-select placeholder="Standards">
+                        <mat-option value="1">Option 1</mat-option>
+                        <mat-option value="2">Option 2</mat-option>
+                        <mat-option value="2">Option 3</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="d-flex flex-shrink-0">
+                    <button type="button" class="btn btn-lg btn-outline-primary text-black font-13 mt-3 mt-sm-0">
+                        <i class="icon icon--download text-black"></i>
+                        Export Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row summary-section">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card green-section p-3 p-sm-4 d-flex flex-column">
+          <div class="d-flex flex-row align-items-start justify-content-between">
+            <div class="d-flex flex-column gap-1">
+                <p class="text-muted font-14 fw-semibold mb-0">Ach %</p>
+                <h3 class="clr--111827 fw-bold mb-0">75%</h3>
+                <span class="clr--9CA3AF font-11 fw-normal">Achievement rate</span>
+            </div>
+            <div class="side--box--label font-11 fw-semibold mb-0">3rd Rank</div>
+          </div>
+          <div class="d-flex flex-wrap gap-3">
+            <div class="rounded-label-section green d-flex align-items-center gap-1">
+                <img src="images/upwards-green.svg" alt="icon" class="img-fluid">
+                <p class="font-11 fw-semibold mb-0">+5% Boy</p>
+            </div>
+            <div class="rounded-label-section green d-flex align-items-center gap-1">
+                <img src="images/green-downward-arrow.svg" alt="icon" class="img-fluid">
+                <p class="font-11 fw-semibold mb-0">-2% Bubble ACH</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card orange-section p-3 p-sm-4 d-flex flex-column">
+          <div class="d-flex flex-row align-items-start justify-content-between">
+            <div class="d-flex flex-column gap-1">
+                <p class="text-muted font-14 fw-semibold mb-0">LG %</p>
+                <h3 class="clr--111827 fw-bold mb-0">70%</h3>
+                <span class="clr--9CA3AF font-11 fw-normal">Learning gains</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center side--box--label flex-shrink-0">
+                <p class="font-11 fw-semibold mb-0">3rd Rank</p>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap gap-3">
+            <div class="rounded-label-section orange d-flex align-items-center gap-1">
+                <img src="images/upwards-orange.svg" alt="icon" class="img-fluid">
+                <p class="font-11 fw-semibold mb-0">+4% Boy</p>
+            </div>
+            <div class="rounded-label-section orange d-flex align-items-center gap-1">
+                <img src="images/orange-downward-arrow.svg" alt="icon" class="img-fluid">
+                <p class="font-11 fw-semibold mb-0">-2% Bubble LG</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card red-section p-3 p-sm-4 d-flex flex-column">
+          <div class="d-flex flex-row align-items-start justify-content-between">
+            <div class="d-flex flex-column gap-1">
+                <p class="text-muted font-14 fw-semibold mb-0">BQ %</p>
+                <h3 class="clr--111827 fw-bold mb-0">65%</h3>
+                <span class="clr--9CA3AF font-11 fw-normal">Bottom quartile progress</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center side--box--label flex-shrink-0">
+                <p class="font-11 fw-semibold mb-0">3rd Rank</p>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap gap-3">
+            <div class="rounded-label-section red d-flex align-items-center gap-1">
+                <img src="images/upwards-red.svg" alt="icon" class="img-fluid">
+                <p class="font-11 fw-semibold mb-0">+6% BoY</p>
+            </div>
+            <div class="rounded-label-section red d-flex align-items-center gap-1">
+                <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
+                <p class="font-11 fw-semibold mb-0">-2% Bubble BQ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card blue-section p-3 p-sm-4 d-flex flex-column">
+          <div class="d-flex flex-row align-items-start justify-content-between">
+            <div class="d-flex flex-column gap-1">
+                <p class="text-muted font-14 fw-semibold mb-0">25 students</p>
+                <h3 class="clr--111827 fw-bold mb-0">4.0</h3>
+                <span class="clr--9CA3AF font-11 fw-normal">points per student earned</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0">
+                <img src="images/ep-data-line.svg" alt="icon" class="img-fluid">
+            </div>
+          </div>
+          <div class="rounded-label-section blue d-flex align-items-center gap-1">
+              <p class="font-11 fw-semibold mb-0">Summary</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card p-3 p-sm-4 d-flex flex-column">
+                <h5 class="font-17 clr--111827 fw-semibold mb-0">Skill Performance</h5>
+                <div class="d-flex flex-sm-row flex-column flex-wrap align-items-sm-center justify-content-sm-between mt-3 gap-2">
+                    <div class="d-flex flex-sm-row flex-column align-items-sm-center gap-sm-3 gap-2">
+                        <mat-button-toggle-group [value]="viewMode()" (change)="viewMode.set($event.value)" class="toggle-container">
+                            <mat-button-toggle value="grade">By Grade</mat-button-toggle>
+                            <mat-button-toggle value="teacher">By Teacher</mat-button-toggle>
+                        </mat-button-toggle-group>
+                        <div class="d-flex flex-sm-row align-items-sm-center flex-column gap-2">
+                            <p class="font-13 fw-semibold clr--7373 mb-0">Grade Band</p>
+                            <mat-form-field appearance="outline" class="grades">
+                                <mat-select placeholder="Select">
+                                <mat-option value="1">Grade 10</mat-option>
+                                <mat-option value="2">Grade 11 </mat-option>
+                                <mat-option value="2">Grade 12 </mat-option>
+                                <mat-option value="2">Grade 13 </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <mat-button-toggle-group [value]="chartMode()" (change)="chartMode.set($event.value)"
+                        class="toggle-container small">
+                        <mat-button-toggle value="table">Table</mat-button-toggle>
+                        <mat-button-toggle value="bar">Bar Chart</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+                <h5 class="font-17 clr--7373 fw-normal mt-3 mb-0">Percent of Students by Performance Level</h5>
+                <div class="chart-scroll-wrapper">
+                    <div class="chart-scroll-area">
+                        <div class="chart-container">
+                            <apx-chart
+                                [series]="chartOptions.series"
+                                [chart]="chartOptions.chart"
+                                [xaxis]="chartOptions.xaxis"
+                                [yaxis]="chartOptions.yaxis"
+                                [grid]="chartOptions.grid"
+                                [plotOptions]="chartOptions.plotOptions"
+                                [dataLabels]="chartOptions.dataLabels"
+                                [legend]="chartOptions.legend"
+                                [tooltip]="chartOptions.tooltip"
+                                [colors]="chartOptions.colors"
+                                [stroke]="chartOptions.stroke"
+                            >
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 achievement-band-section">
+            <div class="card p-3 p-sm-4 d-flex flex-column">
+                <div class="d-flex align-items-center gap-1">
+                    <mat-icon fontSet="material-icons-outlined" class="">info</mat-icon>
+                    <h5 class="font-13 clr--4755 fw-semibold mb-0">SC.L.17.11</h5>
+                </div>
+                <div class="chart-scroll-wrapper border-top">
+                    <div class="chart-scroll-area">
+                        <div class="chart-container border-bottom">
+                            <apx-chart
+                            [series]="chartOptions1.series"
+                            [chart]="chartOptions1.chart"
+                            [plotOptions]="chartOptions1.plotOptions"
+                            [dataLabels]="chartOptions1.dataLabels"
+                            [xaxis]="chartOptions1.xaxis"
+                            [yaxis]="chartOptions1.yaxis"
+                            [grid]="chartOptions1.grid"
+                            [stroke]="chartOptions1.stroke"
+                            [colors]="chartOptions1.colors"
+                            [legend]="chartOptions1.legend"
+                            [tooltip]="chartOptions1.tooltip"
+                            [annotations]="chartOptions1.annotations"
+                            [fill]="chartOptions1.fill"
+                            ></apx-chart>
+                        </div>
+                    </div>
+                    <div class="threshold-legend">
+                        <span class="legend-label">Threshold:</span>
+
+                        <span class="legend-item red">
+                        <span class="dot"></span>
+                        &lt;50%
+                        </span>
+
+                        <span class="legend-item amber">
+                        <span class="dot"></span>
+                        50-70%
+                        </span>
+
+                        <span class="legend-item green">
+                        <span class="dot"></span>
+                        ≥70%
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 achievement-band-section">
+            <div class="card p-3 p-sm-4 d-flex flex-column">
+                <div class="d-flex flex-sm-row flex-wrap align-items-sm-center justify-content-sm-between flex-column gap-2">
+                    <h5 class="font-15 text-secondary fw-semibold mb-0">Student Standards Performance</h5>
+                    <div class="d-flex align-items-center flex-wrap gap-2">
+                        <p class="clr--64748B font-11 fw-normal mb-0">Sort by:</p>
+                        <mat-button-toggle-group [value]="sortBy()" (change)="sortBy.set($event.value)" class="sort-container">
+                            <mat-button-toggle value="standard">Standard</mat-button-toggle>
+                            <mat-button-toggle value="score">Score</mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                </div>
+                <div class="table-responsive student-standards-table">
+                    <table class="table table-custom table-centered m-0">
+                        <thead class="thead-sm">
+                            <tr class="text-uppercase">
+                                <th>Student Name</th>
+                                <th class="text-center">Total</th>
+                                <th class="text-center">10</th>
+                                <th class="text-center">11</th>
+                                <th class="text-center">2</th>
+                                <th class="text-center">7</th>
+                                <th class="text-center">8</th>
+                                <th class="text-center">9</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of dataStudentStandards">
+                                <td class="clr--111827 fw-semibold">{{ row.studentName }}</td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStudentStandardsPercentageClass(row.total)">
+                                        {{ row.total }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStudentStandardsPercentageClass(row.tenth)">
+                                        {{ row.tenth }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStudentStandardsPercentageClass(row.eleventh)">
+                                        {{ row.eleventh }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStudentStandardsPercentageClass(row.second)">
+                                        {{ row.second }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStudentStandardsPercentageClass(row.seventh)">
+                                        {{ row.seventh }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStudentStandardsPercentageClass(row.eighth)">
+                                        {{ row.eighth }}%
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="bg-highlight" [ngClass]="getStudentStandardsPercentageClass(row.nineth)">
+                                        {{ row.nineth }}%
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 insights-student-section">
+            <div class="card p-3 p-sm-4 d-flex flex-column">
+                <div class="d-flex flex-lg-row flex-column align-items-lg-center justify-content-lg-between gap-lg-0 gap-3 border-bottom pb-3">
+                    <div class="d-flex flex-row align-items-center gap-1">
+                        <img src="images/ai-insights-blue.svg" alt="icon" class="img-fluid">
+                        <h5 class="font-15 text-secondary fw-semibold mb-0">Insights — Student Groupings</h5>
+                    </div>
+                    <div class="d-flex flex-column flex-sm-row gap-2 w-sm-100">
+                        <mat-form-field appearance="outline" class="grades">
+                            <mat-select placeholder="All Grades">
+                                <mat-option value="1">Grade 1</mat-option>
+                                <mat-option value="2">Grade 2</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="grades">
+                            <mat-select placeholder="All Periods">
+                                <mat-option value="1">Period 1</mat-option>
+                                <mat-option value="2">Period 2</mat-option>
+                                <mat-option value="3">Period 3</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button type="button" class="btn btn-lg btn-primary">
+                            <mat-icon fontSet="material-icons-outlined" class="me-1 text-white">flare</mat-icon>
+                            Generate AI Insights
+                        </button>
+                    </div>
+                </div>
+                <div class="d-flex flex-column insights-body-section">
+                    <div class="card green-section d-flex flex-column gap-0 mb-0">
+                        <div class="d-flex flex-column header-section">
+                            <h5 class="font-13 clr--111827 fw-semibold mb-0">High Performers</h5>
+                            <p class="font-11 clr--111827 fw-normal mb-0">Students demonstrating proficiency (≥70%) across most or all standards. These students are on track and may benefit from enrichment opportunities.</p>
+                        </div>
+                        <div class="d-flex bottom-section green">
+                            <div class="d-flex align-items-center flex-wrap chips-section">
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Beare, Brady</div>
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Aguilar, Gabriela</div>
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Blair, Sapphire</div>
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Anderson, Jamarchea</div>
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Bacon Jr., Daren</div>
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Barnes, Noah</div>
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Barrantes Zeledon, Michael</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card yellow-section d-flex flex-column gap-0 mb-0">
+                        <div class="d-flex flex-column header-section">
+                            <h5 class="font-13 clr--111827 fw-semibold mb-0">Emerging Learners</h5>
+                            <p class="font-11 clr--111827 fw-normal mb-0">Students with mixed performance — proficient in some standards but struggling in others. Targeted small-group instruction recommended for gap standards.</p>
+                        </div>
+                        <div class="d-flex bottom-section yellow">
+                            <div class="d-flex align-items-center flex-wrap chips-section">
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Arrowsmith, Sydnee</div>
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Augustin, Vaniya</div>
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Blanco Olartua, Fabio</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card red-section d-flex flex-column gap-0 mb-0">
+                        <div class="d-flex flex-column header-section">
+                            <h5 class="font-13 clr--111827 fw-semibold mb-0">Intensive Support Needed</h5>
+                            <p class="font-11 clr--111827 fw-normal mb-0">Students scoring below 55% overall, indicating significant skill gaps across multiple standards. Priority for Tier 2/3 intervention.</p>
+                        </div>
+                        <div class="d-flex bottom-section red">
+                            <div class="d-flex align-items-center flex-wrap chips-section">
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Aspromonte, Maximilian</div>
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Ayers, Liam</div>
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Bencivenga, Logan</div>
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Bosko, Wyatt</div>
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 chip-card font-11 fw-normal">Brackins, Hasaan</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="font-12 fw-bold clr--0D2A7C mb-0"><i>Groups above are based on score thresholds. Click "Generate AI Insights" for AI-powered skill-profile groupings.</i></h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 achievement-band-section">
+            <div class="card p-3 p-sm-4 d-flex flex-column">
+                <div class="d-flex flex-column gap-1">
+                    <h5 class="font-15 text-secondary fw-semibold mb-0">Achievement Band Distribution</h5>
+                    <p class="clr--64748B font-13 fw-normal mb-0">Student distribution across performance levels</p>
+                </div>
+                <div class="table-responsive achievement-band-distribution-table">
+                    <table class="table table-custom table-centered m-0">
+                    <thead class="thead-sm">
+                        <tr class="text-uppercase">
+                            <th>Student Name</th>
+                            <th class="text-center">Grade</th>
+                            <th class="text-center">Core Teacher</th>
+                            <th class="text-center">Course Title</th>
+                            <th class="text-center">Period</th>
+                            <th class="text-center">Predicted SS</th>
+                            <th class="text-center">SS Need for ACH</th>
+                            <th class="text-center">SS Need for LG</th>
+                            <th class="text-center">Last Assessment</th>
+                            <th class="text-center">Assessment Name</th>
+                            <th class="text-center">Pt/Student ACH</th>
+                            <th class="text-center">Pt/Student LG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of dataAchievement">
+                            <td class="clr--111827 fw-semibold">{{ row.studentName }}</td>
+                            <td class="clr--4755 fw-normal text-center">{{ row.grade }}</td>
+                            <td class="clr--4755 fw-normal text-center">{{ row.coreTeacher }}</td>
+                            <td class="text-black fw-normal text-center">{{ row.courseTitle }}</td>
+                            <td class="clr--4755 fw-normal text-center">{{ row.period }}</td>
+                            <td class="clr--0D2A7C fw-semibold text-center">{{ row.predictedSS }}</td>
+                            <td class="text-center">
+                                <div class="bg-highlight" [ngClass]="getStatusClass(row.ssAch)">
+                                    {{ row.ssAch }}
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="bg-highlight" [ngClass]="getStatusClass(row.ssLG)">
+                                    {{ row.ssLG }}
+                                </div>
+                            </td>
+                            <td class="clr--4755 fw-normal text-center">{{ row.lastAssessment }}</td>
+                            <td class="clr--4755 fw-normal text-center">{{ row.assessmentName }}</td>
+                            <td class="clr--0D2A7C fw-semibold text-center">{{ row.ptStudentAch }}</td>
+                            <td class="fw-semibold text-center" [ngClass]="getPtClass(row.ptStudentLG)">{{ row.ptStudentLG }}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

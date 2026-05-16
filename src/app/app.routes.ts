@@ -26,4 +26,9 @@ export const routes: Routes = [
     loadComponent: () => import('./layouts/district-admin-layout/district-admin-layout').then(c => c.DistrictAdminLayout),
     loadChildren: () =>  import('./features/district-admin/district-admin.routes').then(r => r.DISTRICTADMINLAYOUT_ROUTES),
   },
+  {
+    path: 'teachers',
+    loadComponent: () => import('./layouts/teachers-layout/teachers-layout').then(c => c.TeachersLayout),
+    loadChildren: () =>  import('./features/teachers/teachers.routes').then(r => r.TEACHERSLAYOUT_ROUTES),
+  },
 ];
