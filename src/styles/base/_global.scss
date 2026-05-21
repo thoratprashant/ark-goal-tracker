@@ -22,11 +22,15 @@ body{
     color: #999;
   }
 
+  .cursor-pointer{cursor: pointer;}
+
   .text-primary { color: v.$primary !important; }
   .text-secondary{ color: v.$secondary !important;}
   .text-danger, .text-error { color: v.$error !important;}
   .wb-ba{word-break: break-all !important}
   label{font-size: 13.2px;color: #334155; font-weight: 600;}
+
+
   .clr--7373 {color: #737373 !important;}
   .clr--4755 {color: #475569 !important;}
   .clr--1e29 {color: #1E293B !important;}
@@ -191,6 +195,21 @@ body{
     width: 15px;
     height: 15px;
     background: url('../../../public/images/people-sm.svg') no-repeat center; 
+  }
+  .icon--cross-round-red{
+    width: 15px;
+    height: 15px;
+    background: url('../../../public/images/cross-round-red.svg') no-repeat center; 
+  }
+  .icon--tick-roud-green{
+    width: 15px;
+    height: 15px;
+    background: url('../../../public/images/tick-roud-green.svg') no-repeat center; 
+  }
+  .icon--person-plus-blue{
+    width: 15px;
+    height: 15px;
+    background: url('../../../public/images/person-plus-blue.svg') no-repeat center; 
   }
   .not--record--found{
     border-radius: 6px;
@@ -680,7 +699,7 @@ body{
         background: #F1F5F9; 
       }
   }
-
+ 
   /* ==========================================
      Toggle Container
   ========================================== */

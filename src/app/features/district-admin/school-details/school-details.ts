@@ -95,112 +95,183 @@ export class SchoolDetails {
 
   chartModePerformance = signal<'performanceTable' | 'performanceBar'>('performanceTable');
 
-  public schoolChartOptions: any = {
-    series: [
+ public schoolChartOptions: any = {
+  series: [
+    {
+      name: 'Achievement',
+      data: [68, 72, 75, 78]
+    },
+    {
+      name: 'Learning Gains',
+      data: [80, 80, 80, 80]
+    },
+    {
+      name: 'Bottom Quartile',
+      data: [45, 50, 52, 55]
+    }
+  ],
+
+  chart: {
+    type: 'line',
+    height: 400,
+    zoom: { enabled: false },
+    toolbar: { show: false }
+  },
+
+  stroke: {
+    curve: 'straight',
+    width: [3, 3, 3],
+    dashArray: [0, 0, 0]
+  },
+
+  colors: [
+    '#3B82F6', // Achievement
+    '#22C55E', // Learning Gains
+    '#F97316'  // Bottom Quartile
+  ],
+
+  xaxis: {
+    categories: ['Team1', 'Team2', 'Team3', 'Team4'],
+    labels: {
+      style: {
+        colors: '#6B7280',
+        fontSize: '12px'
+      }
+    }
+  },
+
+  yaxis: {
+    min: 0,
+    max: 100,
+    tickAmount: 4,
+    labels: {
+      formatter: (value: number) => `${value}%`,
+      style: {
+        colors: '#6B7280',
+        fontSize: '12px'
+      }
+    }
+  },
+
+  grid: {
+    borderColor: '#f0f0f0',
+    strokeDashArray: 2
+  },
+
+  // =========================
+  // CUSTOM ICON MARKERS
+  // =========================
+  markers: {
+    size: 0, // hide default circle dots
+
+    discrete: [
+      // Achievement
       {
-        name: 'Achievement',
-        data: [68, 72, 75, 78]
+        seriesIndex: 0,
+        dataPointIndex: 0,
+        fillColor: 'transparent',
+        strokeColor: 'transparent',
+        size: 18,
+        shape: 'circle'
       },
+
+      // Learning Gains
       {
-        name: 'Learning Gains',
-        data: [80, 80, 80, 80]
+        seriesIndex: 1,
+        dataPointIndex: 0,
+        fillColor: 'transparent',
+        strokeColor: 'transparent',
+        size: 18,
+        shape: 'circle'
       },
+
+      // Bottom Quartile
       {
-        name: 'Bottom Quartile',
-        data: [45, 50, 52, 55]
+        seriesIndex: 2,
+        dataPointIndex: 0,
+        fillColor: 'transparent',
+        strokeColor: 'transparent',
+        size: 18,
+        shape: 'circle'
       }
     ],
 
-    chart: {
-      type: 'line',
-      height: 400,
-      zoom: { enabled: false },
-      toolbar: { show: false }
-    },
+    hover: {
+      sizeOffset: 6
+    }
+  },
 
-    stroke: {
-      curve: 'straight',
-      width: [3, 3, 3],
-      dashArray: [0, 0, 0]   // all solid lines
-    },
-
-    colors: [
-      '#3B82F6', // Achievement - Blue
-      '#22C55E', // Learning Gains - Green
-      '#F97316'  // Bottom Quartile - Orange
-    ],
-
-    xaxis: {
-      categories: ['Team1', 'Team2', 'Team3', 'Team4'],
-      labels: {
-        style: {
-          colors: '#6B7280',
-          fontSize: '12px'
-        }
-      }
-    },
-
-    yaxis: {
-      min: 0,
-      max: 100,
-      tickAmount: 4,
-      labels: {
-        formatter: (value: number) => `${value}%`,
-        style: {
-          colors: '#6B7280',
-          fontSize: '12px'
-        }
-      }
-    },
-
-    grid: {
-      borderColor: '#f0f0f0',
-      strokeDashArray: 2
-    },
+  legend: {
+    position: 'bottom',
+    horizontalAlign: 'center',
+    fontSize: '14px',
+    fontWeight: 400,
 
     markers: {
-      size: [5, 5, 5],
-      hover: {
-        sizeOffset: 6
-      }
-    },
+      width: 18,
+      height: 18,
+      radius: 0,
 
-    legend: {
-      position: 'bottom',
-      horizontalAlign: 'center',
-      fontSize: '14px',
-      fontWeight: 400,
-      onItemHover: {
-        highlightDataSeries: true
-      },
-      
-    },
+      customHTML: [
+        function () {
+          return `
+            <img src="images/achivement-blue.svg"
+                 width="14"
+                 height="20"
+                 style="margin-right: 10px;" />
+          `;
+        },
 
-    annotations: {
-      yaxis: [
-        {
-          y: 80,
-          borderColor: '#22C55E',
-          label: {
-            text: 'Target',
-            offsetX: 10,
-            style: {
-              color: '#fff',
-              background: '#22C55E',
-              fontSize: '12px',
-              fontWeight: 600
-            }
-          }
+        function () {
+          return `
+            <img src="images/learning-green.svg"
+                width="14"
+                height="20"
+                 style="margin-right: 10px;"/>
+          `;
+        },
+
+        function () {
+          return `
+            <img src="images/quartil-orange.svg"
+                 width="14"
+                 height="20"
+                 style="margin-right: 10px;" />
+          `;
         }
       ]
     },
 
-    tooltip: {
-      y: {
-        formatter: (val: number) => `${val}%`
-      }
+    onItemHover: {
+      highlightDataSeries: true
     }
-  };
+  },
+
+  annotations: {
+    yaxis: [
+      {
+        y: 80,
+        borderColor: '#22C55E',
+        label: {
+          text: 'Target',
+          offsetX: 10,
+          style: {
+            color: '#fff',
+            background: '#22C55E',
+            fontSize: '12px',
+            fontWeight: 600
+          }
+        }
+      }
+    ]
+  },
+
+  tooltip: {
+    y: {
+      formatter: (val: number) => `${val}%`
+    }
+  }
+};
 
   public chartOptions: any = {
     series: [
