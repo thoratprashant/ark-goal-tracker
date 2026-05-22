@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, signal, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -117,6 +117,138 @@ interface TableRow3 {
 })
 export class StudentView {
   viewMode = signal<'ela' | 'math' | 'social studies' | 'science'>('ela');
+
+  @ViewChild('scrollContainer', { static: false })
+  scrollContainer!: ElementRef<HTMLDivElement>;
+
+  students = [
+    { id: 1, name: 'Emma Rodriguez' },
+    { id: 2, name: 'Noah Williams' },
+    { id: 3, name: 'Ava Davis' },
+    { id: 4, name: 'James Anderson' },
+    { id: 5, name: 'Benjamin Lee' },
+    { id: 6, name: 'Ava Martinez' },
+    { id: 7, name: 'Chris Wong' },
+    { id: 8, name: 'Noah Williams' },
+    { id: 9, name: 'Emma Rodriguez' }
+  ];
+  selectedStudentIndex = 0;
+
+  showPrev = false;
+  showNext = false;
+  isScrollable = false;
+
+  selectStudent(index: number): void {
+    this.selectedStudentIndex = index;
+  }
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  private currentIndex = 0;
+
+  ngAfterViewInit() {
+    this.updateScrollButtons();
+    setTimeout(() => this.checkScroll(), 100);
+  }
+
+  scrollLeft() {
+    if (!this.scrollContainer || !this.isScrollable) return;
+
+    const items: HTMLElement[] = Array.from(
+      this.scrollContainer.nativeElement.querySelectorAll('.scroll-item')
+    );
+
+    if (!items.length) return;
+
+    // Prevent negative index
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    }
+
+    items[this.currentIndex].scrollIntoView({
+      behavior: 'smooth',
+      inline: 'start',
+      block: 'nearest'
+    });
+
+    setTimeout(() => this.checkScroll(), 300);
+
+    // Old code for static movement
+    
+    // if (!this.scrollContainer || !this.isScrollable) return;
+
+    // this.scrollContainer.nativeElement.scrollBy({
+    //   left: -100,
+    //   behavior: 'smooth'
+    // });
+
+    // setTimeout(() => this.checkScroll(), 300);
+  }
+
+  scrollRight() {
+    if (!this.scrollContainer || !this.isScrollable) return;
+
+    const students: HTMLElement[] = Array.from(
+      this.scrollContainer.nativeElement.querySelectorAll('.scroll-item')
+    );
+
+    if (!students.length) return;
+
+    if (this.currentIndex < students.length - 1) {
+      this.currentIndex++;
+    }
+
+    students[this.currentIndex].scrollIntoView({
+      behavior: 'smooth',
+      inline: 'start',
+      block: 'nearest'
+    });
+
+    setTimeout(() => this.checkScroll(), 300);
+
+    // Old code for static movement
+
+    // if (!this.scrollContainer || !this.isScrollable) return;
+
+    // this.scrollContainer.nativeElement.scrollBy({
+    //   left: 100,
+    //   behavior: 'smooth'
+    // });
+
+    // setTimeout(() => this.checkScroll(), 300);
+  }
+
+  checkScroll() {
+    if (!this.scrollContainer) return;
+
+    const el = this.scrollContainer.nativeElement;
+    const maxScrollLeft = el.scrollWidth - el.clientWidth;
+
+    this.isScrollable = el.scrollWidth > el.clientWidth + 5;
+
+    if (!this.isScrollable) {
+      this.showPrev = false;
+      this.showNext = false;
+    } else {
+      this.showPrev = el.scrollLeft > 0;
+      this.showNext = el.scrollLeft < maxScrollLeft - 1;
+      this.cdr.detectChanges();
+    }
+  }
+
+  updateScrollButtons(): void {
+    setTimeout(() => {
+      this.checkScroll();
+    }, 50);
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
+    this.updateScrollButtons();
+    setTimeout(() => {
+      this.checkScroll();
+    }, 100);
+  }
   
   progressList = [
     { currentValue: 78, goalValue: 80, color: '#EA914E' },

@@ -11,10 +11,75 @@
     .grades{
         width: 147px;
     }
-    .student-details-header{
+    .student-list-header{
         margin-top: 16px;
-        padding: 24px;
+        padding: 16px;
         border-radius: 10px 10px 0px 0px;
+        border: 1px solid #E7E9EB;
+        border-bottom: none;
+        background: #FFF;
+        .student-slider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            overflow: hidden;
+            .student-list {
+                display: flex;
+                gap: 20px;
+                overflow-x: auto;
+                scroll-behavior: smooth;
+                white-space: nowrap;
+                width: 100%;
+                scrollbar-width: none;
+                flex: 1;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+                .student-item {
+                    padding: 9px 18px;
+                    border-radius: 8px;
+                    border: 0 solid #E5E7EB;
+                    background: #0000000d;
+                    white-space: nowrap;
+                    cursor: pointer;
+                    flex: 0 0 auto;
+                    font-size: 14px;
+                    color: #505050;
+                    border: 1px solid transparent;
+                    transition: all 0.25s ease;
+                    &:hover,
+                    &.active {
+                        border: 1px solid #E5E7EB;
+                        background: #EDF4FF;
+                        color: #0032A0;
+                    }
+                }
+            }
+            .arr--btn {
+                border: none;
+                background: linear-gradient(180deg, #EDF4FF 0%, rgba(255, 255, 255, 0.00) 101.96%);
+                width: 35px;
+                height: 37px;
+                border-radius: 10%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &:hover {
+                    background: #EDF4FF;
+                }
+                .mat-icon {
+                    font-size: 18px;
+                    width: 18px;
+                    height: 18px;
+                    color: #0032A0;
+                }
+            }
+        }
+    }
+    .student-details-header{
+        padding: 24px;
+        border-radius: 0px;
         border: 1px solid #E2E8F0;
         border-bottom: none;
         background: #FFF;
