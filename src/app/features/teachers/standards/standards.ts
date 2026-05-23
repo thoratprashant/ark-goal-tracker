@@ -60,7 +60,7 @@ const categories = [
   'Paul Tomlinson (63)'
 ];
 
-const actualValues = [65.0, 71.2, 70.9, 67.9, 71.8];
+const actualValues = [67.9, 74.8, 72.0, 72.1, 70.0];
 
 const getColor = (val: number) => {
   if (val >= 70) return '#90C955';
