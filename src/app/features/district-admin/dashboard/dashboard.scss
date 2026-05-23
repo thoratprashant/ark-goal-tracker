@@ -320,6 +320,8 @@
                   .progress-bar{
                     font-weight: 700;
                     color: #fff;
+                    transition: width 1.2s ease-in-out;
+                    
                     &.bg-success{
                         background-color: #90C955 !important;
                     }

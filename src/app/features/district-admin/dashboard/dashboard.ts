@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, signal, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, signal, ViewChild,NgZone } from '@angular/core';
 import { DistrictPerformanceSummary } from './district-performance-summary/district-performance-summary';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
@@ -21,6 +21,7 @@ import {
   ApexDataLabels,
   ApexFill
 } from "ng-apexcharts";
+import { ApexAnnotations } from 'apexcharts';
 
 interface ActiveFilter {
   key: keyof SelectedFilters;
@@ -40,7 +41,7 @@ interface TableRow {
   elementary: string;
   middleSchool: string;
   highSchool: string;
-    progress: {
+  progress: {
     success: number;
     warning: number;
     danger: number;
@@ -75,6 +76,7 @@ export type ChartOptions12 = {
   colors: string[];
   fill: ApexFill;
   dataLabels: ApexDataLabels;
+  annotations: ApexAnnotations;
 };
 
 @Component({
@@ -86,6 +88,15 @@ export type ChartOptions12 = {
   styleUrl: './dashboard.scss',
 })
 export class Dashboard {
+ 
+
+@ViewChild('chartSection') chartSection!: ElementRef;
+@ViewChild('elaChart') elaChart!: ChartComponent;
+private chartAnimated = false; 
+private elaRealData = [50, 10, 90, 15, 65, 45, 85];
+
+@ViewChild('performanceSection') performanceSection!: ElementRef;
+progressAnimated = false;
 
   // At-Risk Schools (Start here)
   riskSummary = {
@@ -158,6 +169,7 @@ export class Dashboard {
   ];
   // At-Risk Schools (End here)
  
+ 
 
 
   viewMode = signal<'all' | 'elementary' | 'middle' | 'high'>('all');
@@ -165,7 +177,7 @@ export class Dashboard {
 
   showFilters = true;
 
-    constructor(private cdr: ChangeDetectorRef) {}
+    constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone) {}
 
   @ViewChild('scrollContainer', { static: false })
   scrollContainer!: ElementRef<HTMLDivElement>;
@@ -225,93 +237,104 @@ export class Dashboard {
     this.updateActiveFilters();
   }
 
-performanceMatrixtable: TableRow[] = [
-  {
-    component: 'ELA Achievement',
-    elementary: '75% (+5% from Goal)',
-    middleSchool: '65% (+5% from Goal)',
-    highSchool: '70% (+5% from Goal)',
-    progress: { success: 60, warning: 20, danger: 20 }
-  },
-  {
-    component: 'ELA Learning Gains',
-    elementary: '68% (+5% from Goal)',
-    middleSchool: '65% (+5% from Goal)',
-    highSchool: '65% (+5% from Goal)',
-    progress: { success: 52, warning: 18, danger: 30 }
-  },
-  {
-    component: 'ELA Bottom Quartile',
-    elementary: '71% (+5% from Goal)',
-    middleSchool: '68% (+5% from Goal)',
-    highSchool: '68% (+5% from Goal)',
-    progress: { success: 58, warning: 12, danger: 30 }
-  },
-  {
-    component: 'ELA GD 3',
-    elementary: '78% (+5% from Goal)',
-    middleSchool: '-',
-    highSchool: '-',
-    progress: { success: 64, warning: 11, danger: 25 }
-  },
-  {
-    component: 'Math Achievement',
-    elementary: '54% (+5% from Goal)',
-    middleSchool: '68% (+5% from Goal)',
-    highSchool: '78% (+5% from Goal)',
-    progress: { success: 46, warning: 24, danger: 30 }
-  },
-  {
-    component: 'Math Learning Gains',
-    elementary: '68% (+5% from Goal)',
-    middleSchool: '46% (+5% from Goal)',
-    highSchool: '68% (+5% from Goal)',
-    progress: { success: 50, warning: 20, danger: 30 }
-  },
-  {
-    component: 'Math Bottom Quartile',
-    elementary: '57% (+5% from Goal)',
-    middleSchool: '44% (+5% from Goal)',
-    highSchool: '58% (+5% from Goal)',
-    progress: { success: 42, warning: 23, danger: 35 }
-  },
-  {
-    component: 'MS Acceleration',
-    elementary: '-',
-    middleSchool: '54% (+5% from Goal)',
-    highSchool: '-',
-    progress: { success: 48, warning: 17, danger: 35 }
-  },
-  {
-    component: 'Sciene Achievement',
-    elementary: '78% (+5% from Goal)',
-    middleSchool: '78% (+5% from Goal)',
-    highSchool: '78% (+5% from Goal)',
-    progress: { success: 70, warning: 10, danger: 20 }
-  },
-  {
-    component: 'Social Studies Achievement',
-    elementary: '-',
-    middleSchool: '78% (+5% from Goal)',
-    highSchool: '78% (+5% from Goal)',
-    progress: { success: 66, warning: 14, danger: 20 }
-  },
-  {
-    component: 'HS CCA',
-    elementary: '-',
-    middleSchool: '-',
-    highSchool: '78% (+5% from Goal)',
-    progress: { success: 62, warning: 13, danger: 25 }
-  },
-  {
-    component: 'Graduation Rate',
-    elementary: '-',
-    middleSchool: '-',
-    highSchool: '-',
-    progress: { success: 100, warning: 0, danger: 0 }
-  }
-];
-
+  performanceMatrixtable: TableRow[] = [
+    {
+      component: 'ELA Achievement',
+      elementary: '75% (+5% from Goal)',
+      middleSchool: '65% (+5% from Goal)',
+      highSchool: '70% (+5% from Goal)',
+      progress: { success: 60, warning: 20, danger: 20 },
+      
+    },
+    {
+      component: 'ELA Learning Gains',
+      elementary: '68% (+5% from Goal)',
+      middleSchool: '65% (+5% from Goal)',
+      highSchool: '65% (+5% from Goal)',
+      progress: { success: 52, warning: 18, danger: 30 },
+      
+    },
+    {
+      component: 'ELA Bottom Quartile',
+      elementary: '71% (+5% from Goal)',
+      middleSchool: '68% (+5% from Goal)',
+      highSchool: '68% (+5% from Goal)',
+      progress: { success: 58, warning: 12, danger: 30 },
+      
+    },
+    {
+      component: 'ELA GD 3',
+      elementary: '78% (+5% from Goal)',
+      middleSchool: '-',
+      highSchool: '-',
+      progress: { success: 64, warning: 11, danger: 25 },
+      
+    },
+    {
+      component: 'Math Achievement',
+      elementary: '54% (+5% from Goal)',
+      middleSchool: '68% (+5% from Goal)',
+      highSchool: '78% (+5% from Goal)',
+      progress: { success: 46, warning: 24, danger: 30 },
+      
+    },
+    {
+      component: 'Math Learning Gains',
+      elementary: '68% (+5% from Goal)',
+      middleSchool: '46% (+5% from Goal)',
+      highSchool: '68% (+5% from Goal)',
+      progress: { success: 50, warning: 20, danger: 30 },
+      
+    },
+    {
+      component: 'Math Bottom Quartile',
+      elementary: '57% (+5% from Goal)',
+      middleSchool: '44% (+5% from Goal)',
+      highSchool: '58% (+5% from Goal)',
+      progress: { success: 42, warning: 23, danger: 35 },
+      
+    },
+    {
+      component: 'MS Acceleration',
+      elementary: '-',
+      middleSchool: '54% (+5% from Goal)',
+      highSchool: '-',
+      progress: { success: 48, warning: 17, danger: 35 },
+      
+    },
+    {
+      component: 'Sciene Achievement',
+      elementary: '78% (+5% from Goal)',
+      middleSchool: '78% (+5% from Goal)',
+      highSchool: '78% (+5% from Goal)',
+      progress: { success: 70, warning: 10, danger: 20 },
+      
+    },
+    {
+      component: 'Social Studies Achievement',
+      elementary: '-',
+      middleSchool: '78% (+5% from Goal)',
+      highSchool: '78% (+5% from Goal)',
+      progress: { success: 66, warning: 14, danger: 20 },
+      
+    },
+    {
+      component: 'HS CCA',
+      elementary: '-',
+      middleSchool: '-',
+      highSchool: '78% (+5% from Goal)',
+      progress: { success: 62, warning: 13, danger: 25 },
+      
+    },
+    {
+      component: 'Graduation Rate',
+      elementary: '-',
+      middleSchool: '-',
+      highSchool: '-',
+      progress: { success: 100, warning: 0, danger: 0 },
+      
+    }
+  ]; 
   getStatusClass(value: string | null | undefined): string {
     if (!value || value.trim() === '-') {
       return '';
@@ -327,10 +350,8 @@ performanceMatrixtable: TableRow[] = [
     } else {
       return 'red-bg';
     }
-  }
- 
-
-performanceData = [
+  } 
+  performanceData = [
     {
       studentGroup: 'All Students',
       badge: '67.4%',
@@ -416,196 +437,193 @@ performanceData = [
       bq: '37%'
     },
  
+  ];  
+  schoolTableData = [
+    {
+      name: 'Lincoln Elementary',
+      students: '425 Students',
+      grade: 'Grades K-5',
+      atRisk: false,
+      elaAch: '76%',
+      elaLg: '74%',
+      elaBq: '22%',
+
+      mathAch: '76%',
+      mathLg: '74%',
+      mathBq: '22%',
+      science: '76%',
+      ss: '',
+      msAcc: '',
+      hsCca: '',
+      grad: '',
+      totalPoints: '500 (-30)'
+    },
+    {
+      name: 'Washington Middle School',
+      students: '650 Students',
+      grade: 'Grades 6-8',
+      atRisk: false,
+      elaAch: '82%',
+      elaLg: '79%',
+      elaBq: '25%',
+      mathAch: '78%',
+      mathLg: '75%',
+      mathBq: '20%',
+      science: '80%',
+      ss: '80%',
+      msAcc: '80%',
+      hsCca: '',
+      grad: '',
+      totalPoints: '500 (-30)'
+    },
+    {
+      name: 'Franklin High School',
+      students: 'Goal 10 pts',
+      grade: '',
+      atRisk: true,
+      elaAch: '85%',
+      elaLg: '82%',
+      elaBq: '30%',
+      mathAch: '83%',
+      mathLg: '80%',
+      mathBq: '27%',
+      science: '84%',
+      ss: '84%',
+      msAcc: '',
+      hsCca: '84%',
+      grad: '84%',
+      totalPoints: '500 (-30)'
+    },
+    {
+      name: 'Riverside Academy',
+      students: '300 Students',
+      grade: 'Grades K-5',
+      atRisk: false,
+      elaAch: '76%',
+      elaLg: '74%',
+      elaBq: '22%',
+
+      mathAch: '76%',
+      mathLg: '74%',
+      mathBq: '22%',
+      science: '76%',
+      ss: '',
+      msAcc: '',
+      hsCca: '',
+      grad: '',
+      totalPoints: '600 (-20)'
+    },
+    {
+      name: 'Greenwood High School',
+      students: '650 Students',
+      grade: 'Grades 6-8',
+      atRisk: false,
+      elaAch: '82%',
+      elaLg: '79%',
+      elaBq: '25%',
+      mathAch: '78%',
+      mathLg: '75%',
+      mathBq: '20%',
+      science: '80%',
+      ss: '80%',
+      msAcc: '80%',
+      hsCca: '',
+      grad: '',
+      totalPoints: '500 (-30)'
+    },
+    {
+      name: 'Maplewood Academy',
+      students: 'Goal 10 pts',
+      grade: '',
+      atRisk: true,
+      elaAch: '85%',
+      elaLg: '82%',
+      elaBq: '30%',
+      mathAch: '83%',
+      mathLg: '80%',
+      mathBq: '27%',
+      science: '84%',
+      ss: '84%',
+      msAcc: '',
+      hsCca: '84%',
+      grad: '84%',
+      totalPoints: '500 (-30)'
+    },
+      {
+      name: 'Cedar Hill School',
+      students: '425 Students',
+      grade: 'Grades K-5',
+      atRisk: false,
+      elaAch: '76%',
+      elaLg: '74%',
+      elaBq: '22%',
+
+      mathAch: '76%',
+      mathLg: '74%',
+      mathBq: '22%',
+      science: '76%',
+      ss: '',
+      msAcc: '',
+      hsCca: '',
+      grad: '',
+      totalPoints: '500 (-30)'
+    },
+    {
+      name: 'Bayview Institute',
+      students: '650 Students',
+      grade: 'Grades 6-8',
+      atRisk: false,
+      elaAch: '82%',
+      elaLg: '79%',
+      elaBq: '25%',
+      mathAch: '78%',
+      mathLg: '75%',
+      mathBq: '20%',
+      science: '80%',
+      ss: '80%',
+      msAcc: '80%',
+      hsCca: '',
+      grad: '',
+      totalPoints: '500 (-30)'
+    }, 
+    {
+      name: 'Maplewood Academy',
+      students: 'Goal 10 pts',
+      grade: '',
+      atRisk: true,
+      elaAch: '85%',
+      elaLg: '82%',
+      elaBq: '30%',
+      mathAch: '83%',
+      mathLg: '80%',
+      mathBq: '27%',
+      science: '84%',
+      ss: '84%',
+      msAcc: '',
+      hsCca: '84%',
+      grad: '84%',
+      totalPoints: '500 (-30)'
+    },
+      {
+      name: 'Cedar Hill School',
+      students: '425 Students',
+      grade: 'Grades K-5',
+      atRisk: false,
+      elaAch: '76%',
+      elaLg: '74%',
+      elaBq: '22%',
+
+      mathAch: '76%',
+      mathLg: '74%',
+      mathBq: '22%',
+      science: '76%',
+      ss: '',
+      msAcc: '',
+      hsCca: '',
+      grad: '',
+      totalPoints: '500 (-30)'
+    }, 
   ];
-
-  // component.ts
-
-schoolTableData = [
-  {
-    name: 'Lincoln Elementary',
-    students: '425 Students',
-    grade: 'Grades K-5',
-    atRisk: false,
-    elaAch: '76%',
-    elaLg: '74%',
-    elaBq: '22%',
-
-    mathAch: '76%',
-    mathLg: '74%',
-    mathBq: '22%',
-    science: '76%',
-    ss: '',
-    msAcc: '',
-    hsCca: '',
-    grad: '',
-    totalPoints: '500 (-30)'
-  },
-  {
-    name: 'Washington Middle School',
-    students: '650 Students',
-    grade: 'Grades 6-8',
-    atRisk: false,
-    elaAch: '82%',
-    elaLg: '79%',
-    elaBq: '25%',
-    mathAch: '78%',
-    mathLg: '75%',
-    mathBq: '20%',
-    science: '80%',
-    ss: '80%',
-    msAcc: '80%',
-    hsCca: '',
-    grad: '',
-    totalPoints: '500 (-30)'
-  },
-  {
-    name: 'Franklin High School',
-    students: 'Goal 10 pts',
-    grade: '',
-    atRisk: true,
-    elaAch: '85%',
-    elaLg: '82%',
-    elaBq: '30%',
-    mathAch: '83%',
-    mathLg: '80%',
-    mathBq: '27%',
-    science: '84%',
-    ss: '84%',
-    msAcc: '',
-    hsCca: '84%',
-    grad: '84%',
-    totalPoints: '500 (-30)'
-  },
-  {
-    name: 'Riverside Academy',
-    students: '300 Students',
-    grade: 'Grades K-5',
-    atRisk: false,
-    elaAch: '76%',
-    elaLg: '74%',
-    elaBq: '22%',
-
-    mathAch: '76%',
-    mathLg: '74%',
-    mathBq: '22%',
-    science: '76%',
-    ss: '',
-    msAcc: '',
-    hsCca: '',
-    grad: '',
-    totalPoints: '600 (-20)'
-  },
-  {
-    name: 'Greenwood High School',
-    students: '650 Students',
-    grade: 'Grades 6-8',
-    atRisk: false,
-    elaAch: '82%',
-    elaLg: '79%',
-    elaBq: '25%',
-    mathAch: '78%',
-    mathLg: '75%',
-    mathBq: '20%',
-    science: '80%',
-    ss: '80%',
-    msAcc: '80%',
-    hsCca: '',
-    grad: '',
-    totalPoints: '500 (-30)'
-  },
-  {
-    name: 'Maplewood Academy',
-    students: 'Goal 10 pts',
-    grade: '',
-    atRisk: true,
-    elaAch: '85%',
-    elaLg: '82%',
-    elaBq: '30%',
-    mathAch: '83%',
-    mathLg: '80%',
-    mathBq: '27%',
-    science: '84%',
-    ss: '84%',
-    msAcc: '',
-    hsCca: '84%',
-    grad: '84%',
-    totalPoints: '500 (-30)'
-  },
-    {
-    name: 'Cedar Hill School',
-    students: '425 Students',
-    grade: 'Grades K-5',
-    atRisk: false,
-    elaAch: '76%',
-    elaLg: '74%',
-    elaBq: '22%',
-
-    mathAch: '76%',
-    mathLg: '74%',
-    mathBq: '22%',
-    science: '76%',
-    ss: '',
-    msAcc: '',
-    hsCca: '',
-    grad: '',
-    totalPoints: '500 (-30)'
-  },
-  {
-    name: 'Bayview Institute',
-    students: '650 Students',
-    grade: 'Grades 6-8',
-    atRisk: false,
-    elaAch: '82%',
-    elaLg: '79%',
-    elaBq: '25%',
-    mathAch: '78%',
-    mathLg: '75%',
-    mathBq: '20%',
-    science: '80%',
-    ss: '80%',
-    msAcc: '80%',
-    hsCca: '',
-    grad: '',
-    totalPoints: '500 (-30)'
-  }, 
-   {
-    name: 'Maplewood Academy',
-    students: 'Goal 10 pts',
-    grade: '',
-    atRisk: true,
-    elaAch: '85%',
-    elaLg: '82%',
-    elaBq: '30%',
-    mathAch: '83%',
-    mathLg: '80%',
-    mathBq: '27%',
-    science: '84%',
-    ss: '84%',
-    msAcc: '',
-    hsCca: '84%',
-    grad: '84%',
-    totalPoints: '500 (-30)'
-  },
-    {
-    name: 'Cedar Hill School',
-    students: '425 Students',
-    grade: 'Grades K-5',
-    atRisk: false,
-    elaAch: '76%',
-    elaLg: '74%',
-    elaBq: '22%',
-
-    mathAch: '76%',
-    mathLg: '74%',
-    mathBq: '22%',
-    science: '76%',
-    ss: '',
-    msAcc: '',
-    hsCca: '',
-    grad: '',
-    totalPoints: '500 (-30)'
-  }, 
-];
 
 //Performance trends graph
   public chartOptions1: any = {
@@ -782,14 +800,23 @@ schoolTableData = [
     series: [
       {
         name: 'ELA',
-        data: [50, 55, 58, 60, 65, 75, 85]
+        data: [0, 0, 0, 0, 0, 0, 0]
       }
     ],
     chart: {
-      type: 'line',
-      height: 320,
-      zoom: { enabled: false },
-      toolbar: { show: false }
+    type: 'line',
+    height: 320,
+    zoom: { enabled: false },
+    toolbar: { show: false },
+    animations: {
+      enabled: true,
+      easing: 'easeinout',
+      speed: 1200,
+      dynamicAnimation: {
+        enabled: true,
+        speed: 1200
+      }
+    }
     },
     stroke: {
       curve: 'straight',
@@ -875,4 +902,59 @@ schoolTableData = [
       yaxis: []
     }
   };
+
+ngAfterViewInit(): void {
+  // Your chart observer
+  const chartObserver = new IntersectionObserver(
+    entries => {
+      if (entries[0].isIntersecting && !this.chartAnimated) {
+        this.chartAnimated = true;
+
+        setTimeout(() => {
+          const newSeries = [
+            {
+              name: 'ELA',
+              data: this.elaRealData
+            }
+          ];
+
+          this.chartOptions12.series = newSeries;
+          this.elaChart.updateSeries(newSeries, true);
+        }, 300);
+
+        chartObserver.disconnect();
+      }
+    },
+    {
+      threshold: 0.2
+    }
+  );
+
+  chartObserver.observe(this.chartSection.nativeElement);
+
+  // Performance table observer
+  const performanceObserver = new IntersectionObserver(
+    entries => {
+      const entry = entries[0];
+
+      if (entry.isIntersecting && !this.progressAnimated) {
+        this.ngZone.run(() => {
+          setTimeout(() => {
+            this.progressAnimated = true;
+            this.cdr.detectChanges();
+          }, 100);
+        });
+
+        performanceObserver.disconnect();
+      }
+    },
+    {
+      threshold: 0.15,
+      root: null
+    }
+  );
+
+  performanceObserver.observe(this.performanceSection.nativeElement);
+}
+ 
 }
