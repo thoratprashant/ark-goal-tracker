@@ -87,16 +87,34 @@ export type ChartOptions12 = {
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
-export class Dashboard {
- 
+export class Dashboard { 
 
-@ViewChild('chartSection') chartSection!: ElementRef;
-@ViewChild('elaChart') elaChart!: ChartComponent;
-private chartAnimated = false; 
-private elaRealData = [50, 10, 90, 15, 65, 45, 85];
+  @ViewChild('chartSection') chartSection!: ElementRef;
+  @ViewChild('elaChart') elaChart!: ChartComponent;
+  private chartAnimated = false; 
+  private elaRealData = [50, 10, 90, 15, 65, 45, 85];
 
-@ViewChild('performanceSection') performanceSection!: ElementRef;
-progressAnimated = false;
+  @ViewChild('performanceSection') performanceSection!: ElementRef;
+  progressAnimated = false;
+
+  @ViewChild('performanceTrendsSection') performanceTrendsSection!: ElementRef;
+  @ViewChild('performanceTrendsChart') performanceTrendsChart!: ChartComponent;
+
+  private performanceTrendsAnimated = false; 
+  private performanceTrendsRealSeries = [
+    {
+      name: 'ELA',
+      data: [66, 67, 69, 69, 70, 72]
+    },
+    {
+      name: 'Math',
+      data: [58, 60, 62, 64, 66, 66]
+    },
+    {
+      name: 'Science',
+      data: [74, 76, 79, 80, 78, 80]
+    }
+  ];
 
   // At-Risk Schools (Start here)
   riskSummary = {
@@ -167,17 +185,14 @@ progressAnimated = false;
       ]
     }
   ];
-  // At-Risk Schools (End here)
- 
- 
-
+  // At-Risk Schools (End here)  
 
   viewMode = signal<'all' | 'elementary' | 'middle' | 'high'>('all');
   viewMode1 = signal<'school' | 'attendance' | 'region' | 'tier'>('school');
 
   showFilters = true;
 
-    constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone) {}
+  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone) {}
 
   @ViewChild('scrollContainer', { static: false })
   scrollContainer!: ElementRef<HTMLDivElement>;
@@ -628,18 +643,18 @@ progressAnimated = false;
 //Performance trends graph
   public chartOptions1: any = {
     series: [
-      {
-        name: 'ELA',
-        data: [66, 67, 69, 69, 70, 72]
-      },
-      {
-        name: 'Math',
-        data: [58, 60, 62, 64, 66, 66]
-      },
-      {
-        name: 'Science',
-        data: [74, 76, 79, 80, 78, 80]
-      }
+        {
+          name: 'ELA',
+          data: [0, 0, 0, 0, 0, 0]
+        },
+        {
+          name: 'Math',
+          data: [0, 0, 0, 0, 0, 0]
+        },
+        {
+          name: 'Science',
+          data: [0, 0, 0, 0, 0, 0]
+        }
     ],
 
     chart: {
@@ -652,7 +667,20 @@ progressAnimated = false;
         enabled: false
       },
       fontFamily: 'Inter, sans-serif',
-      background: '#ffffff'
+      background: '#ffffff',
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 1400,
+        animateGradually: {
+          enabled: true,
+          delay: 180
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 1400
+        }
+      }
     },
 
     colors: [
@@ -709,9 +737,8 @@ progressAnimated = false;
     },
 
     yaxis: {
-      min: 50,
-      max: 80,
-
+      min: 0,
+      max: 100,
       tickAmount: 4,
 
       labels: {
@@ -955,6 +982,29 @@ ngAfterViewInit(): void {
   );
 
   performanceObserver.observe(this.performanceSection.nativeElement);
+
+  // Performance Trends
+  const performanceTrendsObserver = new IntersectionObserver(
+    entries => {
+      if (entries[0].isIntersecting && !this.performanceTrendsAnimated) {
+        this.performanceTrendsAnimated = true;
+
+        this.ngZone.run(() => {
+          setTimeout(() => {
+            this.chartOptions1.series = this.performanceTrendsRealSeries;
+            this.performanceTrendsChart.updateSeries(this.performanceTrendsRealSeries, true);
+          }, 250);
+        });
+
+        performanceTrendsObserver.disconnect();
+      }
+    },
+    {
+      threshold: 0.25
+    }
+  );
+
+  performanceTrendsObserver.observe(this.performanceTrendsSection.nativeElement);
 }
  
 }

@@ -631,22 +631,33 @@
 
           </div>
         </div>
-        <div class="card p-3 p-sm-4 d-flex flex-column m-0">
-          <div class="d-flex align-items-center flex-wrap justify-content-sm-between gap-2">
-            <h5 class="font-17 clr--111827 fw-semibold mb-0">Performance Trends</h5>
-          </div>
-          <div class="chart-scroll-wrapper">
-            <div class="chart-scroll-area">
-              <div class="chart-container pt--chart">
-                <apx-chart [series]="chartOptions1.series" [chart]="chartOptions1.chart" [xaxis]="chartOptions1.xaxis"
-                  [yaxis]="chartOptions1.yaxis" [stroke]="chartOptions1.stroke" [grid]="chartOptions1.grid"
-                  [markers]="chartOptions1.markers" [legend]="chartOptions1.legend" [tooltip]="chartOptions1.tooltip"
-                  [colors]="chartOptions1.colors" [fill]="chartOptions1.fill" [dataLabels]="chartOptions1.dataLabels">
-                </apx-chart>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="card p-3 p-sm-4 d-flex flex-column m-0" #performanceTrendsSection>
+  <div class="d-flex align-items-center flex-wrap justify-content-sm-between gap-2">
+    <h5 class="font-17 clr--111827 fw-semibold mb-0">Performance Trends</h5>
+  </div>
+
+  <div class="chart-scroll-wrapper">
+    <div class="chart-scroll-area">
+      <div class="chart-container pt--chart">
+        <apx-chart
+          #performanceTrendsChart
+          [series]="chartOptions1.series"
+          [chart]="chartOptions1.chart"
+          [xaxis]="chartOptions1.xaxis"
+          [yaxis]="chartOptions1.yaxis"
+          [stroke]="chartOptions1.stroke"
+          [grid]="chartOptions1.grid"
+          [markers]="chartOptions1.markers"
+          [legend]="chartOptions1.legend"
+          [tooltip]="chartOptions1.tooltip"
+          [colors]="chartOptions1.colors"
+          [fill]="chartOptions1.fill"
+          [dataLabels]="chartOptions1.dataLabels">
+        </apx-chart>
+      </div>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   </div>
