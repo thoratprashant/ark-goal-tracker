@@ -663,7 +663,7 @@
   </div>
 
   <!-- Goal Achievement Summary -->
-  <div class="row gas--wrapper mt-4">
+  <div class="row gas--wrapper mt-4" #goalSummarySection>
     <div
       class="col-12 d-flex flex-column flex-sm-row align-items-center justify-content-between header--sec p-2 p-sm-4">
       <div class="d-flex align-items-center">
@@ -702,7 +702,7 @@
             <p class="clr--64748B mb-2 font-13">Currently at 68.4%, on pace to reach 70% by May</p>
             <div class="w-100 d-flex align-items-center">
               <div class="progress w-100">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 95%" aria-valuenow="25"
+                <div class="progress-bar bg-primary" role="progressbar"  [style.width.%]="goalSummaryAnimated ? 95 : 0"  aria-valuenow="25"
                   aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <small class="clr--4755 d-flex flex-shrink-0 ms-3 font-11">68.4/70 %</small>
@@ -721,7 +721,7 @@
             <p class="clr--64748B mb-2 font-13">Gap reduced by 2.1%, need additional interventions</p>
             <div class="w-100 d-flex align-items-center">
               <div class="progress w-100">
-                <div class="progress-bar bg-orange" role="progressbar" style="width: 21%" aria-valuenow="25"
+                <div class="progress-bar bg-orange" role="progressbar" [style.width.%]="goalSummaryAnimated ? 21 : 0"  aria-valuenow="25"
                   aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <small class="clr--4755 d-flex flex-shrink-0 ms-3 font-11">2.1/5 pts</small>
@@ -753,7 +753,7 @@
             <p class="clr--64748B mb-2 font-13">Currently improved by 7.3%, trending positively</p>
             <div class="w-100 d-flex align-items-center">
               <div class="progress w-100">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="25"
+                <div class="progress-bar bg-primary" role="progressbar" [style.width.%]="goalSummaryAnimated ? 50 : 0" aria-valuenow="25"
                   aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <small class="clr--4755 d-flex flex-shrink-0 ms-3 font-11">7.3/10 pts</small>
@@ -772,7 +772,7 @@
             <p class="clr--64748B mb-2 font-13">Currently at 12.4%, focused interventions needed </p>
             <div class="w-100 d-flex align-items-center">
               <div class="progress w-100">
-                <div class="progress-bar bg-orange" role="progressbar" style="width: 100%" aria-valuenow="25"
+                <div class="progress-bar bg-orange" role="progressbar" [style.width.%]="goalSummaryAnimated ? 100 : 0" aria-valuenow="25"
                   aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <small class="clr--4755 d-flex flex-shrink-0 ms-3 font-11">12.4/10 pts</small>

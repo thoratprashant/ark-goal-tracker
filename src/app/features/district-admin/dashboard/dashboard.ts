@@ -116,6 +116,9 @@ export class Dashboard {
     }
   ];
 
+  @ViewChild('goalSummarySection') goalSummarySection!: ElementRef;
+  goalSummaryAnimated = false
+
   // At-Risk Schools (Start here)
   riskSummary = {
     title: 'At-Risk Schools',
@@ -1002,9 +1005,33 @@ ngAfterViewInit(): void {
     {
       threshold: 0.25
     }
-  );
-
+  ); 
   performanceTrendsObserver.observe(this.performanceTrendsSection.nativeElement);
+
+  // Goal Achievement Summary
+const goalSummaryObserver = new IntersectionObserver(
+  entries => {
+    const entry = entries[0];
+
+    if (entry.isIntersecting && !this.goalSummaryAnimated) {
+      this.ngZone.run(() => {
+        this.goalSummaryAnimated = true;
+        this.cdr.detectChanges();
+      });
+
+      goalSummaryObserver.disconnect();
+    }
+  },
+  {
+    threshold: 0.05,
+    rootMargin: '0px 0px -10% 0px'
+  }
+);
+
+setTimeout(() => {
+  goalSummaryObserver.observe(this.goalSummarySection.nativeElement);
+}, 300);
 }
+
  
 }
