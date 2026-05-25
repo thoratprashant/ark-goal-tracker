@@ -9,7 +9,9 @@
       <div class="card card--box d-flex flex-row align-items-center justify-content-between mb-3">
         <div class="d-flex flex-column">
           <small class="font-12">{{ card.title }}</small>
-          <h6 class="my-1 text-secondary fw-bold">{{ card.value }}</h6>
+          <h6 class="my-1 text-secondary fw-bold">
+             {{ card.displayValue }}
+          </h6>
           <p class="m-0 font-13">{{ card.week }}</p>
         </div>
         <div class="card--indicator d-flex align-items-center justify-content-center">

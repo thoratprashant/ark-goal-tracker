@@ -80,6 +80,9 @@
             }
         }
     }
+    .progress-bar {
+        transition: width 1.2s ease-in-out;
+    }
 }
 
 @media (max-width: 767px) {

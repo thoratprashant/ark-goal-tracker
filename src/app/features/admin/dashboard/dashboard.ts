@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import AOS from 'aos';
@@ -11,6 +11,10 @@ import AOS from 'aos';
   styleUrl: './dashboard.scss',
 })
 export class Dashboard {
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+
   ngAfterViewInit(): void {
     AOS.init({
       duration: 1000,
@@ -23,18 +27,21 @@ export class Dashboard {
     {
       title: 'Total User',
       value: 247,
+       displayValue: 0,
       week: '+12 this week',
       icon: 'images/person-multi.svg'
     },
     {
       title: 'Active Goals',
       value: 89,
+       displayValue: 0,
       week: '+5 this week',
       icon: 'images/round-multi.svg'
     },
     {
       title: 'Data Imports',
       value: 156,
+       displayValue: 0,
       week: '+23 this week',
       icon: 'images/upload.svg'
     }
@@ -97,5 +104,23 @@ export class Dashboard {
       type: 'success'
     },
   ];
+
+  ngOnInit(): void {
+    this.cards.forEach(card => this.countUp(card));
+  }
+
+  countUp(card: any): void {
+    let current = 0;
+    const target = Number(card.value);
+    const timer = setInterval(() => {
+      current += target / 30;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      card.displayValue = Math.round(current);
+      this.cdr.detectChanges();
+    }, 30);
+  }
 
 }

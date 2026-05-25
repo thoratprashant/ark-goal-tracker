@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -17,6 +17,8 @@ import AOS from 'aos';
   styleUrl: './student-insights.scss',
 })
 export class StudentInsights {
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
 schools = [
   {
@@ -104,14 +106,14 @@ schools = [
 ]
 
   progressList = [
-    { label: 'White', value: 42, color: '#3B82F6' },
-    { label: 'Hispanic', value: 28, color: '#60A5FA' },
-    { label: 'Black', value: 18, color: '#0D2A7C' },
-    { label: 'Asian', value: 15, color: '#93C5FD' },
-    { label: 'Other', value: 40, color: '#1D4ED8' },
-    { label: 'Middle Eastern', value: 55, color: '#3B82F6' },
-    { label: 'Native American', value: 22, color: '#60A5FA' },
-    { label: 'Pacific Islander', value: 80, color: '#0D2A7C' }
+    { label: 'White', value: 42, displayValue: 0,  color: '#3B82F6' },
+    { label: 'Hispanic', value: 28, displayValue: 0,  color: '#60A5FA' },
+    { label: 'Black', value: 18, displayValue: 0,  color: '#0D2A7C' },
+    { label: 'Asian', value: 15, displayValue: 0,  color: '#93C5FD' },
+    { label: 'Other', value: 40, displayValue: 0,  color: '#1D4ED8' },
+    { label: 'Middle Eastern', value: 55, displayValue: 0,  color: '#3B82F6' },
+    { label: 'Native American', value: 22, displayValue: 0,  color: '#60A5FA' },
+    { label: 'Pacific Islander', value: 80, displayValue: 0,  color: '#0D2A7C' }
   ];
 
   stats = [
@@ -119,21 +121,25 @@ schools = [
     title: 'Total Students',
     value: '12,487',
     icon: 'images/people-lg-blue.svg',
+    displayValue: '0'
   },
   {
     title: 'Avg Attendance',
     value: '93%',
-    icon: 'images/ion_calendar-outline.svg'
+    icon: 'images/ion_calendar-outline.svg',
+    displayValue: '0'
   },
   {
     title: 'Avg GPA',
     value: '3.2',
-    icon: 'images/edit-note-lg-blue.svg'
+    icon: 'images/edit-note-lg-blue.svg',
+    displayValue: '0'
   },
   {
     title: 'At Risk',
     value: '342',
-    icon: 'images/warning-lg-blue.svg'
+    icon: 'images/warning-lg-blue.svg',
+    displayValue: '0'
   }
 ];
 
@@ -145,5 +151,48 @@ schools = [
     }); 
     AOS.refresh();
   }
+
+  ngOnInit(): void {
+    this.stats.forEach(stat => this.countUpStat(stat));
+      this.animateProgressList();
+  }
+
+  countUpStat(stat: any): void {
+  const value = stat.value.toString();
+  const target = parseFloat(value.replace(/,/g, ''));
+  const isPercent = value.includes('%');
+  const hasDecimal = value.includes('.');
+  const hasComma = value.includes(',');
+
+  let current = 0;
+
+  const timer = setInterval(() => {
+    current += target / 30;
+
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+
+    if (isPercent) {
+      stat.displayValue = `${Math.round(current)}%`;
+    } else if (hasDecimal) {
+      stat.displayValue = current.toFixed(1);
+    } else if (hasComma) {
+      stat.displayValue = Math.round(current).toLocaleString();
+    } else {
+      stat.displayValue = Math.round(current).toString();
+    }
+
+    this.cdr.detectChanges();
+  }, 30);
+}
+animateProgressList(): void {
+  setTimeout(() => {
+    this.progressList.forEach(item => {
+      item.displayValue = item.value;
+    });
+  }, 100);
+}
 
 }

@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-profile',
@@ -91,5 +92,13 @@ export class Profile {
           date: '03/02/2026, 05:45 AM'
         }
       ];
+
+      ngAfterViewInit(): void {
+        AOS.init({
+          duration: 1000,
+          once: true
+        }); 
+        AOS.refresh();
+      }
   
 }
