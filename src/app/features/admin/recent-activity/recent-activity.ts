@@ -5,6 +5,8 @@ import { RouterLink } from '@angular/router';
 import {MatSelectModule} from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonService } from '../../../core/helper/common.service'; 
+import AOS from 'aos';
+
 @Component({
   selector: 'app-recent-activity',
    standalone: true,
@@ -282,4 +284,12 @@ export class RecentActivity {
       type: 'success'
     },
   ];
+
+  ngAfterViewInit(): void {
+    AOS.init({
+      duration: 1000,
+      once: true
+    }); 
+    AOS.refresh();
+  }
 }

@@ -6,6 +6,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { ChangePassword } from '../../../shared/components/change-password/change-password';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-user-profile',
@@ -46,4 +47,12 @@ export class UserProfile {
         date: '03/02/2026, 05:45 AM'
       }
     ];
+
+    ngAfterViewInit(): void {
+      AOS.init({
+        duration: 1000,
+        once: true
+      }); 
+      AOS.refresh();
+    }
 }
