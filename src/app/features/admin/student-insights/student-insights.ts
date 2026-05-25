@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterLink } from '@angular/router';
 import { A11yModule } from "@angular/cdk/a11y";
+import AOS from 'aos';
 
 @Component({
   selector: 'app-student-insights',
@@ -117,7 +118,7 @@ schools = [
   {
     title: 'Total Students',
     value: '12,487',
-    icon: 'images/people-lg-blue.svg'
+    icon: 'images/people-lg-blue.svg',
   },
   {
     title: 'Avg Attendance',
@@ -135,5 +136,14 @@ schools = [
     icon: 'images/warning-lg-blue.svg'
   }
 ];
+
+
+  ngAfterViewInit(): void {
+    AOS.init({
+      duration: 1000,
+      once: true
+    }); 
+    AOS.refresh();
+  }
 
 }

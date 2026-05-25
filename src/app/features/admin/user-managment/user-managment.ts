@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterLink } from '@angular/router';
 import { CommonService } from '../../../core/helper/common.service';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-user-managment',
@@ -55,4 +56,12 @@ export class UserManagment {
       icon: 'images/poeple-blue.svg'
     }
   ];
+
+  ngAfterViewInit(): void {
+    AOS.init({
+      duration: 1000,
+      once: true
+    }); 
+    AOS.refresh();
+  }
 }

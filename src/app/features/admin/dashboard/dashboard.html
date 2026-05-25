@@ -1,11 +1,11 @@
 <div class="container-fluild admin--wrapper">
   <div class="row">
-    <div class="col-12 head--sec">
+    <div class="col-12 head--sec" data-aos="fade-up" data-aos-duration="500">
       <h4 class="text-secondary fw-bold">Admin Dashboard</h4>
       <p>Manage users, data, goals, and system settings</p>
     </div>
     @for (card of cards; track card.title) {
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-4" data-aos="fade-up" data-aos-duration="800">
       <div class="card card--box d-flex flex-row align-items-center justify-content-between mb-3">
         <div class="d-flex flex-column">
           <small class="font-12">{{ card.title }}</small>
@@ -21,7 +21,7 @@
     }
   </div>
 
-  <div class="row mt-3">
+  <div class="row mt-3" data-aos="fade-up" data-aos-duration="1000">
     <div class="col-12 d-flex gap-2 gap-sm-4 flex-column flex-sm-row">
       <div class="card mb-3 w-100 qa--section">
         <div class="row">

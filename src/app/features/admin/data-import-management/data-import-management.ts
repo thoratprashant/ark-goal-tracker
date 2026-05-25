@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterLink } from '@angular/router';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-data-import-management',
@@ -12,6 +13,14 @@ import { RouterLink } from '@angular/router';
   styleUrl: './data-import-management.scss',
 })
 export class DataImportManagement {
+  ngAfterViewInit(): void {
+    AOS.init({
+      duration: 1000,
+      once: true
+    }); 
+    AOS.refresh();
+  }
+
   selectedIndex: number = 0;
 
   setActive(index: number) {

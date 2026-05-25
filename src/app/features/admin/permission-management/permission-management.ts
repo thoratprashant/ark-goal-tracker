@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import AOS from 'aos';
 
 interface Role {
   name: string;
@@ -111,4 +112,12 @@ export class PermissionManagement {
       }
     }
   }
+
+    ngAfterViewInit(): void {
+      AOS.init({
+        duration: 1000,
+        once: true
+      }); 
+      AOS.refresh();
+    }
 }
