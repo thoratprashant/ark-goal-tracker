@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-reset-password',
@@ -21,4 +22,12 @@ export class ResetPassword {
   toggleConfirmPassword(): void {
     this.showConfirmPassword = !this.showConfirmPassword;
   }
+
+    ngAfterViewInit(): void {
+      AOS.init({
+        duration: 1000,
+        once: true
+      }); 
+      AOS.refresh();
+    }
 }

@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';  
 import { CommonService } from '../../../core/helper/common.service';
+import AOS from 'aos';
 @Component({
   selector: 'app-admin-login',
   standalone: true,
@@ -23,7 +24,7 @@ export class AdminLoginComponent {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
-    });
+    }); 
   }
 
   toggleNewPassword() {
@@ -47,5 +48,14 @@ export class AdminLoginComponent {
     this.commonService.hideLoader();
     this.router.navigate(['/admin/dashboard']);
   }, 2000);
+  }
+
+  
+  ngAfterViewInit(): void {
+    AOS.init({
+      duration: 1000,
+      once: true
+    }); 
+    AOS.refresh();
   }
 }
