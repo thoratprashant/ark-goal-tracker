@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ChartComponent } from 'ng-apexcharts';
+import AOS from 'aos';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -934,6 +935,15 @@ export class Dashboard {
   };
 
 ngAfterViewInit(): void {
+    setTimeout(() => {
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+
+      AOS.refreshHard();
+    }, 300);
+
   // Your chart observer
   const chartObserver = new IntersectionObserver(
     entries => {
@@ -1032,6 +1042,8 @@ setTimeout(() => {
   goalSummaryObserver.observe(this.goalSummarySection.nativeElement);
 }, 300);
 }
+
+ 
 
  
 }
