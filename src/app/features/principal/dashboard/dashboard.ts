@@ -422,14 +422,46 @@ export class Dashboard {
       horizontalAlign: 'center',
       fontSize: '12px',
       fontWeight: 400,
-      labels: {
-        colors: '#6B7280'
-      },
       markers: {
-        width: 8,
-        height: 8,
-        radius: 12
-      }
+        width: 18,
+        height: 18,
+        radius: 0,
+
+        customHTML: [
+          function () {
+            return `
+              <img src="images/achivement-blue.svg"
+                  width="14"
+                  height="20"
+                  style="margin-right: 10px;" />
+            `;
+          },
+
+          function () {
+            return `
+              <img src="images/learning-green.svg"
+                  width="14"
+                  height="20"
+                  style="margin-right: 10px;"/>
+            `;
+          },
+
+          function () {
+            return `
+              <img src="images/quartil-orange.svg"
+                  width="14"
+                  height="20"
+                  style="margin-right: 10px;" />
+            `;
+          }
+        ]
+      },
+      labels: {
+        colors: ['#3B82F6', '#90C955', '#F59E0B']
+      },
+      itemMargin: {
+        horizontal: 10
+      },
     },
     tooltip: {
       shared: true,

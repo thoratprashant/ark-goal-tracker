@@ -82,7 +82,7 @@
             </div>
             <div class="col-12 col-lg-3" *ngIf="viewMode() === 'ela'">
                 <div class="d-flex flex-wrap flex-lg-column left-sections">
-                    <h5 class="w-100 font-15 text-secondary fw-semibold mb-0">ELA Performance</h5>
+                    <h5 class="w-100 font-14 text-secondary fw-semibold mb-0">ELA Performance</h5>
                     <div class="card d-flex flex-column">
                         <h5 class="font-12 clr--64748B fw-semibold mb-0">CURRENT ACHIEVEMENT</h5>
                         <div class="rounded-label-section green d-flex align-items-center gap-1">
@@ -121,7 +121,7 @@
                             <p class="clr--64748B font-10 fw-normal mb-0">Points Needed for Gain</p>
                         </div>
                         <div class="divider-line"></div>
-                        <div class="d-flex flex-wrap gap-3">
+                        <div class="d-flex flex-wrap gap-2">
                             <div class="d-flex flex-column gap-2">
                                 <h3 class="clr--64748B font-10 fw-semibold mb-0">Minimum Scale Score</h3>
                                 <div class="d-flex flex-column">
@@ -144,8 +144,8 @@
                     </div>
                     <div class="card d-flex flex-column">
                         <h5 class="font-12 clr--64748B fw-semibold mb-0">ATTENDANCE</h5>
-                        <div class="d-flex flex-wrap gap-3">
-                            <div class="d-flex gap-2 blue-bg-card">
+                        <div class="d-flex flex-wrap gap-2">
+                            <div class="d-flex gap-1 blue-bg-card">
                                 <div class="d-flex flex-column gap-1">
                                     <p class="clr--64748B font-10 fw-normal mb-0">Overall ADA</p>
                                     <p class="clr--90C9 font-12 fw-bold mb-0">94%</p>
@@ -155,7 +155,7 @@
                                     <p class="clr--64748B font-10 fw-normal mb-0">168/180 days</p>
                                 </div>
                             </div>
-                            <div class="d-flex gap-2 blue-bg-card">
+                            <div class="d-flex gap-1 blue-bg-card">
                                 <div class="d-flex flex-column gap-1">
                                     <p class="clr--64748B font-10 fw-normal mb-0">Absences</p>
                                     <p class="clr--D64550 font-12 fw-bold mb-0">12 <span class="font-8 fw-semibold"></span>days</p>
@@ -270,7 +270,13 @@
             <div class="col-12 col-lg-9 mt-lg-0 mt-3" *ngIf="viewMode() === 'ela'">
                 <div class="d-flex flex-column gap-2">
                     <div class="card p-3 p-sm-4 d-flex flex-column">
-                        <h5 class="font-15 text-secondary fw-semibold mb-0">Predicted Performance Over Time</h5>
+                        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                            <h5 class="font-14 text-secondary fw-semibold mb-0">Predicted Performance Over Time</h5>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="blue-indicator"></span>
+                                <p class="font-12 clr--4755 fw-normal mb-0">ELA</p>
+                            </div>
+                        </div>
                         <div class="chart-container">
                             <apx-chart
                                 [series]="chartOptions.series"
@@ -289,7 +295,7 @@
                     </div>
 
                     <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
-                        <h5 class="font-15 text-secondary fw-semibold mb-0">Score Contribution Breakdown</h5>
+                        <h5 class="font-14 text-secondary fw-semibold mb-0">Score Contribution Breakdown</h5>
                         <div class="table-responsive score-contribution-breakdown-table mt-1">
                         <!-- Score Contribution Breakdown Table -->
                             <table class="table table-custom table-centered m-0">
@@ -323,7 +329,7 @@
                     </div>
 
                     <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
-                        <h5 class="font-15 text-secondary fw-semibold mb-0">Progress Toward Goal</h5>
+                        <h5 class="font-14 text-secondary fw-semibold mb-0">Progress Toward Goal</h5>
                         @for (item of progressList; track item) {
                         <div class="progress--wrapper d-flex flex-column gap-2">
                             <div class="progress--labels d-flex align-items-center justify-content-between">
@@ -354,7 +360,7 @@
 
                     <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
                         <div class="d-flex flex-lg-row flex-column align-items-lg-center justify-content-lg-between gap-lg-0 gap-3">
-                            <h5 class="font-15 text-secondary fw-semibold mb-0">Historical State Assessment Scores</h5>
+                            <h5 class="font-14 text-secondary fw-semibold mb-0">Historical State Assessment Scores</h5>
                             <div class="d-flex flex-column flex-sm-row gap-2 w-sm-100">
                                 <mat-form-field appearance="outline" class="grades">
                                     <mat-select placeholder="All Subjects">
@@ -396,7 +402,7 @@
 
                     <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
                         <div class="d-flex flex-lg-row flex-column align-items-lg-center justify-content-lg-between gap-lg-0 gap-3">
-                            <h5 class="font-15 text-secondary fw-semibold mb-0">Assessment Inputs Used for Prediction</h5>
+                            <h5 class="font-14 text-secondary fw-semibold mb-0">Assessment Inputs Used for Prediction</h5>
                             <div class="d-flex flex-column flex-sm-row gap-2 w-sm-100">
                                 <mat-form-field appearance="outline" class="grades">
                                     <mat-select placeholder="Date Range">
@@ -458,7 +464,7 @@
 
                     <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
                         <div class="d-flex flex-lg-row flex-column align-items-lg-center justify-content-lg-between gap-lg-0 gap-3">
-                            <h5 class="font-15 text-secondary fw-semibold mb-0">Detailed Attendance</h5>
+                            <h5 class="font-14 text-secondary fw-semibold mb-0">Detailed Attendance</h5>
                             <div class="d-flex flex-column flex-sm-row gap-2 w-sm-100">
                                 <mat-form-field appearance="outline" class="grades">
                                     <mat-select placeholder="Date Range">

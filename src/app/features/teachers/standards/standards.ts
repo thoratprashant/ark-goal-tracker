@@ -209,11 +209,11 @@ export class Standards {
         }
       },
       axisBorder: {
-        show: true,
+        show: false,
         color: '#e5e7eb'
       },
       axisTicks: {
-        show: false
+        show: true
       },
       crosshairs: {
         show: false
@@ -223,6 +223,8 @@ export class Standards {
       labels: {
         align: 'left',
         maxWidth: 210,
+        offsetX: -10,
+        offsetY: 3,
         style: {
           fontSize: '12px',
           fontWeight: 600,
@@ -249,10 +251,10 @@ export class Standards {
         }
       },
       padding: {
-        top: 5,
-        right: 10,
-        bottom: 10,
-        left: 5
+        top: 0,
+        right: 0,
+        bottom: 5,
+        left: 15
       }
     },
 
@@ -261,12 +263,35 @@ export class Standards {
       position: 'bottom',
       horizontalAlign: 'center',
       fontSize: '12px',
+
       markers: {
-        //radius: 12,
+        size: 0
       },
+
+      formatter: function(seriesName, opts) {
+
+        const icons = [
+          'images/red-legend.svg',
+          'images/yellow-legend.svg',
+          'images/learning-green.svg'
+        ];
+
+        return `
+          <div style="display:flex;align-items:center;gap:6px;">
+            <img 
+              src="${icons[opts.seriesIndex]}" 
+              width="14" 
+              height="20"
+            />
+            <span>${seriesName}</span>
+          </div>
+        `;
+      },
+
       itemMargin: {
         horizontal: 10
       },
+
       labels: {
         colors: ['#EF4444', '#DCE52A', '#90C955']
       }
@@ -299,7 +324,7 @@ export class Standards {
       stacked: true,
       toolbar: { show: false },
       animations: { enabled: false },
-      fontFamily: 'Arial, sans-serif'
+      fontFamily: 'Arial, sans-serif',
     },
 
     // Completed = dynamic color, Remaining = grey
@@ -367,6 +392,8 @@ export class Standards {
       labels: {
         align: 'left',
         maxWidth: 180,
+        offsetX: -10,
+        offsetY: 3,
         style: {
           fontSize: '12px',
           colors: '#374151'
@@ -378,7 +405,8 @@ export class Standards {
       show: false,
       padding: {
         right: 40,
-        left: 0
+        left: 0,
+        bottom: -25
       }
     },
 

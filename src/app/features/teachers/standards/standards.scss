@@ -55,6 +55,18 @@
     //         }
     //     }
     // }
+    .summary-section{
+        .card{
+            .rounded-label-section{
+                &.off-blue{
+                    background: #EEF6FF;
+                }
+                .seperate-line{
+                    color: #BDBDBD;
+                }
+            }
+        }
+    }
     .performance--summary-section{
         .section-slider{
             gap: 34px;
@@ -86,6 +98,7 @@
         .threshold-legend {
             padding: 16px;
             padding-bottom: 0px;
+            padding-left: 0px;
             display: flex;
             align-items: center;
             gap: 16px;

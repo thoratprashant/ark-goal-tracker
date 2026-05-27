@@ -1,0 +1,329 @@
+.dashboard--wrapper{
+    .head--sec{
+        h4{
+            font-size: 1.438rem;
+            margin-top: 0.31rem;
+        }
+    }
+    .grades{
+        width: 140px;
+    }
+    .dd--sm{
+        &.sm--width{
+        width: 130px;
+        }
+    }
+    .summary-section{
+        .card{
+            .side--box{
+                &.blue{
+                background: #2563EB;
+                }
+                &.blue-1{
+                background: #60A5FA;
+                }
+            }
+            .inner-section{
+                height: stretch;
+                padding: 16px 10px;
+                border-radius: 12px;
+                background: #EFF6FF;
+                backdrop-filter: blur(2px);
+                gap: 5px;
+            }
+            &.menu-card{
+                margin-top: 0;
+                height: auto;
+                width: 100%;
+                max-width: 19%
+            }
+        }
+        .course-performance-table{
+            .table{
+                thead{
+                    tr{
+                        th{
+                            padding: 5px 4px;
+                            font-size: 12px;
+                            @media (max-width: 575px) {
+                                font-size: 9px;
+                            }
+                            @media (min-width: 576px) and (max-width: 990px) {
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
+                tbody{
+                    tr{
+                        td{
+                            padding: 5px 4px;
+                            font-size: 10px;
+                            @media (max-width: 575px) {
+                                font-size: 8px;
+                            }
+                            @media (min-width: 576px) and (max-width: 990px) {
+                                font-size: 9px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .status-section{
+        gap: 10px 0px;
+        .card{
+            height: stretch;
+            border-radius: 12px;
+            gap: 12px;
+            h3{
+                font-size: 28px;
+            }
+            &.green-card{
+                border: 1px solid #A7F3D0;
+                background: #ECFDF5;
+            }
+            &.orange-card{
+                border: 1px solid #FDE68A;
+                background: #FFFBEB;
+            }
+            &.red-card{
+                border: 1px solid #FECACA;
+                background: #FEF2F2;
+            }
+            &.blue-card{
+                border: 1px solid #0D2A7C;
+                background: #EDF2FF;
+            }
+        }
+    }
+    .achievement-band-section{
+        .card{
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            gap: 16px;
+            .mat-icon{
+                width: 14px;
+                height: 14px;
+                font-size: 14px;
+                color: #3B82F6;
+            }
+        }
+        .filters-section {
+            .card {
+                margin-bottom: 0;
+                padding: 16px;
+                gap: 16px;
+                border: 1px solid #E2E8F0;
+                border-radius: 12px;
+
+                .divider-line {
+                    border: 1px solid #F1F5F9;
+                }
+
+                .active-filter-chip {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 6px 12px;
+                    border: 1px solid #BFDBFE;
+                    border-radius: 6px;
+                    background: #EFF6FF;
+                    color: #0D2A7C; 
+                    .chip-label,
+                    .chip-value {
+                    color: #0D2A7C;
+                    } 
+                    .chip-close {
+                    width: 16px;
+                    height: 16px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    color: #0D2A7C;
+                    transition: color .25s ease;
+
+                    &:hover {
+                        color: #0f172a;
+                    }
+                    }
+                }
+            }
+        }
+        .achievement-band-distribution-table{
+            .table{
+                min-width: 1250px;
+                thead{
+                    tr{
+                        th{
+                            &:nth-child(1) {
+                               padding: .563rem .5rem .563rem .5rem;
+                            }
+                        }
+                    }
+                }
+                tbody{
+                    tr{
+                        td{
+                            &:nth-child(1) {
+                                word-break: break-all;
+                                padding: .75rem .5rem .75rem .5rem;
+                            }
+                            &:nth-child(3) {
+                                word-break: break-all;
+                            }
+                            &:nth-child(4) {
+                                word-break: break-all;
+                            }
+                            &:nth-child(10) {
+                                word-break: break-all;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .chart-scroll-wrapper {
+        width: 100%;
+      .chart-scroll-area {
+        width: 100%;
+        @media (max-width: 575px) {
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 6px;
+        }
+        .chart-container {
+          width: 100%;
+          margin: 0 auto;
+          padding: 0px 0 0px 0;
+          ::ng-deep .apexcharts-canvas,::ng-deep .apexcharts-svg {
+              width: 100% !important;
+          }
+          @media (max-width: 575px) {
+              min-width: 620px; // horizontal scroll trigger
+              padding: 0 10px;
+          }
+        }
+      }
+    }
+    .progress {
+        height: 8px;
+        border-radius: 12px;
+        .progress-bar{
+            font-weight: 700;
+            color: #F1F5F9;
+            transition: width 1.2s ease-in-out;
+        }
+    }
+    .ai-summary-section{
+        padding: 16px;
+        border-radius: 12px;
+        border: 1px solid #8a38f566;
+        background: #8a38f50a;
+        .clr--8A38F5{
+            color: #8A38F5;
+        }
+        .ai-button{
+            background: #8A38F5;
+            box-shadow: 0 1px 2px 0 #0000000d;
+            border: none;
+        }
+    }
+    .student-info-card{
+        padding: 16px;
+        border-radius: 12px;
+        border: 1px solid #E2E8F0;
+        .profile-round-wrapper{
+            .profile-round{
+                width: 36px;
+                height: 36px;
+                padding: 6px;
+                border-radius: 9999px;
+                background: #DBEAFE;
+                color:#0D2A7C;
+                &.red-bg{
+                    background: #b91c1c1a;
+                }
+                &.green-bg{
+                    background: #90c9551a;
+                }
+            }
+        }
+        .prediction-wrapper{
+            border-right: 1px solid #E2E8F0;
+            border-left: 1px solid #E2E8F0;
+            justify-content: space-around;
+            @media (max-width: 767px) {
+                margin: 20px 0px;
+                gap: 10px;
+            }
+            @media (max-width: 900px) {
+                border-right: none;
+                border-left: none;
+                justify-content: space-between;
+            }
+            .level-box{
+                padding: 6px 10px;
+                border-radius: 6px;
+                background: #b91c1c1a;
+                box-shadow: 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;
+            }
+        }
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1400px){
+    body .head--sec h4 {
+        font-size: 1.2rem;
+    }
+    .dashboard--wrapper{
+        .summary-section{
+            .card.menu-card{
+                max-width: 18%;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    body .head--sec h4 {
+        font-size: 1.2rem;
+    }
+    .dashboard--wrapper{
+        .summary-section{
+            .card.menu-card{
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .dashboard--wrapper{
+        .summary-section{
+            .card.menu-card{
+                max-width: 31%;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    body .head--sec h4 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .dashboard--wrapper{
+        .dd--sm.sm--width {
+            width: 100%;
+        }
+        .grades{
+            width: 100%;
+        }
+    }
+}
