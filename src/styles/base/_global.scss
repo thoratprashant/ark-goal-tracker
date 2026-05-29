@@ -731,9 +731,18 @@ body{
                 }
               }
             }
-            .percentage,.grade {
-              animation: popIn 0.8s ease forwards;
-              transform: scale(0.8);
+            .show-grade{
+              animation: fadeIn 0.4s ease-in-out;
+            }
+            @keyframes fadeIn {
+              from {
+                opacity: 0;
+                transform: translateX(5px);
+              }
+              to {
+                opacity: 1;
+                transform: translateX(0);
+              }
             }
             @keyframes popIn {
               to {

@@ -24,27 +24,55 @@
                         </div>
                     </div>
                     <div class="d-flex flex-sm-row flex-column align-items-sm-center total-performance-section">
-                        <div class="d-flex indicators-wrapper">
-                            <div class="ring-indicators-section d-flex flex-column align-items-center gap-2" *ngFor="let item of stats">
-                                <div class="circle"
-                                    [style.background]="
-                                    'conic-gradient(' + item.color + ' ' + getProgress(item.value) + '%, #d3d3d3 ' + getProgress(item.value) + '%)'
-                                    ">
-                                    <div class="inner">
-                                        <div class="font-12 fw-bold">{{ item.value }}</div>
-                                        <div class="label font-7 fw-normal">{{ item.label }}</div>
-                                    </div>
+                        <div class="d-flex score-wrapper">
+                            <div  class="d-flex flex-column align-items-center gap-2 score-card" *ngFor="let item of scoreData; let i = index">
+
+                                <div class="score-ring">
+
+                                <svg viewBox="0 0 120 120">
+
+                                    <circle
+                                    class="score-ring-track"
+                                    cx="60"
+                                    cy="60"
+                                    r="50">
+                                    </circle>
+
+                                    <circle
+                                    class="score-ring-progress"
+                                    cx="60"
+                                    cy="60"
+                                    r="50"
+                                    [attr.stroke]="item.color"
+                                    [style.--progress]="item.progress"
+                                    [style.animation-delay]="(i * 0.5) + 's'">
+                                    </circle>
+
+                                </svg>
+
+                                <div class="score-ring-inner">
+                                    <h2>{{ item.displayScore }}</h2>
+                                    <span>Points</span>
                                 </div>
-                                <div class="font-8 fw-normal">{{ item.title }}</div>
+                                </div>
+                                <div class="score-label">
+                                {{ item.label }}
+                                </div>
                             </div>
                         </div>
                         <div class="backdrop-card d-flex">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">PREDICTED TOTAL PERFORMANCE</p>
-                                <h2 class="main-title fw-bold mb-0">67% A</h2>
+                                <h2 class="main-title fw-bold mb-0">
+                                    <span>{{ displayPercentage | number:'1.1-1' }}%</span>
+                                    <span class="show-grade" *ngIf="showGrade">
+                                        {{ grade }}
+                                    </span>
+                                </h2>
                                 <div class="d-flex gap-2">
                                     <p class="clr--BFD fw-normal font-11 mb-0">500 PTS</p>
-                                    <div class="d-flex align-items-center justify-content-center predicted-performance-label clr--BFD fw-normal font-11">-50</div>
+                                    <div class="d-flex align-items-center justify-content-center predicted-performance-label clr--BFD fw-normal font-11">
+                                    -50</div>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +84,7 @@
                         <mat-icon>arrow_back_ios</mat-icon>
                     </button>
                     <div class="d-flex flex-row align-items-stretch section-slider" #scrollContainer (scroll)="checkScroll()">
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column align-items-center gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
                                 <div class="d-flex flex-row gap-1">
@@ -92,7 +120,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column align-items-center gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">MATH</p>
                                 <div class="d-flex flex-row gap-1">
@@ -128,7 +156,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column align-items-center gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">SCIENCE</p>
                                 <div class="d-flex flex-row gap-1">
@@ -144,7 +172,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column align-items-center gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">SS</p>
                                 <div class="d-flex flex-row gap-1">
@@ -160,7 +188,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column align-items-center gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">HS CCA</p>
                                 <div class="d-flex flex-row gap-1">
@@ -176,7 +204,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column align-items-center gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">GRADUATION</p>
                                 <div class="d-flex flex-row gap-1">
@@ -192,7 +220,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column align-items-center gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">ELA 3</p>
                                 <div class="d-flex flex-row gap-1">

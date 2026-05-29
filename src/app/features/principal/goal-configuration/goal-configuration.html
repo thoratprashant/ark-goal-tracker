@@ -32,7 +32,12 @@
                         <div class="backdrop-card d-flex">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0 text-uppercase">District Se Goal</p>
-                                <h2 class="main-title fw-bold mb-0">67% A</h2>
+                                <h2 class="main-title fw-bold mb-0">
+                                    <span>{{ displayGoal | number:'1.1-1' }}%</span>
+                                    <span class="show-grade" *ngIf="showGrade">
+                                        {{ grade }}
+                                    </span>
+                                </h2>
                                 <div class="d-flex gap-2">
                                 <p class="clr--BFD fw-normal font-11 mb-0">500 PTS</p>
                                 <div
@@ -44,7 +49,12 @@
                         <div class="backdrop-card d-flex">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0 text-uppercase">School Set Goal</p>
-                                <h2 class="main-title fw-bold mb-0">67% A</h2>
+                                <h2 class="main-title fw-bold mb-0">
+                                    <span>{{ displayGoal | number:'1.1-1' }}%</span>
+                                    <span class="show-grade" *ngIf="showGrade">
+                                        {{ grade }}
+                                    </span>
+                                </h2>
                                 <div class="d-flex gap-2">
                                 <p class="clr--BFD fw-normal font-11 mb-0">500 PTS</p>
                                 <div
@@ -56,13 +66,23 @@
                         <div class="backdrop-card d-flex">
                             <div class="card d-flex flex-column justify-content-between mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0 text-uppercase">Predicted Score</p>
-                                <h2 class="main-title fw-bold mb-0">68% A</h2>
+                                <h2 class="main-title fw-bold mb-0">
+                                    <span>{{ displayScore | number:'1.1-1' }}%</span>
+                                    <span class="show-grade" *ngIf="showGradeScore">
+                                        {{ grade }}
+                                    </span>
+                                </h2>
                             </div>
                         </div>
                         <div class="backdrop-card d-flex">
                             <div class="card d-flex flex-column justify-content-between mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0 text-uppercase">Prior year score</p>
-                                <h2 class="main-title fw-bold mb-0">64% A</h2>
+                                <h2 class="main-title fw-bold mb-0">
+                                    <span>{{ displayScore | number:'1.1-1' }}%</span>
+                                    <span class="show-grade" *ngIf="showGradeScore">
+                                        {{ grade }}
+                                    </span>
+                                </h2>
                             </div>
                         </div>
                     </div>
@@ -77,56 +97,56 @@
                         <mat-icon>arrow_back_ios</mat-icon>
                     </button>
                     <div class="d-flex flex-row align-items-stretch section-slider slider-1" #scrollContainer1 (scroll)="checkScroll1()">
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-1">
                             <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">ELA</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">36%</h2>
                                 <p class="clr--93C5FD fw-normal font-11 mb-0">171 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-1">
                             <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">ELA grad 3</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">36%</h2>
                                 <p class="clr--93C5FD fw-normal font-11 mb-0">171 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-1">
                             <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">math</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">39%</h2>
                                 <p class="clr--93C5FD fw-normal font-11 mb-0">185 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-1">
                             <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">Science</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">44%</h2>
                                 <p class="clr--93C5FD fw-normal font-11 mb-0">209 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-1">
                             <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">ss</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">44%</h2>
                                 <p class="clr--93C5FD fw-normal font-11 mb-0">209 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-1">
                             <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">MS ACC</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">44%</h2>
                                 <p class="clr--93C5FD fw-normal font-11 mb-0">209 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-1">
                             <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">HS CCA</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">44%</h2>
                                 <p class="clr--93C5FD fw-normal font-11 mb-0">209 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-1">
                             <div class="card blue-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--93C5FD fw-semibold font-11 mb-0 text-uppercase">Grad</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">44%</h2>
@@ -147,56 +167,56 @@
                         <mat-icon>arrow_back_ios</mat-icon>
                     </button>
                     <div class="d-flex flex-row align-items-stretch section-slider slider-1" #scrollContainer2 (scroll)="checkScroll2()">
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-2">
                             <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">ELA</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">42%</h2>
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0">+6 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-2">
                             <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">ELA grad 3</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">42%</h2>
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0">+6 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-2">
                             <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">Math</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">44%</h2>
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0">+5 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-2">
                             <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">Science</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">48%</h2>
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0">+4 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-2">
                             <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">ss</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">43%</h2>
                                 <p class="clr--D64550 fw-semibold font-11 mb-0">-1 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-2">
                             <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">MS ACC</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">48%</h2>
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0">+4 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-2">
                             <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">HS CCA</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">43%</h2>
                                 <p class="clr--D64550 fw-semibold font-11 mb-0">-1 pts</p>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item-2">
                             <div class="card green-outline d-flex flex-column gap-2 text-center justify-content-between mb-0">
                                 <p class="clr--86EFAC fw-semibold font-11 mb-0 text-uppercase">Grad</p>
                                 <h2 class="text-white font-20 fw-bold mb-0">43%</h2>
@@ -217,7 +237,7 @@
                         <mat-icon>arrow_back_ios</mat-icon>
                     </button>
                     <div class="d-flex flex-row align-items-stretch section-slider" #scrollContainer (scroll)="checkScroll()">
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
                                 <div class="d-flex align-items-end gap-2">
@@ -235,7 +255,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">ELA 3</p>
                                 <div class="d-flex align-items-end gap-2">
@@ -253,7 +273,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">MATH</p>
                                 <div class="d-flex align-items-end gap-2">
@@ -271,7 +291,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">SCI</p>
                                 <div class="d-flex align-items-end gap-2">
@@ -289,7 +309,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">SS</p>
                                 <div class="d-flex align-items-end gap-2">
@@ -306,7 +326,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">MS ACC</p>
                                 <div class="d-flex align-items-end gap-2">
@@ -324,7 +344,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
                                 <div class="d-flex align-items-end gap-2">
@@ -342,7 +362,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">ELA 3</p>
                                 <div class="d-flex align-items-end gap-2">
@@ -360,7 +380,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">MATH</p>
                                 <div class="d-flex align-items-end gap-2">
@@ -378,7 +398,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">SCI</p>
                                 <div class="d-flex align-items-end gap-2">
@@ -396,7 +416,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">SS</p>
                                 <div class="d-flex align-items-end gap-2">
@@ -413,7 +433,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
                             <div class="card d-flex flex-column gap-2 mb-0">
                                 <p class="clr--BFD fw-normal font-11 mb-0">MS ACC</p>
                                 <div class="d-flex align-items-end gap-2">

@@ -65,7 +65,7 @@
                   </svg>
 
                   <div class="score-ring-inner">
-                    <h2>{{ item.score }}</h2>
+                    <h2>{{ item.displayScore }}</h2>
                     <span>Points</span>
                   </div>
                 </div>
@@ -78,10 +78,13 @@
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">PREDICTED TOTAL PERFORMANCE</p>
                 <h2 class="main-title fw-bold mb-0">
-                  <span data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1400">67%</span>
-                  <span data-aos="fade-left" data-aos-easing="linear" data-aos-duration="3000"> A</span></h2>
+                  <span>{{ displayPercentage | number:'1.1-1' }}%</span>
+                  <span class="show-grade" *ngIf="showGrade">
+                    {{ grade }}
+                  </span>
+                </h2>
                 <div class="d-flex gap-2">
-                  <p class="clr--BFD fw-normal font-11 mb-0">500 PTS</p>
+                  <p class="clr--BFD fw-normal font-11 mb-0">826 PTS</p>
                   <div
                     class="d-flex align-items-center justify-content-center predicted-performance-label clr--BFD fw-normal font-11">
                     -50</div>
