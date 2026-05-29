@@ -1,6 +1,370 @@
 <div class="container-fluid p-0 schooldetails--wrapper">
   <div class="row">
-    <app-performance-summary></app-performance-summary>
+    <div class="col-12 performance--summary-section">
+      <div class="card p-3 p-sm-4 d-flex flex-column">
+        <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between gap-3">
+          <div class="d-flex flex-column header-section">
+            <div class="d-flex flex-column">
+              <h2 class="main-title fw-bold">Lincoln Elementary Performance Summary</h2>
+              <p class="second-title font-16 fw-normal"><i>Real-time analytics across 25 schools serving 12,500 students</i>
+              </p>
+            </div>
+            <div class="d-flex flex-wrap align-items-sm-center total-students-section gap-3">
+              <!-- <div class="backdrop-card d-flex">
+                <div class="card py-2 d-flex flex-row align-items-center gap-2 mb-0">
+                  <img src="images/school-green.svg" alt="icon" class="img-fluid">
+                  <p class="second-title font-13 fw-normal mb-0">25 Schools</p>
+                </div>
+              </div> -->
+              <div class="backdrop-card d-flex">
+                <div class="card py-2 d-flex flex-row align-items-center gap-2 mb-0">
+                  <img src="images/total-users-orange.svg" alt="icon" class="img-fluid">
+                  <p class="second-title font-13 fw-normal mb-0">12,500 Students</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex flex-sm-row flex-column align-items-sm-center total-performance-section">
+            <!-- <div class="d-flex indicators-wrapper">
+              <div class="ring-indicators-section d-flex flex-column align-items-center gap-2" *ngFor="let item of stats">
+                <div class="circle" [style.background]="
+                                        'conic-gradient(' + item.color + ' ' + getProgress(item.value) + '%, #d3d3d3 ' + getProgress(item.value) + '%)'
+                                        ">
+                  <div class="inner">
+                    <div class="font-12 fw-bold">{{ item.value }}</div>
+                    <div class="label font-7 fw-normal">{{ item.label }}</div>
+                  </div>
+                </div>
+                <div class="font-8 fw-normal">{{ item.title }}</div>
+              </div>
+            </div> -->
+            <div class="d-flex score-wrapper">
+              <div data-aos="fade-right" data-aos-easing="ease-in-sine" data-aos-duration="800" class="d-flex flex-column align-items-center gap-2 score-card" *ngFor="let item of scoreData">
+
+                <div class="score-ring">
+
+                  <svg viewBox="0 0 120 120">
+
+                    <circle
+                      class="score-ring-track"
+                      cx="60"
+                      cy="60"
+                      r="50">
+                    </circle>
+
+                    <circle
+                      class="score-ring-progress"
+                      cx="60"
+                      cy="60"
+                      r="50"
+                      pathLength="100"
+                      [attr.stroke]="item.color"
+                      [style.--progress]="100 - item.progress">
+                    </circle>
+
+                  </svg>
+
+                  <div class="score-ring-inner">
+                    <h2>{{ item.score }}</h2>
+                    <span>Points</span>
+                  </div>
+                </div>
+                <div class="score-label">
+                  {{ item.label }}
+                </div>
+              </div>
+            </div>
+            <div class="backdrop-card d-flex" data-aos="fade-down" data-aos-easing="ease-in-sine" data-aos-duration="1000">
+              <div class="card d-flex flex-column gap-2 mb-0">
+                <p class="clr--BFD fw-normal font-11 mb-0">PREDICTED TOTAL PERFORMANCE</p>
+                <h2 class="main-title fw-bold mb-0">
+                  <span data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1400">67%</span>
+                  <span data-aos="fade-left" data-aos-easing="linear" data-aos-duration="3000"> A</span></h2>
+                <div class="d-flex gap-2">
+                  <p class="clr--BFD fw-normal font-11 mb-0">500 PTS</p>
+                  <div
+                    class="d-flex align-items-center justify-content-center predicted-performance-label clr--BFD fw-normal font-11">
+                    -50</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="divider-line"></div>
+        <div class="d-flex align-items-center gap-2">
+          <button class="arr--btn" *ngIf="isScrollable && showPrev" (click)="scrollLeft()">
+            <mat-icon>arrow_back_ios</mat-icon>
+          </button>
+          <div class="d-flex flex-row align-items-stretch section-slider" #scrollContainer (scroll)="checkScroll()">
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
+              <div class="card d-flex flex-column align-items-center gap-2 mb-0">
+                <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
+                <div class="d-flex flex-row gap-1">
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">ACH</p>
+                    <p class="clr--90C9 font-13 fw-bold mb-0">40%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 42%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 47%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 44%</p>
+                    </div>
+                  </div>
+                  <div class="inner-divider-line"></div>
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">LG</p>
+                    <p class="clr--EA914 font-13 fw-bold mb-0">33%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 38%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 45%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 40%</p>
+                    </div>
+                  </div>
+                  <div class="inner-divider-line"></div>
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">BQ</p>
+                    <p class="clr--D64550 font-13 fw-bold mb-0">34%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 38%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 45%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 40%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
+              <div class="card d-flex flex-column align-items-center gap-2 mb-0">
+                <p class="clr--BFD fw-normal font-11 mb-0">ELA 3</p>
+                <div class="d-flex flex-row gap-1">
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">ACH</p>
+                    <p class="clr--90C9 font-13 fw-bold mb-0">44%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 42%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 47%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 44%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
+              <div class="card d-flex flex-column align-items-center gap-2 mb-0">
+                <p class="clr--BFD fw-normal font-11 mb-0">MATH</p>
+                <div class="d-flex flex-row gap-1">
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">ACH</p>
+                    <p class="clr--90C9 font-13 fw-bold mb-0">44%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 42%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 47%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 44%</p>
+                    </div>
+                  </div>
+                  <div class="inner-divider-line"></div>
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">LG</p>
+                    <p class="clr--EA914 font-13 fw-bold mb-0">37%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 38%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 45%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 40%</p>
+                    </div>
+                  </div>
+                  <div class="inner-divider-line"></div>
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">BQ</p>
+                    <p class="clr--D64550 font-13 fw-bold mb-0">36%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 38%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 45%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 40%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
+              <div class="card d-flex flex-column align-items-center gap-2 mb-0">
+                <p class="clr--BFD fw-normal font-11 mb-0">SCIENCE</p>
+                <div class="d-flex flex-row gap-1">
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">ACH</p>
+                    <p class="clr--90C9 font-13 fw-bold mb-0">44%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 42%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 47%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 44%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
+              <div class="card d-flex flex-column align-items-center gap-2 mb-0">
+                <p class="clr--BFD fw-normal font-11 mb-0">SS</p>
+                <div class="d-flex flex-row gap-1">
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">ACH</p>
+                    <p class="clr--90C9 font-13 fw-bold mb-0">44%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 42%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 47%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 44%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
+              <div class="card d-flex flex-column align-items-center gap-2 mb-0">
+                <p class="clr--BFD fw-normal font-11 mb-0">MS ACC</p>
+                <div class="d-flex flex-row gap-1">
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">ACH</p>
+                    <p class="clr--90C9 font-13 fw-bold mb-0">44%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 42%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 47%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 44%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
+              <div class="card d-flex flex-column align-items-center gap-2 mb-0">
+                <p class="clr--BFD fw-normal font-11 mb-0">HS CCA</p>
+                <div class="d-flex flex-row gap-1">
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">ACH</p>
+                    <p class="clr--90C9 font-13 fw-bold mb-0">44%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 42%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 47%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 44%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
+              <div class="card d-flex flex-column align-items-center gap-2 mb-0">
+                <p class="clr--BFD fw-normal font-11 mb-0">GRADUATION</p>
+                <div class="d-flex flex-row gap-1">
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">ACH</p>
+                    <p class="clr--90C9 font-13 fw-bold mb-0">44%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 42%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 47%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 44%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
+              <div class="card d-flex flex-column align-items-center gap-2 mb-0">
+                <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
+                <div class="d-flex flex-row gap-1">
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">ACH</p>
+                    <p class="clr--90C9 font-13 fw-bold mb-0">40%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 42%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 47%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 44%</p>
+                    </div>
+                  </div>
+                  <div class="inner-divider-line"></div>
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">LG</p>
+                    <p class="clr--EA914 font-13 fw-bold mb-0">33%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 38%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 45%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 40%</p>
+                    </div>
+                  </div>
+                  <div class="inner-divider-line"></div>
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">BQ</p>
+                    <p class="clr--D64550 font-13 fw-bold mb-0">34%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 38%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 45%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 40%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
+              <div class="card d-flex flex-column align-items-center gap-2 mb-0">
+                <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
+                <div class="d-flex flex-row gap-1">
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">ACH</p>
+                    <p class="clr--90C9 font-13 fw-bold mb-0">40%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 42%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 47%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 44%</p>
+                    </div>
+                  </div>
+                  <div class="inner-divider-line"></div>
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">LG</p>
+                    <p class="clr--EA914 font-13 fw-bold mb-0">33%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 38%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 45%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 40%</p>
+                    </div>
+                  </div>
+                  <div class="inner-divider-line"></div>
+                  <div class="d-flex flex-column align-items-center gap-1">
+                    <p class="text-white font-9 fw-normal mb-0">BQ</p>
+                    <p class="clr--D64550 font-13 fw-bold mb-0">34%</p>
+                    <div class="d-flex flex-column align-items-center inner-section-box">
+                      <p class="clr--BFD font-10 fw-normal mb-0">PY: 38%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Goal: 45%</p>
+                      <p class="clr--BFD font-10 fw-normal mb-0">Pred: 40%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="arr--btn" *ngIf="isScrollable && showNext" (click)="scrollRight()">
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
+        </div>
+        <div class="divider-line"></div>
+        <div class="backdrop-card d-flex">
+          <div class="card w-100 d-flex flex-sm-row flex-column flex-wrap gap-2 mb-2">
+            <div class="d-flex align-items-center gap-2 flex-shrink-0">
+              <div class="bottom-notation green-notation"></div>
+              <p class="text-white fw-normal font-10 mb-0">Total Predicted Points: <span class="fw-bold">500</span></p>
+            </div>
+            <div class="d-flex align-items-center gap-2 flex-shrink-0">
+              <div class="bottom-notation yellow-notation"></div>
+              <p class="text-white fw-normal font-10 mb-0">Total Goal Points: <span class="fw-bold">550</span></p>
+            </div>
+            <div class="d-flex align-items-center gap-2 flex-shrink-0">
+              <div class="bottom-notation blue-notation"></div>
+              <p class="text-white fw-normal font-10 mb-0">Over/Under Goal: <span class="fw-bold clr--D64550">-50</span></p>
+            </div>
+            <div class="d-flex align-items-center gap-2 flex-shrink-0">
+              <div class="bottom-notation grey-notation"></div>
+              <p class="text-white fw-normal font-10 mb-0">Components: <span class="fw-bold">12 metrics
+                  across 8 areas</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="col-12 head--sec d-flex flex-wrap align-items-center justify-content-between gap-3">
       <h1 class="font-16 text-secondary fw-bold">Performance Summary</h1>
       <mat-form-field appearance="outline">

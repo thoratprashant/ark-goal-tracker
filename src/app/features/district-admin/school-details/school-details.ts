@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, signal, ViewChild } from '@angular/core';
 import { PerformanceSummary } from '../../comman/performance-summary/performance-summary';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import AOS from 'aos';
 
 interface TableRow1 {
   grade: string;
@@ -74,6 +75,133 @@ export type ChartOptions = {
   styleUrl: './school-details.scss',
 })
 export class SchoolDetails { 
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  @ViewChild('scrollContainer', { static: false })
+  scrollContainer!: ElementRef<HTMLDivElement>;
+
+  activeIndex = 0;
+  showPrev = false;
+  showNext = false;
+  isScrollable = false;
+
+  private currentIndex = 0;
+
+  scoreData = [
+  {
+    score: 800,
+    progress: 80,
+    color: '#D64550',
+    label: '2023-24'
+  },
+  {
+    score: 849,
+    progress: 85,
+    color: '#DCE52A',
+    label: '2024-25'
+  },
+  {
+    score: 900,
+    progress: 90,
+    color: '#90C955',
+    label: '2025-26 Goal'
+  },
+  {
+    score: 826,
+    progress: 82,
+    color: '#6D94FF',
+    label: '2025-26 Predicted'
+  }
+];
+
+ngAfterViewInit() {
+    this.updateScrollButtons();
+    setTimeout(() => this.checkScroll(), 100);
+
+    AOS.init({
+      duration: 4000,
+      once: true
+    }); 
+    AOS.refresh();
+  }
+
+  scrollLeft() {
+    if (!this.scrollContainer || !this.isScrollable) return;
+
+    const items: HTMLElement[] = Array.from(
+      this.scrollContainer.nativeElement.querySelectorAll('.scroll-item')
+    );
+
+    if (!items.length) return;
+
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    }
+
+    items[this.currentIndex].scrollIntoView({
+      behavior: 'smooth',
+      inline: 'start',
+      block: 'nearest'
+    });
+
+    setTimeout(() => this.checkScroll(), 300);
+  }
+
+  scrollRight() {
+    if (!this.scrollContainer || !this.isScrollable) return;
+
+    const students: HTMLElement[] = Array.from(
+      this.scrollContainer.nativeElement.querySelectorAll('.scroll-item')
+    );
+
+    if (!students.length) return;
+
+    if (this.currentIndex < students.length - 1) {
+      this.currentIndex++;
+    }
+
+    students[this.currentIndex].scrollIntoView({
+      behavior: 'smooth',
+      inline: 'start',
+      block: 'nearest'
+    });
+
+    setTimeout(() => this.checkScroll(), 300);
+  }
+
+  checkScroll() {
+    if (!this.scrollContainer) return;
+
+    const el = this.scrollContainer.nativeElement;
+    const maxScrollLeft = el.scrollWidth - el.clientWidth;
+
+    this.isScrollable = el.scrollWidth > el.clientWidth + 5;
+
+    if (!this.isScrollable) {
+      this.showPrev = false;
+      this.showNext = false;
+    } else {
+      this.showPrev = el.scrollLeft > 0;
+      this.showNext = el.scrollLeft < maxScrollLeft - 1;
+      this.cdr.detectChanges();
+    }
+    
+  }
+
+  updateScrollButtons(): void {
+    setTimeout(() => {
+      this.checkScroll();
+    }, 50);
+  }
+
+  @HostListener('window:resize')
+  onResize(): void {
+    this.updateScrollButtons();
+    setTimeout(() => {
+      this.checkScroll();
+    }, 100);
+  }
     data = {
       totalStudents: 17211,
 

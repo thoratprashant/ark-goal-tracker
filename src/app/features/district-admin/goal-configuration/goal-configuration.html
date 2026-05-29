@@ -11,8 +11,8 @@
         <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between gap-3">
           <div class="d-flex flex-column header-section">
             <div class="d-flex flex-column">
-              <h2 class="main-title fw-bold">Franklin High School Performance Summary</h2>
-              <p class="second-title font-16 fw-normal"><i>Real-time analytics across school serving 2000 students</i>
+              <h2 class="main-title fw-bold">Roosevelt School District Performance</h2>
+              <p class="second-title font-16 fw-normal"><i>Real-time analytics across schools serving 10,000 students</i>
               </p>
             </div>
             <div class="d-flex flex-wrap align-items-sm-center total-students-section gap-3">
@@ -31,7 +31,7 @@
             </div>
           </div>
           <div class="d-flex flex-sm-row flex-column align-items-sm-center total-performance-section">
-            <div class="d-flex indicators-wrapper">
+            <!-- <div class="d-flex indicators-wrapper">
               <div class="ring-indicators-section d-flex flex-column align-items-center gap-2"
                 *ngFor="let item of stats">
                 <div class="circle" [style.background]="
@@ -44,11 +44,49 @@
                 </div>
                 <div class="font-8 fw-normal">{{ item.title }}</div>
               </div>
+            </div> -->
+            <div class="d-flex score-wrapper">
+              <div data-aos="fade-right" data-aos-easing="ease-in-sine" data-aos-duration="800" class="d-flex flex-column align-items-center gap-2 score-card" *ngFor="let item of scoreData">
+
+                <div class="score-ring">
+
+                  <svg viewBox="0 0 120 120">
+
+                    <circle
+                      class="score-ring-track"
+                      cx="60"
+                      cy="60"
+                      r="50">
+                    </circle>
+
+                    <circle
+                      class="score-ring-progress"
+                      cx="60"
+                      cy="60"
+                      r="50"
+                      pathLength="100"
+                      [attr.stroke]="item.color"
+                      [style.--progress]="100 - item.progress">
+                    </circle>
+
+                  </svg>
+
+                  <div class="score-ring-inner">
+                    <h2>{{ item.score }}</h2>
+                    <span>Points</span>
+                  </div>
+                </div>
+                <div class="score-label">
+                  {{ item.label }}
+                </div>
+              </div>
             </div>
-            <div class="backdrop-card d-flex">
+            <div class="backdrop-card d-flex" data-aos="fade-down" data-aos-easing="ease-in-sine" data-aos-duration="1000">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">PREDICTED TOTAL PERFORMANCE</p>
-                <h2 class="main-title fw-bold mb-0">67% A</h2>
+                <h2 class="main-title fw-bold mb-0">
+                  <span data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1400">67%</span>
+                  <span data-aos="fade-left" data-aos-easing="linear" data-aos-duration="3000"> A</span></h2>
                 <div class="d-flex gap-2">
                   <p class="clr--BFD fw-normal font-11 mb-0">500 PTS</p>
                   <div
@@ -65,7 +103,7 @@
             <mat-icon>arrow_back_ios</mat-icon>
           </button>
           <div class="d-flex flex-row align-items-stretch section-slider" #scrollContainer (scroll)="checkScroll()">
-            <div class="backdrop-card d-flex flex-shrink-0">
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
                 <div class="d-flex align-items-end gap-2">
@@ -83,7 +121,7 @@
                 </div>
               </div>
             </div>
-            <div class="backdrop-card d-flex flex-shrink-0">
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">ELA 3</p>
                 <div class="d-flex align-items-end gap-2">
@@ -101,7 +139,7 @@
                 </div>
               </div>
             </div> 
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
                 <div class="d-flex align-items-end gap-2">
@@ -119,7 +157,7 @@
                 </div>
               </div>
             </div>
-            <div class="backdrop-card d-flex flex-shrink-0">
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">ELA 3</p>
                 <div class="d-flex align-items-end gap-2">
@@ -137,7 +175,7 @@
                 </div>
               </div>
             </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
                 <div class="d-flex align-items-end gap-2">
@@ -155,7 +193,7 @@
                 </div>
               </div>
             </div>
-            <div class="backdrop-card d-flex flex-shrink-0">
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">ELA 3</p>
                 <div class="d-flex align-items-end gap-2">
@@ -173,7 +211,7 @@
                 </div>
               </div>
             </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
                 <div class="d-flex align-items-end gap-2">
@@ -191,7 +229,7 @@
                 </div>
               </div>
             </div>
-            <div class="backdrop-card d-flex flex-shrink-0">
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">ELA 3</p>
                 <div class="d-flex align-items-end gap-2">
@@ -209,7 +247,7 @@
                 </div>
               </div>
             </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
                 <div class="d-flex align-items-end gap-2">
@@ -227,7 +265,7 @@
                 </div>
               </div>
             </div>
-            <div class="backdrop-card d-flex flex-shrink-0">
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">ELA 3</p>
                 <div class="d-flex align-items-end gap-2">
@@ -245,7 +283,7 @@
                 </div>
               </div>
             </div>
-                        <div class="backdrop-card d-flex flex-shrink-0">
+                        <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">ELA</p>
                 <div class="d-flex align-items-end gap-2">
@@ -263,7 +301,7 @@
                 </div>
               </div>
             </div>
-            <div class="backdrop-card d-flex flex-shrink-0">
+            <div class="backdrop-card d-flex flex-shrink-0 scroll-item">
               <div class="card d-flex flex-column gap-2 mb-0">
                 <p class="clr--BFD fw-normal font-11 mb-0">ELA 3</p>
                 <div class="d-flex align-items-end gap-2">

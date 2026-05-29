@@ -563,8 +563,12 @@ body{
               scrollbar-width: none;
               flex: 1;
               gap: 10px; 
+              scroll-snap-type: x mandatory;
               &::-webkit-scrollbar {
                   display: none;
+              }
+              .scroll-item {
+                scroll-snap-align: start;
               }
           }
           .backdrop-card{
@@ -619,42 +623,125 @@ body{
               }
           }
           .total-performance-section{
-              gap: 24px;
-              .indicators-wrapper{
-                  gap: 10px;
-                  .font-8{
-                      white-space: nowrap;
+            gap: 24px;
+            .indicators-wrapper{
+                gap: 10px;
+                .font-8{
+                    white-space: nowrap;
+                }
+                .ring-indicators-section{
+                    color: #fff;
+                    .circle {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: relative;
+                        transition: background 1s ease-in-out;
+                    }
+                    .circle::before {
+                        content: '';
+                        width: 45px;
+                        height: 45px;
+                        background: #0D2A7C;
+                        border-radius: 50%;
+                        position: absolute;
+                    }
+                    .inner {
+                        position: relative;
+                        text-align: center;
+                        z-index: 1;
+                        .label {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+            }
+            .score-wrapper {
+              gap: 10px;
+              .score-card {
+                .score-ring {
+                  position: relative;
+                  width: 60px;
+                  height: 60px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  animation: popIn 0.8s ease forwards;
+                  transform: scale(0.8);
+                  opacity: 0;
+                  svg {
+                    width: 100%;
+                    height: 100%;
+                    transform: rotate(-90deg);
+                    circle {
+                      fill: none;
+                      stroke-width: 8;
+                    }
+                    .score-ring-track {
+                      stroke: #d9d9d9;
+                    }
+                    .score-ring-progress {
+                      stroke-linecap: round;
+                      transform: rotate(70deg);
+                      transform-origin: 50% 50%;
+                      stroke-dasharray: 100;
+                      stroke-dashoffset: 100;
+                      animation: progressLoad 4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                    }
                   }
-                  .ring-indicators-section{
-                      color: #fff;
-                      .circle {
-                          width: 60px;
-                          height: 60px;
-                          border-radius: 50%;
-                          display: flex;
-                          align-items: center;
-                          justify-content: center;
-                          position: relative;
-                          transition: background 1s ease-in-out;
-                      }
-                      .circle::before {
-                          content: '';
-                          width: 45px;
-                          height: 45px;
-                          background: #0D2A7C;
-                          border-radius: 50%;
-                          position: absolute;
-                      }
-                      .inner {
-                          position: relative;
-                          text-align: center;
-                          z-index: 1;
-                          .label {
-                              opacity: 0.8;
-                          }
-                      }
+                  .score-ring-inner {
+                    position: absolute;
+                    inset: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 5px;
+                    justify-content: center;
+                    border-radius: 50%;
+                    h2 {
+                      margin: 0;
+                      font-size: 12px;
+                      font-weight: 700;
+                      color: #ffffff;
+                    }
+                    span {
+                      font-size: 7px;
+                      font-weight: 400;
+                      color: #ffffff;
+                    }
                   }
+                }
+                .score-label {
+                  font-size: 8px;
+                  font-weight: 600;
+                  color: #ffffff;
+                  text-align: center;
+                  white-space: nowrap;
+                }
               }
+            }
+            .percentage,.grade {
+              animation: popIn 0.8s ease forwards;
+              transform: scale(0.8);
+            }
+            @keyframes popIn {
+              to {
+                transform: scale(1);
+                opacity: 1;
+              }
+            }
+            @keyframes progressLoad {
+              from {
+                stroke-dashoffset: 100;
+              }
+
+              to {
+                stroke-dashoffset: var(--progress);
+              }
+            }
           }
           .divider-line{
               border: 1px solid #ffffff33;
@@ -872,6 +959,15 @@ body{
   }
 
 }  
+
+@media (max-width: 575px) {
+  body .performance--summary-section{
+    .score-wrapper{
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+}
 
  @media (max-width: 767px) {
   body .mat-internal-form-field > label,

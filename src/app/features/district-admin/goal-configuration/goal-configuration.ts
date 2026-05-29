@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table'; 
+import AOS from 'aos';
 
 interface TableNode {
   name: string;
@@ -30,9 +31,9 @@ interface TableNode {
 })
 export class GoalConfiguration {
 
-   constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) {}
 
-     @ViewChild('scrollContainer', { static: false })
+  @ViewChild('scrollContainer', { static: false })
   scrollContainer!: ElementRef<HTMLDivElement>;
 
   progressList = [
@@ -259,50 +260,63 @@ rows: TableNode[]= [
   showNext = false;
   isScrollable = false;
 
-  stats = [
+  private currentIndex = 0;
+
+  scoreData = [
     {
-      value: 800,
-      label: 'Points',
-      title: '2023-24',
-      color: '#D64550'
+      score: 800,
+      progress: 80,
+      color: '#D64550',
+      label: '2023-24'
     },
     {
-      value: 849,
-      label: 'Points',
-      title: '2024-25',
-      color: '#DCE52A'
+      score: 849,
+      progress: 85,
+      color: '#DCE52A',
+      label: '2024-25'
     },
     {
-      value: 900,
-      label: 'Points',
-      title: '2025-26 Goal',
-      color: '#90C955' 
+      score: 900,
+      progress: 90,
+      color: '#90C955',
+      label: '2025-26 Goal'
     },
     {
-      value: 826,
-      label: 'Points',
-      title: '2025-26 Predicted',
-      color: '#6D94FF'
+      score: 826,
+      progress: 82,
+      color: '#6D94FF',
+      label: '2025-26 Predicted'
     }
   ];
-
-  maxValue = 1000; // for percentage calculation
-
-  getProgress(value: number): number {
-    return (value / this.maxValue) * 100;
-  }
-
+  
   ngAfterViewInit() {
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
+
+    AOS.init({
+      duration: 4000,
+      once: true
+    }); 
+    AOS.refresh();
   }
 
   scrollLeft() {
     if (!this.scrollContainer || !this.isScrollable) return;
 
-    this.scrollContainer.nativeElement.scrollBy({
-      left: -100,
-      behavior: 'smooth'
+    const items: HTMLElement[] = Array.from(
+      this.scrollContainer.nativeElement.querySelectorAll('.scroll-item')
+    );
+
+    if (!items.length) return;
+
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    }
+
+    items[this.currentIndex].scrollIntoView({
+      behavior: 'smooth',
+      inline: 'start',
+      block: 'nearest'
     });
 
     setTimeout(() => this.checkScroll(), 300);
@@ -311,9 +325,20 @@ rows: TableNode[]= [
   scrollRight() {
     if (!this.scrollContainer || !this.isScrollable) return;
 
-    this.scrollContainer.nativeElement.scrollBy({
-      left: 100,
-      behavior: 'smooth'
+    const students: HTMLElement[] = Array.from(
+      this.scrollContainer.nativeElement.querySelectorAll('.scroll-item')
+    );
+
+    if (!students.length) return;
+
+    if (this.currentIndex < students.length - 1) {
+      this.currentIndex++;
+    }
+
+    students[this.currentIndex].scrollIntoView({
+      behavior: 'smooth',
+      inline: 'start',
+      block: 'nearest'
     });
 
     setTimeout(() => this.checkScroll(), 300);
@@ -331,11 +356,11 @@ rows: TableNode[]= [
       this.showPrev = false;
       this.showNext = false;
     } else {
-      this.showPrev = el.scrollLeft > 5;
-      this.showNext = el.scrollLeft < maxScrollLeft - 5;
+      this.showPrev = el.scrollLeft > 0;
+      this.showNext = el.scrollLeft < maxScrollLeft - 1;
+      this.cdr.detectChanges();
     }
-
-    this.cdr.detectChanges();
+    
   }
 
   updateScrollButtons(): void {
@@ -347,10 +372,10 @@ rows: TableNode[]= [
   @HostListener('window:resize')
   onResize(): void {
     this.updateScrollButtons();
+    setTimeout(() => {
+      this.checkScroll();
+    }, 100);
   }
-
- 
-
   
 }
 
