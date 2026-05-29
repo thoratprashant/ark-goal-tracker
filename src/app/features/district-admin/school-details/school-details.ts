@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, ElementRef, HostListener, signal, ViewChild } from '@angular/core';
-import { PerformanceSummary } from '../../comman/performance-summary/performance-summary';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -70,7 +69,7 @@ export type ChartOptions = {
 
 @Component({
   selector: 'app-school-details',
-  imports: [MatIconModule, CommonModule, MatButtonModule, MatSelectModule, MatFormFieldModule, ChartComponent, MatButtonToggleModule, PerformanceSummary],
+  imports: [MatIconModule, CommonModule, MatButtonModule, MatSelectModule, MatFormFieldModule, ChartComponent, MatButtonToggleModule],
   templateUrl: './school-details.html',
   styleUrl: './school-details.scss',
 })
