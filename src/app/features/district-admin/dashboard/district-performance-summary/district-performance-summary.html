@@ -37,7 +37,7 @@
           </div>
         </div> -->
         <div class="d-flex score-wrapper">
-          <div data-aos="fade-right" data-aos-easing="ease-in-sine" data-aos-duration="800" class="d-flex flex-column align-items-center gap-2 score-card" *ngFor="let item of scoreData">
+          <div  class="d-flex flex-column align-items-center gap-2 score-card" *ngFor="let item of scoreData; let i = index">
 
             <div class="score-ring">
 
@@ -55,15 +55,15 @@
                   cx="60"
                   cy="60"
                   r="50"
-                  pathLength="100"
                   [attr.stroke]="item.color"
-                  [style.--progress]="100 - item.progress">
+                  [style.--progress]="item.progress"
+                  [style.animation-delay]="(i * 0.5) + 's'">
                 </circle>
 
               </svg>
 
               <div class="score-ring-inner">
-                <h2>{{ item.score }}</h2>
+                <h2>{{ item.displayScore }}</h2>
                 <span>Points</span>
               </div>
             </div>
@@ -72,12 +72,15 @@
             </div>
           </div>
         </div>
-        <div class="backdrop-card d-flex" data-aos="fade-down" data-aos-easing="ease-in-sine" data-aos-duration="1000">
+        <div class="backdrop-card d-flex">
           <div class="card d-flex flex-column gap-2 mb-0">
             <p class="clr--BFD fw-normal font-11 mb-0">PREDICTED TOTAL PERFORMANCE</p>
             <h2 class="main-title fw-bold mb-0">
-              <span data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1400">82.6%</span>
-              <span data-aos="fade-left" data-aos-easing="linear" data-aos-duration="3000"> A</span></h2>
+              <span>{{ displayPercentage | number:'1.1-1' }}%</span>
+              <span class="show-grade" *ngIf="showGrade">
+                {{ grade }}
+              </span>
+            </h2>
             <div class="d-flex gap-2">
               <p class="clr--BFD fw-normal font-11 mb-0">826 PTS</p>
               <div

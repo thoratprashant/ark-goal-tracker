@@ -35,7 +35,8 @@
                 margin-top: 0;
                 height: auto;
                 width: 100%;
-                max-width: 19%
+                max-width: 19%;
+                padding: 24px;
             }
         }
         .course-performance-table{
@@ -283,6 +284,23 @@
         .summary-section{
             .card.menu-card{
                 max-width: 18%;
+                padding: 16px;
+            }
+        }
+        .status-section{
+            .card{
+                h3{
+                    font-size: 25px;
+                }
+                .font-12{
+                    font-size: 11px !important;
+                }
+                .font-13{
+                    font-size: 12px !important;
+                }
+                .font-15{
+                    font-size: 14px !important;
+                }
             }
         }
     }

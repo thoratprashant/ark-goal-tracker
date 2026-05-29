@@ -6,7 +6,6 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
-import AOS from 'aos';
 
 @Component({
   selector: 'app-district-performance-summary',
@@ -27,42 +26,108 @@ export class DistrictPerformanceSummary{
 
   private currentIndex = 0;
 
+  targetPercentage = 82.6; // API value
+  grade = 'A';
+  displayPercentage = 0;
+  showGrade = false;
+
   scoreData = [
   {
     score: 800,
+    displayScore: 0,
     progress: 80,
     color: '#D64550',
     label: '2023-24'
   },
   {
     score: 849,
+    displayScore: 0,
     progress: 85,
     color: '#DCE52A',
     label: '2024-25'
   },
   {
     score: 900,
+    displayScore: 0,
     progress: 90,
     color: '#90C955',
     label: '2025-26 Goal'
   },
   {
     score: 826,
+    displayScore: 0,
     progress: 82,
     color: '#6D94FF',
     label: '2025-26 Predicted'
   }
 ];
 
+  ngOnInit(): void {
+    this.animateScores();
+    this.animatePercentage();
+  }
+
+  animateScores(): void {
+    this.scoreData.forEach((item, index) => {
+      setTimeout(() => {
+        this.countUpScore(item);
+      }, index * 500);
+    });
+  }
+
+  animatePercentage(): void {
+      const target = this.targetPercentage;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayPercentage = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayPercentage = target;
+          
+          setTimeout(() => {
+            this.showGrade = true;
+            this.cdr.detectChanges();
+          }, 300);
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  countUpScore(item: any): void {
+    const target = item.score;
+    const duration = 2500;
+    const interval = 20;
+
+    const increment = target / (duration / interval);
+
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+
+      item.displayScore = Math.round(current);
+
+      this.cdr.detectChanges();
+    }, interval);
+  }
+
   ngAfterViewInit() {
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
-
-    AOS.init({
-      duration: 4000,
-      once: true
-    }); 
-    AOS.refresh();
   }
 
   scrollLeft() {

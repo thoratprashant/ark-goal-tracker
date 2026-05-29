@@ -669,9 +669,9 @@ body{
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                  animation: popIn 0.8s ease forwards;
-                  transform: scale(0.8);
-                  opacity: 0;
+                  //animation: popIn 0.8s ease forwards;
+                  // transform: scale(0.8);
+                  // opacity: 0;
                   svg {
                     width: 100%;
                     height: 100%;
@@ -684,12 +684,20 @@ body{
                       stroke: #d9d9d9;
                     }
                     .score-ring-progress {
+                      stroke-width: 9;
                       stroke-linecap: round;
                       transform: rotate(70deg);
                       transform-origin: 50% 50%;
-                      stroke-dasharray: 100;
-                      stroke-dashoffset: 100;
-                      animation: progressLoad 4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                      // stroke-dasharray: 100;
+                      // stroke-dashoffset: 100;
+
+                      // animation: progressLoad 10s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                      //animation: progressLoad 10s linear forwards;
+                      // animation: progressLoad 10s cubic-bezier(0.1, 0.7, 0.1, 1) forwards;
+
+                      stroke-dasharray: 314.16;
+                      stroke-dashoffset: 314.16;
+                      animation: progressLoad 5s linear forwards;
                     }
                   }
                   .score-ring-inner {
@@ -723,9 +731,18 @@ body{
                 }
               }
             }
-            .percentage,.grade {
-              animation: popIn 0.8s ease forwards;
-              transform: scale(0.8);
+            .show-grade{
+              animation: fadeIn 0.4s ease-in-out;
+            }
+            @keyframes fadeIn {
+              from {
+                opacity: 0;
+                transform: translateX(5px);
+              }
+              to {
+                opacity: 1;
+                transform: translateX(0);
+              }
             }
             @keyframes popIn {
               to {
@@ -734,13 +751,22 @@ body{
               }
             }
             @keyframes progressLoad {
-              from {
-                stroke-dashoffset: 100;
-              }
+              // from {
+              //   stroke-dashoffset: 100;
+              // }
 
-              to {
-                stroke-dashoffset: var(--progress);
-              }
+              // to {
+              //   stroke-dashoffset: calc(100 - var(--progress));
+              // }
+                from {
+                  stroke-dashoffset: 314.16;
+                }
+
+                to {
+                  stroke-dashoffset: calc(
+                    314.16 - (314.16 * var(--progress) / 100)
+                  );
+                }
             }
           }
           .divider-line{
