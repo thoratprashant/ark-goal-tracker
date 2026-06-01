@@ -80,12 +80,10 @@ export class SchoolDetails {
   scrollContainer!: ElementRef<HTMLDivElement>;
 
   @ViewChild('performanceSummary') performanceSummary!: ElementRef;
-
-  @ViewChild('performanceSummary') progressMultiple!: ElementRef;
-
   progressAnimated = false;
   private animationStarted = false;
 
+  @ViewChild('progressMultiple') progressMultiple!: ElementRef;
   progressAnimatedMultiple = false;
   private animationStartedMultiple = false;
 

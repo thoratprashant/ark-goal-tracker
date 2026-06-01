@@ -573,34 +573,34 @@
             </div>
           </div>
         </div>
-        <div #progressMultiple class="row">
+        <div class="row">
           <div class="col-12">
             <div class="card p-3 p-sm-4 d-flex flex-column mt-3">
               <h4 class="fw-bold font-20 mb-3">
                 Overall {{ data.totalStudents | number }} Students
               </h4>
-              <div class="progress custom-progress rounded-3 mb-4">
+              <div #progressMultiple class="progress custom-progress rounded-3 mb-4">
 
-                <div class="progress-bar bg-green text-dark fw-semibold position-relative" [style.width.%]="progressAnimated ? data.achWidth : 0"> 
+                <div class="progress-bar bg-green text-dark fw-semibold position-relative" [style.width.%]="progressAnimatedMultiple ? data.achWidth : 0"> 
                   <p class="p--text mb-0 font-12">ACH</p>
                 </div>
 
-                <div class="progress-bar bg-green text-dark fw-semibold position-relative" [style.width.%]="progressAnimated ? data.achievementWidth : 0">
+                <div class="progress-bar bg-green text-dark fw-semibold position-relative" [style.width.%]="progressAnimatedMultiple ? data.achievementWidth : 0">
                   {{ data.achievement }}%
                   <p class="p--text mb-0 font-12">LG</p>
                 </div>
 
-                <div class="progress-bar bg-yellow text-dark fw-semibold position-relative" [style.width.%]="progressAnimated ? data.learningGainWidth : 0">
+                <div class="progress-bar bg-yellow text-dark fw-semibold position-relative" [style.width.%]="progressAnimatedMultiple ? data.learningGainWidth : 0">
                   {{ data.learningGain }}% 
                   <p class="p--text mb-0 font-12">BQ</p>
                 </div>
 
-                <div class="progress-bar bg-orange text-white fw-semibold position-relative" [style.width.%]="progressAnimated ? data.bottomQuartileWidth : 0">
+                <div class="progress-bar bg-orange text-white fw-semibold position-relative" [style.width.%]="progressAnimatedMultiple ? data.bottomQuartileWidth : 0">
                   {{ data.bottomQuartile }}%
                   <p class="p--text mb-0 font-12">BQ</p>
                 </div>
 
-                <div class="progress-bar bg-org-fent text-danger fw-semibold position-relative" [style.width.%]="progressAnimated ? data.totalWidth : 0">
+                <div class="progress-bar bg-org-fent text-danger fw-semibold position-relative" [style.width.%]="progressAnimatedMultiple ? data.totalWidth : 0">
                   {{ data.total }}%
                 </div>
 
