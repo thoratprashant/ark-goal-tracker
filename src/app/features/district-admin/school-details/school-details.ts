@@ -318,46 +318,6 @@ export class SchoolDetails {
     requestAnimationFrame(animate);
   }
 
-  private animatePerformanceTrendChart() {
-
-  const duration = 1800;
-  const fps = 60;
-
-  const totalFrames = duration / (1000 / fps);
-
-  let frame = 0;
-
-  const interval = setInterval(() => {
-
-    frame++;
-
-    const progress = frame / totalFrames;
-
-    const animatedSeries = this.performanceTrendsRealSeries.map(series => ({
-      name: series.name,
-      data: series.data.map(value =>
-        Number((value * progress).toFixed(1))
-      )
-    }));
-
-    this.schoolPerformanceTrendsChart.updateSeries(
-      animatedSeries,
-      false
-    );
-
-    if (frame >= totalFrames) {
-
-      clearInterval(interval);
-
-      this.schoolPerformanceTrendsChart.updateSeries(
-        this.performanceTrendsRealSeries,
-        true
-      );
-    }
-
-  }, 1000 / fps);
-}
-
   ngAfterViewInit() {
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
@@ -418,9 +378,14 @@ export class SchoolDetails {
 
           this.ngZone.run(() => {
 
+            // setTimeout(() => {
+            //   this.animatePerformanceTrendChart();
+            // }, 200);
+
             setTimeout(() => {
-              this.animatePerformanceTrendChart();
-            }, 200);
+              this.schoolChartOptions.series = this.performanceTrendsRealSeries;
+              this.schoolPerformanceTrendsChart.updateSeries(this.performanceTrendsRealSeries, true);
+            }, 250);
 
           });
 
@@ -577,19 +542,16 @@ export class SchoolDetails {
     toolbar: { show: false },
     animations: {
       enabled: true,
-
-      easing: 'easeout',
-
-      speed: 2000,
-
-      animateGradually: {
-        enabled: false
-      },
-
-      dynamicAnimation: {
-        enabled: true,
-        speed: 2000
-      }
+      easing: 'easeinout',
+        speed: 1400,
+        animateGradually: {
+          enabled: true,
+          delay: 180
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 1400
+        }
     }
   },
 
