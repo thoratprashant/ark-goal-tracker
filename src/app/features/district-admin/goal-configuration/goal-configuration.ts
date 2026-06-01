@@ -35,9 +35,17 @@ export class GoalConfiguration {
   @ViewChild('scrollContainer', { static: false })
   scrollContainer!: ElementRef<HTMLDivElement>;
 
+  @ViewChild('goalSection') goalSection!: ElementRef;
+
+  @ViewChild('configurationSection') configurationSection!: ElementRef;
+
   progressList = [
     { label: 'Progress', value: 100, color: '#3B82F6' }
-  ] 
+  ];
+  
+  progressAnimated = false;
+  progressAnimatedTable = false;
+  private animationStarted = false;
 
 rows: TableNode[]= [
   {
@@ -266,6 +274,15 @@ rows: TableNode[]= [
   displayPercentage = 0;
   showGrade = false;
 
+  displayTotalGoal = 0;
+  targetTotalGoal = 35;
+
+  displayAvgDistGoal = 0;
+  targetAvgDistGoal = 35;
+
+  displayTotalPrediction = 0;
+  targetTotalPrediction = 8;
+
   scoreData = [
   {
     score: 800,
@@ -359,10 +376,121 @@ rows: TableNode[]= [
       this.cdr.detectChanges();
     }, interval);
   }
+
+  animateTotalGoals(): void {
+      const target = this.targetTotalGoal;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayTotalGoal = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayTotalGoal = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateAvgDistGoal(): void {
+      const target = this.targetAvgDistGoal;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayAvgDistGoal = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayAvgDistGoal = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateTotalPrediction(): void {
+      const target = this.targetTotalPrediction;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayTotalPrediction = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayTotalPrediction = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
   
   ngAfterViewInit() {
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting && !this.animationStarted) {
+            this.animationStarted = true;
+
+            this.animateTotalGoals();
+            this.animateAvgDistGoal();
+            this.animateTotalPrediction();
+
+            setTimeout(() => {
+              this.progressAnimated = true;
+            }, 100);
+
+            observer.unobserve(entry.target);
+          }
+
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    )
+    observer.observe(this.goalSection.nativeElement);
+
+    const tableObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          this.animationStarted = true;
+          setTimeout(() => {
+            this.progressAnimatedTable = true;
+          }, 100);
+
+          tableObserver.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    tableObserver.observe(this.configurationSection.nativeElement);
   }
 
   scrollLeft() {
