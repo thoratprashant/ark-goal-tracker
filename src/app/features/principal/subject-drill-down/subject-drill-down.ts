@@ -29,6 +29,18 @@ interface TableRow {
   styleUrl: './subject-drill-down.scss',
 })
 export class SubjectDrillDown {
+  ach = 0;
+  lg = 0;
+  bq = 0;
+  points = 0;
+  animated = false;
+
+  onTrack = 0;
+  bubble = 0;
+  offTrack = 0;
+  proficiencyGoal = 0;
+  statusAnimated = false;
+
   viewMode = signal<'achievement' | 'learning' | 'quartile'>('achievement');
 
   constructor(private cdr: ChangeDetectorRef, private commonService: CommonService,) {}
@@ -143,8 +155,81 @@ export class SubjectDrillDown {
   }
 
   ngAfterViewInit() {
+      setTimeout(() => {
+      const section = document.querySelector('.status-section');
+
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && !this.statusAnimated) {
+          this.statusAnimated = true;
+
+          this.summarycountTo('onTrack', 169);
+          this.summarycountTo('bubble', 98);
+          this.summarycountTo('offTrack', 145);
+          this.summarycountTo('proficiencyGoal', 260);
+
+          observer.disconnect();
+        }
+      });
+
+      if (section) observer.observe(section);
+    });
+
+    const section = document.querySelector('.summary-section');
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !this.animated) {
+        this.animated = true;
+
+        this.countTo('ach', 75);
+        this.countTo('lg', 70);
+        this.countTo('bq', 65);
+        this.countTo('points', 4, 1);
+
+        observer.disconnect();
+      }
+    });
+    observer.observe(section!);
+
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
+  }
+
+  countTo(key: 'ach' | 'lg' | 'bq' | 'points', end: number, decimal = 0) {
+    let start = 0;
+    const duration = 1000;
+    const stepTime = 20;
+    const increment = end / (duration / stepTime);
+
+    const timer = setInterval(() => {
+      start += increment;
+
+      if (start >= end) {
+        start = end;
+        clearInterval(timer);
+      }
+
+      this[key] = +start.toFixed(decimal);
+    }, stepTime);
+  }
+
+  summarycountTo(
+    key: 'onTrack' | 'bubble' | 'offTrack' | 'proficiencyGoal',
+    end: number
+  ) {
+    let start = 0;
+    const duration = 1000;
+    const stepTime = 20;
+    const increment = end / (duration / stepTime);
+
+    const timer = setInterval(() => {
+      start += increment;
+
+      if (start >= end) {
+        start = end;
+        clearInterval(timer);
+      }
+
+      this[key] = Math.round(start);
+    }, stepTime);
   }
 
   scrollLeft() {
