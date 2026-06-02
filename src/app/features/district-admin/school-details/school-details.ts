@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, HostListener, signal, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, NgZone, signal, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -74,10 +74,37 @@ export type ChartOptions = {
 })
 export class SchoolDetails { 
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone) {}
 
   @ViewChild('scrollContainer', { static: false })
   scrollContainer!: ElementRef<HTMLDivElement>;
+
+  @ViewChild('performanceSummary') performanceSummary!: ElementRef;
+  progressAnimated = false;
+  private animationStarted = false;
+
+  @ViewChild('progressMultiple') progressMultiple!: ElementRef;
+  progressAnimatedMultiple = false;
+  private animationStartedMultiple = false;
+
+  @ViewChild('schoolPerformanceTrendsSection') schoolPerformanceTrendsSection!: ElementRef;
+  @ViewChild('schoolPerformanceTrendsChart') schoolPerformanceTrendsChart!: ChartComponent;
+
+  private performanceTrendsAnimated = false;
+  private performanceTrendsRealSeries = [
+    {
+      name: 'Achievement',
+      data: [68, 72, 75, 78]
+    },
+    {
+      name: 'Learning Gains',
+      data: [80, 80, 80, 80]
+    },
+    {
+      name: 'Bottom Quartile',
+      data: [45, 50, 52, 55]
+    }
+  ];
 
   activeIndex = 0;
   showPrev = false;
@@ -90,6 +117,18 @@ export class SchoolDetails {
   grade = 'A';
   displayPercentage = 0;
   showGrade = false;
+
+  displayAchievement = 0;
+  targetAchievement = 75;
+
+  displayLearningGains = 0;
+  targetLearningGains = 70;
+
+  displayBottomQuartile = 0;
+  targetBottomQuartile = 65;
+
+  displayStudents = 0;
+  targetStudents = 4;
 
   scoreData = [
   {
@@ -185,9 +224,200 @@ export class SchoolDetails {
     }, interval);
   }
 
+  animateAchievement(): void {
+      const target = this.targetAchievement;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayAchievement = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayAchievement = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateLearningGains(): void {
+      const target = this.targetLearningGains;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayLearningGains = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayLearningGains = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateBottomQuartile(): void {
+      const target = this.targetBottomQuartile;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayBottomQuartile = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayBottomQuartile = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animatedisplayStudents(): void {
+      const target = this.targetStudents;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayStudents = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayStudents = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
   ngAfterViewInit() {
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting && !this.animationStarted) {
+            this.animationStarted = true;
+
+            this.animateAchievement();
+            this.animateLearningGains();
+            this.animateBottomQuartile();
+            this.animatedisplayStudents();
+
+            setTimeout(() => {
+              this.progressAnimated = true;
+            }, 100);
+
+            observer.unobserve(entry.target);
+          }
+
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    )
+    observer.observe(this.performanceSummary.nativeElement);
+
+    const tableObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !this.animationStartedMultiple) {
+          this.animationStartedMultiple = true;
+          setTimeout(() => {
+            this.progressAnimatedMultiple = true;
+          }, 100);
+
+          tableObserver.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    tableObserver.observe(this.progressMultiple.nativeElement);
+
+    const performanceTrendsObserver = new IntersectionObserver(
+      entries => {
+        const entry = entries[0];
+
+        if (
+          entry.isIntersecting &&
+          !this.performanceTrendsAnimated
+        ) {
+
+          this.performanceTrendsAnimated = true;
+
+          this.ngZone.run(() => {
+
+            // setTimeout(() => {
+            //   this.animatePerformanceTrendChart();
+            // }, 200);
+
+            setTimeout(() => {
+              this.schoolChartOptions.series = this.performanceTrendsRealSeries;
+              this.schoolPerformanceTrendsChart.updateSeries(this.performanceTrendsRealSeries, true);
+            }, 250);
+
+          });
+
+          performanceTrendsObserver.disconnect();
+        }
+      },
+      {
+        threshold: 0.3
+      }
+    );
+
+    performanceTrendsObserver.observe(this.schoolPerformanceTrendsSection.nativeElement);
+
+    // Performance Trends
+    // const performanceTrendsObserver = new IntersectionObserver(
+    //   entries => {
+    //     if (entries[0].isIntersecting && !this.performanceTrendsAnimated) {
+    //       this.performanceTrendsAnimated = true;
+
+    //       this.ngZone.run(() => {
+    //         setTimeout(() => {
+    //           this.schoolChartOptions.series = this.performanceTrendsRealSeries;
+    //           this.schoolPerformanceTrendsChart.updateSeries(this.performanceTrendsRealSeries, true);
+    //         }, 250);
+    //       });
+
+    //       performanceTrendsObserver.disconnect();
+    //     }
+    //   },
+    //   {
+    //     threshold: 0.25
+    //   }
+    // ); 
+    // performanceTrendsObserver.observe(this.schoolPerformanceTrendsSection.nativeElement);
   }
 
   scrollLeft() {
@@ -291,15 +521,15 @@ export class SchoolDetails {
   series: [
     {
       name: 'Achievement',
-      data: [68, 72, 75, 78]
+      data: [0, 0, 0, 0]
     },
     {
       name: 'Learning Gains',
-      data: [80, 80, 80, 80]
+      data: [0, 0, 0, 0]
     },
     {
       name: 'Bottom Quartile',
-      data: [45, 50, 52, 55]
+      data: [0, 0, 0, 0]
     }
   ],
 
@@ -307,7 +537,20 @@ export class SchoolDetails {
     type: 'line',
     height: 400,
     zoom: { enabled: false },
-    toolbar: { show: false }
+    toolbar: { show: false },
+    animations: {
+      enabled: true,
+      easing: 'easeinout',
+        speed: 1400,
+        animateGradually: {
+          enabled: true,
+          delay: 180
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 1400
+        }
+    }
   },
 
   stroke: {

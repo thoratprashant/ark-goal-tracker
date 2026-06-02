@@ -380,13 +380,13 @@
       </mat-form-field>
     </div>
   </div>
-  <div class="row summary-section">
+  <div #performanceSummary class="row summary-section">
     <div class="col-12 col-md-6 col-lg-3">
       <div class="card green-section p-3 p-sm-4 d-flex flex-column">
         <div class="d-flex flex-row align-items-start justify-content-between">
           <div class="d-flex flex-column gap-1">
             <p class="text-muted font-14 fw-semibold mb-0">ELA Achievement</p>
-            <h3 class="clr--111827 fw-bold mb-0">75%</h3>
+            <h3 class="clr--111827 fw-bold mb-0">{{ displayAchievement | number:'1.1-1' }}%</h3>
             <span class="clr--9CA3AF font-11 fw-normal">Achievement rate</span>
           </div>
           <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0">
@@ -406,7 +406,7 @@
         <div class="d-flex flex-row align-items-start justify-content-between">
           <div class="d-flex flex-column gap-1">
             <p class="text-muted font-14 fw-semibold mb-0">ELA Learning Gains</p>
-            <h3 class="clr--111827 fw-bold mb-0">70%</h3>
+            <h3 class="clr--111827 fw-bold mb-0">{{ displayLearningGains | number:'1.1-1' }}%</h3>
             <span class="clr--9CA3AF font-11 fw-normal">Learning gains</span>
           </div>
           <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0">
@@ -426,7 +426,7 @@
         <div class="d-flex flex-row align-items-start justify-content-between">
           <div class="d-flex flex-column gap-1">
             <p class="text-muted font-14 fw-semibold mb-0">ELA Bottom Quartile</p>
-            <h3 class="clr--111827 fw-bold mb-0">65%</h3>
+            <h3 class="clr--111827 fw-bold mb-0">{{ displayBottomQuartile | number:'1.1-1' }}%</h3>
             <span class="clr--9CA3AF font-11 fw-normal">Bottom quartile progress</span>
           </div>
           <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0">
@@ -446,7 +446,7 @@
         <div class="d-flex flex-row align-items-start justify-content-between">
           <div class="d-flex flex-column gap-1">
             <p class="text-muted font-14 fw-semibold mb-0">25 students</p>
-            <h3 class="clr--111827 fw-bold mb-0">4.0</h3>
+            <h3 class="clr--111827 fw-bold mb-0">{{ displayStudents | number:'1.1-1' }}</h3>
             <span class="clr--9CA3AF font-11 fw-normal">points per student earned</span>
           </div>
           <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0">
@@ -579,28 +579,28 @@
               <h4 class="fw-bold font-20 mb-3">
                 Overall {{ data.totalStudents | number }} Students
               </h4>
-              <div class="progress custom-progress rounded-3 mb-4">
+              <div #progressMultiple class="progress custom-progress rounded-3 mb-4">
 
-                <div class="progress-bar bg-green text-dark fw-semibold position-relative" [style.width.%]="data.achWidth"> 
+                <div class="progress-bar bg-green text-dark fw-semibold position-relative" [style.width.%]="progressAnimatedMultiple ? data.achWidth : 0"> 
                   <p class="p--text mb-0 font-12">ACH</p>
                 </div>
 
-                <div class="progress-bar bg-green text-dark fw-semibold position-relative" [style.width.%]="data.achievementWidth">
+                <div class="progress-bar bg-green text-dark fw-semibold position-relative" [style.width.%]="progressAnimatedMultiple ? data.achievementWidth : 0">
                   {{ data.achievement }}%
                   <p class="p--text mb-0 font-12">LG</p>
                 </div>
 
-                <div class="progress-bar bg-yellow text-dark fw-semibold position-relative" [style.width.%]="data.learningGainWidth">
+                <div class="progress-bar bg-yellow text-dark fw-semibold position-relative" [style.width.%]="progressAnimatedMultiple ? data.learningGainWidth : 0">
                   {{ data.learningGain }}% 
                   <p class="p--text mb-0 font-12">BQ</p>
                 </div>
 
-                <div class="progress-bar bg-orange text-white fw-semibold position-relative" [style.width.%]="data.bottomQuartileWidth">
+                <div class="progress-bar bg-orange text-white fw-semibold position-relative" [style.width.%]="progressAnimatedMultiple ? data.bottomQuartileWidth : 0">
                   {{ data.bottomQuartile }}%
                   <p class="p--text mb-0 font-12">BQ</p>
                 </div>
 
-                <div class="progress-bar bg-org-fent text-danger fw-semibold position-relative" [style.width.%]="data.totalWidth">
+                <div class="progress-bar bg-org-fent text-danger fw-semibold position-relative" [style.width.%]="progressAnimatedMultiple ? data.totalWidth : 0">
                   {{ data.total }}%
                 </div>
 
@@ -621,8 +621,8 @@
             <mat-button-toggle value="bq">BQ</mat-button-toggle>
           </mat-button-toggle-group>
         </div>
-        <div class="chart-container">
-          <apx-chart [series]="schoolChartOptions.series" [chart]="schoolChartOptions.chart"
+        <div #schoolPerformanceTrendsSection class="chart-container">
+          <apx-chart #schoolPerformanceTrendsChart [series]="schoolChartOptions.series" [chart]="schoolChartOptions.chart"
             [xaxis]="schoolChartOptions.xaxis" [yaxis]="schoolChartOptions.yaxis" [stroke]="schoolChartOptions.stroke"
             [grid]="schoolChartOptions.grid" [markers]="schoolChartOptions.markers" [legend]="schoolChartOptions.legend"
             [tooltip]="schoolChartOptions.tooltip" [annotations]="schoolChartOptions.annotations"

@@ -32,6 +32,11 @@
         }
         .progress{
             height: 8px;
+            border-radius: 12px;
+            .progress-bar{
+                font-weight: 700;
+                transition: width 3s ease-in-out;
+            }
         }
         .green--strip{
             padding: 2px 8px;
@@ -132,25 +137,33 @@
                                 width: 135px;
                                 .progress{
                                     height:12px; 
+                                    .progress-bar {
+                                        transition: width 2s ease-in-out;
+                                    }
+                                    .progress-thumb{
+                                        position: absolute;
+                                        top: 50%;
+                                        transform: translate(-50%, -50%);
+                                        width: 20px;
+                                        height: 20px; 
+                                        border-radius: 50%;
+                                        border: 3px solid #fff;
+                                        transition: left 2s ease-in-out;
+                                    }
                                 } 
-                                .progress-thumb{
-                                    position: absolute;
-                                    top: 50%;
-                                    transform: translate(-50%, -50%);
-                                    width: 20px;
-                                    height: 20px; 
-                                    border-radius: 50%;
-                                    border: 3px solid #fff;
-                                }
                             } 
                             &.doable{
                                 .progress{ 
                                     background-color: #fac7c7;
-                                    .progress-thumb,
                                     .progress-bar{
                                         background-color: #f4a000;
-                                    } 
-                                } 
+                                        transition: width 2s ease-in-out;
+                                    }
+                                    .progress-thumb{
+                                        background-color: #f4a000;
+                                        transition: left 2s ease-in-out;
+                                    }
+                                }
                                 .g--per{
                                     color: #F59E0B;
                                 }
@@ -158,23 +171,31 @@
                             &.stretch{
                                 .progress{ 
                                 background-color: #fac7c7;
-                                .progress-thumb,
-                                .progress-bar{
-                                    background-color: #ef4444;
-                                } 
-                                } 
+                                    .progress-bar{
+                                        background-color: #ef4444;
+                                        transition: width 2s ease-in-out;
+                                    }
+                                    .progress-thumb{
+                                        background-color: #ef4444;
+                                        transition: left 2s ease-in-out;
+                                    } 
+                                }
                                 .g--per{
                                     color: #ef4444;
                                 }
                             }
                             &.safe{
                                 .progress{ 
-                                        background-color: #fac7c7;
-                                        .progress-thumb,
-                                        .progress-bar{
-                                            background-color: #22C55E;
+                                    background-color: #fac7c7;
+                                    .progress-bar{
+                                        background-color: #22C55E;
+                                        transition: width 2s ease-in-out;
+                                    }
+                                    .progress-thumb{
+                                        background-color: #22C55E;
+                                        transition: left 2s ease-in-out;
                                     } 
-                                } 
+                                }
                                 .g--per{
                                     color: #22C55E;
                                 }
