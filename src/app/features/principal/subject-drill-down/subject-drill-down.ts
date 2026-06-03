@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { CommonService } from '../../../core/helper/common.service';
+import AOS from 'aos';
 
 interface TableRow {
   studentName: string;
@@ -191,6 +192,12 @@ export class SubjectDrillDown {
 
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
+
+    	AOS.init({
+      duration: 1000,
+      once: true
+    }); 
+    AOS.refresh();
   }
 
   countTo(key: 'ach' | 'lg' | 'bq' | 'points', end: number, decimal = 0) {

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, HostListener, signal, ViewChild, AfterViewInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, signal, ViewChild, AfterViewInit, NgZone } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -8,6 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { ChartComponent } from 'ng-apexcharts';
+import AOS from 'aos';
+
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -97,7 +99,7 @@ export class Dashboard {
 
   schoolPerformanceTrend = signal<'ach' | 'lg' | 'bq' | 'all'>('all');
   
-  constructor(private cdr: ChangeDetectorRef, private commonService: CommonService,) {}
+  constructor(private cdr: ChangeDetectorRef, private commonService: CommonService,private ngZone: NgZone,) {}
 
    @ViewChild('chart', { static: true })
   chartRef!: ElementRef<HTMLDivElement>;
@@ -110,12 +112,20 @@ export class Dashboard {
   showNext = false;
   isScrollable = false;
 
+  achPercent = 0;
+  lgPercent = 0;
+  bqPercent = 0;
+  summaryAnimated = false;
+
   private currentIndex = 0;
 
   targetPercentage = 67;
   grade = 'A';
   displayPercentage = 0;
   showGrade = false;
+
+  showSubjectProgress = false;
+  showMainChart = false;
 
   scoreData = [
   {
@@ -212,11 +222,98 @@ export class Dashboard {
   }
 
   ngAfterViewInit() {
+    setTimeout(() => {
+      this.observeMainChart();
+    }, 500);
+
+    setTimeout(() => {
+      this.observeSubjectPerformance();
+    }, 500);
+
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
 
     this.createDiagram();
+
+    setTimeout(() => {
+      this.observeSummarySection();
+    }, 500);
+
+    AOS.init({
+      duration: 1000,
+      once: true
+    }); 
+    AOS.refresh();
   }
+
+  observeSummarySection() {
+    const section = document.getElementById('summarySection');
+    if (!section) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !this.summaryAnimated) {
+        this.summaryAnimated = true;
+
+        this.ngZone.run(() => {
+          this.countTo('achPercent', 75);
+          this.countTo('lgPercent', 70);
+          this.countTo('bqPercent', 65);
+        });
+
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+  }
+  countTo(key: 'achPercent' | 'lgPercent' | 'bqPercent', end: number) {
+    let start = 0;
+    const timer = setInterval(() => {
+      start += 2;
+      if (start >= end) {
+        start = end;
+        clearInterval(timer);
+      }
+      this[key] = start;
+      this.cdr.detectChanges();
+    }, 25);
+  }
+
+  observeSubjectPerformance() {
+    const section = document.getElementById('subjectPerformanceSection');
+    if (!section) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        this.ngZone.run(() => {
+          this.showSubjectProgress = true;
+          this.cdr.detectChanges();
+        });
+
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+  }
+  observeMainChart() {
+    const section = document.getElementById('mainChartSection');
+    if (!section) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        this.ngZone.run(() => {
+          this.showMainChart = true;
+          this.cdr.detectChanges();
+        });
+
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+  }
+
 
   scrollLeft() {
     if (!this.scrollContainer || !this.isScrollable) return;
