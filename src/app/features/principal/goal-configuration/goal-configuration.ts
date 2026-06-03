@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, NgZone, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-goal-configuration',
@@ -13,7 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class GoalConfiguration {
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private ngZone: NgZone,private cdr: ChangeDetectorRef) {}
 
   goalScore = 49;
 
@@ -109,12 +110,22 @@ export class GoalConfiguration {
   }
 
   ngAfterViewInit() {
+      setTimeout(() => {
+    this.observeGoalProgress();
+  }, 500);
+  
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
     this.updateScrollButtons1();
     setTimeout(() => this.checkScroll1(), 100);
     this.updateScrollButtons2();
     setTimeout(() => this.checkScroll2(), 100);
+
+    AOS.init({
+      duration: 1000,
+      once: true
+    }); 
+    AOS.refresh();
   }
 
   scrollLeft() {
@@ -344,109 +355,269 @@ export class GoalConfiguration {
       this.checkScroll2();
     }, 100);
   }
+ 
+  goalCards = [
+  {
+    subject: 'ELA',
+    type: 'ACH',
+    borderClass: 'yellow-border',
+    headerClass: 'yellow-header',
+    progressValue: 80,
+    stats: [
+      { label: 'District Set Goal', value: 86, color: 'blue' },
+      { label: 'School Set Goal', value: 72, color: 'green' },
+      { label: 'Current Predicted', value: 77, color: 'orange' },
+      { label: 'Prior Year Score', value: 84, color: 'gray' },
+    ],
+    yoy: '-2%',
+    yoyIcon: 'images/red-downward-arrow.svg',
+    yoyClass: 'clr--DC2626',
+    vsDistrict: '+6 pts',
+    vsClass: 'clr--16A34A',
+  },
+  {
+    subject: 'Math',
+    type: 'ACH',
+    borderClass: 'green-border',
+    headerClass: 'green-header',
+    progressValue: 44,
+    stats: [
+      { label: 'District Set Goal', value: 39, color: 'blue' },
+      { label: 'School Set Goal', value: 44, color: 'green' },
+      { label: 'Current Predicted', value: 44, color: 'orange' },
+      { label: 'Prior Year Score', value: 36, color: 'gray' },
+    ],
+    yoy: '-2%',
+    yoyIcon: 'images/red-downward-arrow.svg',
+    yoyClass: 'clr--DC2626',
+    vsDistrict: '+5 pts',
+    vsClass: 'clr--16A34A',
+  },
+  {
+    subject: 'Science',
+    type: 'ACH',
+    borderClass: 'green-border',
+    headerClass: 'green-header',
+    progressValue: 48,
+    stats: [
+      { label: 'District Set Goal', value: 44, color: 'blue' },
+      { label: 'School Set Goal', value: 48, color: 'green' },
+      { label: 'Current Predicted', value: 46, color: 'orange' },
+      { label: 'Prior Year Score', value: 41, color: 'gray' },
+    ],
+    yoy: '- 0%',
+    yoyIcon: '',
+    yoyClass: 'clr--7373',
+    vsDistrict: '+4 pts',
+    vsClass: 'clr--16A34A',
+  },
+  {
+    subject: 'MS Acceleration',
+    type: 'ACH',
+    borderClass: 'red-border',
+    headerClass: 'red-header',
+    progressValue: 43,
+    stats: [
+      { label: 'District Set Goal', value: 44, color: 'blue' },
+      { label: 'School Set Goal', value: 43, color: 'green' },
+      { label: 'Current Predicted', value: 44, color: 'orange' },
+      { label: 'Prior Year Score', value: 41, color: 'gray' },
+    ],
+    yoy: '- 0%',
+    yoyIcon: '',
+    yoyClass: 'clr--7373',
+    vsDistrict: '-1 pts',
+    vsClass: 'clr--DC2626',
+  },
+  {
+    subject: 'ELA',
+    type: 'ACH',
+    borderClass: 'yellow-border',
+    headerClass: 'yellow-header',
+    progressValue: 80,
+    stats: [
+      { label: 'District Set Goal', value: 86, color: 'blue' },
+      { label: 'School Set Goal', value: 72, color: 'green' },
+      { label: 'Current Predicted', value: 77, color: 'orange' },
+      { label: 'Prior Year Score', value: 84, color: 'gray' },
+    ],
+    yoy: '-2%',
+    yoyIcon: 'images/red-downward-arrow.svg',
+    yoyClass: 'clr--DC2626',
+    vsDistrict: '+6 pts',
+    vsClass: 'clr--16A34A',
+  },
+  {
+    subject: 'ELA Grad 3',
+    type: 'Grade 3',
+    borderClass: 'green-border',
+    headerClass: 'green-header',
+    progressValue: 44,
+    stats: [
+      { label: 'District Set Goal', value: 39, color: 'blue' },
+      { label: 'School Set Goal', value: 44, color: 'green' },
+      { label: 'Current Predicted', value: 44, color: 'orange' },
+      { label: 'Prior Year Score', value: 36, color: 'gray' },
+    ],
+    yoy: '-2%',
+    yoyIcon: 'images/red-downward-arrow.svg',
+    yoyClass: 'clr--DC2626',
+    vsDistrict: '+5 pts',
+    vsClass: 'clr--16A34A',
+  },
+  {
+    subject: 'Math LG',
+    type: 'LG',
+    borderClass: 'green-border',
+    headerClass: 'green-header',
+    progressValue: 48,
+    stats: [
+      { label: 'District Set Goal', value: 44, color: 'blue' },
+      { label: 'School Set Goal', value: 48, color: 'green' },
+      { label: 'Current Predicted', value: 46, color: 'orange' },
+      { label: 'Prior Year Score', value: 41, color: 'gray' },
+    ],
+    yoy: '- 0%',
+    yoyIcon: '',
+    yoyClass: 'clr--7373',
+    vsDistrict: '+4 pts',
+    vsClass: 'clr--16A34A',
+  },
+  {
+    subject: 'SS',
+    type: 'ACH',
+    borderClass: 'red-border',
+    headerClass: 'red-header',
+    progressValue: 43,
+    stats: [
+      { label: 'District Set Goal', value: 44, color: 'blue' },
+      { label: 'School Set Goal', value: 43, color: 'green' },
+      { label: 'Current Predicted', value: 44, color: 'orange' },
+      { label: 'Prior Year Score', value: 41, color: 'gray' },
+    ],
+    yoy: '- 0%',
+    yoyIcon: '',
+    yoyClass: 'clr--7373',
+    vsDistrict: '-1 pts',
+    vsClass: 'clr--DC2626',
+  },
+  {
+    subject: 'HS CCA',
+    type: 'ACH',
+    borderClass: 'yellow-border',
+    headerClass: 'yellow-header',
+    progressValue: 80,
+    stats: [
+      { label: 'District Set Goal', value: 86, color: 'blue' },
+      { label: 'School Set Goal', value: 72, color: 'green' },
+      { label: 'Current Predicted', value: 77, color: 'orange' },
+      { label: 'Prior Year Score', value: 84, color: 'gray' },
+    ],
+    yoy: '-2%',
+    yoyIcon: 'images/red-downward-arrow.svg',
+    yoyClass: 'clr--DC2626',
+    vsDistrict: '+6 pts',
+    vsClass: 'clr--16A34A',
+  },
+  {
+    subject: 'ELA LG',
+    type: 'LG',
+    borderClass: 'green-border',
+    headerClass: 'green-header',
+    progressValue: 44,
+    stats: [
+      { label: 'District Set Goal', value: 39, color: 'blue' },
+      { label: 'School Set Goal', value: 44, color: 'green' },
+      { label: 'Current Predicted', value: 44, color: 'orange' },
+      { label: 'Prior Year Score', value: 36, color: 'gray' },
+    ],
+    yoy: '-2%',
+    yoyIcon: 'images/red-downward-arrow.svg',
+    yoyClass: 'clr--DC2626',
+    vsDistrict: '+5 pts',
+    vsClass: 'clr--16A34A',
+  },
+  {
+    subject: 'Math BQ',
+    type: 'BQ',
+    borderClass: 'green-border',
+    headerClass: 'green-header',
+    progressValue: 48,
+    stats: [
+      { label: 'District Set Goal', value: 44, color: 'blue' },
+      { label: 'School Set Goal', value: 48, color: 'green' },
+      { label: 'Current Predicted', value: 46, color: 'orange' },
+      { label: 'Prior Year Score', value: 41, color: 'gray' },
+    ],
+    yoy: '- 0%',
+    yoyIcon: '',
+    yoyClass: 'clr--7373',
+    vsDistrict: '+4 pts',
+    vsClass: 'clr--16A34A',
+  },
+  {
+    subject: 'Graduation',
+    type: 'ACH',
+    borderClass: 'red-border',
+    headerClass: 'red-header',
+    progressValue: 43,
+    stats: [
+      { label: 'District Set Goal', value: 44, color: 'blue' },
+      { label: 'School Set Goal', value: 43, color: 'green' },
+      { label: 'Current Predicted', value: 44, color: 'orange' },
+      { label: 'Prior Year Score', value: 41, color: 'gray' },
+    ],
+    yoy: '- 0%',
+    yoyIcon: '',
+    yoyClass: 'clr--7373',
+    vsDistrict: '-1 pts',
+    vsClass: 'clr--DC2626',
+  },
+];
 
-  // scrollLeft1() {
-  //   if (!this.scrollContainer1 || !this.isScrollable1) return;
+animatedGoalScores: number[] = this.goalCards.map(() => 0);
+goalProgressAnimated = false;
 
-  //   this.scrollContainer1.nativeElement.scrollBy({
-  //     left: -100,
-  //     behavior: 'smooth'
-  //   });
+observeGoalProgress() {
+  const section = document.getElementById('goalProgressSection');
+  if (!section) return;
 
-  //   setTimeout(() => this.checkScroll1(), 300);
-  // }
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting && !this.goalProgressAnimated) {
+      this.goalProgressAnimated = true;
 
-  // scrollRight1() {
-  //   if (!this.scrollContainer1 || !this.isScrollable1) return;
+      this.ngZone.run(() => {
+        this.animateAllGoalProgress();
+      });
 
-  //   this.scrollContainer1.nativeElement.scrollBy({
-  //     left: 100,
-  //     behavior: 'smooth'
-  //   });
+      observer.disconnect();
+    }
+  }, { threshold: 0.2 });
 
-  //   setTimeout(() => this.checkScroll1(), 300);
-  // }
+  observer.observe(section);
+}
 
-  // checkScroll1() {
-  //   if (!this.scrollContainer1) return;
+animateAllGoalProgress() {
+  this.goalCards.forEach((item, index) => {
+    let start = 0;
+    const end = item.progressValue;
 
-  //   const el = this.scrollContainer1.nativeElement;
-  //   const maxScrollLeft = el.scrollWidth - el.clientWidth;
+    const timer = setInterval(() => {
+      start += 1;
 
-  //   this.isScrollable1 = el.scrollWidth > el.clientWidth + 5;
+      if (start >= end) {
+        start = end;
+        clearInterval(timer);
+      }
 
-  //   if (!this.isScrollable1) {
-  //     this.showPrev1 = false;
-  //     this.showNext1 = false;
-  //   } else {
-  //     this.showPrev1 = el.scrollLeft > 5;
-  //     this.showNext1 = el.scrollLeft < maxScrollLeft - 5;
-  //   }
+      this.animatedGoalScores[index] = start;
+      this.cdr.detectChanges();
+    }, 20);
+  });
+}
 
-  //   this.cdr.detectChanges();
-  // }
-
-  // updateScrollButtons1(): void {
-  //   setTimeout(() => {
-  //     this.checkScroll1();
-  //   }, 50);
-  // }
-
-  // @HostListener('window:resize')
-  // onResize1(): void {
-  //   this.updateScrollButtons1();
-  // }
-
-  // scrollLeft2() {
-  //   if (!this.scrollContainer2 || !this.isScrollable2) return;
-
-  //   this.scrollContainer2.nativeElement.scrollBy({
-  //     left: -100,
-  //     behavior: 'smooth'
-  //   });
-
-  //   setTimeout(() => this.checkScroll2(), 300);
-  // }
-
-  // scrollRight2() {
-  //   if (!this.scrollContainer2 || !this.isScrollable2) return;
-
-  //   this.scrollContainer2.nativeElement.scrollBy({
-  //     left: 100,
-  //     behavior: 'smooth'
-  //   });
-
-  //   setTimeout(() => this.checkScroll2(), 300);
-  // }
-
-  // checkScroll2() {
-  //   if (!this.scrollContainer2) return;
-
-  //   const el = this.scrollContainer2.nativeElement;
-  //   const maxScrollLeft = el.scrollWidth - el.clientWidth;
-
-  //   this.isScrollable2 = el.scrollWidth > el.clientWidth + 5;
-
-  //   if (!this.isScrollable2) {
-  //     this.showPrev2 = false;
-  //     this.showNext2 = false;
-  //   } else {
-  //     this.showPrev2 = el.scrollLeft > 5;
-  //     this.showNext2 = el.scrollLeft < maxScrollLeft - 5;
-  //   }
-
-  //   this.cdr.detectChanges();
-  // }
-
-  // updateScrollButtons2(): void {
-  //   setTimeout(() => {
-  //     this.checkScroll2();
-  //   }, 50);
-  // }
-
-  // @HostListener('window:resize')
-  // onResize2(): void {
-  //   this.updateScrollButtons2();
-  // }
+getThumbValue(value: number): number {
+  return Math.max(value - 2, 0);
+}
 
 }

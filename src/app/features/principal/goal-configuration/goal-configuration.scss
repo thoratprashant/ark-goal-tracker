@@ -116,15 +116,19 @@
                         width: 100%;
                         .progress{
                             height:12px; 
+                            .progress-bar {
+                                transition: none !important;
+                            }
                         } 
                         .progress-thumb{
                             position: absolute;
-                            top: 50%;
-                            transform: translate(-50%, -50%);
+                            top: -4px;
+                            transform: translate(0);
                             width: 20px;
                             height: 20px; 
                             border-radius: 50%;
                             border: 3px solid #fff;
+                            transition: none !important;
                         }
                     } 
                     &.doable{

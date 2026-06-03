@@ -1,4 +1,4 @@
-<div class="container-fluid p-0 goalc--wrapper">
+<div class="container-fluid p-0 goalc--wrapper" data-aos="fade-up" data-aos-duration="500">
     <div class="row">
         <div class="col-12 head--sec mt-sm-0">
             <h4 class="text-secondary fw-bold">Goal Configuration & Impact Console</h4>
@@ -597,772 +597,100 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="row">
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card p-0 green-border d-flex flex-column">
-                                <div class="card-header mb-0 green-header d-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">ELA</h5>
-                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
-                                    </div>
-                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation blue"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation green"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">42%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation orange"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">40%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation gray"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">33%</h5>
-                                    </div>
-                                    <div class="d-flex flex-column goal--status safe">
-                                        <div class="d-flex align-items-center gap-1">
-                                            <div class="custom-progress position-relative">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
-                                                </div>
-                                            </div>
-                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
-                                        <div class="d-flex align-items-center">
-                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
-                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+6 pts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="row" id="goalProgressSection">
+  <div
+    class="col-12 col-md-6 col-lg-4 col-xl-3"
+    *ngFor="let item of goalCards; let i = index">
 
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card p-0 green-border d-flex flex-column">
-                                <div class="card-header mb-0 green-header d-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">Math</h5>
-                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
-                                    </div>
-                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation blue"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">39%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation green"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation orange"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation gray"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
-                                    </div>
-                                    <div class="d-flex flex-column goal--status safe">
-                                        <div class="d-flex align-items-center gap-1">
-                                            <div class="custom-progress position-relative">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
-                                                </div>
-                                            </div>
-                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
-                                        <div class="d-flex align-items-center">
-                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
-                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+5 pts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="card p-0 d-flex flex-column" [ngClass]="item.borderClass">
+      <div
+        class="card-header mb-0 d-flex justify-content-between gap-2 align-items-center"
+        [ngClass]="item.headerClass">
 
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card p-0 green-border d-flex flex-column">
-                                <div class="card-header mb-0 green-header d-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">Science</h5>
-                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
-                                    </div>
-                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation blue"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation green"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">48%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation orange"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">46%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation gray"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">41%</h5>
-                                    </div>
-                                    <div class="d-flex flex-column goal--status safe">
-                                        <div class="d-flex align-items-center gap-1">
-                                            <div class="custom-progress position-relative">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
-                                                </div>
-                                            </div>
-                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--7373">- 0%</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+4 pts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="d-flex flex-column">
+          <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">
+            {{ item.subject }}
+          </h5>
+          <p class="font-12 clr--7373 fw-normal mb-0">
+            {{ item.type }}
+          </p>
+        </div>
 
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card p-0 green-border d-flex flex-column">
-                                <div class="card-header mb-0 green-header d-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">MS Acceleration</h5>
-                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
-                                    </div>
-                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation blue"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation green"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">48%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation orange"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">46%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation gray"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">41%</h5>
-                                    </div>
-                                    <div class="d-flex flex-column goal--status safe">
-                                        <div class="d-flex align-items-center gap-1">
-                                            <div class="custom-progress position-relative">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
-                                                </div>
-                                            </div>
-                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--7373">- 0%</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+4 pts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
+      </div>
 
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card p-0 green-border d-flex flex-column">
-                                <div class="card-header mb-0 green-header d-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">ELA Grad 3</h5>
-                                        <p class="font-12 clr--7373 fw-normal mb-0">Grade 3</p>
-                                    </div>
-                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation blue"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation green"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">42%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation orange"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">40%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation gray"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">33%</h5>
-                                    </div>
-                                    <div class="d-flex flex-column goal--status safe">
-                                        <div class="d-flex align-items-center gap-1">
-                                            <div class="custom-progress position-relative">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
-                                                </div>
-                                            </div>
-                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
-                                        <div class="d-flex align-items-center">
-                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
-                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+6 pts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+      <div class="card-body d-flex flex-column">
+        <div
+          class="d-flex align-items-center justify-content-between listing-section gap-2"
+          *ngFor="let stat of item.stats; let last = last"
+          [class.border-bottom]="!last">
 
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card p-0 yellow-border d-flex flex-column">
-                                <div class="card-header mb-0 yellow-header d-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">Math LG</h5>
-                                        <p class="font-12 clr--7373 fw-normal mb-0">LG</p>
-                                    </div>
-                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation blue"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">39%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation green"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation orange"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation gray"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
-                                    </div>
-                                    <div class="d-flex flex-column goal--status safe">
-                                        <div class="d-flex align-items-center gap-1">
-                                            <div class="custom-progress position-relative">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
-                                                </div>
-                                            </div>
-                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
-                                        <div class="d-flex align-items-center">
-                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
-                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+5 pts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+          <div class="d-flex align-items-center gap-2">
+            <div class="notation" [ngClass]="stat.color"></div>
+            <p class="font-12 clr--7373 fw-normal mb-0">
+              {{ stat.label }}
+            </p>
+          </div>
 
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card p-0 red-border d-flex flex-column">
-                                <div class="card-header mb-0 red-header d-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">SS</h5>
-                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
-                                    </div>
-                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation blue"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation green"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">43%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation orange"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">41%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation gray"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">41%</h5>
-                                    </div>
-                                    <div class="d-flex flex-column goal--status safe">
-                                        <div class="d-flex align-items-center gap-1">
-                                            <div class="custom-progress position-relative">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
-                                                </div>
-                                            </div>
-                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--7373">- 0%</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--DC2626">-1 pts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+          <h5 class="clr--0F1729 font-12 fw-bold mb-0">
+            {{ stat.value }}%
+          </h5>
+        </div>
 
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card p-0 red-border d-flex flex-column">
-                                <div class="card-header mb-0 red-header d-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">HS CCA</h5>
-                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
-                                    </div>
-                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation blue"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation green"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">43%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation orange"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">46%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation gray"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">41%</h5>
-                                    </div>
-                                    <div class="d-flex flex-column goal--status safe">
-                                        <div class="d-flex align-items-center gap-1">
-                                            <div class="custom-progress position-relative">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
-                                                </div>
-                                            </div>
-                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--7373">- 0%</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--DC2626">-1 pts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="d-flex flex-column goal--status safe">
+          <div class="d-flex align-items-center gap-1">
+            <div class="custom-progress position-relative">
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  [style.width.%]="animatedGoalScores[i]"
+                  [attr.aria-valuenow]="animatedGoalScores[i]"
+                  aria-valuemin="0"
+                  aria-valuemax="100">
+                </div>
 
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card p-0 yellow-border d-flex flex-column">
-                                <div class="card-header mb-0 yellow-header d-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">ELA LG</h5>
-                                        <p class="font-12 clr--7373 fw-normal mb-0">LG</p>
-                                    </div>
-                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation blue"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation green"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">42%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation orange"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">40%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation gray"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">33%</h5>
-                                    </div>
-                                    <div class="d-flex flex-column goal--status safe">
-                                        <div class="d-flex align-items-center gap-1">
-                                            <div class="custom-progress position-relative">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
-                                                </div>
-                                            </div>
-                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
-                                        <div class="d-flex align-items-center">
-                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
-                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+6 pts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div
+                  class="progress-thumb"
+                  [style.left.%]="getThumbValue(animatedGoalScores[i])">
+                </div>
+              </div>
+            </div>
 
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card p-0 red-border d-flex flex-column">
-                                <div class="card-header mb-0 red-header d-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">Math BQ</h5>
-                                        <p class="font-12 clr--7373 fw-normal mb-0">BQ</p>
-                                    </div>
-                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation blue"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">39%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation green"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation orange"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation gray"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
-                                    </div>
-                                    <div class="d-flex flex-column goal--status safe">
-                                        <div class="d-flex align-items-center gap-1">
-                                            <div class="custom-progress position-relative">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
-                                                </div>
-                                            </div>
-                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
-                                        <div class="d-flex align-items-center">
-                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
-                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+5 pts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <h6 class="fw-bold font-11 mb-0 g--per">
+              {{ animatedGoalScores[i] }}%
+            </h6>
+          </div>
+        </div>
 
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card p-0 red-border d-flex flex-column">
-                                <div class="card-header mb-0 red-header d-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">Graduation</h5>
-                                        <p class="font-12 clr--7373 fw-normal mb-0">ACH</p>
-                                    </div>
-                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation blue"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation green"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">43%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation orange"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">44%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation gray"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">41%</h5>
-                                    </div>
-                                    <div class="d-flex flex-column goal--status safe">
-                                        <div class="d-flex align-items-center gap-1">
-                                            <div class="custom-progress position-relative">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
-                                                </div>
-                                            </div>
-                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--7373">- 0%</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--DC2626">-1 pts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
 
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                            <div class="card p-0 red-border d-flex flex-column">
-                                <div class="card-header mb-0 red-header d-flex justify-content-between gap-2 align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="font-16 fw-bold clr--0F1729 mb-1 text-uppercase">ELA BG</h5>
-                                        <p class="font-12 clr--7373 fw-normal mb-0">BQ</p>
-                                    </div>
-                                    <mat-icon class="clr--7373">arrow_forward_ios</mat-icon>
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation blue"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">District Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">36%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation green"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">School Set Goal</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">42%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2 border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation orange"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Current Predicted</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">40%</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between listing-section gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="notation gray"></div>
-                                            <p class="font-12 clr--7373 fw-normal mb-0">Prior Year Score</p>
-                                        </div>
-                                        <h5 class="clr--0F1729 font-12 fw-bold mb-0">33%</h5>
-                                    </div>
-                                    <div class="d-flex flex-column goal--status safe">
-                                        <div class="d-flex align-items-center gap-1">
-                                            <div class="custom-progress position-relative">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" [style.width.%]="goalScore"
-                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    <div class="progress-thumb" [style.left.%]="goalScore"></div>
-                                                </div>
-                                            </div>
-                                            <h6 class="fw-bold font-11 mb-0 g--per">{{goalScore}}%</h6>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">YOY Change</p>
-                                        <div class="d-flex align-items-center">
-                                            <img src="images/red-downward-arrow.svg" alt="icon" class="img-fluid">
-                                            <p class="mb-0 font-10 fw-semibold clr--DC2626">-2%</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
-                                        <p class="mb-0 font-10 fw-semibold clr--16A34A">+6 pts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+          <div class="d-flex align-items-center" *ngIf="item.yoyIcon">
+            <img [src]="item.yoyIcon" alt="icon" class="img-fluid">
+            <p class="mb-0 font-10 fw-semibold" [ngClass]="item.yoyClass">
+              {{ item.yoy }}
+            </p>
+          </div>
+
+          <p
+            *ngIf="!item.yoyIcon"
+            class="mb-0 font-10 fw-semibold"
+            [ngClass]="item.yoyClass">
+            {{ item.yoy }}
+          </p>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="font-10 clr--7373 fw-normal mb-0">vs District Goal</p>
+          <p class="mb-0 font-10 fw-semibold" [ngClass]="item.vsClass">
+            {{ item.vsDistrict }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
                 </div>
             </div>
         </div>
