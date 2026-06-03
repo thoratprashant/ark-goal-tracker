@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, NgZone, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { ChartComponent } from 'ng-apexcharts';
+import AOS from 'aos';
 
 import {
   ApexAxisChartSeries,
@@ -63,6 +64,17 @@ interface TableRow1 {
   styleUrl: './goal-evaluation.scss',
 })
 export class GoalEvaluation {
+
+  goalAch = 0;
+  goalLg = 0;
+  goalBq = 0;
+  goalSummaryAnimated = false;
+  showAchievementChart = false;
+
+  constructor(
+  private ngZone: NgZone,
+  private cdr: ChangeDetectorRef
+) {}
 
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
 
@@ -241,7 +253,73 @@ export class GoalEvaluation {
   }
 
   ngAfterViewInit() {
+      setTimeout(() => {
+        this.observeAchievementChart();
+      }, 500);
+
     setTimeout(() => this.checkScroll(), 100);
+    AOS.init({
+      duration: 1000,
+      once: true
+    }); 
+    AOS.refresh();
+      setTimeout(() => {
+      this.observeGoalSummary();
+    }, 500);
+  }
+  observeGoalSummary() {
+  const section = document.getElementById('goalSummarySection');
+  if (!section) return;
+
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting && !this.goalSummaryAnimated) {
+      this.goalSummaryAnimated = true;
+
+      this.ngZone.run(() => {
+        this.countGoalTo('goalAch', 75);
+        this.countGoalTo('goalLg', 70);
+        this.countGoalTo('goalBq', 65);
+      });
+
+      observer.disconnect();
+    }
+  }, { threshold: 0.2 });
+
+  observer.observe(section);
+}
+
+  countGoalTo(key: 'goalAch' | 'goalLg' | 'goalBq', end: number) {
+    let start = 0;
+
+    const timer = setInterval(() => {
+      start += 2;
+
+      if (start >= end) {
+        start = end;
+        clearInterval(timer);
+      }
+
+      this[key] = start;
+      this.cdr.detectChanges();
+    }, 25);
+  }
+
+  observeAchievementChart() {
+    const section = document.getElementById('achievementChartSection');
+    if (!section) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        this.ngZone.run(() => {
+          this.showAchievementChart = true;
+          this.cdr.detectChanges();
+        });
+
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
   }
 
 }

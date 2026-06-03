@@ -1,4 +1,4 @@
-<div class="container-fluid p-0 ge--wrapper">
+<div class="container-fluid p-0 ge--wrapper" data-aos="fade-up" data-aos-duration="500">
     <div class="row">
         <div class="col-12 performance--summary-section">
             <div class="card p-3 p-sm-4 d-flex flex-column">
@@ -255,7 +255,7 @@
             </div>
         </div>
     </div>
-    <div class="row performance-summary-section">
+    <div id="goalSummarySection" class="row performance-summary-section">
         <div class="col-12 d-flex flex-sm-row flex-column gap-2 align-items-sm-center justify-content-sm-between mt-3">
             <h5 class="font-17 text-secondary fw-semibold mb-0">Performance Summary</h5>
             <mat-form-field appearance="outline" class="grades">
@@ -272,7 +272,7 @@
                 <div class="d-flex flex-row justify-content-between">
                     <div class="d-flex flex-column gap-1">
                         <p class="text-muted font-14 fw-semibold mb-0">ELA Achievement Goal</p>
-                        <h3 class="clr--111827 fw-bold mb-0">75%</h3>
+                        <h3 class="clr--111827 fw-bold mb-0">{{ goalAch }}%</h3>
                         <span class="clr--9CA3AF font-11 fw-normal">Achievement rate</span>
                     </div>
                     <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0">
@@ -290,7 +290,7 @@
                 <div class="d-flex flex-row justify-content-between">
                     <div class="d-flex flex-column gap-1">
                         <p class="text-muted font-14 fw-semibold mb-0">ELA Learning Gains</p>
-                        <h3 class="clr--111827 fw-bold mb-0">70%</h3>
+                        <h3 class="clr--111827 fw-bold mb-0">{{ goalLg }}%</h3>
                         <span class="clr--9CA3AF font-11 fw-normal">Learning gains</span>
                     </div>
                     <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0">
@@ -308,7 +308,7 @@
                 <div class="d-flex flex-row justify-content-between">
                     <div class="d-flex flex-column gap-1">
                         <p class="text-muted font-14 fw-semibold mb-0">ELA Bottom Quartile</p>
-                        <h3 class="clr--111827 fw-bold mb-0">65%</h3>
+                        <h3 class="clr--111827 fw-bold mb-0">{{ goalBq }}%</h3>
                         <span class="clr--9CA3AF font-11 fw-normal">Bottom quartile progress</span>
                     </div>
                     <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0">
@@ -425,8 +425,9 @@
         <div class="col-12 mt-2">
             <div class="card p-3 p-sm-4 d-flex flex-column">
                 <h5 class="font-17 text-secondary fw-semibold mb-0">Achievement: Actual Goal vs Target Goal</h5>
-                <div class="chart-container">
+                <div id="achievementChartSection" class="chart-container">
                     <apx-chart
+                        *ngIf="showAchievementChart"
                         [series]="chartOptions.series"
                         [chart]="chartOptions.chart"
                         [xaxis]="chartOptions.xaxis"

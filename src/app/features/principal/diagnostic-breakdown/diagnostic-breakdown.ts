@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { ChartComponent } from 'ng-apexcharts';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import AOS from 'aos';
 
 import {
   ApexAxisChartSeries,
@@ -436,6 +437,12 @@ export class DiagnosticBreakdown {
   }
 
   ngAfterViewInit() {
+    AOS.init({
+      duration: 1000,
+      once: true
+    }); 
+    AOS.refresh();
+
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
   }
