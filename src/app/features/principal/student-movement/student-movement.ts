@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, NgZone, signal, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ApexDataLabels, ApexFill, ApexPlotOptions, ApexStates, ChartComponent } from 'ng-apexcharts';
+import AOS from 'aos';
 
 import {
   ApexAxisChartSeries,
@@ -116,7 +117,20 @@ interface TableRow3 {
   styleUrl: './student-movement.scss',
 })
 export class StudentMovement {
-  viewMode = signal<'ela' | 'math' | 'social studies' | 'science'>('ela');
+
+  constructor(private ngZone: NgZone, private cdr: ChangeDetectorRef) {}
+
+@ViewChild('predictedSection') predictedSection!: ElementRef;
+@ViewChild('attendanceChartSection') attendanceChartSection!: ElementRef;
+@ViewChild('learningChartSection') learningChartSection!: ElementRef;
+
+predictedScore = signal(0);
+predictedAnimated = false;
+showAttendanceChart = false;
+showLearningChart = false;
+showProgress = false;
+
+  viewMode = signal<'ela' | 'math' | 'social studies' | 'science'>('ela');  
 
   progressList = [
     { currentValue: 78, goalValue: 80, color: '#EA914E' },
@@ -545,4 +559,90 @@ export class StudentMovement {
       return 'red-bg';
     }
   }
+
+  ngAfterViewInit() {
+      setTimeout(() => {
+    this.observeProgress();
+  }, 500);
+
+  setTimeout(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !this.predictedAnimated) {
+        this.predictedAnimated = true;
+        this.animatePredictedScore();
+        observer.disconnect();
+      }
+    }, { threshold: 0.1 });
+
+    observer.observe(this.predictedSection.nativeElement);
+  }, 300);
+
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+
+  AOS.refresh();
+
+  setTimeout(() => {
+    this.observeChart('attendanceChartSection', 'showAttendanceChart');
+    this.observeChart('learningChartSection', 'showLearningChart');
+  }, 500);
+}
+
+animatePredictedScore() {
+  let start = 0;
+  const end = 742;
+  const timer = setInterval(() => {
+    start += 20;
+    if (start >= end) {
+      start = end;
+      clearInterval(timer);
+    }
+    this.predictedScore.set(start);
+  }, 25);
+}
+
+observeChart(
+  id: string,
+  key: 'showAttendanceChart' | 'showLearningChart'
+) {
+  const section = document.getElementById(id);
+  if (!section) return;
+
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      this.ngZone.run(() => {
+        this[key] = true;
+        this.cdr.detectChanges();
+      });
+
+      observer.disconnect();
+    }
+  }, { threshold: 0.1 });
+
+  observer.observe(section);
+}
+
+observeProgress() {
+  const section = document.getElementById('progressSection');
+  if (!section) return;
+
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      this.ngZone.run(() => {
+        this.showProgress = true;
+        this.cdr.detectChanges();
+      });
+
+      observer.disconnect();
+    }
+  }, { threshold: 0.2 });
+
+  observer.observe(section);
+}
+
+
+ 
+
 }

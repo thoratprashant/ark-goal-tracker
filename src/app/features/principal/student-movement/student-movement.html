@@ -1,4 +1,4 @@
-<div class="container-fluid p-0 sm--wrapper">
+<div class="container-fluid p-0 sm--wrapper" data-aos="fade-up" data-aos-duration="500">
     <div class="row">
         <div class="col-12 head--sec d-flex flex-wrap align-items-center justify-content-between gap-3">
             <div class="d-flex flex-column">
@@ -74,8 +74,8 @@
                             <img src="images/upwards-green.svg" alt="icon" class="img-fluid">
                             <p class="font-8 fw-semibold mb-0">+27 SS <span class="fw-normal">from prior year</span></p>
                         </div>
-                        <div class="d-flex align-items-end gap-2">
-                            <h5 class="font-24 clr--90C9 fw-bold mb-0">742</h5>
+                        <div class="d-flex align-items-end gap-2 predicted-score-section" #predictedSection>
+                            <h5 class="font-24 clr--90C9 fw-bold mb-0">{{ predictedScore() }}</h5>
                             <p class="clr--64748B font-10 fw-normal mb-0">Predicted Scale Score</p>
                         </div>
                         <div class="divider-line"></div>
@@ -168,9 +168,10 @@
                         <h5 class="font-12 clr--64748B fw-semibold mb-0">ATTENDANCE INSIGHTS</h5>
                         <div class="d-flex flex-column">
                             <h5 class="font-12 clr--64748B fw-normal mb-0">ADA by Day of Week</h5>
-                            <div class="chart-scroll-wrapper">
-                                <div class="chart-container">
+                            <div id="attendanceChartSection" class="chart-scroll-wrapper attendance-chart-section" #attendanceChartSection>
+                                <div class="chart-container" style="min-height: 320px;">
                                     <apx-chart
+                                        *ngIf="showAttendanceChart"
                                         [series]="chartOptions2.series"
                                         [chart]="chartOptions2.chart"
                                         [xaxis]="chartOptions2.xaxis"
@@ -189,9 +190,10 @@
                         <div class="divider-line"></div>
                         <div class="d-flex flex-column">
                             <h5 class="font-12 clr--64748B fw-normal mb-0">Historical Attendance</h5>
-                            <div class="chart-scroll-wrapper">
-                                <div class="chart-container">
+                            <div id="learningChartSection" class="chart-scroll-wrapper" #learningChartSection>
+                                <div class="chart-container" style="min-height: 320px;">
                                     <apx-chart
+                                        *ngIf="showLearningChart"
                                         [series]="chartOptions1.series"
                                         [chart]="chartOptions1.chart"
                                         [xaxis]="chartOptions1.xaxis"
@@ -315,8 +317,9 @@
                                 <h5 class="mb-0 font-13 fw-normal clr--4755">Current: {{ item.currentValue }}%</h5>
                                 <h6 class="mb-0 font-13 fw-normal clr--4755">Goal: {{ item.goalValue }}%</h6>
                             </div>
-                            <div class="progress">
-                                <div class="progress-bar" [style.background]="item.color" [style.width.%]="item.goalValue">
+                            <div id="progressSection" class="progress">
+                                <div class="progress-bar" [style.background]="item.color" 
+                                [style.width.%]="showProgress ? item.goalValue : 0">
                                 </div>
                             </div>
                         </div>
