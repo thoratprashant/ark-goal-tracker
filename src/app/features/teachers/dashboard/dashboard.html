@@ -7,13 +7,13 @@
             </div>
         </div>
     </div>
-    <div class="row summary-section">
+    <div #headSection class="row summary-section">
         <div class="col-12 col-md-6 col-lg-4">
             <div class="card p-3 p-sm-4 d-flex flex-column">
                 <div class="d-flex flex-row align-items-center justify-content-between">
                     <div class="d-flex flex-column gap-1">
                         <p class="clr--64748B font-11 fw-normal mb-0">Total Students</p>
-                        <h3 class="clr--0F1729 fw-bold mb-0">28</h3>
+                        <h3 class="clr--0F1729 fw-bold mb-0">{{ displayTotalStudents | number:'1.1-1' }}</h3>
                     </div>
                     <div class="d-flex align-items-center justify-content-center side--box blue flex-shrink-0">
                         <img src="images/person-multi.svg" alt="icon" class="img-fluid">
@@ -43,7 +43,7 @@
                 <div class="d-flex flex-row align-items-center justify-content-between">
                     <div class="d-flex flex-column gap-1">
                         <p class="clr--64748B font-11 fw-normal mb-0">Attendance Rate</p>
-                        <h3 class="clr--0F1729 fw-bold mb-0">91%</h3>
+                        <h3 class="clr--0F1729 fw-bold mb-0">{{ displayAttendanceRate | number:'1.1-1' }}%</h3>
                     </div>
                     <div class="d-flex align-items-center justify-content-center side--box blue-1 flex-shrink-0">
                         <img src="images/calender-white.svg" alt="icon" class="img-fluid">
@@ -73,7 +73,7 @@
                 <div class="d-flex flex-row align-items-center justify-content-between">
                     <div class="d-flex flex-column gap-1">
                         <p class="clr--64748B font-11 fw-normal mb-0">Bubble</p>
-                        <h3 class="clr--0F1729 fw-bold mb-0">4</h3>
+                        <h3 class="clr--0F1729 fw-bold mb-0">{{ displayBubble | number:'1.1-1' }}</h3>
                     </div>
                     <div class="d-flex align-items-center justify-content-center side--box blue flex-shrink-0">
                         <img src="images/warning-white.svg" alt="icon" class="img-fluid">
@@ -112,13 +112,13 @@
           </mat-form-field>
         </div>
     </div>
-    <div class="row summary-section mb-4">
+    <div #elaSummary class="row summary-section mb-4">
         <div class="col-12 w-100 d-flex flex-sm-row justify-content-lg-between align-items-stretch flex-column flex-wrap gap-3">
             <div class="card green-section menu-card d-flex flex-column mb-0">
                 <div class="d-flex flex-row align-items-start justify-content-between">
                     <div class="d-flex flex-column gap-1">
                         <p class="text-muted font-14 fw-semibold mb-0">Ach %</p>
-                        <h3 class="clr--111827 fw-bold mb-0">75%</h3>
+                        <h3 class="clr--111827 fw-bold mb-0">{{ displayTotalAch | number:'1.1-1' }}%</h3>
                     </div>
                     <div class="side--box--label font-11 fw-semibold mb-0">3rd Rank</div>
                 </div>
@@ -134,7 +134,7 @@
                 <div class="d-flex flex-row align-items-start justify-content-between">
                     <div class="d-flex flex-column gap-1">
                         <p class="text-muted font-14 fw-semibold mb-0">LG %</p>
-                        <h3 class="clr--111827 fw-bold mb-0">70%</h3>
+                        <h3 class="clr--111827 fw-bold mb-0">{{ displayTotalLg | number:'1.1-1' }}%</h3>
                     </div>
                     <div class="d-flex align-items-center justify-content-center side--box--label flex-shrink-0">
                         <p class="font-11 fw-semibold mb-0">3rd Rank</p>
@@ -152,7 +152,7 @@
                 <div class="d-flex flex-row align-items-start justify-content-between">
                     <div class="d-flex flex-column gap-1">
                         <p class="text-muted font-14 fw-semibold mb-0">BQ %</p>
-                        <h3 class="clr--111827 fw-bold mb-0">65%</h3>
+                        <h3 class="clr--111827 fw-bold mb-0">{{ displayTotalBq | number:'1.1-1' }}%</h3>
                     </div>
                     <div class="d-flex align-items-center justify-content-center side--box--label flex-shrink-0">
                         <p class="font-11 fw-semibold mb-0">3rd Rank</p>
@@ -174,7 +174,7 @@
                 <div class="d-flex flex-row align-items-start justify-content-between">
                     <div class="d-flex flex-column gap-1">
                         <p class="text-muted font-14 fw-semibold mb-0">Risk %</p>
-                        <h3 class="clr--111827 fw-bold mb-0">12%</h3>
+                        <h3 class="clr--111827 fw-bold mb-0">{{ displayTotalRisk | number:'1.1-1' }}%</h3>
                     </div>
                     <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0">
                         <img src="images/blue-warning.svg" alt="icon" class="img-fluid">
@@ -257,14 +257,14 @@
             </div>
         </div>
     </div>
-    <div class="row status-section mb-4" *ngIf="viewMode() === 'achievement'">
+    <div #scoreSections class="row status-section mb-4" *ngIf="viewMode() === 'achievement'">
         <div class="col-12 col-md-6 col-lg-3">
           <div class="card p-3 p-sm-4 green-card d-flex flex-column mb-0">
             <div class="d-flex gap-2">
               <img src="images/on-track-green.svg" alt="icon" class="img-fluid">
               <p class="clr--90C9 font-15 fw-semibold mb-0">On Track</p>
             </div>
-            <h3 class="clr--90C9 fw-bold mb-0">169</h3>
+            <h3 class="clr--90C9 fw-bold mb-0">{{ displayOnTrack | number:'1.1-1' }}</h3>
             <p class="clr--64748B font-13 fw-normal mb-0">Likely to meet proficiency</p>
           </div>
         </div>
@@ -274,7 +274,7 @@
               <img src="images/bubble-orange.svg" alt="icon" class="img-fluid">
               <p class="clr--EA914 font-15 fw-semibold mb-0">Bubble</p>
             </div>
-            <h3 class="clr--EA914 fw-bold mb-0">98</h3>
+            <h3 class="clr--EA914 fw-bold mb-0">{{ displayBubbleScore | number:'1.1-1' }}</h3>
             <p class="clr--64748B font-13 fw-normal mb-0">Near proficiency threshold</p>
           </div>
         </div>
@@ -284,7 +284,7 @@
               <img src="images/off-track-red.svg" alt="icon" class="img-fluid">
               <p class="clr--D64550 font-15 fw-semibold mb-0">Off Track</p>
             </div>
-            <h3 class="clr--D64550 fw-bold mb-0">145</h3>
+            <h3 class="clr--D64550 fw-bold mb-0">{{ displayOffTrack | number:'1.1-1' }}</h3>
             <p class="clr--64748B font-13 fw-normal mb-0">Significant intervention needed</p>
           </div>
         </div>
@@ -295,7 +295,7 @@
               <p class="clr--0D2A7C font-15 fw-semibold mb-0">Meet Proficiency Goal</p>
             </div>
             <div class="d-flex align-items-center gap-2">
-              <h3 class="clr--0D2A7C fw-bold mb-0">260</h3>
+              <h3 class="clr--0D2A7C fw-bold mb-0">{{ displayProficiencyGoal | number:'1.1-1' }}</h3>
               <p class="clr--0D2A7C font-12 fw-bold mb-0">Students Needed to reach 50%</p>
             </div>
             <p class="clr--64748B font-13 fw-normal mb-0">37 students still needed (Currently at 41%)</p>
@@ -327,10 +327,10 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="chart-scroll-wrapper mb-0">
+                <div #classPerformanceTrendsSection class="chart-scroll-wrapper mb-0">
                     <div class="chart-scroll-area">
                     <div class="chart-container pt--chart">
-                        <apx-chart
+                        <apx-chart *ngIf="showChart"
                         [series]="chartOptions1.series"
                         [chart]="chartOptions1.chart"
                         [xaxis]="chartOptions1.xaxis"
@@ -364,7 +364,7 @@
                         <mat-button-toggle value="science">Science</mat-button-toggle>
                     </mat-button-toggle-group>
                 </div>
-                <div class="d-flex flex-column gap-3 mb-4">
+                <div #subjectScores class="d-flex flex-column gap-3 mb-4">
                     @for (item of subjectsList; track item) {
                         <div class="progress--wrapper d-flex flex-column gap-2">
                             <div class="progress--labels d-flex align-items-center justify-content-between">
@@ -376,7 +376,7 @@
                                 </div>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" [style.background]="item.color" [style.width.%]="item.currentValue">
+                                <div class="progress-bar" [style.background]="item.color" [style.width.%]="progressAnimated ? item.currentValue : 0" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                                 </div>
                             </div>
                         </div>

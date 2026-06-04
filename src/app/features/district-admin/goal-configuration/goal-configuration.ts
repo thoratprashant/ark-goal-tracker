@@ -463,6 +463,7 @@ rows: TableNode[]= [
 
             setTimeout(() => {
               this.progressAnimated = true;
+              this.cdr.detectChanges();
             }, 100);
 
             observer.unobserve(entry.target);
@@ -482,6 +483,7 @@ rows: TableNode[]= [
           this.animationStarted = true;
           setTimeout(() => {
             this.progressAnimatedTable = true;
+            this.cdr.detectChanges();
           }, 100);
 
           tableObserver.disconnect();

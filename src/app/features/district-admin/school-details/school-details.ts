@@ -334,6 +334,7 @@ export class SchoolDetails {
 
             setTimeout(() => {
               this.progressAnimated = true;
+              this.cdr.detectChanges();
             }, 100);
 
             observer.unobserve(entry.target);
@@ -353,6 +354,7 @@ export class SchoolDetails {
           this.animationStartedMultiple = true;
           setTimeout(() => {
             this.progressAnimatedMultiple = true;
+            this.cdr.detectChanges();
           }, 100);
 
           tableObserver.disconnect();

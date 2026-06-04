@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, NgZone, signal, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -77,9 +77,58 @@ export type ChartOptions1 = {
   styleUrl: './dashboard.scss',
 })
 export class Dashboard {
+
+  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone) {}
+  
   viewMode = signal<'achievement' | 'learning' | 'quartile'>('achievement');
   viewMode1 = signal<'ela' | 'math' | 'science' | 'social studies'>('ela');
   showFilters = true;
+  
+  @ViewChild('headSection') headSection!: ElementRef;
+
+  @ViewChild('elaSummary') elaSummary!: ElementRef;
+
+  @ViewChild('scoreSections') scoreSections!: ElementRef;
+
+  @ViewChild('subjectScores') subjectScores!: ElementRef;
+  progressAnimated = false;
+  private animationStarted = false;
+
+  displayTotalStudents = 0;
+  targetTotalStudents = 28;
+
+  displayAttendanceRate = 0;
+  targetAttendanceRate = 91;
+
+  displayBubble =0;
+  tagetBubble = 4;
+
+  displayTotalAch = 0;
+  targetTotalAch = 75;
+
+  displayTotalLg = 0;
+  targetTotalLg = 70;
+
+  displayTotalBq = 0;
+  targetTotalBq = 65;
+
+  displayTotalRisk = 0;
+  targetTotalRisk = 12;
+
+  displayOnTrack = 0;
+  targetOnTrack = 169;
+
+  displayBubbleScore = 0;
+  targetBubbleScore = 98;
+
+  displayOffTrack = 0;
+  targetOffTrack = 145;
+
+  displayProficiencyGoal = 0;
+  targetProficiencyGoal = 260;
+  
+  @ViewChild('classPerformanceTrendsSection') classPerformanceTrendsSection!: ElementRef;
+  showChart = false;
 
   @ViewChild('performanceTrendsChart') performanceTrendsChart!: ChartComponent;
   
@@ -188,8 +237,8 @@ export class Dashboard {
       fontFamily: 'Inter, sans-serif',
       background: '#ffffff',
       animations: {
-          enabled: true,
-          easing: 'easeinout',
+        enabled: true,
+        easing: 'easeinout',
           speed: 1400,
           animateGradually: {
             enabled: true,
@@ -366,6 +415,400 @@ export class Dashboard {
 
   ngOnInit(): void {
     this.updateActiveFilters();
+  }
+
+  animateTotalStudents(): void {
+      const target = this.targetTotalStudents;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayTotalStudents = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayTotalStudents = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateAttendanceRate(): void {
+      const target = this.targetAttendanceRate;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayAttendanceRate = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayAttendanceRate = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateBubble(): void {
+      const target = this.tagetBubble;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayBubble = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayBubble = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateAch(): void {
+      const target = this.targetTotalAch;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayTotalAch = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayTotalAch = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateLg(): void {
+      const target = this.targetTotalLg;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayTotalLg = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayTotalLg = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateBq(): void {
+      const target = this.targetTotalBq;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayTotalBq = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayTotalBq = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateStudents(): void {
+      const target = this.targetTotalRisk;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayTotalRisk = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayTotalRisk = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateOnTrack(): void {
+      const target = this.targetOnTrack;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayOnTrack = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayOnTrack = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateBubbleScore(): void {
+      const target = this.targetBubbleScore;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayBubbleScore = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayBubbleScore = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateOffTrack(): void {
+      const target = this.targetOffTrack;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayOffTrack = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayOffTrack = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateProficiency(): void {
+      const target = this.targetProficiencyGoal;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayProficiencyGoal = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayProficiencyGoal = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  ngAfterViewInit() {
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            this.animateTotalStudents();
+            this.animateAttendanceRate();
+            this.animateBubble();
+
+            observer.unobserve(entry.target);
+          }
+
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    )
+    observer.observe(this.headSection.nativeElement);
+
+    const observer1 = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+            this.animateAch();
+            this.animateLg()
+            this.animateBq();
+            this.animateStudents();
+
+            observer1.unobserve(entry.target);
+          }
+
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    )
+    observer1.observe(this.elaSummary.nativeElement);
+
+    const observer2 = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+            this.animateOnTrack();
+            this.animateBubbleScore()
+            this.animateOffTrack();
+            this.animateProficiency();
+
+            observer2.unobserve(entry.target);
+          }
+
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    )
+    observer2.observe(this.scoreSections.nativeElement);
+
+    const observerProgress = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !this.animationStarted) {
+          this.animationStarted = true;
+
+          setTimeout(() => {
+            this.progressAnimated = true;
+            this.cdr.detectChanges();
+          }, 100);
+
+          observerProgress.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.3
+    }
+  );
+
+  observerProgress.observe(this.subjectScores.nativeElement);
+
+  // const performanceTrendsObserver = new IntersectionObserver(
+  //   entries => {
+  //     const entry = entries[0];
+
+  //     if (
+  //       entry.isIntersecting &&
+  //       !this.performanceTrendsAnimated
+  //     ) {
+
+  //       this.performanceTrendsAnimated = true;
+
+  //       this.ngZone.run(() => {
+
+  //         // setTimeout(() => {
+  //         //   this.animatePerformanceTrendChart();
+  //         // }, 200);
+
+  //         setTimeout(() => {
+  //           this.chartOptions1.series = this.performanceTrendsRealSeries;
+  //           this.classPerformanceTrendsChart.updateSeries(this.performanceTrendsRealSeries, true);
+  //         }, 250);
+
+  //       });
+
+  //       performanceTrendsObserver.disconnect();
+  //     }
+  //   },
+  //   {
+  //     threshold: 0.3
+  //   }
+  // );
+
+  // performanceTrendsObserver.observe(this.classPerformanceTrendsSection.nativeElement);
+
+    const performanceTrendsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting && !this.showChart) {
+            this.showChart = true;
+            this.cdr.detectChanges();
+            performanceTrendsObserver.unobserve(this.classPerformanceTrendsSection.nativeElement);
+          }
+
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    );
+    performanceTrendsObserver.observe(this.classPerformanceTrendsSection.nativeElement);
+
   }
 
 }

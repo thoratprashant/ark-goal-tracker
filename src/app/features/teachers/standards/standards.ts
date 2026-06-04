@@ -123,6 +123,180 @@ export class Standards {
   
   constructor(private cdr: ChangeDetectorRef) {}
 
+  @ViewChild('elaSummary') elaSummary!: ElementRef;
+
+  displayTotalAch = 0;
+  targetTotalAch = 75;
+
+  displayTotalLg = 0;
+  targetTotalLg = 70;
+
+  displayTotalBq = 0;
+  targetTotalBq = 65;
+
+  displayStudents = 0;
+  targetStudents = 4;
+
+  animateAch(): void {
+      const target = this.targetTotalAch;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayTotalAch = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayTotalAch = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateLg(): void {
+      const target = this.targetTotalLg;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayTotalLg = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayTotalLg = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateBq(): void {
+      const target = this.targetTotalBq;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayTotalBq = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayTotalBq = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  animateStudents(): void {
+      const target = this.targetStudents;
+      const duration = 2500;
+
+      const startTime = performance.now();
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+    
+        this.displayStudents = +(target * progress).toFixed(1);
+        this.cdr.detectChanges();
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          
+          this.displayStudents = target;
+
+        }
+      };
+    requestAnimationFrame(animate);
+  }
+
+  @ViewChild('chartSection')chartSection!: ElementRef;
+  showChart = false;
+
+  @ViewChild('chartSection1')chartSection1!: ElementRef;
+  showChart1 = false;
+
+  ngAfterViewInit() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+            this.animateAch();
+            this.animateLg()
+            this.animateBq();
+            this.animateStudents();
+
+            observer.unobserve(entry.target);
+          }
+
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    )
+    observer.observe(this.elaSummary.nativeElement);
+
+    const observer1 = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting && !this.showChart) {
+            this.showChart = true;
+            this.cdr.detectChanges();
+            observer1.unobserve(this.chartSection.nativeElement);
+          }
+
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    );
+
+    observer1.observe(this.chartSection.nativeElement);
+
+    const observer2 = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting && !this.showChart1) {
+            this.showChart1 = true;
+            this.cdr.detectChanges();
+            observer2.unobserve(this.chartSection1.nativeElement);
+          }
+
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    );
+
+    observer2.observe(this.chartSection1.nativeElement);
+
+  }
+
   public chartOptions: ChartOptions = {
     series: [
     {
@@ -143,12 +317,21 @@ export class Standards {
       height: 270,
       stacked: true,
       stackType: '100%',
-      toolbar: {
-        show: false
-      },
       animations: {
         enabled: true,
-        speed: 500
+        easing: 'linear',
+        speed: 1400,
+        animateGradually: {
+          enabled: true,
+          delay: 180
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 1400
+        }
+      } as any,
+      toolbar: {
+        show: false
       },
       redrawOnWindowResize: true,
       redrawOnParentResize: true
@@ -323,7 +506,19 @@ export class Standards {
       height: 240,
       stacked: true,
       toolbar: { show: false },
-      animations: { enabled: false },
+      animations: {
+        enabled: true,
+        easing: 'linear',
+        speed: 1400,
+        animateGradually: {
+          enabled: true,
+          delay: 180
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 1400
+        }
+      } as any,
       fontFamily: 'Arial, sans-serif',
     },
 

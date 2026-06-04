@@ -59,13 +59,13 @@
             </div>
         </div>
     </div>
-    <div class="row summary-section">
+    <div #elaSummary class="row summary-section">
       <div class="col-12 col-md-6 col-lg-3">
         <div class="card green-section p-3 p-sm-4 d-flex flex-column">
           <div class="d-flex flex-row align-items-start justify-content-between">
             <div class="d-flex flex-column gap-1">
                 <p class="text-muted font-14 fw-semibold mb-0">Ach %</p>
-                <h3 class="clr--111827 fw-bold mb-0">75%</h3>
+                <h3 class="clr--111827 fw-bold mb-0">{{ displayTotalAch | number:'1.1-1' }}%</h3>
                 <span class="clr--9CA3AF font-11 fw-normal">Achievement rate</span>
             </div>
             <div class="side--box--label font-11 fw-semibold mb-0">3rd Rank</div>
@@ -87,7 +87,7 @@
           <div class="d-flex flex-row align-items-start justify-content-between">
             <div class="d-flex flex-column gap-1">
                 <p class="text-muted font-14 fw-semibold mb-0">LG %</p>
-                <h3 class="clr--111827 fw-bold mb-0">70%</h3>
+                <h3 class="clr--111827 fw-bold mb-0">{{ displayTotalLg | number:'1.1-1' }}%</h3>
                 <span class="clr--9CA3AF font-11 fw-normal">Learning gains</span>
             </div>
             <div class="d-flex align-items-center justify-content-center side--box--label flex-shrink-0">
@@ -111,7 +111,7 @@
           <div class="d-flex flex-row align-items-start justify-content-between">
             <div class="d-flex flex-column gap-1">
                 <p class="text-muted font-14 fw-semibold mb-0">BQ %</p>
-                <h3 class="clr--111827 fw-bold mb-0">65%</h3>
+                <h3 class="clr--111827 fw-bold mb-0">{{ displayTotalBq | number:'1.1-1' }}%</h3>
                 <span class="clr--9CA3AF font-11 fw-normal">Bottom quartile progress</span>
             </div>
             <div class="d-flex align-items-center justify-content-center side--box--label flex-shrink-0">
@@ -135,7 +135,7 @@
           <div class="d-flex flex-row align-items-start justify-content-between">
             <div class="d-flex flex-column gap-1">
                 <p class="text-muted font-14 fw-semibold mb-0">25 students</p>
-                <h3 class="clr--111827 fw-bold mb-0">4.0</h3>
+                <h3 class="clr--111827 fw-bold mb-0">{{ displayStudents | number:'1.1-1' }}</h3>
                 <span class="clr--9CA3AF font-11 fw-normal">points per student earned</span>
             </div>
             <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0">
@@ -183,10 +183,10 @@
                     </mat-button-toggle-group>
                 </div>
                 <h5 class="font-17 clr--7373 fw-normal mt-3 mb-0">Percent of Students by Performance Level</h5>
-                <div class="chart-scroll-wrapper">
+                <div #chartSection class="chart-scroll-wrapper">
                     <div class="chart-scroll-area">
                         <div class="chart-container">
-                            <apx-chart
+                            <apx-chart *ngIf="showChart"
                                 [series]="chartOptions.series"
                                 [chart]="chartOptions.chart"
                                 [xaxis]="chartOptions.xaxis"
@@ -212,10 +212,10 @@
                     <mat-icon fontSet="material-icons-outlined" class="">info</mat-icon>
                     <h5 class="font-13 clr--4755 fw-semibold mb-0">SC.L.17.11</h5>
                 </div>
-                <div class="chart-scroll-wrapper border-top">
-                    <div class="chart-scroll-area">
+                <div #chartSection1 class="chart-scroll-wrapper border-top">
+                    <div  class="chart-scroll-area">
                         <div class="chart-container border-bottom">
-                            <apx-chart
+                            <apx-chart *ngIf="showChart1"
                             [series]="chartOptions1.series"
                             [chart]="chartOptions1.chart"
                             [plotOptions]="chartOptions1.plotOptions"
