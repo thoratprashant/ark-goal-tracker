@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, HostListener, signal, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, NgZone, signal, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { ChartComponent } from 'ng-apexcharts';
+import AOS from 'aos';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -122,7 +123,17 @@ export class Standards {
   chartMode = signal<'table' | 'bar'>('table');
   sortBy = signal<'standard' | 'score'>('standard');
   
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private ngZone: NgZone,
+  ) {}
+
+  achValue = 0;
+  lgValue = 0;
+  bqValue = 0;
+  pointsValue = 0;
+  summaryAnimated = false;
+  showApexChart = false;
 
   @ViewChild('scrollContainer', { static: false })
   scrollContainer!: ElementRef<HTMLDivElement>;
@@ -236,6 +247,76 @@ export class Standards {
   ngAfterViewInit() {
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
+    AOS.init({
+      duration: 1000,
+      once: true
+    }); 
+    AOS.refresh();
+      setTimeout(() => {
+        this.observeSummarySection();
+      }, 500);
+        setTimeout(() => {
+    this.observeApexChart();
+  }, 500);
+  }
+  observeApexChart() {
+  const section = document.getElementById('apexChartSection');
+  if (!section) return;
+
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      this.ngZone.run(() => {
+        this.showApexChart = true;
+        this.cdr.detectChanges();
+      });
+
+      observer.disconnect();
+    }
+  }, { threshold: 0.2 });
+
+  observer.observe(section);
+}
+  observeSummarySection() {
+    const section = document.getElementById('summarySection');
+    if (!section) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !this.summaryAnimated) {
+        this.summaryAnimated = true;
+
+        this.ngZone.run(() => {
+          this.countTo('achValue', 75);
+          this.countTo('lgValue', 70);
+          this.countTo('bqValue', 65);
+          this.countTo('pointsValue', 4, 1);
+        });
+
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+  }
+
+  countTo(
+    key: 'achValue' | 'lgValue' | 'bqValue' | 'pointsValue',
+    end: number,
+    decimal = 0
+  ) {
+    let start = 0;
+    const step = end / 40;
+
+    const timer = setInterval(() => {
+      start += step;
+
+      if (start >= end) {
+        start = end;
+        clearInterval(timer);
+      }
+
+      this[key] = +start.toFixed(decimal);
+      this.cdr.detectChanges();
+    }, 25);
   }
 
   scrollLeft() {
