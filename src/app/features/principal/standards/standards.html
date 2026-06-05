@@ -465,293 +465,49 @@
             </div>
         </div>
 
-        <div class="col-12 achievement-band-section">
-            <div class="card p-3 p-sm-4 d-flex flex-column">
-                <div class="d-flex align-items-center gap-1">
-                    <mat-icon fontSet="material-icons-outlined" class="">info</mat-icon>
-                    <h5 class="font-13 clr--4755 fw-semibold mb-0">SC.E.7.1</h5>
-                </div>
-                <div class="chart-scroll-wrapper border-top">
-                    <div class="chart-scroll-area">
-                        <div class="chart-container border-bottom">
-                            <apx-chart
-                            [series]="chartOptions2.series"
-                            [chart]="chartOptions2.chart"
-                            [plotOptions]="chartOptions2.plotOptions"
-                            [dataLabels]="chartOptions2.dataLabels"
-                            [xaxis]="chartOptions2.xaxis"
-                            [yaxis]="chartOptions2.yaxis"
-                            [grid]="chartOptions2.grid"
-                            [stroke]="chartOptions2.stroke"
-                            [colors]="chartOptions2.colors"
-                            [legend]="chartOptions2.legend"
-                            [tooltip]="chartOptions2.tooltip"
-                            [annotations]="chartOptions2.annotations"
-                            [fill]="chartOptions2.fill"
-                            ></apx-chart>
-                        </div>
-                    </div>
-                    <div class="threshold-legend">
-                        <span class="legend-label">Threshold:</span>
+       <div
+  class="col-12 achievement-band-section"
+  *ngFor="let item of achievementCharts; let i = index"
+  [id]="'achievementChartSection' + i">
 
-                        <span class="legend-item red">
-                        <span class="dot"></span>
-                        &lt;50%
-                        </span>
+  <div class="card p-3 p-sm-4 d-flex flex-column">
+    <div class="d-flex align-items-center gap-1">
+      <mat-icon fontSet="material-icons-outlined">info</mat-icon>
+      <h5 class="font-13 clr--4755 fw-semibold mb-0">{{ item.title }}</h5>
+    </div>
 
-                        <span class="legend-item amber">
-                        <span class="dot"></span>
-                        50-70%
-                        </span>
-
-                        <span class="legend-item green">
-                        <span class="dot"></span>
-                        ≥70%
-                        </span>
-                    </div>
-                </div>
-            </div>
+    <div class="chart-scroll-wrapper border-top">
+      <div class="chart-scroll-area">
+        <div class="chart-container border-bottom" >
+          <apx-chart
+            *ngIf="showAchievementCharts[i]"
+            [series]="item.options.series"
+            [chart]="item.options.chart"
+            [plotOptions]="item.options.plotOptions"
+            [dataLabels]="item.options.dataLabels"
+            [xaxis]="item.options.xaxis"
+            [yaxis]="item.options.yaxis"
+            [grid]="item.options.grid"
+            [colors]="item.options.colors"
+            [legend]="item.options.legend"
+            [tooltip]="item.options.tooltip"
+            [annotations]="item.options.annotations">
+          </apx-chart>
         </div>
+      </div>
 
-        <div class="col-12 achievement-band-section">
-            <div class="card p-3 p-sm-4 d-flex flex-column">
-                <div class="d-flex align-items-center gap-1">
-                    <mat-icon fontSet="material-icons-outlined" class="">info</mat-icon>
-                    <h5 class="font-13 clr--4755 fw-semibold mb-0">SC.L.17.11</h5>
-                </div>
-                <div class="chart-scroll-wrapper border-top">
-                    <div class="chart-scroll-area">
-                        <div class="chart-container border-bottom">
-                            <apx-chart
-                            [series]="chartOptions1.series"
-                            [chart]="chartOptions1.chart"
-                            [plotOptions]="chartOptions1.plotOptions"
-                            [dataLabels]="chartOptions1.dataLabels"
-                            [xaxis]="chartOptions1.xaxis"
-                            [yaxis]="chartOptions1.yaxis"
-                            [grid]="chartOptions1.grid"
-                            [stroke]="chartOptions1.stroke"
-                            [colors]="chartOptions1.colors"
-                            [legend]="chartOptions1.legend"
-                            [tooltip]="chartOptions1.tooltip"
-                            [annotations]="chartOptions1.annotations"
-                            [fill]="chartOptions1.fill"
-                            ></apx-chart>
-                        </div>
-                    </div>
-                    <div class="threshold-legend">
-                        <span class="legend-label">Threshold:</span>
+      <div class="threshold-legend">
+        <span class="legend-label">Threshold:</span>
+        <span class="legend-item red"><span class="dot"></span> &lt;50%</span>
+        <span class="legend-item amber"><span class="dot"></span> 50-70%</span>
+        <span class="legend-item green"><span class="dot"></span> ≥70%</span>
+      </div>
+    </div>
+  </div>
+</div>
+ 
 
-                        <span class="legend-item red">
-                        <span class="dot"></span>
-                        &lt;50%
-                        </span>
-
-                        <span class="legend-item amber">
-                        <span class="dot"></span>
-                        50-70%
-                        </span>
-
-                        <span class="legend-item green">
-                        <span class="dot"></span>
-                        ≥70%
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 achievement-band-section">
-            <div class="card p-3 p-sm-4 d-flex flex-column">
-                <div class="d-flex align-items-center gap-1">
-                    <mat-icon fontSet="material-icons-outlined" class="">info</mat-icon>
-                    <h5 class="font-13 clr--4755 fw-semibold mb-0">SC.E.7.1</h5>
-                </div>
-                <div class="chart-scroll-wrapper border-top">
-                    <div class="chart-scroll-area">
-                        <div class="chart-container border-bottom">
-                            <apx-chart
-                            [series]="chartOptions2.series"
-                            [chart]="chartOptions2.chart"
-                            [plotOptions]="chartOptions2.plotOptions"
-                            [dataLabels]="chartOptions2.dataLabels"
-                            [xaxis]="chartOptions2.xaxis"
-                            [yaxis]="chartOptions2.yaxis"
-                            [grid]="chartOptions2.grid"
-                            [stroke]="chartOptions2.stroke"
-                            [colors]="chartOptions2.colors"
-                            [legend]="chartOptions2.legend"
-                            [tooltip]="chartOptions2.tooltip"
-                            [annotations]="chartOptions2.annotations"
-                            [fill]="chartOptions2.fill"
-                            ></apx-chart>
-                        </div>
-                    </div>
-                    <div class="threshold-legend">
-                        <span class="legend-label">Threshold:</span>
-
-                        <span class="legend-item red">
-                        <span class="dot"></span>
-                        &lt;50%
-                        </span>
-
-                        <span class="legend-item amber">
-                        <span class="dot"></span>
-                        50-70%
-                        </span>
-
-                        <span class="legend-item green">
-                        <span class="dot"></span>
-                        ≥70%
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 achievement-band-section">
-            <div class="card p-3 p-sm-4 d-flex flex-column">
-                <div class="d-flex align-items-center gap-1">
-                    <mat-icon fontSet="material-icons-outlined" class="">info</mat-icon>
-                    <h5 class="font-13 clr--4755 fw-semibold mb-0">SC.L.17.11</h5>
-                </div>
-                <div class="chart-scroll-wrapper border-top">
-                    <div class="chart-scroll-area">
-                        <div class="chart-container border-bottom">
-                            <apx-chart
-                            [series]="chartOptions1.series"
-                            [chart]="chartOptions1.chart"
-                            [plotOptions]="chartOptions1.plotOptions"
-                            [dataLabels]="chartOptions1.dataLabels"
-                            [xaxis]="chartOptions1.xaxis"
-                            [yaxis]="chartOptions1.yaxis"
-                            [grid]="chartOptions1.grid"
-                            [stroke]="chartOptions1.stroke"
-                            [colors]="chartOptions1.colors"
-                            [legend]="chartOptions1.legend"
-                            [tooltip]="chartOptions1.tooltip"
-                            [annotations]="chartOptions1.annotations"
-                            [fill]="chartOptions1.fill"
-                            ></apx-chart>
-                        </div>
-                    </div>
-                    <div class="threshold-legend">
-                        <span class="legend-label">Threshold:</span>
-
-                        <span class="legend-item red">
-                        <span class="dot"></span>
-                        &lt;50%
-                        </span>
-
-                        <span class="legend-item amber">
-                        <span class="dot"></span>
-                        50-70%
-                        </span>
-
-                        <span class="legend-item green">
-                        <span class="dot"></span>
-                        ≥70%
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 achievement-band-section">
-            <div class="card p-3 p-sm-4 d-flex flex-column">
-                <div class="d-flex align-items-center gap-1">
-                    <mat-icon fontSet="material-icons-outlined" class="">info</mat-icon>
-                    <h5 class="font-13 clr--4755 fw-semibold mb-0">SC.E.7.1</h5>
-                </div>
-                <div class="chart-scroll-wrapper border-top">
-                    <div class="chart-scroll-area">
-                        <div class="chart-container border-bottom">
-                            <apx-chart
-                            [series]="chartOptions2.series"
-                            [chart]="chartOptions2.chart"
-                            [plotOptions]="chartOptions2.plotOptions"
-                            [dataLabels]="chartOptions2.dataLabels"
-                            [xaxis]="chartOptions2.xaxis"
-                            [yaxis]="chartOptions2.yaxis"
-                            [grid]="chartOptions2.grid"
-                            [stroke]="chartOptions2.stroke"
-                            [colors]="chartOptions2.colors"
-                            [legend]="chartOptions2.legend"
-                            [tooltip]="chartOptions2.tooltip"
-                            [annotations]="chartOptions2.annotations"
-                            [fill]="chartOptions2.fill"
-                            ></apx-chart>
-                        </div>
-                    </div>
-                    <div class="threshold-legend">
-                        <span class="legend-label">Threshold:</span>
-
-                        <span class="legend-item red">
-                        <span class="dot"></span>
-                        &lt;50%
-                        </span>
-
-                        <span class="legend-item amber">
-                        <span class="dot"></span>
-                        50-70%
-                        </span>
-
-                        <span class="legend-item green">
-                        <span class="dot"></span>
-                        ≥70%
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 achievement-band-section">
-            <div class="card p-3 p-sm-4 d-flex flex-column">
-                <div class="d-flex align-items-center gap-1">
-                    <mat-icon fontSet="material-icons-outlined" class="">info</mat-icon>
-                    <h5 class="font-13 clr--4755 fw-semibold mb-0">SC.L.17.11</h5>
-                </div>
-                <div class="chart-scroll-wrapper border-top">
-                    <div class="chart-scroll-area">
-                        <div class="chart-container border-bottom">
-                            <apx-chart
-                            [series]="chartOptions1.series"
-                            [chart]="chartOptions1.chart"
-                            [plotOptions]="chartOptions1.plotOptions"
-                            [dataLabels]="chartOptions1.dataLabels"
-                            [xaxis]="chartOptions1.xaxis"
-                            [yaxis]="chartOptions1.yaxis"
-                            [grid]="chartOptions1.grid"
-                            [stroke]="chartOptions1.stroke"
-                            [colors]="chartOptions1.colors"
-                            [legend]="chartOptions1.legend"
-                            [tooltip]="chartOptions1.tooltip"
-                            [annotations]="chartOptions1.annotations"
-                            [fill]="chartOptions1.fill"
-                            ></apx-chart>
-                        </div>
-                    </div>
-                    <div class="threshold-legend">
-                        <span class="legend-label">Threshold:</span>
-
-                        <span class="legend-item red">
-                        <span class="dot"></span>
-                        &lt;50%
-                        </span>
-
-                        <span class="legend-item amber">
-                        <span class="dot"></span>
-                        50-70%
-                        </span>
-
-                        <span class="legend-item green">
-                        <span class="dot"></span>
-                        ≥70%
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
 
         <div class="col-12 achievement-band-section">
             <div class="card p-3 p-sm-4 d-flex flex-column">

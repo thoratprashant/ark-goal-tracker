@@ -36,21 +36,25 @@ export type ChartOptions = {
   plotOptions: ApexPlotOptions;
 };
 
-export type ChartOptions1 = {
+type BandChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
+  plotOptions: ApexPlotOptions;
+  dataLabels: ApexDataLabels;
   xaxis: ApexXAxis;
   yaxis: ApexYAxis;
-  stroke: ApexStroke;
   grid: ApexGrid;
+  colors: string[];
   legend: ApexLegend;
   tooltip: ApexTooltip;
-  colors: string[];
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  annotations: ApexAnnotations;
-  fill: ApexFill | any;
 };
+
+type AchievementChartItem = {
+  title: string;
+  options: BandChartOptions;
+};
+
+ 
 
 
 const categories = [
@@ -118,6 +122,8 @@ interface TableRow1 {
   styleUrl: './standards.scss',
 })
 export class Standards {
+achievementCharts: any[] = [];
+showAchievementCharts: boolean[] = [];
 
   viewMode = signal<'grade' | 'teacher'>('grade');
   chartMode = signal<'table' | 'bar'>('table');
@@ -184,6 +190,30 @@ export class Standards {
   ngOnInit(): void {
     this.animateScores();
     this.animatePercentage();
+    this.achievementCharts = [
+      {
+        title: 'SC.E.7.1',
+        options: this.createBandChart([
+          { name: 'District (816)', value: 56.4 },
+          { name: 'Franklin High School (172)', value: 61.7 },
+          { name: 'Amy Shuman (109)', value: 58.3 },
+          { name: 'Jabbar Branch (88)', value: 63.0 },
+          { name: 'Paul Tomlinson (63)', value: 59.1 },
+        ])
+      },
+      {
+        title: 'SC.L.17.11',
+        options: this.createBandChart([
+          { name: 'District (816)', value: 65.0 },
+          { name: 'Franklin High School (172)', value: 71.2 },
+          { name: 'Amy Shuman (109)', value: 70.9 },
+          { name: 'Jabbar Branch (88)', value: 67.9 },
+          { name: 'Paul Tomlinson (63)', value: 71.8 },
+        ])
+      }
+    ];
+
+    this.showAchievementCharts = this.achievementCharts.map(() => false);
   }
 
   animateScores(): void {
@@ -245,6 +275,9 @@ export class Standards {
   }
 
   ngAfterViewInit() {
+        setTimeout(() => {
+      this.observeAchievementCharts();
+    }, 500);
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
     AOS.init({
@@ -555,269 +588,7 @@ export class Standards {
     }
   };
 
-  public chartOptions1: ChartOptions1 = {
-    series: [
-    {
-      name: 'Completed',
-      data: actualValues
-    },
-    {
-      name: 'Remaining',
-      data: actualValues.map(v => +(100 - v).toFixed(1))
-    }
-  ],
-  chart: {
-    type: 'bar',
-    height: 240,
-    stacked: true,
-    toolbar: { show: false },
-    animations: { enabled: false },
-    fontFamily: 'Arial, sans-serif'
-  },
-
-  // Completed = dynamic color, Remaining = grey
-  colors: ['#90C955', '#F3F4F6'],
-
-  plotOptions: {
-    bar: {
-      horizontal: true,
-      barHeight: '36%',
-      borderRadius: 6,
-      borderRadiusWhenStacked: 'last',
-      distributed: false,
-      dataLabels: {
-        position: 'right'
-      }
-    }
-  },
-
-  dataLabels: {
-    enabled: true,
-    enabledOnSeries: [1], // show label only on last stack
-    formatter: (_val: number, opts: any) => {
-      const index = opts.dataPointIndex;
-      return `${actualValues[index].toFixed(1)}%`; // show completed %
-    },
-    offsetX: 20,
-    textAnchor: 'start',
-    style: {
-      fontSize: '11px',
-      fontWeight: '600',
-      colors: labelColors,
-    }
-  },
-
-  fill: {
-    opacity: 1,
-    colors: [
-      ({ value }: { value: number }) => getColor(value),
-      '#E5E7EB'
-    ]
-  },
-
-  stroke: {
-    show: false
-  },
-
-  xaxis: {
-    min: 0,
-    max: 100,
-    tickAmount: 4,
-    position: 'top',
-    categories,
-    labels: {
-      formatter: (val: number) => `${val}%`,
-      style: {
-        fontSize: '11px',
-        colors: '#9CA3AF'
-      }
-    },
-    axisBorder: { show: false },
-    axisTicks: { show: false }
-  },
-
-  yaxis: {
-    labels: {
-      align: 'left',
-      maxWidth: 180,
-      style: {
-        fontSize: '12px',
-        colors: '#374151'
-      }
-    }
-  },
-
-  grid: {
-    show: false,
-    padding: {
-      right: 40,
-      left: 0
-    }
-  },
-
-  legend: { show: false },
-
-  tooltip: {
-    enabled: true,
-    y: {
-      formatter: (_: number, opts: any) => {
-        const index = opts.dataPointIndex;
-        return opts.seriesIndex === 0
-          ? `${actualValues[index].toFixed(1)}%`
-          : `${(100 - actualValues[index]).toFixed(1)}%`;
-      }
-    }
-  },
-
-  annotations: {
-    xaxis: [
-      {
-        x: 50,
-        borderColor: '#D64550',
-        strokeDashArray: 12,
-        opacity: 0.5,
-      },
-      {
-        x: 70,
-        borderColor: '#90C955',
-        strokeDashArray: 12,
-        opacity: 0.5,
-      }
-    ]
-  }
-  };
-
-  public chartOptions2: ChartOptions1 = {
-    series: [
-    {
-      name: 'Completed',
-      data: actualValues1
-    },
-    {
-      name: 'Remaining',
-      data: actualValues1.map(v => +(100 - v).toFixed(1))
-    }
-  ],
-  chart: {
-    type: 'bar',
-    height: 240,
-    stacked: true,
-    toolbar: { show: false },
-    animations: { enabled: false },
-    fontFamily: 'Arial, sans-serif'
-  },
-
-  // Completed = dynamic color, Remaining = grey
-  colors: ['#90C955', '#F3F4F6'],
-
-  plotOptions: {
-    bar: {
-      horizontal: true,
-      barHeight: '36%',
-      borderRadius: 6,
-      borderRadiusWhenStacked: 'last',
-      distributed: false,
-      dataLabels: {
-        position: 'right'
-      }
-    }
-  },
-
-  dataLabels: {
-    enabled: true,
-    enabledOnSeries: [1], // show label only on last stack
-    formatter: (_val: number, opts: any) => {
-      const index = opts.dataPointIndex;
-      return `${actualValues1[index].toFixed(1)}%`; // show completed %
-    },
-    offsetX: 20,
-    textAnchor: 'start',
-    style: {
-      fontSize: '11px',
-      fontWeight: '600',
-      colors: labelColors1,
-    }
-  },
-
-  fill: {
-    opacity: 1,
-    colors: [
-      ({ value }: { value: number }) => getColor(value),
-      '#E5E7EB'
-    ]
-  },
-
-  stroke: {
-    show: false
-  },
-
-  xaxis: {
-    min: 0,
-    max: 100,
-    tickAmount: 4,
-    position: 'top',
-    categories,
-    labels: {
-      formatter: (val: number) => `${val}%`,
-      style: {
-        fontSize: '11px',
-        colors: '#9CA3AF'
-      }
-    },
-    axisBorder: { show: false },
-    axisTicks: { show: false }
-  },
-
-  yaxis: {
-    labels: {
-      align: 'left',
-      maxWidth: 180,
-      style: {
-        fontSize: '12px',
-        colors: '#374151'
-      }
-    }
-  },
-
-  grid: {
-    show: false,
-    padding: {
-      right: 40,
-      left: 0
-    }
-  },
-
-  legend: { show: false },
-
-  tooltip: {
-    enabled: true,
-    y: {
-      formatter: (_: number, opts: any) => {
-        const index = opts.dataPointIndex;
-        return opts.seriesIndex === 0
-          ? `${actualValues1[index].toFixed(1)}%`
-          : `${(100 - actualValues1[index]).toFixed(1)}%`;
-      }
-    }
-  },
-
-  annotations: {
-    xaxis: [
-      {
-        x: 50,
-        borderColor: '#D64550',
-        strokeDashArray: 12,
-        opacity: 0.5,
-      },
-      {
-        x: 70,
-        borderColor: '#90C955',
-        strokeDashArray: 12,
-        opacity: 0.5,
-      }
-    ]
-  }
-  };
+ 
 
   dataAchievement: TableRow[] = [
     {studentName: 'Ms. Johnson', grade: 8, coreTeacher: 'Mr. Hugnes', courseTitle: 'ELA', period: 1, predictedSS: 300, ssAch: 300, ssLG: 295, lastAssessment: '01/15/26', assessmentName: 'FSA Practice 3', ptStudentAch: 4, ptStudentLG: '3',},
@@ -875,5 +646,136 @@ export class Standards {
       return 'red-bg';
     }
   }
+ observeAchievementCharts() {
+  this.achievementCharts.forEach((_, index) => {
+    const section = document.getElementById('achievementChartSection' + index);
+    if (!section) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !this.showAchievementCharts[index]) {
+        this.ngZone.run(() => {
+          this.showAchievementCharts[index] = true;
+          this.cdr.detectChanges();
+        });
+
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+
+    observer.observe(section);
+  });
+}
+
+getBarColor(value: number): string {
+  if (value < 50) return '#F87171';
+  if (value < 70) return '#FDBA24';
+  return '#84C954';
+}
+createBandChart(data: { name: string; value: number }[]) {
+  return {
+    series: [
+      {
+        name: 'Score',
+        data: data.map(item => ({
+          x: item.name,
+          y: item.value,
+          fillColor: this.getBarColor(item.value)
+        }))
+      }
+    ],
+    chart: {
+      type: 'bar' as const,
+      height: 280,
+      toolbar: { show: false },
+      animations: {
+        enabled: true,
+        speed: 900
+      }
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+        distributed: true,
+        borderRadius: 4,
+        barHeight: '35%',
+        colors: {
+          backgroundBarColors: data.map(() => '#E5E7EB'),
+          backgroundBarOpacity: 1
+        },
+        dataLabels: {
+          position: 'top'
+        }
+      }
+    },
+    colors: data.map(item => this.getBarColor(item.value)),
+    dataLabels: {
+      enabled: true,
+      formatter: (val: number) => `${val.toFixed(1)}%`,
+      offsetX: 28,
+      style: {
+        fontSize: '11px',
+        fontWeight: 700,
+        colors: data.map(item => this.getBarColor(item.value))
+      }
+    },
+    xaxis: {
+      min: 0,
+      max: 100,
+      tickAmount: 4,
+      position: 'top',
+      labels: {
+        formatter: (val: string) => `${Number(val).toFixed(0)}%`,
+        style: {
+          colors: '#9CA3AF',
+          fontSize: '11px',
+          fontWeight: 600
+        }
+      },
+      axisBorder: { show: false },
+      axisTicks: { show: false }
+    },
+    yaxis: {
+      labels: {
+        style: {
+          colors: '#475569',
+          fontSize: '12px',
+          fontWeight: 500
+        }
+      }
+    },
+    grid: {
+      show: true,
+      borderColor: '#E5E7EB',
+      xaxis: {
+        lines: { show: false }
+      },
+      yaxis: {
+        lines: { show: false }
+      }
+    },
+    annotations: {
+      xaxis: [
+        {
+          x: 50,
+          borderColor: '#F87171',
+          strokeDashArray: 4
+        },
+        {
+          x: 70,
+          borderColor: '#84C954',
+          strokeDashArray: 4
+        }
+      ]
+    },
+    legend: {
+      show: false
+    },
+    tooltip: {
+      y: {
+        formatter: (val: number) => `${val.toFixed(1)}%`
+      }
+    }
+  };
+}
 
 }
