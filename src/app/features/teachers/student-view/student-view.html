@@ -184,8 +184,8 @@
                         <div class="d-flex flex-column">
                             <h5 class="font-12 clr--64748B fw-normal mb-0">ADA by Day of Week</h5>
                             <div class="chart-scroll-wrapper">
-                                <div class="chart-container">
-                                    <apx-chart
+                                <div #attendanceInsightsSection class="chart-container">
+                                    <apx-chart *ngIf="showChart1"
                                         [series]="chartOptions2.series"
                                         [chart]="chartOptions2.chart"
                                         [xaxis]="chartOptions2.xaxis"
@@ -205,8 +205,8 @@
                         <div class="d-flex flex-column">
                             <h5 class="font-12 clr--64748B fw-normal mb-0">Historical Attendance</h5>
                             <div class="chart-scroll-wrapper">
-                                <div class="chart-container">
-                                    <apx-chart
+                                <div #historicalAttendanceSection class="chart-container">
+                                    <apx-chart *ngIf="showChart2"
                                         [series]="chartOptions1.series"
                                         [chart]="chartOptions1.chart"
                                         [xaxis]="chartOptions1.xaxis"
@@ -277,8 +277,8 @@
                                 <p class="font-12 clr--4755 fw-normal mb-0">ELA</p>
                             </div>
                         </div>
-                        <div class="chart-container">
-                            <apx-chart
+                        <div #predictedPerformanceTimeSection class="chart-container">
+                            <apx-chart *ngIf="showChart"
                                 [series]="chartOptions.series"
                                 [chart]="chartOptions.chart"
                                 [xaxis]="chartOptions.xaxis"
@@ -328,7 +328,7 @@
                         </div>
                     </div>
 
-                    <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
+                    <div #progressGoal class="card p-3 p-sm-4 d-flex flex-column gap-3">
                         <h5 class="font-14 text-secondary fw-semibold mb-0">Progress Toward Goal</h5>
                         @for (item of progressList; track item) {
                         <div class="progress--wrapper d-flex flex-column gap-2">
@@ -337,7 +337,7 @@
                                 <h6 class="mb-0 font-13 fw-normal clr--4755">Goal: {{ item.goalValue }}%</h6>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar" [style.background]="item.color" [style.width.%]="item.goalValue">
+                                <div class="progress-bar" [style.background]="item.color" [style.width.%]="progressAnimated ? item.goalValue : 0" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                                 </div>
                             </div>
                         </div>

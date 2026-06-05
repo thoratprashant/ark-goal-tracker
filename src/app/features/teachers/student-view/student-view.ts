@@ -121,6 +121,19 @@ export class StudentView {
   @ViewChild('scrollContainer', { static: false })
   scrollContainer!: ElementRef<HTMLDivElement>;
 
+  @ViewChild('predictedPerformanceTimeSection') predictedPerformanceTimeSection!: ElementRef;
+  showChart = false;
+
+  @ViewChild('attendanceInsightsSection') attendanceInsightsSection!: ElementRef;
+  showChart1 = false;
+
+  @ViewChild('historicalAttendanceSection') historicalAttendanceSection!: ElementRef;
+  showChart2 = false;
+
+   @ViewChild('progressGoal') progressGoal!: ElementRef;
+  progressAnimated = false;
+  private animationStarted = false;
+
   students = [
     { id: 1, name: 'Emma Rodriguez' },
     { id: 2, name: 'Noah Williams' },
@@ -149,6 +162,82 @@ export class StudentView {
   ngAfterViewInit() {
     this.updateScrollButtons();
     setTimeout(() => this.checkScroll(), 100);
+
+    const performanceTrendsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting && !this.showChart) {
+            this.showChart = true;
+            this.cdr.detectChanges();
+            performanceTrendsObserver.unobserve(this.predictedPerformanceTimeSection.nativeElement);
+          }
+
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    );
+    performanceTrendsObserver.observe(this.predictedPerformanceTimeSection.nativeElement);
+
+    const attendanceInsightsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting && !this.showChart1) {
+            this.showChart1 = true;
+            this.cdr.detectChanges();
+            attendanceInsightsObserver.unobserve(this.attendanceInsightsSection.nativeElement);
+          }
+
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    );
+    attendanceInsightsObserver.observe(this.attendanceInsightsSection.nativeElement);
+
+    const historicalAttendanceObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting && !this.showChart2) {
+            this.showChart2 = true;
+            this.cdr.detectChanges();
+            historicalAttendanceObserver.unobserve(this.historicalAttendanceSection.nativeElement);
+          }
+
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    );
+    historicalAttendanceObserver.observe(this.historicalAttendanceSection.nativeElement);
+
+    const observerProgress = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !this.animationStarted) {
+            this.animationStarted = true;
+
+            setTimeout(() => {
+              this.progressAnimated = true;
+              this.cdr.detectChanges();
+            }, 100);
+
+            observerProgress.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    );
+
+    observerProgress.observe(this.progressGoal.nativeElement);
   }
 
   scrollLeft() {
@@ -265,7 +354,20 @@ export class StudentView {
       type: 'line',
       height: '400',
       zoom: { enabled: false },
-      toolbar: { show: false }
+      toolbar: { show: false },
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+          speed: 1400,
+          animateGradually: {
+            enabled: true,
+            delay: 180
+          },
+          dynamicAnimation: {
+            enabled: true,
+            speed: 1400
+          }
+      }
     },
     stroke: {
       curve: 'straight',
@@ -407,7 +509,20 @@ export class StudentView {
       type: 'line',
       height: 320,
       zoom: { enabled: false },
-      toolbar: { show: false }
+      toolbar: { show: false },
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 1400,
+        animateGradually: {
+          enabled: true,
+          delay: 180
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 1400
+        }
+      }
     },
     stroke: {
       curve: 'straight',
@@ -507,6 +622,19 @@ export class StudentView {
       width: '100%',
       toolbar: {
         show: false
+      },
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+          speed: 1400,
+          animateGradually: {
+            enabled: true,
+            delay: 180
+          },
+          dynamicAnimation: {
+            enabled: true,
+            speed: 1400
+          }
       },
       redrawOnWindowResize: true,
       redrawOnParentResize: true
