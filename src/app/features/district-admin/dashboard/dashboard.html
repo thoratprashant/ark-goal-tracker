@@ -631,33 +631,95 @@
 
           </div>
         </div>
-<div class="card p-3 p-sm-4 d-flex flex-column m-0" #performanceTrendsSection>
-  <div class="d-flex align-items-center flex-wrap justify-content-sm-between gap-2">
-    <h5 class="font-17 clr--111827 fw-semibold mb-0">Performance Trends</h5>
-  </div>
-
-  <div class="chart-scroll-wrapper">
-    <div class="chart-scroll-area">
-      <div class="chart-container pt--chart">
-        <apx-chart
-          #performanceTrendsChart
-          [series]="chartOptions1.series"
-          [chart]="chartOptions1.chart"
-          [xaxis]="chartOptions1.xaxis"
-          [yaxis]="chartOptions1.yaxis"
-          [stroke]="chartOptions1.stroke"
-          [grid]="chartOptions1.grid"
-          [markers]="chartOptions1.markers"
-          [legend]="chartOptions1.legend"
-          [tooltip]="chartOptions1.tooltip"
-          [colors]="chartOptions1.colors"
-          [fill]="chartOptions1.fill"
-          [dataLabels]="chartOptions1.dataLabels">
-        </apx-chart>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="card p-3 p-sm-4 d-flex flex-column m-0" #performanceTrendsSection>
+          <div class="d-flex align-items-center flex-wrap justify-content-sm-between gap-2">
+            <h5 class="font-17 clr--111827 fw-semibold mb-0">Performance Trends</h5>
+          </div>
+          <div *ngIf="viewMode1() === 'school'" class="chart-scroll-wrapper">
+            <div class="chart-scroll-area">
+              <div class="chart-container pt--chart">
+                <apx-chart
+                  #performanceTrendsChart
+                  [series]="chartOptions1.series"
+                  [chart]="chartOptions1.chart"
+                  [xaxis]="chartOptions1.xaxis"
+                  [yaxis]="chartOptions1.yaxis"
+                  [stroke]="chartOptions1.stroke"
+                  [grid]="chartOptions1.grid"
+                  [markers]="chartOptions1.markers"
+                  [legend]="chartOptions1.legend"
+                  [tooltip]="chartOptions1.tooltip"
+                  [colors]="chartOptions1.colors"
+                  [fill]="chartOptions1.fill"
+                  [dataLabels]="chartOptions1.dataLabels">
+                </apx-chart>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="viewMode1() === 'attendance'" class="chart-scroll-wrapper">
+            <div class="chart-scroll-area">
+              <div class="chart-container pt--chart">
+                <apx-chart
+                  #performanceTrendsChart1
+                  [series]="chartOptions2.series"
+                  [chart]="chartOptions2.chart"
+                  [xaxis]="chartOptions2.xaxis"
+                  [yaxis]="chartOptions2.yaxis"
+                  [stroke]="chartOptions2.stroke"
+                  [grid]="chartOptions2.grid"
+                  [markers]="chartOptions2.markers"
+                  [legend]="chartOptions2.legend"
+                  [tooltip]="chartOptions2.tooltip"
+                  [colors]="chartOptions2.colors"
+                  [fill]="chartOptions2.fill"
+                  [dataLabels]="chartOptions2.dataLabels">
+                </apx-chart>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="viewMode1() === 'region'" class="chart-scroll-wrapper">
+            <div class="chart-scroll-area">
+              <div class="chart-container pt--chart">
+                <apx-chart
+                  #performanceTrendsChart2
+                  [series]="chartOptions3.series"
+                  [chart]="chartOptions3.chart"
+                  [xaxis]="chartOptions3.xaxis"
+                  [yaxis]="chartOptions3.yaxis"
+                  [stroke]="chartOptions3.stroke"
+                  [grid]="chartOptions3.grid"
+                  [markers]="chartOptions3.markers"
+                  [legend]="chartOptions3.legend"
+                  [tooltip]="chartOptions3.tooltip"
+                  [colors]="chartOptions3.colors"
+                  [fill]="chartOptions3.fill"
+                  [dataLabels]="chartOptions3.dataLabels">
+                </apx-chart>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="viewMode1() === 'tier'" class="chart-scroll-wrapper">
+            <div class="chart-scroll-area">
+              <div class="chart-container pt--chart">
+                <apx-chart
+                  #performanceTrendsChart3
+                  [series]="chartOptions4.series"
+                  [chart]="chartOptions4.chart"
+                  [xaxis]="chartOptions4.xaxis"
+                  [yaxis]="chartOptions4.yaxis"
+                  [stroke]="chartOptions4.stroke"
+                  [grid]="chartOptions4.grid"
+                  [markers]="chartOptions4.markers"
+                  [legend]="chartOptions4.legend"
+                  [tooltip]="chartOptions4.tooltip"
+                  [colors]="chartOptions4.colors"
+                  [fill]="chartOptions4.fill"
+                  [dataLabels]="chartOptions4.dataLabels">
+                </apx-chart>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

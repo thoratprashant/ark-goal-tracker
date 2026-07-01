@@ -64,6 +64,51 @@ export type ChartOptions1 = {
   dataLabels: ApexDataLabels;
 };
 
+export type ChartOptions2 = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  yaxis: ApexYAxis;
+  stroke: ApexStroke;
+  grid: ApexGrid;
+  markers: ApexMarkers;
+  legend: ApexLegend;
+  tooltip: ApexTooltip;
+  colors: string[];
+  fill: ApexFill;
+  dataLabels: ApexDataLabels;
+};
+
+export type ChartOptions3 = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  yaxis: ApexYAxis;
+  stroke: ApexStroke;
+  grid: ApexGrid;
+  markers: ApexMarkers;
+  legend: ApexLegend;
+  tooltip: ApexTooltip;
+  colors: string[];
+  fill: ApexFill;
+  dataLabels: ApexDataLabels;
+};
+
+export type ChartOptions4 = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  yaxis: ApexYAxis;
+  stroke: ApexStroke;
+  grid: ApexGrid;
+  markers: ApexMarkers;
+  legend: ApexLegend;
+  tooltip: ApexTooltip;
+  colors: string[];
+  fill: ApexFill;
+  dataLabels: ApexDataLabels;
+};
+
 export type ChartOptions12 = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -100,6 +145,9 @@ export class Dashboard {
 
   @ViewChild('performanceTrendsSection') performanceTrendsSection!: ElementRef;
   @ViewChild('performanceTrendsChart') performanceTrendsChart!: ChartComponent;
+  @ViewChild('performanceTrendsChart1') performanceTrendsChart1!: ChartComponent;
+  @ViewChild('performanceTrendsChart2') performanceTrendsChart2!: ChartComponent;
+  @ViewChild('performanceTrendsChart3') performanceTrendsChart3!: ChartComponent;
 
   private performanceTrendsAnimated = false; 
   private performanceTrendsRealSeries = [
@@ -644,7 +692,7 @@ export class Dashboard {
     }, 
   ];
 
-//Performance trends graph
+//Performance trends school graph
   public chartOptions1: any = {
     series: [
         {
@@ -695,7 +743,7 @@ export class Dashboard {
 
     stroke: {
       curve: 'smooth',
-      width: 3
+      width: 2.5
     },
 
     fill: {
@@ -798,6 +846,569 @@ export class Dashboard {
       },
       itemMargin: {
         horizontal: 10
+      }
+    },
+
+    tooltip: {
+      shared: true,
+      intersect: false,
+
+      marker: {
+        show: true
+      },
+
+      x: {
+        formatter: function (
+          value: any,
+          opts: any
+        ) {
+          return opts.w.globals.categoryLabels[opts.dataPointIndex];
+        }
+      },
+
+      y: {
+        formatter: (value: number) => `${value}%`
+      },
+      style: {
+        fontSize: '12px'
+      }
+    }
+  };
+
+//Performance trends attendance graph
+  public chartOptions2: any = {
+    series: [
+      {
+        name: 'High Attendance (90%+)',
+        data: [62, 70, 75, 82, 89, 93]
+      },
+      {
+        name: 'Mid Attendance (75–89%)',
+          data: [55, 60, 63, 67, 72, 78]
+      },
+      {
+        name: 'Low Attendance (<75%)',
+        data: [50, 52, 54, 56, 59, 60]
+      }
+    ],
+
+    chart: {
+      type: 'line',
+      height: 300,
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      },
+      fontFamily: 'Inter, sans-serif',
+      background: '#ffffff',
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 1400,
+        animateGradually: {
+          enabled: true,
+          delay: 180
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 1400
+        }
+      }
+    },
+
+    colors: [
+    '#2563EB',
+    '#3B82F6',
+    '#60A5FA'
+    ],
+
+    stroke: {
+      curve: 'smooth',
+      width: 2.5
+    },
+
+    fill: {
+      type: 'solid',
+      opacity: 1
+    },
+
+    dataLabels: {
+      enabled: false
+    },
+
+    markers: {
+      size: 4,
+      strokeWidth: 2,
+      strokeColors: '#ffffff',
+      hover: {
+        size: 6,
+        sizeOffset: 2
+      },
+    },
+
+    xaxis: {
+      categories: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
+
+      axisBorder: {
+        show: false
+      },
+
+      axisTicks: {
+        show: false
+      },
+
+      crosshairs: {
+        show: false
+      },
+
+      labels: {
+        style: {
+          colors: '#9CA3AF',
+          fontSize: '11px',
+          fontWeight: 400
+        }
+      }
+    },
+
+    yaxis: {
+      min: 50,
+      max: 100,
+      tickAmount: 5,
+
+      labels: {
+        formatter: (value: number) => `${value}%`,
+        style: {
+          colors: '#9CA3AF',
+          fontSize: '11px',
+          fontWeight: 400
+        }
+      }
+    },
+
+    grid: {
+      borderColor: '#E5E7EB',
+      strokeDashArray: 4,
+
+      xaxis: {
+        lines: {
+          show: false
+        }
+      },
+
+      yaxis: {
+        lines: {
+          show: true
+        }
+      },
+
+      padding: {
+        top: 0,
+        right: 10,
+        bottom: 0,
+        left: 10
+      }
+    },
+
+    legend: {
+      show: true,
+      position: 'bottom',
+      horizontalAlign: 'center',
+
+      fontSize: '12px',
+      fontWeight: 400,
+
+      labels: {
+        colors: '#6B7280'
+      },
+
+      markers: {
+        width: 10,
+        height: 10,
+        radius: 10,
+        offsetX: -2
+      },
+      itemMargin: {
+        horizontal: 20
+      }
+    },
+
+    tooltip: {
+      shared: true,
+      intersect: false,
+
+      marker: {
+        show: true
+      },
+
+      x: {
+        formatter: function (
+          value: any,
+          opts: any
+        ) {
+          return opts.w.globals.categoryLabels[opts.dataPointIndex];
+        }
+      },
+
+      y: {
+        formatter: (value: number) => `${value}%`
+      },
+      style: {
+        fontSize: '12px'
+      }
+    }
+  };
+
+//Performance trends region graph
+  public chartOptions3: any = {
+    series: [
+      {
+        name: 'Northeast',
+        data: [72, 78, 85, 82, 88, 91]
+      },
+      {
+        name: 'South',
+        data: [64, 67, 69, 67, 71, 75]
+      },
+      {
+        name: 'Midwest',
+        data: [80, 75, 77, 84, 82, 85]
+      },
+      {
+        name: 'West',
+        data: [90, 92, 95, 94, 96, 100]
+      }
+    ],
+
+    chart: {
+      type: 'line',
+      height: 300,
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      },
+      fontFamily: 'Inter, sans-serif',
+      background: '#ffffff',
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 1400,
+        animateGradually: {
+          enabled: true,
+          delay: 180
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 1400
+        }
+      }
+    },
+
+    colors: [
+    '#2563EB',
+    '#3B82F6',
+    '#60A5FA',
+    '#90C955'
+    ],
+
+    stroke: {
+      curve: 'smooth',
+      width: 2.5
+    },
+
+    fill: {
+      type: 'solid',
+    },
+
+    dataLabels: {
+      enabled: false
+    },
+
+    markers: {
+      size: 4,
+      strokeWidth: 2,
+      strokeColors: '#ffffff',
+      hover: {
+        size: 6,
+        sizeOffset: 2
+      },
+    },
+
+    xaxis: {
+      categories: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
+
+      axisBorder: {
+        show: false
+      },
+
+      axisTicks: {
+        show: false
+      },
+
+      crosshairs: {
+        show: false
+      },
+
+      labels: {
+        style: {
+          colors: '#9CA3AF',
+          fontSize: '11px',
+          fontWeight: 400
+        }
+      }
+    },
+
+    yaxis: {
+      min: 60,
+      max: 100,
+      tickAmount: 4,
+
+      labels: {
+        formatter: (value: number) => `${value}%`,
+        style: {
+          colors: '#9CA3AF',
+          fontSize: '11px',
+          fontWeight: 400
+        }
+      }
+    },
+
+    grid: {
+      borderColor: '#E5E7EB',
+      strokeDashArray: 4,
+
+      xaxis: {
+        lines: {
+          show: false
+        }
+      },
+
+      yaxis: {
+        lines: {
+          show: true
+        }
+      },
+
+      padding: {
+        top: 0,
+        right: 10,
+        bottom: 0,
+        left: 10
+      }
+    },
+
+    legend: {
+      show: true,
+      position: 'bottom',
+      horizontalAlign: 'center',
+
+      fontSize: '12px',
+      fontWeight: 400,
+
+      labels: {
+        colors: '#6B7280'
+      },
+
+      markers: {
+        width: 10,
+        height: 10,
+        radius: 10,
+        offsetX: -2
+      },
+      itemMargin: {
+        horizontal: 20
+      }
+    },
+
+    tooltip: {
+      shared: true,
+      intersect: false,
+
+      marker: {
+        show: true
+      },
+
+      x: {
+        formatter: function (
+          value: any,
+          opts: any
+        ) {
+          return opts.w.globals.categoryLabels[opts.dataPointIndex];
+        }
+      },
+
+      y: {
+        formatter: (value: number) => `${value}%`
+      },
+      style: {
+        fontSize: '12px'
+      }
+    }
+  };
+
+//Performance trends tier graph
+  public chartOptions4: any = {
+    series: [
+      {
+        name: 'Tier 1',
+        data: [93, 95, 96, 95, 97, 96]
+      },
+      {
+        name: 'Tier 2',
+        data: [81, 83, 85, 82, 84, 83]
+      },
+      {
+        name: 'Tier 3',
+        data: [72, 74, 76, 74, 75, 74]
+      },
+      {
+        name: 'Tier 4',
+        data: [66, 68, 70, 68, 69, 68]
+      }
+    ],
+
+    chart: {
+      type: 'line',
+      height: 300,
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      },
+      fontFamily: 'Inter, sans-serif',
+      background: '#ffffff',
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 1400,
+        animateGradually: {
+          enabled: true,
+          delay: 180
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 1400
+        }
+      }
+    },
+
+    colors: [
+    '#90C955',
+    '#3B82F6',
+    '#EA914E',
+    '#D64550'
+    ],
+
+    stroke: {
+      curve: 'smooth',
+      width: 2.5
+    },
+
+    fill: {
+      type: 'solid',
+    },
+
+    dataLabels: {
+      enabled: false
+    },
+
+    markers: {
+      size: 4,
+      strokeWidth: 2,
+      strokeColors: '#ffffff',
+      hover: {
+        size: 6,
+        sizeOffset: 2
+      },
+    },
+
+    xaxis: {
+      categories: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
+
+      axisBorder: {
+        show: false
+      },
+
+      axisTicks: {
+        show: false
+      },
+
+      crosshairs: {
+        show: false
+      },
+
+      labels: {
+        style: {
+          colors: '#9CA3AF',
+          fontSize: '11px',
+          fontWeight: 400
+        }
+      }
+    },
+
+    yaxis: {
+      min: 60,
+      max: 100,
+      tickAmount: 4,
+
+      labels: {
+        formatter: (value: number) => `${value}%`,
+        style: {
+          colors: '#9CA3AF',
+          fontSize: '11px',
+          fontWeight: 400
+        }
+      }
+    },
+
+    grid: {
+      borderColor: '#E5E7EB',
+      strokeDashArray: 4,
+
+      xaxis: {
+        lines: {
+          show: false
+        }
+      },
+
+      yaxis: {
+        lines: {
+          show: true
+        }
+      },
+
+      padding: {
+        top: 0,
+        right: 10,
+        bottom: 0,
+        left: 10
+      }
+    },
+
+    legend: {
+      show: true,
+      position: 'bottom',
+      horizontalAlign: 'center',
+
+      fontSize: '12px',
+      fontWeight: 400,
+
+      labels: {
+        colors: '#6B7280'
+      },
+
+      markers: {
+        width: 10,
+        height: 10,
+        radius: 10,
+        offsetX: -2
+      },
+      itemMargin: {
+        horizontal: 20
       }
     },
 
