@@ -1,5 +1,28 @@
 .schooldetails--wrapper{ 
- 
+    .chart-scroll-wrapper {
+        width: 100%;
+      .chart-scroll-area {
+        width: 100%;
+        @media (max-width: 575px) {
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 6px;
+        }
+        .chart-container {
+          width: 100%;
+          margin: 0 auto;
+          padding: 0px 0 0px 0;
+          ::ng-deep .apexcharts-canvas,::ng-deep .apexcharts-svg {
+              width: 100% !important;
+          }
+          @media (max-width: 575px) {
+              min-width: 620px; // horizontal scroll trigger
+              padding: 0 10px;
+          }
+        }
+      }
+    }
     .grade-breakdown-table{
         margin-top: 1rem;
         .table{
