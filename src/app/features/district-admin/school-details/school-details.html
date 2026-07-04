@@ -492,18 +492,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr *ngFor="let row of subjectCoursePerformanceTable">
                     <td class="clr--111827 fw-semibold ">
-                      ELA <br> <small class="font-11">Total Students - 300</small>
+                      <div class="font-12 clr--111827 fw-semibold mb-1">{{ row.subject }}</div>
+                      <div class="font-10 clr--111827 fw-normal">Total Students: {{ row.students }}</div>
                     </td>
                     <td class="text-center">
-                      <div class="bg-highlight green-bg"> 75% </div>
+                      <div class="bg-highlight" [ngClass]="getStatusClass(row.ach)">
+                        {{ row.ach }}%
+                      </div>
                     </td>
                     <td class="text-center">
-                      <div class="bg-highlight green-bg">70%</div>
+                      <div class="bg-highlight" [ngClass]="getStatusClass(row.lg)">
+                        {{ row.lg }}%
+                      </div>
                     </td>
                     <td class="text-center">
-                      <div class="bg-highlight yellow-bg"> 65%</div>
+                      <div class="bg-highlight" [ngClass]="getStatusClass(row.bq)">
+                        {{ row.bq }}%
+                      </div>
                     </td>
                     <td>
                       <a>
@@ -511,18 +518,78 @@
                       </a>
                     </td>
                   </tr>
-                  <tr>
+                </tbody>
+              </table>
+              <table class="table table-custom table-centered m-0" [hidden]="viewMode1() !== 'state'" *ngIf="chartMode1() === 'table'">
+                <thead class="thead-sm">
+                  <tr class="text-uppercase">
+                    <th class="font-13 fw-bold">State Test</th>
+                    <th class="font-13 fw-bold">Grade</th>
+                    <th class="font-13 fw-bold">Students</th>
+                    <th class="text-center fw-bold"> Proficiency % </th>
+                    <th class="text-center fw-bold"> Growth % </th>
+                    <th class="text-center fw-bold"> Below Basic % </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let row of subjectStatePerformanceTable">
+                    <td class="clr--111827 fw-semibold">
+                      <div class="font-12 clr--111827 fw-semibold">{{ row.stateTest }}</div>
+                    </td>
+                    <td class="">
+                      <div class="font-12 clr--64748B fw-normal">{{ row.grade }}</div>
+                    </td>
+                    <td class="clr--111827">
+                      <div class="font-12 clr--111827 fw-normal">{{ row.students }}</div>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight" [ngClass]="getStatusClass(row.proficiency)">
+                        {{ row.proficiency }}%
+                      </div>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight" [ngClass]="getStatusClass(row.growth)">
+                        {{ row.growth }}%
+                      </div>
+                    </td>
+                    <td class="text-center">
+                      <div class="bg-highlight" [ngClass]="getStatusClass(row.belowBasic)">
+                        {{ row.belowBasic }}%
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-custom table-centered m-0" [hidden]="viewMode1() !== 'teacher'" *ngIf="chartMode1() === 'table'">
+                <thead class="thead-sm">
+                  <tr class="text-uppercase">
+                    <th class="font-13 fw-bold">Teacher</th>
+                    <th class="text-center fw-bold"> Ach % </th>
+                    <th class="text-center fw-bold"> LG % </th>
+                    <th class="text-center fw-bold"> BQ %</th>
+                    <th> &nbsp; </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let row of subjectTeacherPerformanceTable">
                     <td class="clr--111827 fw-semibold ">
-                      Math <br> <small class="font-11">Total Students - 400</small>
+                      <div class="font-12 clr--111827 fw-semibold mb-1">{{ row.teacher }}</div>
+                      <div class="font-10 clr--111827 fw-normal">{{ row.subject }} • {{ row.grade }} • Students: {{ row.students }}</div>
                     </td>
                     <td class="text-center">
-                      <div class="bg-highlight yellow-bg"> 68% </div>
+                      <div class="bg-highlight" [ngClass]="getStatusClass(row.ach)">
+                        {{ row.ach }}%
+                      </div>
                     </td>
                     <td class="text-center">
-                      <div class="bg-highlight green-bg">54%</div>
+                      <div class="bg-highlight" [ngClass]="getStatusClass(row.lg)">
+                        {{ row.lg }}%
+                      </div>
                     </td>
                     <td class="text-center">
-                      <div class="bg-highlight green-bg"> 98%</div>
+                      <div class="bg-highlight" [ngClass]="getStatusClass(row.bq)">
+                        {{ row.bq }}%
+                      </div>
                     </td>
                     <td>
                       <a>
@@ -530,37 +597,46 @@
                       </a>
                     </td>
                   </tr>
-                  <tr>
-                    <td class="clr--111827 fw-semibold ">
-                      Science <br> <small class="font-11">Total Students - 475</small>
-                    </td>
-                    <td class="text-center">
-                      <div class="bg-highlight green-bg"> 89% </div>
-                    </td>
-                    <td class="text-center">
-                      <div class="bg-highlight yellow-bg">70%</div>
-                    </td>
-                    <td class="text-center">
-                      <div class="bg-highlight green-bg"> 65%</div>
-                    </td>
-                    <td>
-                      <a>
-                        <mat-icon class="link--icon">chevron_right</mat-icon>
-                      </a>
-                    </td>
+                </tbody>
+              </table>
+              <table class="table table-custom table-centered m-0" [hidden]="viewMode1() !== 'student'" *ngIf="chartMode1() === 'table'">
+                <thead class="thead-sm">
+                  <tr class="text-uppercase">
+                    <th class="font-13 fw-bold">Student Name</th>
+                    <th class="font-13 fw-bold text-center">Grade</th>
+                    <th class="font-13 fw-bold text-center">Subject</th>
+                    <th class="text-center fw-bold"> Ach % </th>
+                    <th class="text-center fw-bold"> LG % </th>
+                    <th class="text-center fw-bold"> BQ %</th>
+                    <th> &nbsp; </th>
                   </tr>
-                  <tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let row of subjectStudentPerformanceTable">
                     <td class="clr--111827 fw-semibold ">
-                      Social Studies <br> <small class="font-11">Total Students - 300</small>
+                      <div class="font-12 clr--111827 fw-semibold mb-1">{{ row.studentName }}</div>
+                      <div class="font-10 clr--64748B fw-normal">Total Students: {{ row.students }}</div>
+                    </td>
+                    <td class="clr--111827 text-center">
+                      <div class="font-12 clr--111827 fw-normal">{{ row.grade }}</div>
+                    </td>
+                    <td class="clr--111827 text-center">
+                      <div class="font-12 clr--111827 fw-normal">{{ row.subject }}</div>
                     </td>
                     <td class="text-center">
-                      <div class="bg-highlight yellow-bg"> 75% </div>
+                      <div class="bg-highlight" [ngClass]="getStatusClass(row.ach)">
+                        {{ row.ach }}%
+                      </div>
                     </td>
                     <td class="text-center">
-                      <div class="bg-highlight green-bg">70%</div>
+                      <div class="bg-highlight" [ngClass]="getStatusClass(row.lg)">
+                        {{ row.lg }}%
+                      </div>
                     </td>
                     <td class="text-center">
-                      <div class="bg-highlight green-bg"> 65%</div>
+                      <div class="bg-highlight" [ngClass]="getStatusClass(row.bq)">
+                        {{ row.bq }}%
+                      </div>
                     </td>
                     <td>
                       <a>

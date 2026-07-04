@@ -6,6 +6,43 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
+interface TableRow3 {
+  subject: string;
+  students: number;
+  ach: number;
+  lg: number;
+  bq: number;
+}
+
+interface TableRow4 {
+  stateTest: string;
+  grade: string;
+  students: number;
+  proficiency: number;
+  growth: number;
+  belowBasic: number;
+}
+
+interface TableRow5 {
+  teacher: string;
+  subject: string;
+  grade: string;
+  students: number;
+  ach: number;
+  lg: number;
+  bq: number;
+}
+
+interface TableRow6 {
+  studentName: string;
+  subject: string;
+  grade: string;
+  students: number;
+  ach: number;
+  lg: number;
+  bq: number;
+}
+
 interface TableRow1 {
   grade: string;
   ach: number;
@@ -175,31 +212,246 @@ data = {
   totalWidth: 15
 };
 
-dataPerformanceGrade: TableRow[] = [
-  { skill: 'Reading Comprehension', elementary: 76, middleSchool: 72, highSchool: 78},
-  { skill: 'Vocabulary', elementary: 74, middleSchool: 70, highSchool: 75},
-  { skill: 'Writing', elementary: 71, middleSchool: 68, highSchool: 72},
-  { skill: 'Grammer', elementary: 78, middleSchool: 74, highSchool: 70},
-  { skill: 'Critical Thinking', elementary: 69, middleSchool: 65, highSchool: 58},
-];
+  subjectCoursePerformanceTable: TableRow3[] = [
+    {
+      subject: 'ELA',
+      students: 300,
+      ach: 75,
+      lg: 70,
+      bq: 65,
+    },
+    {
+      subject: 'Math',
+      students: 400,
+      ach: 68,
+      lg: 54,
+      bq: 98,
+    },
+    {
+      subject: 'Science',
+      students: 475,
+      ach: 89,
+      lg: 70,
+      bq: 65,
+    },
+    {
+      subject: 'Social Studies',
+      students: 300,
+      ach: 75,
+      lg: 70,
+      bq: 65,
+    },
+  ];
 
-dataGrade: TableRow1[] = [
-  { grade: 'Grade 1', ach: 78, lg: 75, bq: 68, risk: 10, students: 145},
-  { grade: 'Grade 2', ach: 74, lg: 70, bq: 65, risk: 12, students: 152},
-  { grade: 'Grade 3', ach: 71, lg: 67, bq: 61, risk: 14, students: 146},
-  { grade: 'Grade 4', ach: 69, lg: 65, bq: 58, risk: 18, students: 138},
-  { grade: 'Grade 5', ach: 72, lg: 68, bq: 62, risk: 14, students: 142},
-  { grade: 'Grade 6', ach: 70, lg: 66, bq: 60, risk: 16, students: 117},
-];
+  subjectStatePerformanceTable: TableRow4[] = [
+    {
+      stateTest: 'PARCC – ELA',
+      grade: 'Grade 3',
+      students: 285,
+      proficiency: 72,
+      growth: 68,
+      belowBasic: 15,
+    },
+    {
+      stateTest: 'PARCC – Math',
+      grade: 'Grade 3',
+      students: 285,
+      proficiency: 64,
+      growth: 60,
+      belowBasic: 24,
+    },
+    {
+      stateTest: 'SBAC – ELA',
+      grade: 'Grade 4',
+      students: 310,
+      proficiency: 79,
+      growth: 74,
+      belowBasic: 11,
+    },
+    {
+      stateTest: 'MAP – Reading',
+      grade: 'Grade 5',
+      students: 290,
+      proficiency: 74,
+      growth: 71,
+      belowBasic: 14,
+    },
+    {
+      stateTest: 'STAAR – Math',
+      grade: 'Grade 5',
+      students: 298,
+      proficiency: 61,
+      growth: 58,
+      belowBasic: 28,
+    },
+  ];
 
-dataTeacher: TableRow2[] = [
-  { teacher: 'Ms. Johnson', ach: 78, lg: 75, bq: 68, risk: 10},
-  { teacher: 'Ms. Smith', ach: 74, lg: 70, bq: 65, risk: 12},
-  { teacher: 'Ms. Davis', ach: 71, lg: 67, bq: 61, risk: 14},
-  { teacher: 'Ms. Wilson', ach: 69, lg: 65, bq: 58, risk: 18},
-  { teacher: 'Ms. Brown', ach: 72, lg: 68, bq: 62, risk: 14},
-  { teacher: 'Ms. Martinez', ach: 70, lg: 66, bq: 60, risk: 16},
-];
+  subjectTeacherPerformanceTable: TableRow5[] = [
+    {
+      teacher: 'Ms. Amanda Chen',
+      subject: 'ELA',
+      grade: 'Grade 3',
+      students: 28,
+      ach: 82,
+      lg: 75,
+      bq: 18,
+    },
+    {
+      teacher: 'Mr. David Williams',
+      subject: 'Math',
+      grade: 'Grade 4',
+      students: 32,
+      ach: 68,
+      lg: 61,
+      bq: 31,
+    },
+    {
+      teacher: 'Mrs. Sarah Johnson',
+      subject: 'Science',
+      grade: 'Grade 5',
+      students: 30,
+      ach: 74,
+      lg: 69,
+      bq: 26,
+    },
+    {
+      teacher: 'Mr. James Martinez',
+      subject: 'Social Studies',
+      grade: 'Grade 3',
+      students: 27,
+      ach: 79,
+      lg: 72,
+      bq: 21,
+    },
+    {
+      teacher: 'Ms. Emily Thompson',
+      subject: 'Reading',
+      grade: 'Grade 4',
+      students: 29,
+      ach: 76,
+      lg: 70,
+      bq: 24,
+    },
+    {
+      teacher: 'Mr. Robert Davis',
+      subject: 'Math',
+      grade: 'Grade 5',
+      students: 31,
+      ach: 71,
+      lg: 64,
+      bq: 29,
+    },
+    {
+      teacher: 'Mrs. Lisa Anderson',
+      subject: 'ELA',
+      grade: 'Grade 5',
+      students: 33,
+      ach: 85,
+      lg: 78,
+      bq: 15,
+    },
+  ];
+
+  subjectStudentPerformanceTable: TableRow6[] = [
+    {
+      studentName: 'Emma Johnson',
+      subject: 'Math',
+      grade: '8',
+      students: 300,
+      ach: 88,
+      lg: 72,
+      bq: 64
+    },
+    {
+      studentName: 'Liam Martinez',
+      subject: 'ELA',
+      grade: '7',
+      students: 300,
+      ach: 76,
+      lg: 68,
+      bq: 58
+    },
+    {
+      studentName: 'Sophia Chen',
+      subject: 'Science',
+      grade: '6',
+      students: 300,
+      ach: 92,
+      lg: 75,
+      bq: 62
+    },
+    {
+      studentName: 'Noah Williams',
+      subject: 'Math',
+      grade: '8',
+      students: 300,
+      ach: 84,
+      lg: 65,
+      bq: 54
+    },
+    {
+      studentName: 'Olivia Davis',
+      subject: 'ELA',
+      grade: '7',
+      students: 300,
+      ach: 78,
+      lg: 60,
+      bq: 51
+    },
+    {
+      studentName: 'Mason Brown',
+      subject: 'Science',
+      grade: '6',
+      students: 300,
+      ach: 81,
+      lg: 71,
+      bq: 63
+    },
+    {
+      studentName: 'Ava Wilson',
+      subject: 'Math',
+      grade: '8',
+      students: 300,
+      ach: 89,
+      lg: 74,
+      bq: 59
+    },
+    {
+      studentName: 'James Taylor',
+      subject: 'ELA',
+      grade: '7',
+      students: 300,
+      ach: 74,
+      lg: 59,
+      bq: 48
+    },
+  ];
+
+  dataPerformanceGrade: TableRow[] = [
+    { skill: 'Reading Comprehension', elementary: 76, middleSchool: 72, highSchool: 78},
+    { skill: 'Vocabulary', elementary: 74, middleSchool: 70, highSchool: 75},
+    { skill: 'Writing', elementary: 71, middleSchool: 68, highSchool: 72},
+    { skill: 'Grammer', elementary: 78, middleSchool: 74, highSchool: 70},
+    { skill: 'Critical Thinking', elementary: 69, middleSchool: 65, highSchool: 58},
+  ];
+
+  dataGrade: TableRow1[] = [
+    { grade: 'Grade 1', ach: 78, lg: 75, bq: 68, risk: 10, students: 145},
+    { grade: 'Grade 2', ach: 74, lg: 70, bq: 65, risk: 12, students: 152},
+    { grade: 'Grade 3', ach: 71, lg: 67, bq: 61, risk: 14, students: 146},
+    { grade: 'Grade 4', ach: 69, lg: 65, bq: 58, risk: 18, students: 138},
+    { grade: 'Grade 5', ach: 72, lg: 68, bq: 62, risk: 14, students: 142},
+    { grade: 'Grade 6', ach: 70, lg: 66, bq: 60, risk: 16, students: 117},
+  ];
+
+  dataTeacher: TableRow2[] = [
+    { teacher: 'Ms. Johnson', ach: 78, lg: 75, bq: 68, risk: 10},
+    { teacher: 'Ms. Smith', ach: 74, lg: 70, bq: 65, risk: 12},
+    { teacher: 'Ms. Davis', ach: 71, lg: 67, bq: 61, risk: 14},
+    { teacher: 'Ms. Wilson', ach: 69, lg: 65, bq: 58, risk: 18},
+    { teacher: 'Ms. Brown', ach: 72, lg: 68, bq: 62, risk: 14},
+    { teacher: 'Ms. Martinez', ach: 70, lg: 66, bq: 60, risk: 16},
+  ];
 
 //Subject Performance toggle selection
 viewMode1 = signal<'course' | 'state' | 'teacher' | 'student'>('course');
@@ -1085,7 +1337,13 @@ chartMode = signal<'table' | 'bar'>('table');
   };
   
   getStatusClass(value: number): string {
-    return value >= 70 ? 'green-bg' : 'yellow-bg';
+    if (value >= 70) {
+      return 'green-bg';
+    } else if (value >= 60) {
+      return 'yellow-bg';
+    } else {
+      return 'red-bg';
+    }
   }
 
   getStatusCssClass(value: number): string {
