@@ -14,13 +14,16 @@ import {
   ApexAxisChartSeries,
   ApexChart,
   ApexXAxis,
+  ApexDataLabels,
+  ApexPlotOptions,
+  ApexLegend,
+  ApexFill,
+  ApexTooltip,
+  ApexAnnotations,
   ApexYAxis,
   ApexStroke,
   ApexGrid,
   ApexMarkers,
-  ApexLegend,
-  ApexTooltip,
-  ApexDataLabels
 } from "ng-apexcharts";
 import { CommonService } from '../../../core/helper/common.service';
 import * as d3 from 'd3';
@@ -35,8 +38,11 @@ export type ChartOptions = {
   markers: ApexMarkers;
   legend: ApexLegend;
   tooltip: ApexTooltip;
+  annotations: ApexAnnotations;
   colors: string[];
   dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  fill: ApexFill;
 };
 
 interface ProgressData {
@@ -83,6 +89,35 @@ interface TableRow2 {
   assessmentContribution: string;
 }
 
+interface TableRow4 {
+  stateTest: string;
+  grade: string;
+  students: number;
+  proficiency: number;
+  growth: number;
+  belowBasic: number;
+}
+
+interface TableRow5 {
+  teacher: string;
+  subject: string;
+  grade: string;
+  students: number;
+  ach: number;
+  lg: number;
+  bq: number;
+}
+
+interface TableRow6 {
+  studentName: string;
+  subject: string;
+  grade: string;
+  students: number;
+  ach: number;
+  lg: number;
+  bq: number;
+}
+
 @Component({
   selector: 'app-dashboard',
   imports: [MatIconModule, CommonModule, MatButtonModule, MatSelectModule, MatFormFieldModule, MatButtonToggleModule, ChartComponent, MatDatepickerModule, MatNativeDateModule],
@@ -91,9 +126,9 @@ interface TableRow2 {
 })
 export class Dashboard {
 
-  viewMode = signal<'course' | 'attendance' | 'teacher' | 'grade'>('course');
+  viewMode = signal<'course' | 'state' | 'teacher' | 'student'>('course');
 
-  chartModePerformance = signal<'performanceTable' | 'performanceBar'>('performanceTable');
+  chartMode = signal<'table' | 'bar'>('table');
 
   studentMovement = signal<'ach' | 'lg' | 'bq' | 'grade'>('ach');
 
@@ -393,7 +428,7 @@ export class Dashboard {
     this.createDiagram();
   }
 
-  subjectPerformanceTable: TableRow[] = [
+  subjectCoursePerformanceTable: TableRow[] = [
     {
       subject: 'ELA',
       students: 300,
@@ -444,6 +479,190 @@ export class Dashboard {
     },
   ];
 
+  subjectStatePerformanceTable: TableRow4[] = [
+    {
+      stateTest: 'PARCC – ELA',
+      grade: 'Grade 3',
+      students: 285,
+      proficiency: 72,
+      growth: 68,
+      belowBasic: 15,
+    },
+    {
+      stateTest: 'PARCC – Math',
+      grade: 'Grade 3',
+      students: 285,
+      proficiency: 64,
+      growth: 60,
+      belowBasic: 24,
+    },
+    {
+      stateTest: 'SBAC – ELA',
+      grade: 'Grade 4',
+      students: 310,
+      proficiency: 79,
+      growth: 74,
+      belowBasic: 11,
+    },
+    {
+      stateTest: 'MAP – Reading',
+      grade: 'Grade 5',
+      students: 290,
+      proficiency: 74,
+      growth: 71,
+      belowBasic: 14,
+    },
+    {
+      stateTest: 'STAAR – Math',
+      grade: 'Grade 5',
+      students: 298,
+      proficiency: 61,
+      growth: 58,
+      belowBasic: 28,
+    },
+  ];
+
+  subjectTeacherPerformanceTable: TableRow5[] = [
+    {
+      teacher: 'Ms. Amanda Chen',
+      subject: 'ELA',
+      grade: 'Grade 3',
+      students: 28,
+      ach: 82,
+      lg: 75,
+      bq: 18,
+    },
+    {
+      teacher: 'Mr. David Williams',
+      subject: 'Math',
+      grade: 'Grade 4',
+      students: 32,
+      ach: 68,
+      lg: 61,
+      bq: 31,
+    },
+    {
+      teacher: 'Mrs. Sarah Johnson',
+      subject: 'Science',
+      grade: 'Grade 5',
+      students: 30,
+      ach: 74,
+      lg: 69,
+      bq: 26,
+    },
+    {
+      teacher: 'Mr. James Martinez',
+      subject: 'Social Studies',
+      grade: 'Grade 3',
+      students: 27,
+      ach: 79,
+      lg: 72,
+      bq: 21,
+    },
+    {
+      teacher: 'Ms. Emily Thompson',
+      subject: 'Reading',
+      grade: 'Grade 4',
+      students: 29,
+      ach: 76,
+      lg: 70,
+      bq: 24,
+    },
+    {
+      teacher: 'Mr. Robert Davis',
+      subject: 'Math',
+      grade: 'Grade 5',
+      students: 31,
+      ach: 71,
+      lg: 64,
+      bq: 29,
+    },
+    {
+      teacher: 'Mrs. Lisa Anderson',
+      subject: 'ELA',
+      grade: 'Grade 5',
+      students: 33,
+      ach: 85,
+      lg: 78,
+      bq: 15,
+    },
+  ];
+
+  subjectStudentPerformanceTable: TableRow6[] = [
+    {
+      studentName: 'Emma Johnson',
+      subject: 'Math',
+      grade: '8',
+      students: 300,
+      ach: 88,
+      lg: 72,
+      bq: 64
+    },
+    {
+      studentName: 'Liam Martinez',
+      subject: 'ELA',
+      grade: '7',
+      students: 300,
+      ach: 76,
+      lg: 68,
+      bq: 58
+    },
+    {
+      studentName: 'Sophia Chen',
+      subject: 'Science',
+      grade: '6',
+      students: 300,
+      ach: 92,
+      lg: 75,
+      bq: 62
+    },
+    {
+      studentName: 'Noah Williams',
+      subject: 'Math',
+      grade: '8',
+      students: 300,
+      ach: 84,
+      lg: 65,
+      bq: 54
+    },
+    {
+      studentName: 'Olivia Davis',
+      subject: 'ELA',
+      grade: '7',
+      students: 300,
+      ach: 78,
+      lg: 60,
+      bq: 51
+    },
+    {
+      studentName: 'Mason Brown',
+      subject: 'Science',
+      grade: '6',
+      students: 300,
+      ach: 81,
+      lg: 71,
+      bq: 63
+    },
+    {
+      studentName: 'Ava Wilson',
+      subject: 'Math',
+      grade: '8',
+      students: 300,
+      ach: 89,
+      lg: 74,
+      bq: 59
+    },
+    {
+      studentName: 'James Taylor',
+      subject: 'ELA',
+      grade: '7',
+      students: 300,
+      ach: 74,
+      lg: 59,
+      bq: 48
+    },
+  ];
+
   hasValue(value: string | null | undefined): boolean {
     return !!value && value.trim() !== '-';
   }
@@ -464,6 +683,397 @@ export class Dashboard {
       return 'red-bg';
     }
   }
+
+  getStatusClass2(value: number): string {
+    if (value >= 70) {
+      return 'green-bg';
+    } else if (value >= 60) {
+      return 'yellow-bg';
+    } else {
+      return 'red-bg';
+    }
+  }
+
+  //Subject Performance Bar Graphs
+  public chartSubjectCourse: any = {
+    series: [
+      {
+        name: "Achievement",
+        data: [58, 58, 58, 58, 58]
+      },
+      {
+        name: "Learning Gains",
+        data: [52, 52, 52, 52, 52]
+      },
+      {
+        name: "Bottom Quartile",
+        data: [45, 45, 45, 45, 45]
+      }
+    ],
+    chart: {
+      type: 'bar',
+      height: '300',
+      stacked: false,
+      width: "100%",
+      redrawOnWindowResize: true,
+      redrawOnParentResize: true
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: "55%",
+        borderRadius: 4
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    colors: ['#3B82F6', '#90C955', '#EA914E'],
+    xaxis: {
+      categories: ['ELA', 'MATH', 'SCIENCE', 'SOCIAL STUDIES', 'READING'],
+      labels: { style: { colors: '#6B7280', fontSize: '12px' }, trim: true, maxHeight: 60 }
+    },
+    yaxis: {
+      min: 0,
+      max: 100,
+      labels: {
+        formatter: (value: number) => `${value}%`,
+        style: { colors: '#6B7280', fontSize: '12px' }
+      },
+      tickAmount: 4
+    },
+    grid: {
+      borderColor: '#f0f0f0',
+      strokeDashArray: 2
+    },
+    markers: {
+      size: [5, 0],
+      hover: { sizeOffset: 6 }
+    },
+    legend: {
+      position: "bottom",
+      horizontalAlign: "center",
+      fontSize: '14px',
+      fontWeight: 400,
+      labels:{
+        colors: ['#3B82F6', '#90C955', '#EA914E'],
+      },
+      itemMargin: {
+        horizontal: 20
+      },
+      markers: {
+        width: 18,
+        height: 18,
+        radius: 0,
+        customHTML: [
+          function () {
+            return `
+              <img src="images/achivement-blue.svg"
+                  width="14"
+                  height="20"
+                  style="margin-right: 10px;" />
+            `;
+          },
+
+          function () {
+            return `
+              <img src="images/learning-green.svg"
+                  width="14"
+                  height="20"
+                  style="margin-right: 10px;"/>
+            `;
+          },
+
+          function () {
+            return `
+              <img src="images/quartil-orange.svg"
+                  width="14"
+                  height="20"
+                  style="margin-right: 10px;" />
+            `;
+          }
+        ]
+      },
+      onItemHover: {
+        highlightDataSeries: true
+      }
+    },
+    tooltip: {
+      y: {
+        formatter: (val: number) => `${val}%`
+      }
+    }
+  };
+
+  public chartSubjectState: any = {
+    series: [
+      {
+        name: "Proficiency %",
+        data: [72, 64, 79, 74, 61]
+      },
+      {
+        name: "Growth %",
+        data: [68, 60, 74, 71, 58]
+      },
+      {
+        name: "Below Basic %",
+        data: [15, 24, 11, 14, 28]
+      }
+    ],
+    chart: {
+      type: 'bar',
+      height: '300',
+      stacked: false,
+      width: "100%",
+      toolbar: {
+        show: false
+      },
+      animations: {
+        enabled: true
+      },
+      redrawOnWindowResize: true,
+      redrawOnParentResize: true
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: "28%",
+        borderRadius: 3,
+        borderRadiusApplication: "end",
+        borderRadiusWhenStacked: "last",
+        dataLabels: {
+          position: "top"
+        }
+      }
+    },
+    dataLabels: {
+      enabled: true,
+      offsetY: 4,
+      style: {
+        fontSize: "9px",
+        fontWeight: 600,
+        colors: ["#ffffff"]
+      },
+      formatter: function (val: number) {
+        return `${val}%`;
+      }
+    },
+    colors: ['#3B82F6', '#22C55E', '#EF4444'],
+    xaxis: {
+      categories: ['PARCC – ELA', 'PARCC – Math', 'SBAC – ELA', 'MAP – Reading', 'STAAR – Math'],
+      labels: { style: { colors: '#6B7280', fontSize: '12px' }, trim: true, maxHeight: 60 }
+    },
+    yaxis: {
+      min: 0,
+      max: 100,
+      labels: {
+        formatter: (value: number) => `${value}%`,
+        style: { colors: '#6B7280', fontSize: '12px' }
+      },
+      tickAmount: 4
+    },
+    grid: {
+      borderColor: '#f0f0f0',
+      strokeDashArray: 2
+    },
+    markers: {
+      size: [5, 0],
+      hover: { sizeOffset: 6 }
+    },
+    legend: {
+      position: "bottom",
+      horizontalAlign: "center",
+      fontSize: '14px',
+      fontWeight: 400,
+      labels:{
+        colors: ['#3B82F6', '#22C55E', '#EF4444'],
+      },
+      markers: {
+        width: 18,
+        height: 18,
+        radius: 20,
+      },
+      itemMargin: {
+        horizontal: 20
+      },
+      onItemHover: {
+        highlightDataSeries: true
+      }
+    },
+    tooltip: {
+      y: {
+        formatter: (val: number) => `${val}%`
+      }
+    }
+  };
+
+  public chartSubjectTeacher: any = {
+    series: [
+      {
+        name: "Ach %",
+        data: [82, 69, 74, 79, 76, 72, 84]
+      },
+      {
+        name: "LG %",
+        data: [75, 62, 69, 72, 70, 65, 78]
+      },
+      {
+        name: "BQ %",
+        data: [22, 34, 29, 25, 27, 31, 18]
+      }
+    ],
+    chart: {
+      type: 'bar',
+      height: '300',
+      stacked: false,
+      width: "100%",
+      redrawOnWindowResize: true,
+      redrawOnParentResize: true
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: "28%",
+        borderRadius: 3,
+        borderRadiusApplication: "end",
+        borderRadiusWhenStacked: "last",
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    colors: ['#90C955', '#DCE52A', '#EA914E'],
+    xaxis: {
+      categories: ['M. A. Chen', 'M. D. Williams', 'M. S. Johnson', 'M. J. Martinez', 'M. E. Thompson', 'M. R. Davis', 'M. L. Anderson'],
+      labels: { style: { colors: '#6B7280', fontSize: '12px' }, trim: true, maxHeight: 60 }
+    },
+    yaxis: {
+      min: 0,
+      max: 100,
+      labels: {
+        formatter: (value: number) => `${value}%`,
+        style: { colors: '#6B7280', fontSize: '12px' }
+      },
+      tickAmount: 4
+    },
+    grid: {
+      borderColor: '#f0f0f0',
+      strokeDashArray: 2
+    },
+    markers: {
+      size: [5, 0],
+      hover: { sizeOffset: 6 }
+    },
+    legend: {
+      position: "bottom",
+      horizontalAlign: "center",
+      fontSize: '14px',
+      fontWeight: 400,
+      labels:{
+        colors: ['#90C955', '#DCE52A', '#EA914E'],
+      },
+      itemMargin: {
+        horizontal: 20
+      },
+      markers: {
+        width: 18,
+        height: 18,
+        radius: 20
+      },
+      onItemHover: {
+        highlightDataSeries: true
+      }
+    },
+    tooltip: {
+      y: {
+        formatter: (val: number) => `${val}%`
+      }
+    }
+  };
+
+  public chartSubjectStudent: any = {
+    series: [
+      {
+        name: "Ach %",
+        data: [108, 95, 112, 103, 97, 100, 109, 93]
+      },
+      {
+        name: "LG %",
+        data: [90, 85, 94, 82, 75, 89, 92, 75]
+      },
+      {
+        name: "BQ %",
+        data: [80, 73, 77, 69, 67, 79, 75, 64]
+      }
+    ],
+    chart: {
+      type: 'bar',
+      height: '300',
+      stacked: false,
+      width: "100%",
+      redrawOnWindowResize: true,
+      redrawOnParentResize: true
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: "28%",
+        borderRadius: 3,
+        borderRadiusApplication: "end",
+        borderRadiusWhenStacked: "last",
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    colors: ['#90C955', '#DCE52A', '#EA914E'],
+    xaxis: {
+      categories: ['Emma Johnson', 'Liam Martinez', 'Sophia Chen', 'Noah Williams', 'Olivia Davis', 'Mason Brown', 'Ava Wilson'],
+      labels: { style: { colors: '#6B7280', fontSize: '12px' }, trim: true, maxHeight: 60 }
+    },
+    yaxis: {
+      min: 0,
+      max: 100,
+      labels: {
+        formatter: (value: number) => `${value}%`,
+        style: { colors: '#6B7280', fontSize: '12px' }
+      },
+      tickAmount: 4
+    },
+    grid: {
+      borderColor: '#f0f0f0',
+      strokeDashArray: 2
+    },
+    markers: {
+      size: [5, 0],
+      hover: { sizeOffset: 6 }
+    },
+    legend: {
+      position: "bottom",
+      horizontalAlign: "center",
+      fontSize: '14px',
+      fontWeight: 400,
+      labels:{
+        colors: ['#90C955', '#DCE52A', '#EA914E'],
+      },
+      itemMargin: {
+        horizontal: 20
+      },
+      markers: {
+        width: 18,
+        height: 18,
+        radius: 20
+      },
+      onItemHover: {
+        highlightDataSeries: true
+      }
+    },
+    tooltip: {
+      y: {
+        formatter: (val: number) => `${val}%`
+      }
+    }
+  };
 
   dataAchievement: TableRow1[] = [
     {studentName: 'Ms. Johnson', grade: 8, coreTeacher: 'Mr. Hugnes', courseTitle: 'ELA', period: 1, predictedSS: 300, ssAch: 300, ssLG: 295, lastAssessment: '01/15/26', assessmentName: 'FSA Practice 3', ptStudentAch: 4, ptStudentLG: '3',},
