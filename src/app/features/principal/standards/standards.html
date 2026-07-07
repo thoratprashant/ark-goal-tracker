@@ -434,18 +434,18 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    <mat-button-toggle-group [value]="chartMode()" (change)="chartMode.set($event.value)"
+                    <!-- <mat-button-toggle-group [value]="chartMode()" (change)="chartMode.set($event.value)"
                         class="toggle-container small">
                         <mat-button-toggle value="table">Table</mat-button-toggle>
                         <mat-button-toggle value="bar">Bar Chart</mat-button-toggle>
-                    </mat-button-toggle-group>
+                    </mat-button-toggle-group> -->
                 </div>
                 <h5 class="font-17 clr--7373 fw-normal mt-3 mb-0">Percent of Students by Performance Level</h5>
                 <div id="apexChartSection" class="chart-scroll-wrapper">
                     <div class="chart-scroll-area">
                         <div class="chart-container">
                             <apx-chart
-                                *ngIf="showApexChart"
+                                *ngIf="showApexChart && viewMode() === 'grade'"
                                 [series]="chartOptions.series"
                                 [chart]="chartOptions.chart"
                                 [xaxis]="chartOptions.xaxis"
@@ -457,6 +457,21 @@
                                 [tooltip]="chartOptions.tooltip"
                                 [colors]="chartOptions.colors"
                                 [stroke]="chartOptions.stroke"
+                            >
+                            </apx-chart>
+                            <apx-chart
+                                *ngIf="showApexChart && viewMode() === 'teacher'"
+                                [series]="chartOptions1.series"
+                                [chart]="chartOptions1.chart"
+                                [xaxis]="chartOptions1.xaxis"
+                                [yaxis]="chartOptions1.yaxis"
+                                [grid]="chartOptions1.grid"
+                                [plotOptions]="chartOptions1.plotOptions"
+                                [dataLabels]="chartOptions1.dataLabels"
+                                [legend]="chartOptions1.legend"
+                                [tooltip]="chartOptions1.tooltip"
+                                [colors]="chartOptions1.colors"
+                                [stroke]="chartOptions1.stroke"
                             >
                             </apx-chart>
                         </div>

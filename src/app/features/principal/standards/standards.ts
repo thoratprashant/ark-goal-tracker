@@ -529,6 +529,7 @@ showAchievementCharts: boolean[] = [];
       labels: {
         align: 'left',
         maxWidth: 210,
+        offsetX: -20,
         style: {
           fontSize: '12px',
           fontWeight: 600,
@@ -558,7 +559,168 @@ showAchievementCharts: boolean[] = [];
         top: 5,
         right: 10,
         bottom: 10,
-        left: 5
+        left: 20
+      }
+    },
+
+    legend: {
+      show: true,
+      position: 'bottom',
+      horizontalAlign: 'center',
+      fontSize: '12px',
+      markers: {
+        //radius: 12,
+      },
+      itemMargin: {
+        horizontal: 10
+      },
+      labels: {
+        colors: ['#EF4444', '#DCE52A', '#90C955']
+      }
+    },
+    
+    tooltip: {
+      enabled: true,
+      shared: false,
+      intersect: true,
+      y: {
+        formatter: (val: number) => `${val}%`
+      }
+    }
+  };
+
+  public chartOptions1: ChartOptions = {
+    series: [
+      {
+        name: 'At Risk (Red)',
+        data: [19, 15, 25, 10, 22]
+      },
+      {
+        name: 'Approaching (Yellow)',
+        data: [41, 38, 48, 32, 45]
+      },
+      {
+        name: 'On Track (Green)',
+        data: [40, 47, 27, 58, 33]
+      }
+    ],
+    chart: {
+      type: 'bar',
+      height: 300,
+      stacked: true,
+      stackType: '100%',
+      toolbar: {
+        show: false
+      },
+      animations: {
+        enabled: true,
+        speed: 500
+      },
+      redrawOnWindowResize: true,
+      redrawOnParentResize: true
+    },
+    colors: ['#D64550', '#DCE52A', '#90C955'],
+    plotOptions: {
+      bar: {
+        horizontal: true,
+        barHeight: '54%',
+        borderRadius: 5,
+        borderRadiusApplication: 'around',
+        borderRadiusWhenStacked: 'all',
+        dataLabels: {
+          position: 'center',
+          maxItems: 100,
+          hideOverflowingLabels: false
+        }
+      }
+    },
+    dataLabels: {
+      enabled: true,
+      textAnchor: 'middle',
+      offsetX: 0,
+      style: {
+        fontSize: '10px',
+        fontWeight: 700,
+        colors: [
+          '#ffffff', // red segment label
+          '#1F2937', // yellow segment label
+          '#ffffff'  // green segment label
+        ]
+      },
+      background: {
+        enabled: false
+      },
+      formatter: (val: number) => `${Math.round(val)}%`
+    },
+    stroke: {
+      show: false,
+      width: 0
+    },
+    xaxis: {
+      min: 0,
+      max: 100,
+      tickAmount: 5,
+      categories: [
+        'Ms. Johnson',
+        'Mr. Davis',
+        'Ms. Garcia',
+        'Ms. Chen',
+        'Mr. Williams'
+      ],
+      labels: {
+        formatter: (value: string | number) => `${value}%`,
+        style: {
+          colors: '#9ca3af',
+          fontSize: '10px',
+          fontWeight: 400
+        }
+      },
+      axisBorder: {
+        show: true,
+        color: '#e5e7eb'
+      },
+      axisTicks: {
+        show: false
+      },
+      crosshairs: {
+        show: false
+      }
+    },
+    yaxis: {
+      labels: {
+        align: 'left',
+        maxWidth: 210,
+        offsetX: -20,
+        style: {
+          fontSize: '12px',
+          fontWeight: 600,
+          colors: '#111827'
+        }
+      },
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
+      }
+    },
+    grid: {
+      borderColor: '#DBEAFE',
+      xaxis: {
+        lines: {
+          show: false
+        }
+      },
+      yaxis: {
+        lines: {
+          show: true
+        }
+      },
+      padding: {
+        top: 5,
+        right: 10,
+        bottom: 10,
+        left: 20
       }
     },
 
