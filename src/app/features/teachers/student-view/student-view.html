@@ -80,7 +80,7 @@
                     <mat-button-toggle value="science">Science</mat-button-toggle>
                 </mat-button-toggle-group>
             </div>
-            <div class="col-12 col-lg-3" *ngIf="viewMode() === 'ela'">
+            <div class="col-12 col-lg-3" *ngIf="['ela', 'math', 'social studies', 'science'].includes(viewMode())">
                 <div class="d-flex flex-wrap flex-lg-column left-sections">
                     <h5 class="w-100 font-14 text-secondary fw-semibold mb-0">ELA Performance</h5>
                     <div class="card d-flex flex-column">
@@ -267,18 +267,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-9 mt-lg-0 mt-3" *ngIf="viewMode() === 'ela'">
+            <div class="col-12 col-lg-9 mt-lg-0 mt-3" *ngIf="['ela', 'math', 'social studies', 'science'].includes(viewMode())">
                 <div class="d-flex flex-column gap-2">
                     <div class="card p-3 p-sm-4 d-flex flex-column">
                         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                             <h5 class="font-14 text-secondary fw-semibold mb-0">Predicted Performance Over Time</h5>
-                            <div class="d-flex align-items-center gap-2">
+                            <!-- <div class="d-flex align-items-center gap-2">
                                 <span class="blue-indicator"></span>
                                 <p class="font-12 clr--4755 fw-normal mb-0">ELA</p>
-                            </div>
+                            </div> -->
                         </div>
                         <div #predictedPerformanceTimeSection class="chart-container">
-                            <apx-chart *ngIf="showChart"
+                            <apx-chart *ngIf="viewMode() === 'ela' && showChart"
                                 [series]="chartOptions.series"
                                 [chart]="chartOptions.chart"
                                 [xaxis]="chartOptions.xaxis"
@@ -291,14 +291,56 @@
                                 [annotations]="chartOptions.annotations"
                                 [colors]="chartOptions.colors">
                             </apx-chart>
+                            <apx-chart *ngIf="viewMode() === 'math' && showChart"
+                                [series]="chartOptions3.series"
+                                [chart]="chartOptions3.chart"
+                                [xaxis]="chartOptions3.xaxis"
+                                [yaxis]="chartOptions3.yaxis"
+                                [stroke]="chartOptions3.stroke"
+                                [grid]="chartOptions3.grid"
+                                [markers]="chartOptions3.markers"
+                                [legend]="chartOptions3.legend"
+                                [tooltip]="chartOptions3.tooltip"
+                                [annotations]="chartOptions3.annotations"
+                                [colors]="chartOptions3.colors">
+                            </apx-chart>
+                            <apx-chart *ngIf="viewMode() === 'social studies' && showChart"
+                                [series]="chartOptions4.series"
+                                [chart]="chartOptions4.chart"
+                                [xaxis]="chartOptions4.xaxis"
+                                [yaxis]="chartOptions4.yaxis"
+                                [stroke]="chartOptions4.stroke"
+                                [grid]="chartOptions4.grid"
+                                [markers]="chartOptions4.markers"
+                                [legend]="chartOptions4.legend"
+                                [tooltip]="chartOptions4.tooltip"
+                                [annotations]="chartOptions4.annotations"
+                                [colors]="chartOptions4.colors">
+                            </apx-chart>
+                            <apx-chart *ngIf="viewMode() === 'science' && showChart"
+                                [series]="chartOptions5.series"
+                                [chart]="chartOptions5.chart"
+                                [xaxis]="chartOptions5.xaxis"
+                                [yaxis]="chartOptions5.yaxis"
+                                [stroke]="chartOptions5.stroke"
+                                [grid]="chartOptions5.grid"
+                                [markers]="chartOptions5.markers"
+                                [legend]="chartOptions5.legend"
+                                [tooltip]="chartOptions5.tooltip"
+                                [annotations]="chartOptions5.annotations"
+                                [colors]="chartOptions5.colors">
+                            </apx-chart>
                         </div>
                     </div>
 
                     <div class="card p-3 p-sm-4 d-flex flex-column gap-3">
-                        <h5 class="font-14 text-secondary fw-semibold mb-0">Score Contribution Breakdown</h5>
+                        <h5 class="font-15 text-secondary fw-semibold mb-0" *ngIf="viewMode() === 'ela'">Score Contribution Breakdown</h5>
+                        <h5 class="font-15 text-secondary fw-semibold mb-0" *ngIf="viewMode() === 'math'">Math Score Contribution Breakdown</h5>
+                        <h5 class="font-15 text-secondary fw-semibold mb-0" *ngIf="viewMode() === 'social studies'">Social Studies Score Contribution Breakdown</h5>
+                        <h5 class="font-15 text-secondary fw-semibold mb-0" *ngIf="viewMode() === 'science'">Science Score Contribution Breakdown</h5>
                         <div class="table-responsive score-contribution-breakdown-table mt-1">
                         <!-- Score Contribution Breakdown Table -->
-                            <table class="table table-custom table-centered m-0">
+                            <table *ngIf="viewMode() === 'ela'" class="table table-custom table-centered m-0">
                                 <thead class="thead-sm">
                                     <tr class="text-uppercase">
                                         <th>Predictor</th>
@@ -314,6 +356,75 @@
                                         <td class="clr--4755 text-center">{{ row.value }}</td>
                                         <td class="clr--4755 text-center">{{ row.contribution }} PTS</td>
                                         <td class="clr--111827 fw-medium text-center">{{ row.significance }}</td>
+                                        <td class="text-center">
+                                            <div class="bg-highlight" [ngClass]="getStatusClass(row.status)">
+                                                {{ row.status }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        <!--Math Score Contribution Breakdown Table -->
+                            <table *ngIf="viewMode() === 'math'" class="table table-custom table-centered m-0">
+                                <thead class="thead-sm">
+                                    <tr class="text-uppercase">
+                                        <th>Predictor</th>
+                                        <th class="text-center">Value</th>
+                                        <th class="text-center">Contribution</th>
+                                        <th class="text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of dataMathScoreBreakdown">
+                                        <td class="clr--111827 fw-semibold">{{ row.predictor }}</td>
+                                        <td class="clr--4755 text-center">{{ row.value }}</td>
+                                        <td class="clr--4755 text-center">{{ row.contribution }} PTS</td>
+                                        <td class="text-center">
+                                            <div class="bg-highlight" [ngClass]="getStatusClass(row.status)">
+                                                {{ row.status }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        <!--Social Studies Score Contribution Breakdown Table -->
+                            <table *ngIf="viewMode() === 'social studies'" class="table table-custom table-centered m-0">
+                                <thead class="thead-sm">
+                                    <tr class="text-uppercase">
+                                        <th>Predictor</th>
+                                        <th class="text-center">Value</th>
+                                        <th class="text-center">Contribution</th>
+                                        <th class="text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of dataMathScoreBreakdown">
+                                        <td class="clr--111827 fw-semibold">{{ row.predictor }}</td>
+                                        <td class="clr--4755 text-center">{{ row.value }}</td>
+                                        <td class="clr--4755 text-center">{{ row.contribution }} PTS</td>
+                                        <td class="text-center">
+                                            <div class="bg-highlight" [ngClass]="getStatusClass(row.status)">
+                                                {{ row.status }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        <!--Science Score Contribution Breakdown Table -->
+                            <table *ngIf="viewMode() === 'science'" class="table table-custom table-centered m-0">
+                                <thead class="thead-sm">
+                                    <tr class="text-uppercase">
+                                        <th>Predictor</th>
+                                        <th class="text-center">Value</th>
+                                        <th class="text-center">Contribution</th>
+                                        <th class="text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of dataMathScoreBreakdown">
+                                        <td class="clr--111827 fw-semibold">{{ row.predictor }}</td>
+                                        <td class="clr--4755 text-center">{{ row.value }}</td>
+                                        <td class="clr--4755 text-center">{{ row.contribution }} PTS</td>
                                         <td class="text-center">
                                             <div class="bg-highlight" [ngClass]="getStatusClass(row.status)">
                                                 {{ row.status }}

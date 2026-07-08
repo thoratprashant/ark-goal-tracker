@@ -176,17 +176,17 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    <mat-button-toggle-group [value]="chartMode()" (change)="chartMode.set($event.value)"
+                    <!-- <mat-button-toggle-group [value]="chartMode()" (change)="chartMode.set($event.value)"
                         class="toggle-container small">
                         <mat-button-toggle value="table">Table</mat-button-toggle>
                         <mat-button-toggle value="bar">Bar Chart</mat-button-toggle>
-                    </mat-button-toggle-group>
+                    </mat-button-toggle-group> -->
                 </div>
                 <h5 class="font-17 clr--7373 fw-normal mt-3 mb-0">Percent of Students by Performance Level</h5>
                 <div #chartSection class="chart-scroll-wrapper">
                     <div class="chart-scroll-area">
                         <div class="chart-container">
-                            <apx-chart *ngIf="showChart"
+                            <apx-chart *ngIf="showChart && viewMode() === 'grade'"
                                 [series]="chartOptions.series"
                                 [chart]="chartOptions.chart"
                                 [xaxis]="chartOptions.xaxis"
@@ -198,6 +198,20 @@
                                 [tooltip]="chartOptions.tooltip"
                                 [colors]="chartOptions.colors"
                                 [stroke]="chartOptions.stroke"
+                            >
+                            </apx-chart>
+                            <apx-chart *ngIf="showChart && viewMode() === 'teacher'"
+                                [series]="chartOptions2.series"
+                                [chart]="chartOptions2.chart"
+                                [xaxis]="chartOptions2.xaxis"
+                                [yaxis]="chartOptions2.yaxis"
+                                [grid]="chartOptions2.grid"
+                                [plotOptions]="chartOptions2.plotOptions"
+                                [dataLabels]="chartOptions2.dataLabels"
+                                [legend]="chartOptions2.legend"
+                                [tooltip]="chartOptions2.tooltip"
+                                [colors]="chartOptions2.colors"
+                                [stroke]="chartOptions2.stroke"
                             >
                             </apx-chart>
                         </div>
