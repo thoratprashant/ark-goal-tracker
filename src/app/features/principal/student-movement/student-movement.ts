@@ -72,6 +72,13 @@ interface TableRow {
   status: string;
 }
 
+interface ScoreRow {
+  predictor: string;
+  value: string;
+  contribution: string;
+  status: string;
+}
+
 interface TableRow1 {
   date: string;
   day: string;
@@ -123,11 +130,13 @@ export class StudentMovement {
 @ViewChild('predictedSection') predictedSection!: ElementRef;
 @ViewChild('attendanceChartSection') attendanceChartSection!: ElementRef;
 @ViewChild('learningChartSection') learningChartSection!: ElementRef;
+@ViewChild('performanceTimeChartSection') performanceTimeChartSection!: ElementRef;
 
 predictedScore = signal(0);
 predictedAnimated = false;
 showAttendanceChart = false;
 showLearningChart = false;
+showPerformanceTimeChart = false;
 showProgress = false;
 
   viewMode = signal<'ela' | 'math' | 'social studies' | 'science'>('ela');  
@@ -270,7 +279,477 @@ showProgress = false;
         }
       },
       y: {
-        formatter: (val: number) => `ELA - ${val} SS`
+        formatter: (
+          val: number,
+          opts: {
+            dataPointIndex: number;
+            w: any;
+          }
+        ) => {
+          const month =
+            opts.w.globals.categoryLabels[opts.dataPointIndex];
+
+          return `${month} - ${val} SS`;
+        }
+      },
+      marker: {
+        show: true
+      }
+    }
+  };
+
+  public chartOptions3: any = {
+    series: [
+      {
+        name: 'Maths',
+        data: [735, 738, 744, 748, 754]
+      }
+    ],
+    chart: {
+      type: 'line',
+      height: '400',
+      zoom: { enabled: false },
+      toolbar: { show: false }
+    },
+    stroke: {
+      curve: 'straight',
+      width: 2
+    },
+    colors: ['#0D2A7C'],
+    xaxis: {
+      categories: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
+      },
+      labels: { style: { colors: '#6B7280', fontSize: '12px' } },
+      tooltip: {
+        enabled: false
+      }
+    },
+    yaxis: {
+      min: 600,
+      max: 800,
+      tickAmount: 4,
+      labels: {
+       formatter: (value: number) => `${Math.round(value)}`,
+        style: { colors: '#6B7280', fontSize: '12px' }
+      },
+    },
+    grid: {
+      borderColor: '#E5E7EB',
+      strokeDashArray: 3,
+      xaxis: {
+        lines: {
+          show: true
+        }
+      },
+      yaxis: {
+        lines: {
+          show: true
+        }
+      },
+      padding: {
+        left: 8,
+        right: 8
+      }
+    },
+    markers: {
+      size: 4,
+      strokeWidth: 2,
+      strokeColors: '#0D2A7C',
+      colors: ['#0D2A7C'],
+      hover: {
+        size: 6
+      }
+    },
+    // dataLabels: {
+    //   enabled: false
+    // },
+    legend: {
+      position: "bottom",
+      horizontalAlign: "center",
+      fontSize: '15px',
+      fontWeight: 400,
+      onItemHover: {
+        highlightDataSeries: true
+      }
+    },
+    annotations: {
+        yaxis: [
+        {
+          y: 755,
+          borderColor: '#B7C98B',
+          strokeDashArray: 3,
+          label: {
+            text: 'Level 3 Cut Score',
+            style: {
+              color: '#90C955',
+              fontSize: '11px',
+              fontWeight: 400
+            },
+            offsetX: 10
+          }
+        },
+        {
+          y: 705,
+          borderColor: '#EA914E',
+          strokeDashArray: 3,
+          label: {
+            text: 'Learning Gain Goal',
+            style: {
+              color: '#EA914E',
+              fontSize: '11px',
+              fontWeight: 400
+            },
+            offsetX: 10
+          }
+        },
+        {
+          y: 605,
+          borderColor: '#D64550',
+          strokeDashArray: 3,
+          label: {
+            text: 'Risk Zone',
+            style: {
+              color: '#D64550',
+              fontSize: '11px',
+              fontWeight: 400
+            },
+            offsetX: 10
+          }
+        }
+      ]
+    },
+    tooltip: {
+      shared: false,
+      intersect: true,
+      x: {
+        formatter: () => {
+          return "Student’s Achievement Level";
+        }
+      },
+      y: {
+        formatter: (
+          val: number,
+          opts: {
+            dataPointIndex: number;
+            w: any;
+          }
+        ) => {
+          const month =
+            opts.w.globals.categoryLabels[opts.dataPointIndex];
+
+          return `${month} - ${val} SS`;
+        }
+      },
+      marker: {
+        show: true
+      }
+    }
+  };
+
+  public chartOptions4: any = {
+    series: [
+      {
+        name: 'Social Studies',
+        data: [735, 738, 744, 748, 754]
+      }
+    ],
+    chart: {
+      type: 'line',
+      height: '400',
+      zoom: { enabled: false },
+      toolbar: { show: false }
+    },
+    stroke: {
+      curve: 'straight',
+      width: 2
+    },
+    colors: ['#0D2A7C'],
+    xaxis: {
+      categories: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
+      },
+      labels: { style: { colors: '#6B7280', fontSize: '12px' } },
+      tooltip: {
+        enabled: false
+      }
+    },
+    yaxis: {
+      min: 600,
+      max: 800,
+      tickAmount: 4,
+      labels: {
+       formatter: (value: number) => `${Math.round(value)}`,
+        style: { colors: '#6B7280', fontSize: '12px' }
+      },
+    },
+    grid: {
+      borderColor: '#E5E7EB',
+      strokeDashArray: 3,
+      xaxis: {
+        lines: {
+          show: true
+        }
+      },
+      yaxis: {
+        lines: {
+          show: true
+        }
+      },
+      padding: {
+        left: 8,
+        right: 8
+      }
+    },
+    markers: {
+      size: 4,
+      strokeWidth: 2,
+      strokeColors: '#0D2A7C',
+      colors: ['#0D2A7C'],
+      hover: {
+        size: 6
+      }
+    },
+    // dataLabels: {
+    //   enabled: false
+    // },
+    legend: {
+      position: "bottom",
+      horizontalAlign: "center",
+      fontSize: '15px',
+      fontWeight: 400,
+      onItemHover: {
+        highlightDataSeries: true
+      }
+    },
+    annotations: {
+        yaxis: [
+        {
+          y: 755,
+          borderColor: '#B7C98B',
+          strokeDashArray: 3,
+          label: {
+            text: 'Level 3 Cut Score',
+            style: {
+              color: '#90C955',
+              fontSize: '11px',
+              fontWeight: 400
+            },
+            offsetX: 10
+          }
+        },
+        {
+          y: 705,
+          borderColor: '#EA914E',
+          strokeDashArray: 3,
+          label: {
+            text: 'Learning Gain Goal',
+            style: {
+              color: '#EA914E',
+              fontSize: '11px',
+              fontWeight: 400
+            },
+            offsetX: 10
+          }
+        },
+        {
+          y: 605,
+          borderColor: '#D64550',
+          strokeDashArray: 3,
+          label: {
+            text: 'Risk Zone',
+            style: {
+              color: '#D64550',
+              fontSize: '11px',
+              fontWeight: 400
+            },
+            offsetX: 10
+          }
+        }
+      ]
+    },
+    tooltip: {
+      shared: false,
+      intersect: true,
+      x: {
+        formatter: () => {
+          return "Student’s Achievement Level";
+        }
+      },
+      y: {
+        formatter: (
+          val: number,
+          opts: {
+            dataPointIndex: number;
+            w: any;
+          }
+        ) => {
+          const month =
+            opts.w.globals.categoryLabels[opts.dataPointIndex];
+
+          return `${month} - ${val} SS`;
+        }
+      },
+      marker: {
+        show: true
+      }
+    }
+  };
+
+  public chartOptions5: any = {
+    series: [
+      {
+        name: 'Science',
+        data: [735, 738, 744, 748, 754]
+      }
+    ],
+    chart: {
+      type: 'line',
+      height: '400',
+      zoom: { enabled: false },
+      toolbar: { show: false }
+    },
+    stroke: {
+      curve: 'straight',
+      width: 2
+    },
+    colors: ['#0D2A7C'],
+    xaxis: {
+      categories: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
+      },
+      labels: { style: { colors: '#6B7280', fontSize: '12px' } },
+      tooltip: {
+        enabled: false
+      }
+    },
+    yaxis: {
+      min: 600,
+      max: 800,
+      tickAmount: 4,
+      labels: {
+       formatter: (value: number) => `${Math.round(value)}`,
+        style: { colors: '#6B7280', fontSize: '12px' }
+      },
+    },
+    grid: {
+      borderColor: '#E5E7EB',
+      strokeDashArray: 3,
+      xaxis: {
+        lines: {
+          show: true
+        }
+      },
+      yaxis: {
+        lines: {
+          show: true
+        }
+      },
+      padding: {
+        left: 8,
+        right: 8
+      }
+    },
+    markers: {
+      size: 4,
+      strokeWidth: 2,
+      strokeColors: '#0D2A7C',
+      colors: ['#0D2A7C'],
+      hover: {
+        size: 6
+      }
+    },
+    // dataLabels: {
+    //   enabled: false
+    // },
+    legend: {
+      position: "bottom",
+      horizontalAlign: "center",
+      fontSize: '15px',
+      fontWeight: 400,
+      onItemHover: {
+        highlightDataSeries: true
+      }
+    },
+    annotations: {
+        yaxis: [
+        {
+          y: 755,
+          borderColor: '#B7C98B',
+          strokeDashArray: 3,
+          label: {
+            text: 'Level 3 Cut Score',
+            style: {
+              color: '#90C955',
+              fontSize: '11px',
+              fontWeight: 400
+            },
+            offsetX: 10
+          }
+        },
+        {
+          y: 705,
+          borderColor: '#EA914E',
+          strokeDashArray: 3,
+          label: {
+            text: 'Learning Gain Goal',
+            style: {
+              color: '#EA914E',
+              fontSize: '11px',
+              fontWeight: 400
+            },
+            offsetX: 10
+          }
+        },
+        {
+          y: 605,
+          borderColor: '#D64550',
+          strokeDashArray: 3,
+          label: {
+            text: 'Risk Zone',
+            style: {
+              color: '#D64550',
+              fontSize: '11px',
+              fontWeight: 400
+            },
+            offsetX: 10
+          }
+        }
+      ]
+    },
+    tooltip: {
+      shared: false,
+      intersect: true,
+      x: {
+        formatter: () => {
+          return "Student’s Achievement Level";
+        }
+      },
+      y: {
+        formatter: (
+          val: number,
+          opts: {
+            dataPointIndex: number;
+            w: any;
+          }
+        ) => {
+          const month =
+            opts.w.globals.categoryLabels[opts.dataPointIndex];
+
+          return `${month} - ${val} SS`;
+        }
       },
       marker: {
         show: true
@@ -487,6 +966,14 @@ showProgress = false;
     {predictor: 'District Avg', value: '698', contribution: '+5', significance: 'Low', status: 'Above'},
   ];
 
+  dataMathScoreBreakdown: ScoreRow[] = [
+    {predictor: 'Number Sense', value: '85%', contribution: '+15', status: 'Above'},
+    {predictor: 'Algebra', value: '78%', contribution: '+12', status: 'Neutral'},
+    {predictor: 'Geometry', value: '92%', contribution: '+20', status: 'Above'},
+    {predictor: 'Attendance', value: '96%', contribution: '+12', status: 'Above'},
+    {predictor: 'Homework', value: '65%', contribution: '-4', status: 'Below'},
+  ];
+
   dataDetailedAttendance: TableRow1[] = [
     {date: 'Jan 17, 2026', day: 'Wed', status: 'Present', code: 'A2', reason: 'Early Dismissal'},
     {date: 'Jan 17, 2026', day: 'Tue', status: 'Present', code: 'T8', reason: 'Sick'},
@@ -587,6 +1074,7 @@ showProgress = false;
   setTimeout(() => {
     this.observeChart('attendanceChartSection', 'showAttendanceChart');
     this.observeChart('learningChartSection', 'showLearningChart');
+    this.observeChart('performanceTimeChartSection', 'showPerformanceTimeChart');
   }, 500);
 }
 
@@ -605,7 +1093,7 @@ animatePredictedScore() {
 
 observeChart(
   id: string,
-  key: 'showAttendanceChart' | 'showLearningChart'
+  key: 'showAttendanceChart' | 'showLearningChart' | 'showPerformanceTimeChart'
 ) {
   const section = document.getElementById(id);
   if (!section) return;
