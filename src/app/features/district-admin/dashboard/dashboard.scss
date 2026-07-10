@@ -7,6 +7,9 @@
     &.sm--width{
       width: 130px;
     }
+    &.sm--width--1{
+      width: 155px;
+    }
   }
   .pt--chart{
     ::ng-deep{
@@ -88,7 +91,31 @@
     }
   }
 
-
+  .chart-scroll-wrapper {
+    width: 100%;
+    .chart-scroll-area {
+      width: 100%;
+      @media (max-width: 575px) {
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          padding-bottom: 6px;
+      }
+      .chart-container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0px 0 0px 0;
+        ::ng-deep .apexcharts-canvas,::ng-deep .apexcharts-svg {
+            width: 100% !important;
+        }
+        @media (max-width: 575px) {
+            min-width: 620px; // horizontal scroll trigger
+            padding: 0 10px;
+        }
+      }
+    }
+  }
+  
   /* ==========================================
      School Performance Overview
   ========================================== */
@@ -119,10 +146,18 @@
     }
   } 
   tbody {
-    td {
-      vertical-align: middle;
-      border-bottom: 1px solid #EEF2F7; 
-      text-align: center;
+    tr{
+      cursor: pointer;
+      td {
+        vertical-align: middle;
+        border-bottom: 1px solid #EEF2F7; 
+        text-align: center;
+      }
+      &.row-active{
+        td{
+          background: #EFF6FF;
+        }
+      }
     }
   }
 
@@ -147,6 +182,9 @@
   .school-col {
     width: 235px;
     text-align: left !important;
+    a{
+      text-decoration: underline !important;
+    }
   }
 
   .total-col {
@@ -340,30 +378,6 @@
         }
       }
     }
-    .chart-scroll-wrapper {
-        width: 100%;
-      .chart-scroll-area {
-        width: 100%;
-        @media (max-width: 575px) {
-            overflow-x: auto;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 6px;
-        }
-        .chart-container {
-          width: 100%;
-          margin: 0 auto;
-          padding: 0px 0 0px 0;
-          ::ng-deep .apexcharts-canvas,::ng-deep .apexcharts-svg {
-              width: 100% !important;
-          }
-          @media (max-width: 575px) {
-              min-width: 620px; // horizontal scroll trigger
-              padding: 0 10px;
-          }
-        }
-      }
-    }
   }
 
   /* ==========================================
@@ -538,6 +552,9 @@
     position: relative;
   }
   .d--dashboard--wrapper .dd--sm.sm--width {
+      width: 100%;
+  }
+  .d--dashboard--wrapper .dd--sm.sm--width--1 {
       width: 100%;
   }
 }

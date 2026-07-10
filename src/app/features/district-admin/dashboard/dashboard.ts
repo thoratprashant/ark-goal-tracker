@@ -138,7 +138,7 @@ export class Dashboard {
   @ViewChild('chartSection') chartSection!: ElementRef;
   @ViewChild('elaChart') elaChart!: ChartComponent;
   private chartAnimated = false; 
-  private elaRealData = [50, 10, 90, 15, 65, 45, 85];
+  private elaRealData = [51, 54, 58, 60, 62, 64, 67];
 
   @ViewChild('performanceSection') performanceSection!: ElementRef;
   progressAnimated = false;
@@ -256,6 +256,11 @@ export class Dashboard {
 
   toggleFilters(): void {
     this.showFilters = !this.showFilters;
+  }
+
+  activeRowIndex = 0;
+  selectRow(index: number): void {
+    this.activeRowIndex = index;
   }
 
   gradeOptions: string[] = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'];
@@ -1466,7 +1471,7 @@ export class Dashboard {
     },
     colors: ['#EA914E'],
     xaxis: {
-      categories: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'March'],
+      categories: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
       axisBorder: {
         show: false
       },
@@ -1482,8 +1487,8 @@ export class Dashboard {
       }
     },
     yaxis: {
-      min: 0,
-      max: 100,
+      min: 40,
+      max: 80,
       tickAmount: 4,
       labels: {
         formatter: (value: number) => `${value}%`,

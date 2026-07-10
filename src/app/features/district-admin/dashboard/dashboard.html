@@ -2,7 +2,10 @@
   <div class="row">
     <app-district-performance-summary></app-district-performance-summary>
   </div>
-  <div class="row">
+
+  <!-- All fiilters section -->
+  
+  <!-- <div class="row">
     <div class="col-12">
       <div class="card p-3">
         <div class="row">
@@ -103,7 +106,10 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+  
+  <!-- Performance Matrix section -->
+   
   <div class="row">
     <div class="col-12 performance-matrix-section mt-3">
       <div class="card p-3 p-sm-4 d-flex flex-column mb-0">
@@ -128,68 +134,50 @@
             </div>
           </div>
         </div>
-        <div class="d-flex flex-row flex-wrap  justify-content-between table-filters-section">
-          <div class="row">
-            <div class="col-12">
-              <div class="row gap-2 gap-sm-0">
-                <div class="col-12 col-lg-2">
-                  <mat-form-field appearance="outline" class="dd--sm w-100">
-                    <mat-select placeholder="All Demographics">
-                      <mat-option value="1">Demographic 10</mat-option>
-                      <mat-option value="2">Demographic 11 </mat-option>
-                      <mat-option value="2">Demographic 12 </mat-option>
-                      <mat-option value="2">Demographic 13 </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="col-12 col-lg-2">
-                  <mat-form-field appearance="outline" class="dd--sm w-100">
-                    <mat-select placeholder="All Grades">
-                      <mat-option value="1">Grade 10</mat-option>
-                      <mat-option value="2">Grade 11 </mat-option>
-                      <mat-option value="2">Grade 12 </mat-option>
-                      <mat-option value="2">Grade 13 </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="col-12 col-lg-2">
-                  <mat-form-field appearance="outline" class="dd--sm w-100">
-                    <mat-select placeholder="All Students">
-                      <mat-option value="1">Student 1</mat-option>
-                      <mat-option value="2">Student 2</mat-option>
-                      <mat-option value="3">Student 3</mat-option>
-                      <mat-option value="4">Student 4</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="col-12 col-lg-2">
-                  <mat-form-field appearance="outline" class="dd--sm w-100">
-                    <mat-select placeholder="All Schools">
-                      <mat-option value="1">School 1</mat-option>
-                      <mat-option value="2">School 2</mat-option>
-                      <mat-option value="3">School 3</mat-option>
-                      <mat-option value="4">School 4</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="col-12 col-lg-2">
-                  <mat-form-field appearance="outline" class="dd--sm w-100">
-                    <mat-icon matPrefix class="filter-icon" fontSet="material-icons-outlined">filter_alt</mat-icon>
-                    <mat-select placeholder="All Subjects">
-                      <mat-option value="1">Subject 1</mat-option>
-                      <mat-option value="2">Subject 2</mat-option>
-                      <mat-option value="3">Subject 3</mat-option>
-                      <mat-option value="4">Subject 4</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
+        <div class="d-flex flex-row flex-wrap gap-2 justify-content-between table-filters-section">
+          <mat-button-toggle-group [value]="viewMode1()" (change)="viewMode1.set($event.value)"
+            class="toggle-container">
+            <mat-button-toggle value="school">By School</mat-button-toggle>
+            <mat-button-toggle value="attendance">By Attendance</mat-button-toggle>
+            <mat-button-toggle value="region">By Region</mat-button-toggle>
+            <mat-button-toggle value="tier">By Tier</mat-button-toggle>
+          </mat-button-toggle-group>
+          <div class="d-flex flex-row gap-2 flex-wrap align-items-center">
+              <mat-form-field appearance="outline" class="dd--sm sm--width--1">
+                <mat-select placeholder="All Demographics">
+                  <mat-option value="1">Demographic 10</mat-option>
+                  <mat-option value="2">Demographic 11 </mat-option>
+                  <mat-option value="2">Demographic 12 </mat-option>
+                  <mat-option value="2">Demographic 13 </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="dd--sm sm--width--1">
+                <mat-select placeholder="All Grades">
+                  <mat-option value="1">Grade 10</mat-option>
+                  <mat-option value="2">Grade 11 </mat-option>
+                  <mat-option value="2">Grade 12 </mat-option>
+                  <mat-option value="2">Grade 13 </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="dd--sm sm--width--1">
+                <mat-select placeholder="All Schools">
+                  <mat-option value="1">Schools 1</mat-option>
+                  <mat-option value="2">Schools 2</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="dd--sm sm--width--1">
+                <mat-icon matPrefix class="filter-icon" fontSet="material-icons-outlined">filter_alt</mat-icon>
+                <mat-select placeholder="All Subjects">
+                  <mat-option value="1">Subject 1</mat-option>
+                  <mat-option value="2">Subject 2</mat-option>
+                  <mat-option value="3">Subject 3</mat-option>
+                  <mat-option value="4">Subject 4</mat-option>
+                </mat-select>
+              </mat-form-field>
           </div>
-
         </div>
         <div class="table-responsive performance-table" #performanceSection>
-          <table class="table table-custom table-centered m-0">
+          <table *ngIf="viewMode1() === 'school'" class="table table-custom table-centered m-0">
             <thead class="thead-sm">
               <tr class="text-uppercase">
                 <th class="font-14 fw-bold text-uppercase">Component</th>
@@ -282,7 +270,7 @@
   <div class="row mt-4 spo--wrapper">
     <div class="col-12 col-lg-9">
       <div class="card w-100 p-3">
-        <div class="d-flex flex-column flex-sm-row justify-content-between">
+        <div class="d-flex flex-column flex-sm-row justify-content-between gap-2">
           <div class="d-flex align-items-center">
             <img src="images/graph-blue.svg" alt="icon" class="img-fluid me-2">
             <h5 class="m-0 font-16 fw-semibold">School Performance Overview</h5>
@@ -303,18 +291,13 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline" class="dd--sm w-100">
-            <mat-select placeholder="All Students">
-              <mat-option value="1">Students 1</mat-option>
-              <mat-option value="2">Students 2</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="dd--sm w-100">
             <mat-select placeholder="All Schools">
               <mat-option value="1">Schools 1</mat-option>
               <mat-option value="2">Schools 2</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="outline" class="dd--sm w-100">
+            <mat-icon matPrefix class="filter-icon" fontSet="material-icons-outlined">filter_alt</mat-icon>
             <mat-select placeholder="Subjects (8)">
               <mat-option value="1">All Subjects 1</mat-option>
               <mat-option value="2">All Subjects 2</mat-option>
@@ -359,12 +342,12 @@
 
             <tbody>
 
-              <tr *ngFor="let school of schoolTableData">
+              <tr *ngFor="let school of schoolTableData; let i = index" (click)="selectRow(i)" [class.row-active]="activeRowIndex === i">
                 <!-- FIXED LEFT -->
                 <td class="sticky-left school-col">
-                  <div class="fw-semibold text-dark">
+                  <a href="/ark-goal-tracker/district-admin/school-details" class="fw-semibold text-dark">
                     {{ school.name }}
-                  </div>
+                  </a>
                   <div class="small text-muted d-flex align-items-center gap-2 mt-1">
                     <span>{{ school.students }}</span>
                     <span>•</span>
@@ -429,21 +412,23 @@
       </div>
     </div>
     <div class="col-12 col-lg-3">
-      <div class="card w-100 p-3">
-        <div class="d-flex align-items-center mb-3">
+      <div class="card w-100 p-3" #chartSection>
+        <div class="d-flex align-items-center mb-2">
           <div class="d-flex align-items-center justify-content-center side--box flex-shrink-0 me-3">
             <img src="images/upwards-green.svg" alt="icon" class="img-fluid">
           </div>
           <h5 class="m-0 font-16 fw-semibold">Franklin High School</h5>
         </div>
-        <div class="chart-scroll-wrapper" #chartSection>
-          <div class="chart-container">
-            <apx-chart #elaChart [series]="chartOptions12.series" [chart]="chartOptions12.chart"
-              [xaxis]="chartOptions12.xaxis" [yaxis]="chartOptions12.yaxis" [stroke]="chartOptions12.stroke"
-              [grid]="chartOptions12.grid" [markers]="chartOptions12.markers" [legend]="chartOptions12.legend"
-              [tooltip]="chartOptions12.tooltip" [annotations]="chartOptions12.annotations"
-              [dataLabels]="chartOptions12.dataLabels" [colors]="chartOptions12.colors">
-            </apx-chart>
+        <div class="chart-scroll-wrapper">
+          <div class="chart-scroll-area">
+            <div class="chart-container pt--chart">
+              <apx-chart #elaChart [series]="chartOptions12.series" [chart]="chartOptions12.chart"
+                [xaxis]="chartOptions12.xaxis" [yaxis]="chartOptions12.yaxis" [stroke]="chartOptions12.stroke"
+                [grid]="chartOptions12.grid" [markers]="chartOptions12.markers" [legend]="chartOptions12.legend"
+                [tooltip]="chartOptions12.tooltip" [annotations]="chartOptions12.annotations"
+                [dataLabels]="chartOptions12.dataLabels" [colors]="chartOptions12.colors">
+              </apx-chart>
+            </div>
           </div>
         </div>
 
@@ -581,61 +566,41 @@
   <div class="row">
     <div class="col-12 performance-matrix-section mt-3">
       <div class="card p-3 p-sm-4 d-flex flex-column mb-0">
-        <div class="d-flex flex-row flex-wrap gap-2 justify-content-between table-filters-section">
-          <mat-button-toggle-group [value]="viewMode1()" (change)="viewMode1.set($event.value)"
-            class="toggle-container">
-            <mat-button-toggle value="school">By School</mat-button-toggle>
-            <mat-button-toggle value="attendance">By Attendance</mat-button-toggle>
-            <mat-button-toggle value="region">By Region</mat-button-toggle>
-            <mat-button-toggle value="tier">By Tier</mat-button-toggle>
-          </mat-button-toggle-group>
-          <div class="d-flex flex-column flex-sm-row flex-wrap align-items-center">
-            <div class="row">
-              <div class="col-12 col-lg-3 col-xl-3">
-                <mat-form-field appearance="outline" class="dd--sm w-100 m-1">
-                  <mat-select placeholder="All Demographics">
-                    <mat-option value="1">Demographics 1</mat-option>
-                    <mat-option value="2">Demographics 2</mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-              </div>
-              <div class="col-12 col-lg-3 col-xl-3">
-                <mat-form-field appearance="outline" class="dd--sm w-100 m-1">
-                  <mat-select placeholder="All Students">
-                    <mat-option value="1">Students 1</mat-option>
-                    <mat-option value="2">Students 2</mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-              </div>
-              <div class="col-12 col-lg-3 col-xl-3">
-                <mat-form-field appearance="outline" class="dd--sm w-100 m-1">
-                  <mat-select placeholder="All Schools">
-                    <mat-option value="1">Schools 1</mat-option>
-                    <mat-option value="2">Schools 2</mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-              </div>
-              <div class="col-12 col-lg-3 col-xl-3">
-                <mat-form-field appearance="outline" class="dd--sm w-100 m-1">
-                  <mat-select placeholder="Subjects (8)">
-                    <mat-option value="1">All Subjects 1</mat-option>
-                    <mat-option value="2">All Subjects 2</mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-              </div>
-            </div>
-
-          </div>
+        <div class="d-flex flex-column flex-sm-row align-items-center gap-2 gap-sm-4 mb-2 table-filters-section">
+          <mat-form-field appearance="outline" class="dd--sm w-100">
+            <mat-select placeholder="All Demographics">
+              <mat-option value="1">Demographics 1</mat-option>
+              <mat-option value="2">Demographics 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="dd--sm w-100">
+            <mat-select placeholder="All Students">
+              <mat-option value="1">Students 1</mat-option>
+              <mat-option value="2">Students 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="dd--sm w-100">
+            <mat-select placeholder="All Schools">
+              <mat-option value="1">Schools 1</mat-option>
+              <mat-option value="2">Schools 2</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="dd--sm w-100">
+            <mat-icon matPrefix class="filter-icon" fontSet="material-icons-outlined">filter_alt</mat-icon>
+            <mat-select placeholder="Subjects (8)">
+              <mat-option value="1">All Subjects 1</mat-option>
+              <mat-option value="2">All Subjects 2</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
         <div class="card p-3 p-sm-4 d-flex flex-column m-0" #performanceTrendsSection>
           <div class="d-flex align-items-center flex-wrap justify-content-sm-between gap-2">
             <h5 class="font-17 clr--111827 fw-semibold mb-0">Performance Trends</h5>
           </div>
-          <div *ngIf="viewMode1() === 'school'" class="chart-scroll-wrapper">
+
+          <!-- By School Performance trends chart -->
+           
+          <div class="chart-scroll-wrapper">
             <div class="chart-scroll-area">
               <div class="chart-container pt--chart">
                 <apx-chart
@@ -656,7 +621,10 @@
               </div>
             </div>
           </div>
-          <div *ngIf="viewMode1() === 'attendance'" class="chart-scroll-wrapper">
+
+          <!-- By Attendance Performance trends chart -->
+          
+          <!-- <div class="chart-scroll-wrapper">
             <div class="chart-scroll-area">
               <div class="chart-container pt--chart">
                 <apx-chart
@@ -676,8 +644,11 @@
                 </apx-chart>
               </div>
             </div>
-          </div>
-          <div *ngIf="viewMode1() === 'region'" class="chart-scroll-wrapper">
+          </div> -->
+          
+          <!-- By Region Performance trends chart -->
+
+          <!-- <div class="chart-scroll-wrapper">
             <div class="chart-scroll-area">
               <div class="chart-container pt--chart">
                 <apx-chart
@@ -697,8 +668,11 @@
                 </apx-chart>
               </div>
             </div>
-          </div>
-          <div *ngIf="viewMode1() === 'tier'" class="chart-scroll-wrapper">
+          </div> -->
+          
+          <!-- By Tier Performance trends chart -->
+
+          <!-- <div class="chart-scroll-wrapper">
             <div class="chart-scroll-area">
               <div class="chart-container pt--chart">
                 <apx-chart
@@ -718,7 +692,8 @@
                 </apx-chart>
               </div>
             </div>
-          </div>
+          </div> -->
+        
         </div>
       </div>
     </div>
