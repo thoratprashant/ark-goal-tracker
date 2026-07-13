@@ -64,6 +64,9 @@
         }
       }
       .toggle-container{
+        .mat-pseudo-checkbox {
+          display: none !important;
+        }
         &.filter--toggle{
           border: none; 
           border-radius: 12px;
@@ -521,10 +524,6 @@
 
 /* Angular Material deep overrides */
 ::ng-deep {
-
-  .mat-pseudo-checkbox {
-    display: none !important;
-  }
 
   .mat-button-toggle-checked .mat-button-toggle-button:has(.mat-button-toggle-checkbox-wrapper) {
     padding-left: 0 !important;

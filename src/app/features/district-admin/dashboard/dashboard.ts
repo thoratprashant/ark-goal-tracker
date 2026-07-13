@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, signal, ViewChild,NgZone } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, signal, ViewChild,NgZone, HostListener } from '@angular/core';
 import { DistrictPerformanceSummary } from './district-performance-summary/district-performance-summary';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
@@ -23,6 +23,7 @@ import {
   ApexFill
 } from "ng-apexcharts";
 import { ApexAnnotations } from 'apexcharts';
+import { MatInputModule } from '@angular/material/input';
 
 interface ActiveFilter {
   key: keyof SelectedFilters;
@@ -125,10 +126,20 @@ export type ChartOptions12 = {
   annotations: ApexAnnotations;
 };
 
+interface DropdownItem {
+  label: string;
+  children: DropdownItem[];
+}
+
+interface DropdownItem1 {
+  label: string;
+  children: DropdownItem1[];
+}
+
 @Component({
   selector: 'app-dashboard',
   imports: [DistrictPerformanceSummary,
-    MatIconModule, CommonModule, MatButtonModule, MatButtonToggleModule, FormsModule, MatFormFieldModule, MatSelectModule, ChartComponent
+    MatIconModule, CommonModule, MatButtonModule, MatButtonToggleModule, MatInputModule, FormsModule, MatFormFieldModule, MatSelectModule, ChartComponent
   ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
@@ -148,6 +159,252 @@ export class Dashboard {
   @ViewChild('performanceTrendsChart1') performanceTrendsChart1!: ChartComponent;
   @ViewChild('performanceTrendsChart2') performanceTrendsChart2!: ChartComponent;
   @ViewChild('performanceTrendsChart3') performanceTrendsChart3!: ChartComponent;
+
+  @ViewChild('demographicToggle')
+  demographicToggle!: ElementRef<HTMLButtonElement>;
+
+  @ViewChild('schoolToggle')
+  schoolToggle!: ElementRef<HTMLButtonElement>;
+
+  // Variables for All Demographics dropdown
+  openedParent: DropdownItem | null = null;
+  selectedParent: DropdownItem | null = null;
+  selectedChild: DropdownItem | null = null;
+
+  // Values for All Demographics dropdown
+  selectedText = '';
+  demographicList: DropdownItem[] = [
+    {
+      label: 'Race/Ethnicity',
+      children: [
+        { label: 'White', children: [] },
+        { label: 'Hispanic', children: [] },
+        { label: 'Black or African American', children: [] },
+        { label: 'Asian', children: [] },
+        { label: 'American Indian or Alaskan Native', children: [] },
+        { label: 'Native Hawaiian or other Pacific Islander Native Hawaiian or other Pacific Islander', children: [] },
+        { label: 'Other', children: [] },
+      ]
+    },
+    {
+      label: 'ED (Economic Disadvantage)',
+      children: []
+    },
+    {
+      label: 'English Language Learner (ELL)',
+      children: [
+        { label: 'LA', children: [] },
+        { label: 'LF', children: [] },
+        { label: 'LY', children: [] },
+        { label: 'LZ', children: [] },
+        { label: 'ZZ', children: [] },
+      ]
+    },
+    {
+      label: 'Exceptional Student Education (ESE) with Y students',
+      children: []
+    },
+    {
+      label: 'Gender',
+      children: [
+        { label: 'Male', children: [] },
+        { label: 'Female', children: [] },
+      ]
+    },
+    {
+      label: 'Gifted',
+      children: []
+    },
+    {
+      label: 'Homeless Code',
+      children: [
+        { label: 'A', children: [] },
+        { label: 'B', children: [] },
+        { label: 'C', children: [] },
+        { label: 'D', children: [] },
+        { label: 'E', children: [] },
+        { label: 'N', children: [] },
+      ]
+    },
+    {
+      label: 'S504',
+      children: []
+    },
+  ];
+
+  // Variables for All Schools dropdown
+  openedParent1: DropdownItem1 | null = null;
+  selectedParent1: DropdownItem1 | null = null;
+  selectedChild1: DropdownItem1 | null = null;
+
+  // Values for All Schools dropdown
+  selectedSchool = '';
+  schoolList: DropdownItem1[] = [
+    {
+      label: 'School type',
+      children: [
+        { label: 'Elementary School', children: [] },
+        { label: 'Middle School', children: [] },
+        { label: 'High School', children: [] },
+        { label: 'Combination School', children: [] },
+      ]
+    },
+    {
+      label: 'Charter',
+      children: []
+    },
+    {
+      label: 'Non Charter',
+      children: []
+    },
+    {
+      label: 'Title 1',
+      children: []
+    }
+  ];
+
+  // Values for All grades dropdown
+  selectedGrade = '';
+  grades = [
+    { value: '', label: 'All Grades' },
+    { value: 'kg', label: 'Kindergarten' },
+    { value: '1', label: '1st Grade' },
+    { value: '2', label: '2nd Grade' },
+    { value: '3', label: '3rd Grade' },
+    { value: '4', label: '4th Grade' },
+    { value: '5', label: '5th Grade' },
+    { value: '6', label: '6th Grade' },
+    { value: '7', label: '7th Grade' },
+    { value: '8', label: '8th Grade' },
+    { value: '9', label: '9th Grade' },
+    { value: '10', label: '10th Grade' },
+    { value: '11', label: '11th Grade' },
+    { value: '12', label: '12th Grade' }
+  ];
+
+  // Values for All Subjects dropdown
+  selectedSubjects: string[] = [];
+  subjects: string[] = [
+  'ELA',
+  'ELA 3',
+  'Math',
+  'Science',
+  'Social Studies',
+  'MS ACC',
+  'HS CCA',
+  'Graduation Rate'
+];
+
+  //Functions for All demographics dropdown
+  onParentClick(item: DropdownItem, event: MouseEvent) {
+    event.stopPropagation();
+    if (!item.children.length) {
+      this.selectParent(item);
+      return;
+    }
+    // Toggle submenu
+    if (this.openedParent === item) {
+      this.openedParent = null;
+    } else {
+      this.openedParent = item;
+    }
+  }
+
+  selectParent(item: DropdownItem) {
+    this.selectedParent = item;
+    this.selectedChild = null;
+
+    this.selectedText = item.label;
+
+    this.openedParent = null;
+
+    this.closeDropdown();
+  }
+
+  selectChild(parent: DropdownItem, child: DropdownItem, event: MouseEvent) {
+    event.stopPropagation();
+    this.selectedParent = parent;
+    this.selectedChild = child;
+    this.selectedText = `${parent.label} - ${child.label}`;
+    this.openedParent = null;
+    this.closeDropdown();
+  }
+
+  clearSelection(event: MouseEvent) {
+    event.stopPropagation();
+
+    this.selectedParent = null;
+    this.selectedChild = null;
+    this.selectedText = '';
+    this.openedParent = null;
+
+    this.closeDropdown();
+  }
+
+  closeDropdown() {
+    this.demographicToggle?.nativeElement.click();
+  }
+
+  //Functions for All Schools dropdown
+  onParentClick1(item: DropdownItem1, event: MouseEvent) {
+    event.stopPropagation();
+    if (!item.children.length) {
+      this.selectParent1(item);
+      return;
+    }
+    // Toggle submenu
+    if (this.openedParent1 === item) {
+      this.openedParent1 = null;
+    } else {
+      this.openedParent1 = item;
+    }
+  }
+
+  selectParent1(item: DropdownItem1) {
+    this.selectedParent1 = item;
+    this.selectedChild1 = null;
+
+    this.selectedSchool = item.label;
+
+    this.openedParent1 = null;
+
+    this.closeDropdown1();
+  }
+
+  selectChild1(parent: DropdownItem1, child: DropdownItem1, event: MouseEvent) {
+    event.stopPropagation();
+    this.selectedParent1 = parent;
+    this.selectedChild1 = child;
+    this.selectedSchool = `${parent.label} - ${child.label}`;
+    this.openedParent1 = null;
+    this.closeDropdown1();
+  }
+
+  clearSelection1(event: MouseEvent) {
+    event.stopPropagation();
+
+    this.selectedParent1 = null;
+    this.selectedChild1 = null;
+    this.selectedSchool = '';
+    this.openedParent1 = null;
+
+    this.closeDropdown1();
+  }
+
+  closeDropdown1() {
+    this.schoolToggle?.nativeElement.click();
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const clickedInside =
+    this.elementRef.nativeElement.contains(event.target);
+
+    if (!clickedInside) {
+      this.openedParent = null;
+      this.openedParent1 = null;
+    }
+  }
 
   private performanceTrendsAnimated = false; 
   private performanceTrendsRealSeries = [
@@ -244,7 +501,7 @@ export class Dashboard {
 
   showFilters = true;
 
-  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone) {}
+  constructor(private cdr: ChangeDetectorRef, private ngZone: NgZone, private elementRef: ElementRef) {}
 
   @ViewChild('scrollContainer', { static: false })
   scrollContainer!: ElementRef<HTMLDivElement>;

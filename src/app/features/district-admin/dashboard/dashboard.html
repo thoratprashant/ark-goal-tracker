@@ -143,37 +143,130 @@
             <mat-button-toggle value="tier">By Tier</mat-button-toggle>
           </mat-button-toggle-group>
           <div class="d-flex flex-row gap-2 flex-wrap align-items-center">
-              <mat-form-field appearance="outline" class="dd--sm sm--width--1">
-                <mat-select placeholder="All Demographics">
-                  <mat-option value="1">Demographic 10</mat-option>
-                  <mat-option value="2">Demographic 11 </mat-option>
-                  <mat-option value="2">Demographic 12 </mat-option>
-                  <mat-option value="2">Demographic 13 </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field appearance="outline" class="dd--sm sm--width--1">
-                <mat-select placeholder="All Grades">
-                  <mat-option value="1">Grade 10</mat-option>
-                  <mat-option value="2">Grade 11 </mat-option>
-                  <mat-option value="2">Grade 12 </mat-option>
-                  <mat-option value="2">Grade 13 </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field appearance="outline" class="dd--sm sm--width--1">
-                <mat-select placeholder="All Schools">
-                  <mat-option value="1">Schools 1</mat-option>
-                  <mat-option value="2">Schools 2</mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field appearance="outline" class="dd--sm sm--width--1">
-                <mat-icon matPrefix class="filter-icon" fontSet="material-icons-outlined">filter_alt</mat-icon>
-                <mat-select placeholder="All Subjects">
-                  <mat-option value="1">Subject 1</mat-option>
-                  <mat-option value="2">Subject 2</mat-option>
-                  <mat-option value="3">Subject 3</mat-option>
-                  <mat-option value="4">Subject 4</mat-option>
-                </mat-select>
-              </mat-form-field>
+            <!-- All Demogrphics dropdown -->
+            <div class="dropdown cust--dropdown dd--sm sm--width--1">
+              <button #demographicToggle
+                  class="btn dropdown-toggle w-100 text-start"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside">
+                  <span class="text-truncate">
+                  {{ selectedText || 'All Demographics' }}
+                  </span>
+              </button>
+              <ul class="dropdown-menu w-100 rounded-3 p-0">
+                  <li class="dropdown-header-item">
+                    <a
+                        href="javascript:void(0)"
+                        class="dropdown-item dropdown-title"
+                        (click)="clearSelection($event)">
+                        All Demographics
+                    </a>
+                  </li>
+                  <li *ngFor="let item of demographicList" class="position-relative submenu-parent">
+                    <a href="javascript:void(0)" class="dropdown-item d-flex justify-content-between align-items-center"
+                        [class.active]="selectedParent === item" (click)="onParentClick(item,$event)">
+                        <span class="text-truncate">{{ item.label }}</span>
+                        <mat-icon
+                            *ngIf="item.children.length"
+                            class="arrow-icon"
+                            fontSet="material-icons-outlined">
+                            keyboard_arrow_right
+                        </mat-icon>
+                    </a>
+                    <ul
+                        *ngIf="item.children.length"
+                        class="submenu dropdown-menu"
+                        [class.show]="openedParent === item">
+
+                        <li *ngFor="let child of item.children">
+                            <a
+                              href="javascript:void(0)"
+                              class="dropdown-item d-flex align-items-center"
+                              [class.active]="selectedParent === item && selectedChild === child"
+                              (click)="selectChild(item,child,$event)">
+                              <span class="text-truncate">
+                                  {{ child.label }}
+                              </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                  </li>
+              </ul>
+            </div>
+
+            <!-- All Grades dropdown -->
+            <mat-form-field appearance="outline" class="dd--sm sm--width--1">
+              <mat-select [(value)]="selectedGrade" disableOptionCentering placeholder="All Grades">
+                <mat-option *ngFor="let grade of grades" [value]="grade.value">{{ grade.label }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!-- All Schools dropdown -->
+            <div class="dropdown cust--dropdown dd--sm sm--width--1">
+              <button #schoolToggle
+                  class="btn dropdown-toggle w-100 text-start"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside">
+                  <span class="text-truncate">
+                  {{ selectedSchool || 'All Schools' }}
+                  </span>
+              </button>
+              <ul class="dropdown-menu w-100 rounded-3 p-0">
+                  <li class="dropdown-header-item">
+                    <a
+                        href="javascript:void(0)"
+                        class="dropdown-item dropdown-title"
+                        (click)="clearSelection1($event)">
+                        All Schools
+                    </a>
+                  </li>
+                  <li *ngFor="let item of schoolList" class="position-relative submenu-parent">
+                    <a href="javascript:void(0)" class="dropdown-item d-flex justify-content-between align-items-center"
+                        [class.active]="selectedParent1 === item" (click)="onParentClick1(item,$event)">
+                        <span class="text-truncate">{{ item.label }}</span>
+                        <mat-icon
+                            *ngIf="item.children.length"
+                            class="arrow-icon"
+                            fontSet="material-icons-outlined">
+                            keyboard_arrow_right
+                        </mat-icon>
+                    </a>
+                    <ul
+                        *ngIf="item.children.length"
+                        class="submenu dropdown-menu"
+                        [class.show]="openedParent1 === item">
+
+                        <li *ngFor="let child of item.children">
+                            <a
+                              href="javascript:void(0)"
+                              class="dropdown-item d-flex align-items-center"
+                              [class.active]="selectedParent1 === item && selectedChild1 === child"
+                              (click)="selectChild1(item,child,$event)">
+                              <span class="text-truncate">
+                                  {{ child.label }}
+                              </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                  </li>
+              </ul>
+            </div>
+
+            <!-- All Subjects dropdown -->
+            <mat-form-field appearance="outline" class="dd--sm sm--width--1">
+              <mat-icon matPrefix class="filter-icon" fontSet="material-icons-outlined">filter_alt</mat-icon>
+              <mat-select [(value)]="selectedSubjects" multiple placeholder="All Subjects">
+                <mat-option
+                  *ngFor="let subject of subjects"
+                  [value]="subject">
+                  {{ subject }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
         </div>
         <div class="table-responsive performance-table" #performanceSection>
@@ -278,31 +371,130 @@
           <p class="m-0 clr--64748B font-13">6 schools</p>
         </div>
         <div class="d-flex flex-column flex-sm-row align-items-center gap-2 gap-sm-4 my-3">
-          <mat-form-field appearance="outline" class="dd--sm w-100">
-            <mat-select placeholder="All Demographics">
-              <mat-option value="1">Demographics 1</mat-option>
-              <mat-option value="2">Demographics 2</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="dd--sm w-100 ">
-            <mat-select placeholder="All Grades">
-              <mat-option value="1">Grades 1</mat-option>
-              <mat-option value="2">Grades 2</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="dd--sm w-100">
-            <mat-select placeholder="All Schools">
-              <mat-option value="1">Schools 1</mat-option>
-              <mat-option value="2">Schools 2</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="dd--sm w-100">
-            <mat-icon matPrefix class="filter-icon" fontSet="material-icons-outlined">filter_alt</mat-icon>
-            <mat-select placeholder="Subjects (8)">
-              <mat-option value="1">All Subjects 1</mat-option>
-              <mat-option value="2">All Subjects 2</mat-option>
-            </mat-select>
-          </mat-form-field>
+            <!-- All Demogrphics dropdown -->
+            <div class="dropdown cust--dropdown dd--sm w-100">
+              <button #demographicToggle
+                  class="btn dropdown-toggle w-100 text-start"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside">
+                  <span class="text-truncate">
+                  {{ selectedText || 'All Demographics' }}
+                  </span>
+              </button>
+              <ul class="dropdown-menu w-100 rounded-3 p-0">
+                  <li class="dropdown-header-item">
+                    <a
+                        href="javascript:void(0)"
+                        class="dropdown-item dropdown-title"
+                        (click)="clearSelection($event)">
+                        All Demographics
+                    </a>
+                  </li>
+                  <li *ngFor="let item of demographicList" class="position-relative submenu-parent">
+                    <a href="javascript:void(0)" class="dropdown-item d-flex justify-content-between align-items-center"
+                        [class.active]="selectedParent === item" (click)="onParentClick(item,$event)">
+                        <span class="text-truncate">{{ item.label }}</span>
+                        <mat-icon
+                            *ngIf="item.children.length"
+                            class="arrow-icon"
+                            fontSet="material-icons-outlined">
+                            keyboard_arrow_right
+                        </mat-icon>
+                    </a>
+                    <ul
+                        *ngIf="item.children.length"
+                        class="submenu dropdown-menu"
+                        [class.show]="openedParent === item">
+
+                        <li *ngFor="let child of item.children">
+                            <a
+                              href="javascript:void(0)"
+                              class="dropdown-item d-flex align-items-center"
+                              [class.active]="selectedParent === item && selectedChild === child"
+                              (click)="selectChild(item,child,$event)">
+                              <span class="text-truncate">
+                                  {{ child.label }}
+                              </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                  </li>
+              </ul>
+            </div>
+
+            <!-- All Grades dropdown -->
+            <mat-form-field appearance="outline" class="dd--sm  w-100">
+              <mat-select [(value)]="selectedGrade" disableOptionCentering placeholder="All Grades">
+                <mat-option *ngFor="let grade of grades" [value]="grade.value">{{ grade.label }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!-- All Schools dropdown -->
+            <div class="dropdown cust--dropdown dd--sm  w-100">
+              <button #schoolToggle
+                  class="btn dropdown-toggle w-100 text-start"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-auto-close="outside">
+                  <span class="text-truncate">
+                  {{ selectedSchool || 'All Schools' }}
+                  </span>
+              </button>
+              <ul class="dropdown-menu w-100 rounded-3 p-0">
+                  <li class="dropdown-header-item">
+                    <a
+                        href="javascript:void(0)"
+                        class="dropdown-item dropdown-title"
+                        (click)="clearSelection1($event)">
+                        All Schools
+                    </a>
+                  </li>
+                  <li *ngFor="let item of schoolList" class="position-relative submenu-parent">
+                    <a href="javascript:void(0)" class="dropdown-item d-flex justify-content-between align-items-center"
+                        [class.active]="selectedParent1 === item" (click)="onParentClick1(item,$event)">
+                        <span class="text-truncate">{{ item.label }}</span>
+                        <mat-icon
+                            *ngIf="item.children.length"
+                            class="arrow-icon"
+                            fontSet="material-icons-outlined">
+                            keyboard_arrow_right
+                        </mat-icon>
+                    </a>
+                    <ul
+                        *ngIf="item.children.length"
+                        class="submenu dropdown-menu"
+                        [class.show]="openedParent1 === item">
+
+                        <li *ngFor="let child of item.children">
+                            <a
+                              href="javascript:void(0)"
+                              class="dropdown-item d-flex align-items-center"
+                              [class.active]="selectedParent1 === item && selectedChild1 === child"
+                              (click)="selectChild1(item,child,$event)">
+                              <span class="text-truncate">
+                                  {{ child.label }}
+                              </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                  </li>
+              </ul>
+            </div>
+
+            <!-- All Subjects dropdown -->
+            <mat-form-field appearance="outline" class="dd--sm w-100">
+              <mat-icon matPrefix class="filter-icon" fontSet="material-icons-outlined">filter_alt</mat-icon>
+              <mat-select [(value)]="selectedSubjects" multiple placeholder="All Subjects">
+                <mat-option
+                  *ngFor="let subject of subjects"
+                  [value]="subject">
+                  {{ subject }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
         </div>
 
         <div class="table-responsive custom-table-wrapper">
@@ -567,29 +759,128 @@
     <div class="col-12 performance-matrix-section mt-3">
       <div class="card p-3 p-sm-4 d-flex flex-column mb-0">
         <div class="d-flex flex-column flex-sm-row align-items-center gap-2 gap-sm-4 mb-2 table-filters-section">
-          <mat-form-field appearance="outline" class="dd--sm w-100">
-            <mat-select placeholder="All Demographics">
-              <mat-option value="1">Demographics 1</mat-option>
-              <mat-option value="2">Demographics 2</mat-option>
+          <!-- All Demogrphics dropdown -->
+          <div class="dropdown cust--dropdown dd--sm w-100">
+            <button #demographicToggle
+                class="btn dropdown-toggle w-100 text-start"
+                type="button"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside">
+                <span class="text-truncate">
+                {{ selectedText || 'All Demographics' }}
+                </span>
+            </button>
+            <ul class="dropdown-menu w-100 rounded-3 p-0">
+                <li class="dropdown-header-item">
+                  <a
+                      href="javascript:void(0)"
+                      class="dropdown-item dropdown-title"
+                      (click)="clearSelection($event)">
+                      All Demographics
+                  </a>
+                </li>
+                <li *ngFor="let item of demographicList" class="position-relative submenu-parent">
+                  <a href="javascript:void(0)" class="dropdown-item d-flex justify-content-between align-items-center"
+                      [class.active]="selectedParent === item" (click)="onParentClick(item,$event)">
+                      <span class="text-truncate">{{ item.label }}</span>
+                      <mat-icon
+                          *ngIf="item.children.length"
+                          class="arrow-icon"
+                          fontSet="material-icons-outlined">
+                          keyboard_arrow_right
+                      </mat-icon>
+                  </a>
+                  <ul
+                      *ngIf="item.children.length"
+                      class="submenu dropdown-menu"
+                      [class.show]="openedParent === item">
+
+                      <li *ngFor="let child of item.children">
+                          <a
+                            href="javascript:void(0)"
+                            class="dropdown-item d-flex align-items-center"
+                            [class.active]="selectedParent === item && selectedChild === child"
+                            (click)="selectChild(item,child,$event)">
+                            <span class="text-truncate">
+                                {{ child.label }}
+                            </span>
+                          </a>
+                      </li>
+
+                  </ul>
+                </li>
+            </ul>
+          </div>
+
+          <!-- All Grades dropdown -->
+          <mat-form-field appearance="outline" class="dd--sm  w-100">
+            <mat-select [(value)]="selectedGrade" disableOptionCentering placeholder="All Grades">
+              <mat-option *ngFor="let grade of grades" [value]="grade.value">{{ grade.label }}</mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field appearance="outline" class="dd--sm w-100">
-            <mat-select placeholder="All Students">
-              <mat-option value="1">Students 1</mat-option>
-              <mat-option value="2">Students 2</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="dd--sm w-100">
-            <mat-select placeholder="All Schools">
-              <mat-option value="1">Schools 1</mat-option>
-              <mat-option value="2">Schools 2</mat-option>
-            </mat-select>
-          </mat-form-field>
+
+          <!-- All Schools dropdown -->
+          <div class="dropdown cust--dropdown dd--sm  w-100">
+            <button #schoolToggle
+                class="btn dropdown-toggle w-100 text-start"
+                type="button"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside">
+                <span class="text-truncate">
+                {{ selectedSchool || 'All Schools' }}
+                </span>
+            </button>
+            <ul class="dropdown-menu w-100 rounded-3 p-0">
+                <li class="dropdown-header-item">
+                  <a
+                      href="javascript:void(0)"
+                      class="dropdown-item dropdown-title"
+                      (click)="clearSelection1($event)">
+                      All Schools
+                  </a>
+                </li>
+                <li *ngFor="let item of schoolList" class="position-relative submenu-parent">
+                  <a href="javascript:void(0)" class="dropdown-item d-flex justify-content-between align-items-center"
+                      [class.active]="selectedParent1 === item" (click)="onParentClick1(item,$event)">
+                      <span class="text-truncate">{{ item.label }}</span>
+                      <mat-icon
+                          *ngIf="item.children.length"
+                          class="arrow-icon"
+                          fontSet="material-icons-outlined">
+                          keyboard_arrow_right
+                      </mat-icon>
+                  </a>
+                  <ul
+                      *ngIf="item.children.length"
+                      class="submenu dropdown-menu"
+                      [class.show]="openedParent1 === item">
+
+                      <li *ngFor="let child of item.children">
+                          <a
+                            href="javascript:void(0)"
+                            class="dropdown-item d-flex align-items-center"
+                            [class.active]="selectedParent1 === item && selectedChild1 === child"
+                            (click)="selectChild1(item,child,$event)">
+                            <span class="text-truncate">
+                                {{ child.label }}
+                            </span>
+                          </a>
+                      </li>
+
+                  </ul>
+                </li>
+            </ul>
+          </div>
+
+          <!-- All Subjects dropdown -->
           <mat-form-field appearance="outline" class="dd--sm w-100">
             <mat-icon matPrefix class="filter-icon" fontSet="material-icons-outlined">filter_alt</mat-icon>
-            <mat-select placeholder="Subjects (8)">
-              <mat-option value="1">All Subjects 1</mat-option>
-              <mat-option value="2">All Subjects 2</mat-option>
+            <mat-select [(value)]="selectedSubjects" multiple placeholder="All Subjects">
+              <mat-option
+                *ngFor="let subject of subjects"
+                [value]="subject">
+                {{ subject }}
+              </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
