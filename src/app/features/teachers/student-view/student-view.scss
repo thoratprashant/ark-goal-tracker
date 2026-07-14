@@ -6,26 +6,26 @@
         }
     }
     .gpa{
-        width: 135px;
+        width: 8.438rem;
     }
     .grades{
-        width: 147px;
+        width: 9.188rem;
     }
     .student-list-header{
-        margin-top: 16px;
-        padding: 16px;
-        border-radius: 10px 10px 0px 0px;
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 0.625rem 0.625rem 0rem 0rem;
         border: 1px solid #E7E9EB;
         border-bottom: none;
         background: #FFF;
         .student-slider {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 0.625rem;
             overflow: hidden;
             .student-list {
                 display: flex;
-                gap: 20px;
+                gap: 1.25rem;
                 overflow-x: auto;
                 scroll-behavior: smooth;
                 white-space: nowrap;
@@ -36,14 +36,14 @@
                     display: none;
                 }
                 .student-item {
-                    padding: 9px 18px;
-                    border-radius: 8px;
+                    padding: 0.563rem 1.125rem;
+                    border-radius: 0.5rem;
                     border: 0 solid #E5E7EB;
                     background: #0000000d;
                     white-space: nowrap;
                     cursor: pointer;
                     flex: 0 0 auto;
-                    font-size: 14px;
+                    font-size: 0.875rem;
                     color: #505050;
                     border: 1px solid transparent;
                     transition: all 0.25s ease;
@@ -69,16 +69,16 @@
                     background: #EDF4FF;
                 }
                 .mat-icon {
-                    font-size: 18px;
-                    width: 18px;
-                    height: 18px;
+                    font-size: 1.125rem;
+                    width: 1.125rem;
+                    height: 1.125rem;
                     color: #0032A0;
                 }
             }
         }
     }
     .student-details-header{
-        padding: 24px;
+        padding: 1.5rem;
         border-radius: 0px;
         border: 1px solid #E2E8F0;
         border-bottom: none;
@@ -86,12 +86,12 @@
         .student-name-initials-section{
             width: 64px;
             height: 64px;
-            border-radius: 16px;
+            border-radius: 1rem;
             background: #0D2A7C;
         }
         .rounded-label-status-section{
             border-radius: 9999px;
-            padding: 4px 10px;
+            padding: 0.25rem 0.625rem;
             width: fit-content;
             &.green{
                 border: 1px solid #BBF7D0;
@@ -115,19 +115,19 @@
         }
     }
     .bottom-outer-section{
-        padding: 24px;
-        border-radius: 0px 0px 10px 10px;
+        padding: 1.5rem;
+        border-radius: 0px 0px 0.625rem 0.625rem;
         background: #F8FAFC;
         border: 1px solid #E2E8F0;
         .ai-summary-section{
-            padding: 16px;
-            border-radius: 12px;
+            padding: 1rem;
+            border-radius: 0.75rem;
             border: 1px solid #5594f966;
             background: #5594f914;
         }
         .progress {
             height: 8px;
-            border-radius: 10px;
+            border-radius: 0.625rem;
             overflow: hidden;
             .progress-bar{
                 font-weight: 700;
@@ -137,9 +137,9 @@
         .chart-container {
             width: 100%;
             margin: 0 auto;
-            padding: 20px 0 0px 0;
+            padding: 1.25rem 0rem 0rem 0rem;
             @media (max-width: 768px) {
-                padding: 20px 10px 0px 10px;
+                padding: 1.25rem 0.625rem 0rem 0.625rem;
             }
         }
         .score-contribution-breakdown-table{
@@ -189,28 +189,28 @@
             }
         }
         .total-predicted-score{
-            padding: 10px;
-            border-radius: 6px;
+            padding: 0.625rem;
+            border-radius: 0.375rem;
             background: #0D2A7C;
             box-shadow: 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;
         }
         .left-sections{
-            gap: 16px 0px;
+            gap: 1rem 0rem;
             align-items: stretch;
             .card{
                 width: 100%;
-                gap: 8px;
+                gap: 0.5rem;
                 margin-bottom: 0;
-                padding: 16px;
-                border-radius: 12px;
+                padding: 1rem;
+                border-radius: 0.75rem;
                 border: 1px solid #E2E8F0;
                 background: #FFF;
                 .divider-line{
                     border: 1px solid #E2E8F0;
                 }
                 .blue-bg-card{
-                    padding: 5px;
-                    border-radius: 4px;
+                    padding: 0.313rem;
+                    border-radius: 0.25rem;
                     background: #EFF6FF;
                 }
                 @media (min-width: 576px) and (max-width: 990px) {
@@ -219,10 +219,10 @@
             }
             .card-graph{
                 width: 100%;
-                gap: 12px;
+                gap: 0.75rem;
                 margin-bottom: 0;
-                padding: 16px;
-                border-radius: 12px;
+                padding: 1rem;
+                border-radius: 0.75rem;
                 border: 1px solid #E2E8F0;
                 background: #FFF;
                 .divider-line{
@@ -235,7 +235,7 @@
                         margin: 0 auto;
                         padding: 0px 0 0px 0;
                         @media (max-width: 575px) {
-                            padding: 0px 10px 0px 10px;
+                            padding: 0rem 0.625rem 0rem 0.625rem;
                             min-width: 340px;
                         }
                     }
@@ -260,7 +260,7 @@
                 }
             }
             @media (min-width: 576px) and (max-width: 990px) {
-                 gap: 16px 9px;
+                 gap: 1rem 0.563rem;
             }
             .course-performance-table{
                 .table{
@@ -268,12 +268,12 @@
                         tr{
                             th{
                                 padding: 5px 4px;
-                                font-size: 8px;
+                                font-size: 0.5rem;
                                 @media (max-width: 575px) {
-                                    font-size: 9px;
+                                    font-size:  0.563rem;
                                 }
                                 @media (min-width: 576px) and (max-width: 990px) {
-                                    font-size: 12px;
+                                    font-size:  0.75rem;
                                 }
                             }
                         }
@@ -282,12 +282,12 @@
                         tr{
                             td{
                                 padding: 5px 4px;
-                                font-size: 8px;
+                                font-size: 0.5rem;
                                 @media (max-width: 575px) {
-                                    font-size: 9px;
+                                    font-size: 0.563rem;
                                 }
                                 @media (min-width: 576px) and (max-width: 990px) {
-                                    font-size: 12px;
+                                    font-size: 0.75rem;
                                 }
                             }
                         }
@@ -296,8 +296,8 @@
             }
         }
         .blue-indicator{
-            width: 12px;
-            height: 12px;
+            width: 0.75rem;
+            height: 0.75rem;
             border-radius: 9999px;
             background: #0D2A7C;
         }
@@ -311,16 +311,16 @@
             font-size: 1.2rem;
         }
         .font-24{
-            font-size: 22px;
+            font-size: 1.375rem;
         }
         .font-18{
-            font-size: 17px;
+            font-size: 1.063rem;
         }
         .font-17{
-            font-size: 16px;
+            font-size: 1rem;
         }
         .font-15{
-            font-size: 14px;
+            font-size: 0.875rem;
         }
     }
 }
@@ -331,22 +331,22 @@
             font-size: 1rem;
         }
         .font-24{
-            font-size: 20px;
+            font-size: 1.25rem;
         }
         .font-18{
-            font-size: 16px;
+            font-size: 1rem;
         }
         .font-17{
-            font-size: 15px;
+            font-size: 1.063rem;
         }
         .font-16{
-            font-size: 14px;
+            font-size: 0.875rem;
         }
         .font-15{
-            font-size: 13px;
+            font-size: 0.813rem;
         }
         .font-13{
-            font-size: 11px;
+            font-size: 0.688rem
         }
     }
 }
@@ -357,22 +357,22 @@
             font-size: 1rem;
         }
         .font-24{
-            font-size: 21px;
+            font-size: 1.313rem;
         }
         .font-18{
-            font-size: 16px;
+            font-size: 1rem;
         }
         .font-17{
-            font-size: 15px;
+            font-size: 0.938rem;
         }
         .font-16{
-            font-size: 14px;
+            font-size: 0.875rem;
         }
         .font-15{
-            font-size: 13px;
+            font-size: 0.813rem;
         }
         .font-13{
-            font-size: 12px;
+            font-size: 0.75rem;
         }
     }
 }
@@ -380,10 +380,10 @@
 @media (max-width: 575px) {
     .sv--wrapper{
         .student-details-header{
-            padding: 16px;
+            padding: 1rem;
         }
         .bottom-outer-section{
-            padding: 16px;
+            padding: 1rem;
         }
         .gpa{
             width: 100%;
