@@ -123,16 +123,33 @@
      School Performance Overview
   ========================================== */
 .custom-table-wrapper {
-  overflow-x: auto;
+  max-height: 565px;         
+  overflow: auto;
   border-radius: 12px;
   border: 1px solid #E5E7EB;
+  position: relative;
 }
 
 .school-performance-table {
   min-width: 1280px;
   background: #fff;
+  border-collapse: separate;
+  border-spacing: 0;
   thead {
-      th {
+    tr {
+      &:nth-child(2) {
+        th {
+          position: sticky;
+          top: 38.2px;
+          z-index: 29;
+          background: #F8FAFC;
+        }
+      }
+    }
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 20;
       background: #F8FAFC;
       color: #737373;
       font-size: 13px;
@@ -146,6 +163,14 @@
       &:first-child{
         border-left: none;
       }
+    }
+    .sticky-left{
+      z-index: 35;
+      background:#F8FAFC;
+    }
+    .sticky-right{
+      z-index:35;
+      background:#F8FAFC;
     }
   } 
   tbody {
@@ -168,7 +193,7 @@
   .sticky-left {
     position: sticky;
     left: 0;
-    z-index: 3;
+    z-index: 15;
     background: #fff;
     text-align: left;
   }
@@ -177,7 +202,7 @@
   .sticky-right {
     position: sticky;
     right: 0;
-    z-index: 3;
+    z-index: 15;
     background: #fff;
   }
 
@@ -318,7 +343,7 @@
 
       .performance-table { 
         .table {
-          min-width: 750px;
+          min-width: 850px;
 
           thead {
             th { 
@@ -359,6 +384,7 @@
                 .progress {
                   height: 20px;
                   .progress-bar{
+                    min-width: 34px;
                     font-weight: 700;
                     color: #fff;
                     transition: width 1.2s ease-in-out;
@@ -546,9 +572,25 @@
 
 
 @media (max-width: 767px) {
-  .d--dashboard--wrapper .school-performance-table .sticky-right,
-  .d--dashboard--wrapper .school-performance-table .sticky-left{
-    position: relative;
+  .d--dashboard--wrapper{
+    .school-performance-table{
+      thead {
+        tr {
+          &:nth-child(2) {
+            th {
+              top: 0;
+              position: relative;
+            }
+          }
+        }
+        th{
+          position: relative;
+        }
+      }
+      .sticky-right,.sticky-left{
+        position: relative;
+      }
+    }
   }
   .d--dashboard--wrapper .dd--sm.sm--width {
       width: 100%;
