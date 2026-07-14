@@ -62,7 +62,7 @@
     </div>
     <div class="col-12 d-flex flex-column bottom-outer-section">
         <div class="row">
-            <div class="col-12 mb-4">
+            <!-- <div class="col-12 mb-4">
                 <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 ai-summary-section">
                     <p class="font-20 fw-bold clr--0D2A7C mb-0">AI Summary</p>
                     <button type="button" class="btn btn-lg btn-primary">
@@ -70,7 +70,7 @@
                         Generate AI Summary
                     </button>
                 </div>
-            </div>
+            </div> -->
 
             <div class="col-12 d-flex mb-4">
                 <mat-button-toggle-group [value]="viewMode()" (change)="viewMode.set($event.value)" class="toggle-container">
@@ -275,10 +275,10 @@
                     <div class="card p-3 p-sm-4 d-flex flex-column">
                         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                             <h5 class="font-14 text-secondary fw-semibold mb-0">Predicted Performance Over Time</h5>
-                            <!-- <div class="d-flex align-items-center gap-2">
+                            <div class="d-flex align-items-center gap-2">
                                 <span class="blue-indicator"></span>
                                 <p class="font-12 clr--4755 fw-normal mb-0">ELA</p>
-                            </div> -->
+                            </div>
                         </div>
                         <div #predictedPerformanceTimeSection class="chart-container">
                             <apx-chart *ngIf="viewMode() === 'ela' && showChart"

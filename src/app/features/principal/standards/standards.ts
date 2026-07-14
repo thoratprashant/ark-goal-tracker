@@ -431,30 +431,39 @@ showAchievementCharts: boolean[] = [];
 
   public chartOptions: ChartOptions = {
     series: [
-    {
-      name: 'At Risk (Red)',
-      data: [25, 18, 35, 20]
-    },
-    {
-      name: 'Approaching (Yellow)',
-      data: [30, 22, 30, 40]
-    },
-    {
-      name: 'On Track (Green)',
-      data: [45, 60, 35, 40]
-    }
-  ],
+      {
+        name: 'At Risk (Red)',
+        data: [25, 18, 35, 20]
+      },
+      {
+        name: 'Approaching (Yellow)',
+        data: [30, 22, 30, 40]
+      },
+      {
+        name: 'On Track (Green)',
+        data: [45, 60, 35, 40]
+      }
+    ],
     chart: {
       type: 'bar',
       height: 270,
       stacked: true,
       stackType: '100%',
-      toolbar: {
-        show: false
-      },
       animations: {
         enabled: true,
-        speed: 500
+        easing: 'linear',
+        speed: 1400,
+        animateGradually: {
+          enabled: true,
+          delay: 180
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 1400
+        }
+      } as any,
+      toolbar: {
+        show: false
       },
       redrawOnWindowResize: true,
       redrawOnParentResize: true
@@ -515,11 +524,11 @@ showAchievementCharts: boolean[] = [];
         }
       },
       axisBorder: {
-        show: true,
+        show: false,
         color: '#e5e7eb'
       },
       axisTicks: {
-        show: false
+        show: true
       },
       crosshairs: {
         show: false
@@ -529,7 +538,8 @@ showAchievementCharts: boolean[] = [];
       labels: {
         align: 'left',
         maxWidth: 210,
-        offsetX: -20,
+        offsetX: -10,
+        offsetY: 3,
         style: {
           fontSize: '12px',
           fontWeight: 600,
@@ -556,10 +566,10 @@ showAchievementCharts: boolean[] = [];
         }
       },
       padding: {
-        top: 5,
-        right: 10,
-        bottom: 10,
-        left: 20
+        top: 0,
+        right: 0,
+        bottom: 5,
+        left: 15
       }
     },
 
@@ -568,12 +578,35 @@ showAchievementCharts: boolean[] = [];
       position: 'bottom',
       horizontalAlign: 'center',
       fontSize: '12px',
+
       markers: {
-        //radius: 12,
+        size: 0
       },
+
+      formatter: function(seriesName, opts) {
+
+        const icons = [
+          'images/red-legend.svg',
+          'images/yellow-legend.svg',
+          'images/learning-green.svg'
+        ];
+
+        return `
+          <div style="display:flex;align-items:center;gap:6px;">
+            <img 
+              src="${icons[opts.seriesIndex]}" 
+              width="14" 
+              height="20"
+            />
+            <span>${seriesName}</span>
+          </div>
+        `;
+      },
+
       itemMargin: {
         horizontal: 10
       },
+
       labels: {
         colors: ['#EF4444', '#DCE52A', '#90C955']
       }
@@ -609,12 +642,21 @@ showAchievementCharts: boolean[] = [];
       height: 300,
       stacked: true,
       stackType: '100%',
-      toolbar: {
-        show: false
-      },
       animations: {
         enabled: true,
-        speed: 500
+        easing: 'linear',
+        speed: 1400,
+        animateGradually: {
+          enabled: true,
+          delay: 180
+        },
+        dynamicAnimation: {
+          enabled: true,
+          speed: 1400
+        }
+      } as any,
+      toolbar: {
+        show: false
       },
       redrawOnWindowResize: true,
       redrawOnParentResize: true
@@ -676,11 +718,11 @@ showAchievementCharts: boolean[] = [];
         }
       },
       axisBorder: {
-        show: true,
+        show: false,
         color: '#e5e7eb'
       },
       axisTicks: {
-        show: false
+        show: true
       },
       crosshairs: {
         show: false
@@ -690,7 +732,8 @@ showAchievementCharts: boolean[] = [];
       labels: {
         align: 'left',
         maxWidth: 210,
-        offsetX: -20,
+        offsetX: -10,
+        offsetY: 3,
         style: {
           fontSize: '12px',
           fontWeight: 600,
@@ -717,10 +760,10 @@ showAchievementCharts: boolean[] = [];
         }
       },
       padding: {
-        top: 5,
-        right: 10,
-        bottom: 10,
-        left: 20
+        top: 0,
+        right: 0,
+        bottom: 5,
+        left: 15
       }
     },
 
@@ -729,12 +772,35 @@ showAchievementCharts: boolean[] = [];
       position: 'bottom',
       horizontalAlign: 'center',
       fontSize: '12px',
+
       markers: {
-        //radius: 12,
+        size: 0
       },
+
+      formatter: function(seriesName, opts) {
+
+        const icons = [
+          'images/red-legend.svg',
+          'images/yellow-legend.svg',
+          'images/learning-green.svg'
+        ];
+
+        return `
+          <div style="display:flex;align-items:center;gap:6px;">
+            <img 
+              src="${icons[opts.seriesIndex]}" 
+              width="14" 
+              height="20"
+            />
+            <span>${seriesName}</span>
+          </div>
+        `;
+      },
+
       itemMargin: {
         horizontal: 10
       },
+
       labels: {
         colors: ['#EF4444', '#DCE52A', '#90C955']
       }

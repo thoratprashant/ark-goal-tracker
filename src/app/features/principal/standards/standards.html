@@ -440,8 +440,9 @@
                         <mat-button-toggle value="bar">Bar Chart</mat-button-toggle>
                     </mat-button-toggle-group> -->
                 </div>
-                <h5 class="font-17 clr--7373 fw-normal mt-3 mb-0">Percent of Students by Performance Level</h5>
-                <div id="apexChartSection" class="chart-scroll-wrapper">
+                <h5 class="font-17 clr--7373 fw-normal mt-3 mb-3" *ngIf="viewMode() === 'grade'">Percent of Grade by Performance Level</h5>
+                <h5 class="font-17 clr--7373 fw-normal mt-3 mb-3" *ngIf="viewMode() === 'teacher'">Percent of Teacher by Performance Level</h5>
+                <div id="apexChartSection" class="chart-scroll-wrapper border-top">
                     <div class="chart-scroll-area">
                         <div class="chart-container">
                             <apx-chart
