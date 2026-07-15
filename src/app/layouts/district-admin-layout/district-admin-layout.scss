@@ -3,6 +3,7 @@
 .topbar {
     display: flex;
     align-items: center; 
+    justify-content: space-between;
     padding: 0.9rem 2rem; 
     color: #fff;
     background-color: #fff;
@@ -27,7 +28,7 @@
     .nav-desktop {
         display: flex;
         align-items: center;
-        gap: 1.5rem; 
+        gap: 1rem; 
         
         .notifications{
             .mat-icon{
@@ -64,10 +65,10 @@
         }
 
         &.menus-desktop{
-            margin-left: auto;
-            margin-right: 15px;
+            // margin-left: auto;
+            // margin-right: 15px;
             .icon--input--box{
-                margin-left: 10%;
+                max-width: 210px;
                 background: #F8FAFC;
             }
 
@@ -80,11 +81,13 @@
                         font-weight: normal;  
                         text-transform: capitalize;
                         border-radius: 6px; 
-                        color: #0A0A0A !important;       
-                        padding: 11px 18px; 
+                        color: #000 !important;       
+                        padding: 8px 12px; 
                         border-radius: 6px;
                         border: 1px solid #E2E8F0;
                         background: #F8FAFC; 
+                        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                        line-height: 20px;
                     }
                     &.active{
                         a{ 
@@ -93,7 +96,7 @@
                         }
                     }
                 }
-           }
+            }
         }
     }
 
@@ -104,7 +107,6 @@
         background: none;
         border: none;
         color: white;
-        margin-left: auto;
     }
 } 
 
@@ -154,9 +156,8 @@
 }
 
 
-
 /* RESPONSIVE */
-@media (max-width: 768px) {
+@media (max-width: 950px) {
   .nav-desktop {
     display: none !important;
   } 
@@ -172,4 +173,23 @@
   .content{
     padding: 4.75rem 1rem 1rem ;
   }
+}
+
+@media screen and (min-width: 951px) and (max-width: 1390px) {
+    .topbar{
+        gap: 15px;
+        .nav-desktop{
+            &.menus-desktop{
+                ul{
+                    gap: 10px;
+                    li{
+                        a{
+                            font-size: 11px;
+                            padding: 8px 10px; 
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

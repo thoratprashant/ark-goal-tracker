@@ -19,6 +19,21 @@
             </div>
         </div>
     </div>
+    <div class="col-12 d-flex student-list-header">
+        <div class="student-slider">
+          <button class="arr--btn" *ngIf="isScrollable && showPrev" (click)="scrollLeft()">
+            <mat-icon>arrow_back_ios</mat-icon>
+          </button>
+          <div class="student-list" #scrollContainer (scroll)="checkScroll()">
+            <div class="student-item scroll-item" *ngFor="let student of students; let i = index" [class.active]="selectedStudentIndex === i" (click)="selectStudent(i)">
+                {{ student.name }}
+            </div>
+          </div>
+          <button class="arr--btn" *ngIf="isScrollable && showNext" (click)="scrollRight()">
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
+        </div>
+    </div>
     <div class="col-12 d-flex flex-column student-details-header">
         <div class="col-12 d-flex flex-wrap align-items-start justify-content-between gap-2">
             <div class="d-flex flex-row gap-3">
@@ -264,7 +279,10 @@
                             <h5 class="font-15 text-secondary fw-semibold mb-0">Predicted Performance Over Time</h5>
                             <div class="d-flex align-items-center gap-2">
                                 <span class="blue-indicator"></span>
-                                <p class="font-12 clr--4755 fw-normal mb-0">ELA</p>
+                                <p class="font-12 clr--4755 fw-normal mb-0" *ngIf="viewMode() === 'ela'">ELA</p>
+                                <p class="font-12 clr--4755 fw-normal mb-0" *ngIf="viewMode() === 'math'">Math</p>
+                                <p class="font-12 clr--4755 fw-normal mb-0" *ngIf="viewMode() === 'social studies'">Social Studies</p>
+                                <p class="font-12 clr--4755 fw-normal mb-0" *ngIf="viewMode() === 'science'">Science</p>
                             </div>
                         </div>
                         <div id="performanceTimeChartSection" class="chart-scroll-wrapper" #performanceTimeChartSection>

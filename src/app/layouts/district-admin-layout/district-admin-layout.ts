@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import {MatBadgeModule} from '@angular/material/badge';
+import { CommonService } from '../../core/helper/common.service';
 
 @Component({
   selector: 'app-district-admin-layout',
@@ -13,6 +14,9 @@ import {MatBadgeModule} from '@angular/material/badge';
   styleUrl: './district-admin-layout.scss',
 })
 export class DistrictAdminLayout {
+  
+  constructor(private commonService: CommonService,private router: Router,) {}
+  
   mobileMenuOpen = signal(false);
 
   toggleMenu() {

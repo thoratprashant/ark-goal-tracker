@@ -13,7 +13,7 @@
         <input type="text" class="form-control" placeholder="Search...">
         <mat-icon>search</mat-icon>
     </div>
-    <ul class="m-0 p-0 d-flex flex-shrink-0">
+    <ul class="m-0 p-0 d-flex flex-wrap mx-2">
         <li routerLinkActive="active"><a routerLink="/district-admin/dashboard">Dashboard</a></li>
         <li routerLinkActive="active"><a routerLink="/district-admin/goal-configuration">Goal Configuration</a></li>
         <li routerLinkActive="active"><a routerLink="/admin/user-managment3">Goal Evaluation</a></li>
@@ -21,7 +21,7 @@
   </div>
 
   <!-- Desktop Nav -->  
-  <nav class="nav-desktop ms-auto"> 
+  <nav class="nav-desktop"> 
 
     <div class="notifications position-relative">
         <button matIconButton aria-label="notification" class="p-0">
@@ -68,7 +68,10 @@
     <div class="logo--sm">
     <img src="images/admin-logo.svg" alt="img" class="">
   </div>
-  <nav> 
+  <nav>
+    <a routerLink="/district-admin/dashboard" (click)="closeMenu()">Dashboard</a>
+    <a routerLink="/district-admin/goal-configuration" (click)="closeMenu()">Goal Configuration</a>
+    <a routerLink="/admin/user-managment3" (click)="closeMenu()">Goal Evaluation</a> 
     <a routerLink="/admin/users" (click)="closeMenu()">Notification</a> 
     <a routerLink="/admin/profile" (click)="closeMenu()">Profile</a> 
     <a routerLink="/auth/login" (click)="closeMenu()">Logout</a> 
