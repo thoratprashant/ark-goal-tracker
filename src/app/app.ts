@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, HostListener, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -10,4 +10,31 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('angular-21');
+
+  private scrollbarTimeout: any;
+
+  @HostListener('window:mousemove')
+  onMouseMove() {
+    this.showScrollbar();
+  }
+
+  @HostListener('window:keydown')
+  onKeyDown() {
+    this.showScrollbar();
+  }
+
+  @HostListener('window:wheel')
+  onWheel() {
+    this.showScrollbar();
+  }
+
+  showScrollbar() {
+    document.body.classList.add('show-scroll');
+
+    clearTimeout(this.scrollbarTimeout);
+
+    this.scrollbarTimeout = setTimeout(() => {
+      document.body.classList.remove('show-scroll');
+    }, 2000);
+  }
 }

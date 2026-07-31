@@ -2,6 +2,9 @@
     .auth-left {
         background-color:#E9F4FF;
         padding: 1% 12%;
+        img{
+            aspect-ratio: auto 484 / 479;
+        }
         h1{
             font-size: 3rem;
             margin-top: 2.5rem;
@@ -56,9 +59,9 @@
         align-items: center;
         text-align: center;
     }
-    .auth-container .auth-left .img-fluid{
-            width: 40%;
-    }
+    // .auth-container .auth-left .img-fluid{
+    //         width: 40%;
+    // }
     .auth-container .auth-left h1 {
         font-size: 1rem;
         margin: 1rem 0;
@@ -149,10 +152,10 @@
     .auth-container .auth-right .ar--inner {
         padding: 1rem 1rem 3rem 1rem !important;
     }
-    .auth-container .auth-right .lang--sec,
-    .auth-container .auth-right {
-        width: 45% !important;
-    } 
+    // .auth-container .auth-right .lang--sec,
+    // .auth-container .auth-right {
+    //     width: 45% !important;
+    // } 
     .auth-container .auth-right .ar--inner .logo { 
         width: 56%;
     }
