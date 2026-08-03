@@ -1273,265 +1273,131 @@ export class Dashboard {
   };
 
   private createDiagram(): void {
-  const container = this.chartRef.nativeElement;
+    const container = this.chartRef.nativeElement;
+    d3.select(container).selectAll('*').remove();
 
-  d3.select(container).selectAll('*').remove();
+    const width = 1280;
+    const height = 440;
+    const nodeWidth = 277.414;
+    const nodeHeight = 81;
+    const rightNodeX = width - nodeWidth;
+    const connectorX = 973.384;
+    const connectorWidth = 29.202;
+    const flowX = 278.023;
+    const flowWidth = 695.361;
+    const flowHeight = 177.848;
 
-  const width = container.offsetWidth;
-  const height = 250;
+    const svg = d3
+      .select(container)
+      .append('svg')
+      .attr('viewBox', `0 0 ${width} ${height}`)
+      .attr('preserveAspectRatio', 'xMidYMid meet')
+      .attr('role', 'img')
+      .attr('aria-label', 'Student movement between On Track, Bubble, and At Risk statuses')
+      .style('width', '100%')
+      .style('height', 'auto')
+      .style('font-family', 'Inter, Arial, sans-serif')
+      .style('background', '#fff');
 
-  const nodeWidth = 170;
-  const nodeHeight = 48;
-  const stripWidth = 16;
+      const defs = svg.append('defs');
+      this.addFlowGradient(defs, 'movement-track', '#92D2A8', '#D1F0D9');
+      this.addFlowGradient(defs, 'movement-risk', '#E57673', '#FA9698');
 
-  const leftX = 0;
-  const rightX = width - nodeWidth - 0;
+    const rows = [
+      { label: 'On Track', y: 0, background: '#EAF6EA', accent: '#9ADABA', text: '#419751' },
+      { label: 'Bubble', y: 179, background: '#FEF0D2', accent: '#F7C981', text: '#AF711E' },
+      { label: 'At Risk', y: 359, background: '#FEE8EA', accent: '#E57673', text: '#D64550' },
+    ];
 
-  const svg = d3
-    .select(container)
-    .append('svg')
-    .attr('viewBox', `0 0 ${width} ${height}`)
-    .attr('preserveAspectRatio', 'xMidYMid meet')
-    .style('width', '100%')
-    .style('height', 'auto')
-    .style('font-family', 'Inter, Arial, sans-serif')
-    .style('background', '#fff');
-
-  const rows = [
-    {
-      id: 'ontrack',
-      label: 'On Track',
-      color: '#93DBAE',
-      light: '#EEF8EF',
-      text: '#38914A',
-      y: 20,
-    },
-    {
-      id: 'bubble',
-      label: 'Bubble',
-      color: '#F2C66B',
-      light: '#FEF3DA',
-      text: '#B67818',
-      y: 105,
-    },
-    {
-      id: 'risk',
-      label: 'At Risk',
-      color: '#EE7A74',
-      light: '#FDECEE',
-      text: '#D94652',
-      y: 190,
-    },
-  ];
-
-  const links = [
-    {
-      source: 'ontrack',
-      target: 'ontrack',
-      color: 'rgba(147,219,174,0.70)',
-      width: 20,
-    },
-    {
-      source: 'ontrack',
-      target: 'bubble',
-      color: 'rgba(235,206,124,0.45)',
-      width: 16,
-    },
-    {
-      source: 'bubble',
-      target: 'ontrack',
-      color: 'rgba(235,206,124,0.55)',
-      width: 16,
-    },
-    {
-      source: 'bubble',
-      target: 'risk',
-      color: 'rgba(232,145,118,0.55)',
-      width: 18,
-    },
-    {
-      source: 'risk',
-      target: 'bubble',
-      color: 'rgba(232,145,118,0.45)',
-      width: 18,
-    },
-    {
-      source: 'risk',
-      target: 'risk',
-      color: 'rgba(232,99,95,0.80)',
-      width: 22,
-    },
-  ];
-
-  const rowMap = new Map(rows.map((r) => [r.id, r]));
-
-  // Softer curves like image 2
-  const curveOffset = width * 0.22;
-
-  // Draw links FIRST
-  links.forEach((link) => {
-    const source = rowMap.get(link.source)!;
-    const target = rowMap.get(link.target)!;
-
-    // Start from LEFT colored strip edge
-    const startX = leftX + nodeWidth - stripWidth;
-
-    // End at RIGHT colored strip edge
-    const endX = rightX + stripWidth;
-
-    const startY = source.y + nodeHeight / 2;
-    const endY = target.y + nodeHeight / 2;
-
-    const path = `
-      M ${startX} ${startY}
-      C ${startX + curveOffset} ${startY},
-        ${endX - curveOffset} ${endY},
-        ${endX} ${endY}
-    `;
-
-    svg
-      .append('path')
-      .attr('d', path)
-      .attr('fill', 'none')
-      .attr('stroke', link.color)
-      .attr('stroke-width', link.width)
-      .attr('stroke-linecap', 'butt')
-      .attr('opacity', 1);
-  });
-
-  // LEFT NODES
-  rows.forEach((row) => {
-    this.drawNode(svg, {
-      x: leftX,
-      y: row.y,
-      width: nodeWidth,
-      height: nodeHeight,
-      label: row.label,
-      value: '3',
-      accent: row.color,
-      bg: row.light,
-      text: row.text,
-      alignRight: false,
+    rows.forEach((row) => {
+      svg.append('rect').attr('x', 0).attr('y', row.y).attr('width', nodeWidth).attr('height', nodeHeight)
+        .attr('rx', 4).attr('fill', row.background);
+      svg.append('rect').attr('x', rightNodeX).attr('y', row.y).attr('width', nodeWidth).attr('height', nodeHeight)
+        .attr('rx', 4).attr('fill', row.background);
     });
-  });
 
-  // RIGHT NODES
-  rows.forEach((row) => {
-    this.drawNode(svg, {
-      x: rightX,
-      y: row.y,
-      width: nodeWidth,
-      height: nodeHeight,
-      label: row.label,
-      value: '3',
-      accent: row.color,
-      bg: row.light,
-      text: row.text,
-      alignRight: true,
+    svg.append('rect').attr('x', nodeWidth).attr('y', 2).attr('width', connectorX - nodeWidth)
+      .attr('height', 41).attr('fill', 'url(#movement-track)');
+    svg.append('rect').attr('x', nodeWidth).attr('y', 397).attr('width', connectorX - nodeWidth)
+      .attr('height', 41).attr('fill', 'url(#movement-risk)');
+
+    const mirroredAssets = svg.append('g').attr('transform', `translate(0 ${height}) scale(1 -1)`);
+    this.addFlowAsset(mirroredAssets, '/images/student-movement/flow-risk-to-bubble.svg', flowX, 41, flowWidth, flowHeight);
+    this.addFlowAsset(mirroredAssets, '/images/student-movement/flow-bubble-to-track.svg', flowX, 220, flowWidth, flowHeight);
+    this.addFlowAsset(mirroredAssets, '/images/student-movement/flow-bubble-to-risk.svg', flowX, 219, flowWidth, flowHeight, true);
+    this.addFlowAsset(mirroredAssets, '/images/student-movement/flow-track-to-bubble.svg', flowX, 42, flowWidth, flowHeight, true);
+
+    rows.forEach((row) => {
+      svg.append('rect').attr('x', connectorX).attr('y', row.y).attr('width', connectorWidth)
+        .attr('height', nodeHeight).attr('rx', 4).attr('fill', row.accent);
     });
-  });
 
-  // Center connector bars
-  rows.forEach((row) => {
-    svg
-      .append('rect')
-      .attr('x', rightX)
-      .attr('y', row.y)
-      .attr('width', stripWidth)
-      .attr('height', nodeHeight)
-      .attr('rx', 3)
-      .attr('fill', row.color);
-  });
-}
+    rows.forEach((row, index) => {
+      const leftLabelCenter = index === 0 ? 102.134 : index === 1 ? 98.195 : 87.533;
+      const rightLabelCenter = index === 0 ? 1110.38 : index === 1 ? 1110.875 : 1101.687;
+      const leftBadgeX = 170.342;
+      const rightBadgeX = index === 0 ? 1183.879 : index === 1 ? 1182.661 : 1185.095;
 
-  private drawNode(
-    svg: d3.Selection<SVGSVGElement, unknown, null, undefined>,
-    config: {
-      x: number;
-      y: number;
-      width: number;
-      height: number;
-      label: string;
-      value: string;
-      accent: string;
-      bg: string;
-      text: string;
-      alignRight: boolean;
-    }
+      this.drawFlowLabel(svg, leftLabelCenter, row.y, row.label, row.text);
+      this.drawFlowLabel(svg, rightLabelCenter, row.y, row.label, row.text);
+      this.drawFlowBadge(svg, leftBadgeX, row.y);
+      this.drawFlowBadge(svg, rightBadgeX, row.y);
+    });
+  }
+
+  private addFlowGradient(
+    defs: d3.Selection<SVGDefsElement, unknown, null, undefined>,
+    id: string,
+    edgeColor: string,
+    centerColor: string
   ): void {
-    const group = svg.append('g');
+    const gradient = defs.append('linearGradient').attr('id', id).attr('x1', '0%').attr('x2', '100%');
+    gradient.append('stop').attr('offset', '0%').attr('stop-color', edgeColor);
+    gradient.append('stop').attr('offset', '50%').attr('stop-color', centerColor);
+    gradient.append('stop').attr('offset', '100%').attr('stop-color', edgeColor);
+  }
 
-    // Outer box
-    group
-      .append('rect')
-      .attr('x', config.x)
-      .attr('y', config.y)
-      .attr('width', config.width)
-      .attr('height', config.height)
-      .attr('rx', 2)
-      .attr('fill', config.bg);
+  private addFlowAsset(
+    layer: d3.Selection<SVGGElement, unknown, null, undefined>,
+    href: string,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    flipX = false
+  ): void {
+    const image = layer.append('image').attr('href', href).attr('x', x).attr('y', y)
+      .attr('width', width).attr('height', height).attr('preserveAspectRatio', 'none');
 
-    // Accent strip
-   group
-      .append('rect')
-      .attr(
-        'x',
-        config.alignRight
-          ? config.x
-          : config.x + config.width - 16
-      )
-      .attr('y', config.y)
-      .attr('width', 16)
-      .attr('height', config.height)
-      .attr('rx', 1)
-      .attr('fill', config.accent);
+    if (flipX) {
+      image.attr('transform', `translate(${(2 * x) + width} 0) scale(-1 1)`);
+    }
+  }
 
+  private drawFlowLabel(
+    svg: d3.Selection<SVGSVGElement, unknown, null, undefined>,
+    x: number,
+    rowY: number,
+    label: string,
+    color: string
+  ): void {
+    svg.append('text').attr('x', x).attr('y', rowY + 40.5).attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle').attr('fill', color).attr('font-size', 24)
+      .attr('font-weight', 700).attr('letter-spacing', '0.3px').text(label);
+  }
 
-    // Label
-    const labelX = config.alignRight
-    ? config.x + 54
-    : config.x + 28;
-
-    const labelText = group
-    .append('text')
-    .attr('x', labelX)
-    .attr('y', config.y + 30)
-    .attr('fill', config.text)
-    .attr('font-size', '15px')
-    .attr('font-weight', '700')
-    .text(config.label);
-
-    // Get label width dynamically
-    const labelWidth =
-      (labelText.node() as SVGTextElement).getBBox().width;
-
-    // Add spacing between label and badge
-    const badgeSpacing = 12;
-
-    // Badge position
-    const badgeX = labelX + labelWidth + badgeSpacing;
-
-    // Badge
-    group
-      .append('rect')
-      .attr('x', badgeX)
-      .attr('y', config.y + 16)
-      .attr('width', 24)
-      .attr('height', 16)
-      .attr('rx', 4)
-      .attr('fill', '#EEF2F7')
-      .attr('stroke', '#D5DCE5');
-
-
-    group
-      .append('text')
-      .attr('x', badgeX + 12)
-      .attr('y', config.y + 28)
-      .attr('text-anchor', 'middle')
-      .attr('font-size', '12px')
-      .attr('font-weight', '600')
-      .attr('fill', '#0D2A7C')
-      .text(config.value);
+  private drawFlowBadge(
+    svg: d3.Selection<SVGSVGElement, unknown, null, undefined>,
+    x: number,
+    rowY: number
+  ): void {
+    const badgeY = rowY + 28.5;
+    const badge = svg.append('g').attr('filter', 'drop-shadow(0 1px 1px rgba(0, 0, 0, 0.08))');
+    badge.append('rect').attr('x', x).attr('y', badgeY).attr('width', 40.152).attr('height', 24)
+      .attr('rx', 6).attr('fill', '#EFF6FF');
+    badge.append('text').attr('x', x + 20.076).attr('y', badgeY + 12).attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle').attr('fill', '#0D2A7C').attr('font-size', 12.9)
+      .attr('font-weight', 600).text('3');
   }
 
 }

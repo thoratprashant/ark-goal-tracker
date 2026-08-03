@@ -143,6 +143,64 @@
             border: 1px solid #E2E8F0;
             gap: 16px;
         }
+        .student-movement-flow-card {
+            gap: 23.3px;
+            border-color: #DBEAFE;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+
+            .student-movement-flow-header,
+            .student-movement-flow-heading {
+                height: 41px;
+            }
+
+            .student-movement-flow-title {
+                font-size: 17px;
+                line-height: 27px;
+            }
+
+            .student-movement-flow-subtitle {
+                font-size: 10px;
+                line-height: 14px;
+            }
+
+            .student-movement-flow-toggle {
+                width: 218.333px;
+                height: 36px;
+                flex-wrap: nowrap;
+                gap: 0;
+                padding: 4px 4.667px;
+                border-radius: 8px;
+                background: #fff;
+
+                ::ng-deep .mat-button-toggle {
+                    height: 28px;
+                    padding: 4px 24px;
+                    border-radius: 6px;
+                    color: #737373;
+                    font-size: 13.5px;
+                    font-weight: 600;
+                    line-height: 20px;
+                }
+
+                ::ng-deep .mat-button-toggle:nth-child(1) {
+                    width: 75px;
+                }
+
+                ::ng-deep .mat-button-toggle:nth-child(2) {
+                    width: 66px;
+                }
+
+                ::ng-deep .mat-button-toggle:nth-child(3) {
+                    width: 68px;
+                }
+
+                ::ng-deep .mat-button-toggle-checked {
+                    color: #fff;
+                    background: #0D2A7C;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+                }
+            }
+        }
         .achievement-band-distribution-table{
             .table{
                 min-width: 1250px;
@@ -223,16 +281,18 @@
         }
         .status-flow-wrapper {
             width: 100%;
-            overflow-x: auto;
+            overflow-x: hidden;
             background: #fff;
 
            .chart-container {
                 width: 100%;
-                min-width: 520px;
+                min-width: 0;
+                max-width: 100%;
             }
 
             svg {
                 width: 100%;
+                max-width: 100%;
                 height: auto;
                 display: block;
             }
@@ -247,6 +307,33 @@
         }
         .datepicker-width{
             width: 100%;
+        }
+        .achievement-band-section {
+            .student-movement-flow-card {
+                gap: 16px;
+
+                .student-movement-flow-header {
+                    height: auto;
+                    align-items: flex-start !important;
+                }
+
+                .status-flow-wrapper {
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                    -webkit-overflow-scrolling: touch;
+
+                    .chart-container {
+                        width: 640px;
+                        min-width: 640px;
+                        max-width: none;
+                    }
+
+                    svg {
+                        width: 640px;
+                        max-width: none;
+                    }
+                }
+            }
         }
     }
 }

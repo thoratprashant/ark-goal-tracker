@@ -841,14 +841,14 @@
           </div>
         </div>
         <div class="col-12 achievement-band-section">
-          <div class="card p-3 p-sm-4 d-flex flex-column">
-            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-              <div class="d-flex flex-column gap-1">
-                <h5 class="font-16 clr--111827 fw-semibold mb-0">Student Movement Flow</h5>
-                <p class="clr--111827 font-11 fw-normal mb-0">Showing transitions for: Achievement</p>
+          <div class="card student-movement-flow-card p-3 p-sm-4 d-flex flex-column">
+            <div class="student-movement-flow-header d-flex align-items-center justify-content-between flex-wrap gap-2">
+              <div class="student-movement-flow-heading d-flex flex-column">
+                <h5 class="student-movement-flow-title clr--111827 fw-semibold mb-0">Student Movement Flow</h5>
+                <p class="student-movement-flow-subtitle clr--111827 fw-normal mb-0">Showing transitions for: Achievement</p>
               </div>
               <mat-button-toggle-group [value]="studentMovement()" (change)="studentMovement.set($event.value)"
-                class="toggle-container small">
+                class="toggle-container small student-movement-flow-toggle">
                 <mat-button-toggle value="ach">ACH</mat-button-toggle>
                 <mat-button-toggle value="lg">LG</mat-button-toggle>
                 <mat-button-toggle value="bq">BQ</mat-button-toggle>
